@@ -95,7 +95,12 @@ class Aggregator:
 		self.type_by_widget: dict[tuple[str, str], int] = {}
 		self.type_by_evaluator: dict[tuple[str, str], int] = {}
 		self.widget_by_evaluator: dict[tuple[str, str], int] = {}
-		self.coverage: dict[str, int] = {}
+		self.coverage: dict[str, int] = {
+			"widgets=none,evaluators=none": 0,
+			"widgets=none,evaluators=some": 0,
+			"widgets=some,evaluators=none": 0,
+			"widgets=some,evaluators=some": 0,
+		}
 
 		self._needs_review_limit = needs_review_limit
 		self._needs_review_heap: list[tuple[float, str, float, str, str]] = []

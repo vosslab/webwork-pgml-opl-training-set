@@ -116,6 +116,16 @@ def test_aggregate_reports_from_synthetic_pg_like_strings() -> None:
 	assert type_by_widget_lines[0] == "type\twidget_kind\tcount"
 	assert any(l.startswith("other\tnone\t1") for l in type_by_widget_lines[1:])
 
+	type_by_evaluator_lines = [l for l in reports["type_by_evaluator.tsv"].splitlines() if l.strip()]
+	assert type_by_evaluator_lines[0] == "type\tevaluator_kind\tcount"
+	assert any(l.startswith("other\tnone\t1") for l in type_by_evaluator_lines[1:])
+
+	widget_by_evaluator_lines = [l for l in reports["widget_by_evaluator.tsv"].splitlines() if l.strip()]
+	assert widget_by_evaluator_lines[0] == "widget_kind\tevaluator_kind\tcount"
+	assert any(l.startswith("radio\tcmp\t1") for l in widget_by_evaluator_lines[1:])
+
 	coverage = _parse_counts_tsv(reports["coverage.tsv"])
 	assert coverage["widgets=some,evaluators=some"] == 3
-	assert coverage["widgets=none,evaluators=none"] == 2
+	assert coverage["widgets=some,evaluators=none"] == 1
+	assert coverage["widgets=none,evaluators=none"] == 1
+	assert coverage["widgets=none,evaluators=some"] == 0
