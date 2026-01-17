@@ -1,7 +1,12 @@
 # Standard Library
+import os
+import sys
+
 import pytest
 
 # Local modules
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+
 import pg_analyze.tokenize
 
 
@@ -60,4 +65,3 @@ def test_iter_calls_ignores_unbalanced_parens() -> None:
 	newlines = pg_analyze.tokenize.build_newline_index(text)
 	calls = pg_analyze.tokenize.iter_calls(text, {"ANS"}, newlines=newlines)
 	assert calls == []
-
