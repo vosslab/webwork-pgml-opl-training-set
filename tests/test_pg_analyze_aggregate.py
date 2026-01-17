@@ -96,11 +96,26 @@ def test_aggregate_reports_from_synthetic_pg_like_strings() -> None:
 	assert ans_hist["0"] == 2
 
 	needs_review_lines = [l for l in reports["needs_review.tsv"].splitlines() if l.strip()]
-	assert needs_review_lines[0] == "file\tconfidence\ttypes\treasons"
+	assert needs_review_lines[0].startswith("file\tconfidence\tbucket\t")
 	assert len(needs_review_lines) == 4
-	assert any(l.startswith("d.pg\t0.20\t") for l in needs_review_lines[1:])
-	assert any(l.startswith("e.pg\t0.25\t") for l in needs_review_lines[1:])
-	assert any(l.startswith("a.pg\t0.50\t") for l in needs_review_lines[1:])
+	assert any(l.startswith("d.pg\t0.20\tcoverage_no_signals\t") for l in needs_review_lines[1:])
+	assert any(l.startswith("e.pg\t0.25\twidget_no_evaluator\t") for l in needs_review_lines[1:])
+	assert any(l.startswith("a.pg\t0.50\tlow_confidence_misc\t") for l in needs_review_lines[1:])
+
+	needs_review_bucket_counts = _parse_counts_tsv(reports["needs_review_bucket_counts.tsv"])
+	assert needs_review_bucket_counts["coverage_no_signals"] == 1
+	assert needs_review_bucket_counts["widget_no_evaluator"] == 1
+	assert needs_review_bucket_counts["low_confidence_misc"] == 1
+
+	needs_review_type_counts = _parse_counts_tsv(reports["needs_review_type_counts.tsv"])
+	assert needs_review_type_counts["numeric_entry"] == 1
+	assert needs_review_type_counts["other"] == 1
+	assert needs_review_type_counts["unknown_pgml_blank"] == 1
+
+	needs_review_macro_counts = _parse_counts_tsv(reports["needs_review_macro_counts.tsv"])
+	assert needs_review_macro_counts["PGstandard.pl"] == 1
+	assert needs_review_macro_counts["MathObjects.pl"] == 1
+	assert needs_review_macro_counts["AppletObjects.pl"] == 1
 
 	other_breakdown = _parse_counts_tsv(reports["other_breakdown.tsv"])
 	assert other_breakdown["other_applet_like"] == 1

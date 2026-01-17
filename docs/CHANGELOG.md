@@ -18,3 +18,4 @@
 - Add aggregate-only "other" analysis reports (breakdown, restricted macro/widget/evaluator counts, PGML blank marker histograms, and small bounded samples) and label `unknown_pgml_blank` when PGML blanks exist but no evaluators/widgets are detected.
 - Add cross-tab aggregate reports (type x widget, type x evaluator, widget x evaluator) plus a `coverage.tsv` sanity table.
 - Ensure `coverage.tsv` always includes all four buckets (including zeros) and extend aggregation tests to cover the new cross-tab TSV outputs.
+- Make `needs_review.tsv` actionable by bucketing and stratifying samples, and add `needs_review_*_counts.tsv` summaries (bucket/type/macro).

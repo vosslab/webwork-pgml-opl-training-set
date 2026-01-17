@@ -141,13 +141,10 @@ def analyze_text(*, text: str, file_path: str) -> dict:
 		widget_kinds.extend(["pgml_blank"] * pgml_blank_count)
 		input_count += pgml_blank_count
 
-	needs_review = (confidence < 0.55) or ((ans_count >= 2) and wiring_empty)
-
-	return {
+	record = {
 		"file": file_path,
 		"types": types,
 		"confidence": confidence,
-		"needs_review": needs_review,
 		"input_count": input_count,
 		"ans_count": ans_count,
 		"widget_kinds": widget_kinds,
@@ -160,6 +157,14 @@ def analyze_text(*, text: str, file_path: str) -> dict:
 		"pgml_block_count": pgml_block_count,
 		"pgml_blank_marker_count": pgml_blank_count,
 	}
+
+	bucket = pg_analyze.aggregate.needs_review_bucket(record)
+	needs_review = (confidence < 0.55) or ((ans_count >= 2) and wiring_empty) or bool(bucket)
+	if needs_review and (not bucket):
+		bucket = "low_confidence_misc"
+	record["needs_review"] = needs_review
+	record["needs_review_bucket"] = bucket
+	return record
 
 
 #============================================

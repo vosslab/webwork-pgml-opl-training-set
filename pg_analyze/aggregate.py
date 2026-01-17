@@ -74,6 +74,69 @@ def _render_counts_tsv(rows: list[tuple[str, int]], *, key_name: str) -> str:
 
 #============================================
 
+_STRONG_WIDGET_MACRO_SUBSTRINGS = (
+	"parserradiobuttons",
+	"parserpopup",
+	"parsercheckbox",
+	"parsermatching",
+	"parserassignment",
+)
+
+
+def needs_review_bucket(record: dict) -> str:
+	"""
+	Return a single actionable bucket label for needs_review triage.
+
+	Return "" when no special bucket applies.
+	"""
+	load_macros = record.get("loadMacros", [])
+	widget_kinds = record.get("widget_kinds", [])
+	evaluator_kinds = record.get("evaluator_kinds", [])
+	input_count = int(record.get("input_count", 0) or 0)
+	ans_count = int(record.get("ans_count", 0) or 0)
+	types = record.get("types", [])
+	wiring_empty = bool(record.get("wiring_empty", False))
+
+	has_widgets = input_count > 0 or (isinstance(widget_kinds, list) and bool(widget_kinds))
+	has_evaluators = ans_count > 0 or (isinstance(evaluator_kinds, list) and bool(evaluator_kinds))
+
+	if (not has_widgets) and (not has_evaluators) and input_count == 0 and ans_count == 0:
+		return "coverage_no_signals"
+
+	if isinstance(evaluator_kinds, list) and ("custom" in evaluator_kinds):
+		return "custom_checker"
+
+	if isinstance(types, list) and ("multipart" in types):
+		if wiring_empty or (not has_evaluators) or input_count == 0:
+			return "multipart_unclear"
+
+	if _has_strong_widget_macro(load_macros) and (not has_widgets):
+		return "macro_only_widget_missing"
+
+	if has_widgets and (not has_evaluators):
+		return "widget_no_evaluator"
+
+	if has_evaluators and (not has_widgets):
+		return "evaluator_no_widget"
+
+	return ""
+
+
+def _has_strong_widget_macro(load_macros: list[str]) -> bool:
+	if not isinstance(load_macros, list):
+		return False
+	for m in load_macros:
+		if not isinstance(m, str):
+			continue
+		low = m.lower()
+		for s in _STRONG_WIDGET_MACRO_SUBSTRINGS:
+			if s in low:
+				return True
+	return False
+
+
+#============================================
+
 
 class Aggregator:
 	def __init__(self, *, needs_review_limit: int = 200):
@@ -102,8 +165,14 @@ class Aggregator:
 			"widgets=some,evaluators=some": 0,
 		}
 
-		self._needs_review_limit = needs_review_limit
-		self._needs_review_heap: list[tuple[float, str, float, str, str]] = []
+		self.needs_review_bucket_counts: dict[str, int] = {}
+		self.needs_review_type_counts: dict[str, int] = {}
+		self.needs_review_macro_counts: dict[str, int] = {}
+
+		self._needs_review_total_limit = needs_review_limit
+		self._needs_review_per_bucket_limit = 40
+		self._needs_review_by_bucket: dict[str, list[tuple[float, str, float, str, str, int, int, int, int, str, str, str, int, str]]] = {}
+
 		self._other_low_conf_heap: list[tuple[float, str, float, str, str]] = []
 		self._other_high_blank_heap: list[tuple[int, str, float, str, str]] = []
 		self._other_applet_heap: list[tuple[float, str, float, str, str]] = []
@@ -260,16 +329,64 @@ class Aggregator:
 		confidence = float(record.get("confidence", 0.0))
 		types = record.get("types", [])
 		reasons = record.get("reasons", [])
+		load_macros = record.get("loadMacros", [])
+		widget_kinds = record.get("widget_kinds", [])
+		evaluator_kinds = record.get("evaluator_kinds", [])
+		input_count = int(record.get("input_count", 0) or 0)
+		ans_count = int(record.get("ans_count", 0) or 0)
+		pgml_blank_markers = int(record.get("pgml_blank_marker_count", 0) or 0)
 
 		if not isinstance(file_path, str):
 			return
 
+		bucket = record.get("needs_review_bucket", "")
+		if not isinstance(bucket, str) or not bucket:
+			bucket = needs_review_bucket(record) or "low_confidence_misc"
+
+		_inc(self.needs_review_bucket_counts, bucket)
+
+		if isinstance(types, list):
+			for t in types:
+				if isinstance(t, str) and t:
+					_inc(self.needs_review_type_counts, t)
+
+		if isinstance(load_macros, list):
+			for macro in load_macros:
+				if isinstance(macro, str) and macro:
+					_inc(self.needs_review_macro_counts, macro)
+
 		types_text = ",".join(t for t in types if isinstance(t, str))
 		reasons_text = reasons_to_text(reasons if isinstance(reasons, list) else [])
 
-		heapq.heappush(self._needs_review_heap, (-confidence, file_path, confidence, types_text, reasons_text))
-		if len(self._needs_review_heap) > self._needs_review_limit:
-			heapq.heappop(self._needs_review_heap)
+		has_widgets = 1 if (input_count > 0 or (isinstance(widget_kinds, list) and bool(widget_kinds))) else 0
+		has_evaluators = 1 if (ans_count > 0 or (isinstance(evaluator_kinds, list) and bool(evaluator_kinds))) else 0
+
+		widget_kinds_text = ",".join(sorted({w for w in widget_kinds if isinstance(w, str) and w})) if isinstance(widget_kinds, list) else ""
+		evaluator_kinds_text = ",".join(sorted({e for e in evaluator_kinds if isinstance(e, str) and e})) if isinstance(evaluator_kinds, list) else ""
+		macros_top3 = ",".join(_macros_top3(load_macros if isinstance(load_macros, list) else []))
+
+		heap = self._needs_review_by_bucket.setdefault(bucket, [])
+		heapq.heappush(
+			heap,
+			(
+				-confidence,
+				file_path,
+				confidence,
+				bucket,
+				types_text,
+				has_widgets,
+				has_evaluators,
+				input_count,
+				ans_count,
+				widget_kinds_text,
+				evaluator_kinds_text,
+				macros_top3,
+				pgml_blank_markers,
+				reasons_text,
+			),
+		)
+		if len(heap) > self._needs_review_per_bucket_limit:
+			heapq.heappop(heap)
 
 	def render_reports(self) -> dict[str, str]:
 		out: dict[str, str] = {}
@@ -282,6 +399,9 @@ class Aggregator:
 		out["ans_count_hist.tsv"] = _render_counts_tsv(list(self.ans_hist.items()), key_name="bucket")
 		out["pgml_blank_marker_hist.tsv"] = _render_counts_tsv(list(self.pgml_blank_hist.items()), key_name="bucket")
 		out["needs_review.tsv"] = self._render_needs_review_tsv()
+		out["needs_review_bucket_counts.tsv"] = _render_counts_tsv(list(self.needs_review_bucket_counts.items()), key_name="bucket")
+		out["needs_review_type_counts.tsv"] = _render_counts_tsv(list(self.needs_review_type_counts.items()), key_name="type")
+		out["needs_review_macro_counts.tsv"] = _render_counts_tsv(list(self.needs_review_macro_counts.items()), key_name="macro")
 		out["other_breakdown.tsv"] = _render_counts_tsv(list(self.other_breakdown.items()), key_name="bucket")
 		out["macro_counts_other.tsv"] = _render_counts_tsv(list(self.macro_counts_other.items()), key_name="macro")
 		out["widget_counts_other.tsv"] = _render_counts_tsv(list(self.widget_counts_other.items()), key_name="widget_kind")
@@ -295,11 +415,36 @@ class Aggregator:
 		return out
 
 	def _render_needs_review_tsv(self) -> str:
-		items = [(-neg_conf, file_path, types_text, reasons_text) for neg_conf, file_path, _, types_text, reasons_text in self._needs_review_heap]
-		items_sorted = sorted(items, key=lambda x: (x[0], x[1]))
-		lines: list[str] = ["file\tconfidence\ttypes\treasons"]
-		for conf, file_path, types_text, reasons_text in items_sorted:
-			lines.append(f"{file_path}\t{conf:.2f}\t{types_text}\t{reasons_text}")
+		lines: list[str] = [
+			"file\tconfidence\tbucket\ttypes\thas_widgets\thas_evaluators\tinput_count\tans_count\twidget_kinds\tevaluator_kinds\ttop_macros\tpgml_blank_markers\treasons"
+		]
+
+		bucket_lists: dict[str, list[tuple[float, str, float, str, str, int, int, int, int, str, str, str, int, str]]] = {}
+		for bucket, heap in self._needs_review_by_bucket.items():
+			items = [(-neg_conf, file_path, conf, b, types_text, hw, he, ic, ac, wk, ek, macros, pgml, reasons) for neg_conf, file_path, conf, b, types_text, hw, he, ic, ac, wk, ek, macros, pgml, reasons in heap]
+			items_sorted = sorted(items, key=lambda x: (x[0], x[1]))
+			bucket_lists[bucket] = items_sorted
+
+		buckets_sorted = sorted(bucket_lists.keys())
+		rows: list[tuple[float, str, float, str, str, int, int, int, int, str, str, str, int, str]] = []
+		i = 0
+		while len(rows) < self._needs_review_total_limit:
+			any_added = False
+			for bucket in buckets_sorted:
+				items = bucket_lists.get(bucket, [])
+				if i < len(items):
+					rows.append(items[i])
+					any_added = True
+					if len(rows) >= self._needs_review_total_limit:
+						break
+			if not any_added:
+				break
+			i += 1
+
+		for conf, file_path, _conf2, bucket, types_text, has_widgets, has_evaluators, input_count, ans_count, widget_kinds, evaluator_kinds, macros_top3, pgml_blank_markers, reasons_text in rows:
+			lines.append(
+				f"{file_path}\t{conf:.2f}\t{bucket}\t{types_text}\t{has_widgets}\t{has_evaluators}\t{input_count}\t{ans_count}\t{widget_kinds}\t{evaluator_kinds}\t{macros_top3}\t{pgml_blank_markers}\t{reasons_text}"
+			)
 		return "\n".join(lines) + "\n"
 
 	def _render_other_samples_tsv(self) -> str:
