@@ -43,3 +43,5 @@
 - Expand [docs/CORPUS_STATS.md](docs/CORPUS_STATS.md) with macro/type highlights, selected cross-tab tables, and key histograms beyond the discipline breakdown.
 - Extend `pg_analyze` to report DBchapter/DBsection coverage and normalization, path provenance, randomization proxy counts, and exact duplicate counts, and document these comparison stats in [docs/CORPUS_STATS.md](docs/CORPUS_STATS.md).
 - Add file-level `widget_kind` coverage counts (distinct per file) alongside widget instance counts, and use those to document widget surface-area differences between full OPL and this PGML corpus.
+- Extend [docs/CORPUS_STATS.md](docs/CORPUS_STATS.md) with nonblank DB tag coverage rates and whitespace-stripped duplicate counts.
+- Add duplicate-cluster reporting (group-size histograms plus top clusters) and lightweight asset-signal counts to `pg_analyze`, and document these decision-relevant comparisons in [docs/CORPUS_STATS.md](docs/CORPUS_STATS.md).

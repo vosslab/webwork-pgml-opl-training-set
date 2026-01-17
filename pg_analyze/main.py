@@ -30,6 +30,18 @@ _ANSWERFORMATHELP_MATRICES_RX = re.compile(
 _RANDOMIZATION_CALL_RX = re.compile(r"\b(?:random|list_random)\s*\(")
 _RESOURCES_QUOTED_RX = re.compile(r"""['"]([^'"]+)['"]""")
 
+_ASSET_SIGNAL_RXS: dict[str, re.Pattern] = {
+	"image_call": re.compile(r"\bimage\s*\(", re.IGNORECASE),
+	"includegraphics": re.compile(r"\\includegraphics\b"),
+	"init_graph_call": re.compile(r"\binit_graph\s*\(", re.IGNORECASE),
+	"plot_functions_call": re.compile(r"\bplot_functions\s*\(", re.IGNORECASE),
+	"applet_token": re.compile(r"\bApplet\b"),
+	"geogebra_token": re.compile(r"\bGeoGebra\b", re.IGNORECASE),
+	"livegraphics_token": re.compile(r"\bLiveGraphics\b"),
+	"js_script_tag": re.compile(r"<\s*script\b", re.IGNORECASE),
+	"javascript_token": re.compile(r"\bjavascript\b", re.IGNORECASE),
+}
+
 
 def main() -> None:
 	start = time.perf_counter()
@@ -266,6 +278,7 @@ def analyze_text(*, text: str, file_path: str) -> dict:
 	subtype_tags = _extract_subtype_tags_from_pgml(text)
 	resource_exts = _extract_resource_exts(clean, newlines=newlines)
 	has_randomization = 1 if bool(_RANDOMIZATION_CALL_RX.search(clean)) else 0
+	asset_signals = _detect_asset_signals(clean)
 
 	report = {
 		"file": file_path,
@@ -346,6 +359,7 @@ def analyze_text(*, text: str, file_path: str) -> dict:
 		"has_randomization": has_randomization,
 		"has_resources": 1 if resource_exts else 0,
 		"resource_exts": resource_exts,
+		"asset_signals": asset_signals,
 		"has_ans_token": has_ans_token,
 		"has_cmp_token": has_cmp_token,
 		"has_num_cmp_token": has_num_cmp_token,
@@ -487,6 +501,19 @@ def _extract_resource_exts(text: str, *, newlines: list[int]) -> list[str]:
 				continue
 			exts.add(ext)
 	return sorted(exts)
+
+
+def _detect_asset_signals(text: str) -> list[str]:
+	"""
+	Return a list of lightweight, file-level asset/external-dependency signals.
+
+	This is intentionally shallow and is used for aggregate-only reporting.
+	"""
+	signals: list[str] = []
+	for name, rx in _ASSET_SIGNAL_RXS.items():
+		if rx.search(text):
+			signals.append(name)
+	return sorted(signals)
 
 
 #============================================
@@ -665,6 +692,7 @@ def _write_index(out_dir: str) -> None:
 		"- samples/other_signature_counts.tsv",
 		"- diagnostics/pgml_blocks_unknown_pgml_blank_top_signatures.txt",
 		"- summary/macro_counts_segmented.tsv",
+		"- summary/duplicate_clusters_top.tsv",
 		"",
 		"Then:",
 		"- other/other_breakdown.tsv",
@@ -732,13 +760,19 @@ def _tsv_meta(name: str) -> dict[str, str]:
 		},
 		"histograms_all.tsv": {
 			"unit": "each row is a (histogram, bin) count",
-			"notes": "includes confidence_bin, input_count, ans_count, ans_token_count, and PGML blank marker histograms",
+			"notes": "includes confidence_bin, input_count, ans_count, ans_token_count, PGML blank markers, and duplicate-cluster size histograms",
 			"sorted": "histogram asc, count desc, bin asc",
 		},
 		"macro_counts_segmented.tsv": {
 			"unit": "each row is a (segment, macro) count",
 			"notes": "segment restricts the population (e.g. unknown_pgml_blank, eval_none_numeric_entry)",
 			"sorted": "segment asc, count desc, macro asc",
+		},
+		"duplicate_clusters_top.tsv": {
+			"population": "all .pg files under roots",
+			"unit": "one row per duplicate cluster (top-N only, per hash type)",
+			"notes": "sha256 clusters are exact duplicates; sha256_ws clusters remove ASCII whitespace before hashing; representative_file is workspace-relative when available",
+			"sorted": "group_size desc, then representative_file asc, then hash asc",
 		},
 		"discipline_counts.tsv": {
 			"population": "all .pg files under roots (DBsubject lines only)",

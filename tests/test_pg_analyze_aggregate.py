@@ -179,3 +179,7 @@ def test_aggregate_reports_from_synthetic_pg_like_strings() -> None:
 	assert coverage["widgets=none,eval=both"] == 0
 	assert coverage["widgets=some,eval=pgml_only"] == 0
 	assert coverage["widgets=some,eval=both"] == 0
+
+	# Duplicate helpers should be robust to missing hash fields.
+	dup_top = reports["duplicate_clusters_top.tsv"].splitlines()
+	assert dup_top[0] == "hash_type\tgroup_size\thash\trepresentative_file"

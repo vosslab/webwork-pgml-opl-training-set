@@ -83,6 +83,17 @@ def _duplicate_stats(counts: dict[str, int]) -> dict[str, int]:
 		"max_group": max_group,
 	}
 
+def _duplicate_group_size_hist(counts: dict[str, int]) -> dict[str, int]:
+	"""
+	Return a histogram over duplicate group sizes (groups only, not files).
+	"""
+	hist: dict[str, int] = {}
+	for c in counts.values():
+		if c <= 1:
+			continue
+		_inc(hist, count_bucket(int(c)))
+	return hist
+
 
 #============================================
 
@@ -203,6 +214,7 @@ OUTPUT_PATHS: dict[str, str] = {
 	"unknown_pgml_blank_signature_samples.tsv": "samples/unknown_pgml_blank_signature_samples.tsv",
 	"other_signature_counts.tsv": "samples/other_signature_counts.tsv",
 	"other_signature_samples.tsv": "samples/other_signature_samples.tsv",
+	"duplicate_clusters_top.tsv": "summary/duplicate_clusters_top.tsv",
 }
 
 _STRONG_WIDGET_MACRO_SUBSTRINGS = (
@@ -330,9 +342,12 @@ class Aggregator:
 		self.files_with_resources = 0
 		self.resource_ext_counts: dict[str, int] = {}
 		self.files_with_randomization = 0
+		self.asset_signal_file_counts: dict[str, int] = {}
 
 		self._sha256_counts: dict[str, int] = {}
 		self._sha256_ws_counts: dict[str, int] = {}
+		self._sha256_example: dict[str, str] = {}
+		self._sha256_ws_example: dict[str, str] = {}
 
 		self.other_breakdown: dict[str, int] = {}
 		self.macro_counts_other: dict[str, int] = {}
@@ -396,6 +411,7 @@ class Aggregator:
 		self._add_resources(record)
 		self._add_randomization(record)
 		self._add_duplicates(record)
+		self._add_asset_signals(record)
 		self._add_content_hint_summaries(record)
 
 		types = record.get("types", [])
@@ -724,6 +740,7 @@ class Aggregator:
 		out["corpus_profile.tsv"] = self._render_corpus_profile_tsv()
 		out["histograms_all.tsv"] = self._render_histograms_all_tsv()
 		out["macro_counts_segmented.tsv"] = self._render_macro_counts_segmented_tsv()
+		out["duplicate_clusters_top.tsv"] = self._render_duplicate_clusters_top_tsv(top_n=25)
 		out["discipline_counts.tsv"] = self._render_discipline_counts_tsv()
 		out["discipline_subject_counts.tsv"] = self._render_discipline_subject_counts_tsv(top_n=50)
 		out["discipline_unclassified_subject_counts.tsv"] = self._render_discipline_unclassified_subject_counts_tsv(top_n=50)
@@ -757,6 +774,29 @@ class Aggregator:
 		)
 		out["evaluator_coverage_reasons.tsv"] = _render_counts_tsv(list(self.evaluator_coverage_reasons.items()), key_name="reason")
 		return out
+
+	def _render_duplicate_clusters_top_tsv(self, *, top_n: int) -> str:
+		"""
+		Render a small list of the largest duplicate clusters.
+
+		This is intended as a human-scale summary and debugging aid.
+		"""
+		lines: list[str] = ["hash_type\tgroup_size\thash\trepresentative_file"]
+
+		def _emit(hash_type: str, counts: dict[str, int], examples: dict[str, str]) -> None:
+			items: list[tuple[int, str, str]] = []
+			for h, c in counts.items():
+				if c <= 1:
+					continue
+				ex = examples.get(h, "")
+				items.append((int(c), h, ex))
+			items_sorted = sorted(items, key=lambda x: (-x[0], x[2], x[1]))[:top_n]
+			for c, h, ex in items_sorted:
+				lines.append(f"{hash_type}\t{c}\t{h}\t{ex}")
+
+		_emit("sha256", self._sha256_counts, self._sha256_example)
+		_emit("sha256_ws", self._sha256_ws_counts, self._sha256_ws_example)
+		return "\n".join(lines) + "\n"
 
 	def _add_discipline(self, record: dict) -> None:
 		dbsubject_pairs = record.get("dbsubject_pairs", [])
@@ -918,12 +958,22 @@ class Aggregator:
 			self.files_with_randomization += 1
 
 	def _add_duplicates(self, record: dict) -> None:
+		file_rel = record.get("file_rel", "")
+		if not isinstance(file_rel, str) or not file_rel:
+			file_rel = record.get("file", "")
+		if not isinstance(file_rel, str):
+			file_rel = ""
+
 		h = record.get("sha256")
 		if isinstance(h, str) and h:
 			self._sha256_counts[h] = self._sha256_counts.get(h, 0) + 1
+			if h not in self._sha256_example and file_rel:
+				self._sha256_example[h] = file_rel
 		h2 = record.get("sha256_ws")
 		if isinstance(h2, str) and h2:
 			self._sha256_ws_counts[h2] = self._sha256_ws_counts.get(h2, 0) + 1
+			if h2 not in self._sha256_ws_example and file_rel:
+				self._sha256_ws_example[h2] = file_rel
 
 	def _add_content_hint_summaries(self, record: dict) -> None:
 		rel = record.get("file_rel", "")
@@ -944,6 +994,13 @@ class Aggregator:
 				_inc(self.bio_prefix_counts, prefix)
 			for t in sorted({t for t in bio_terms if isinstance(t, str) and t}):
 				_inc(self.bio_term_counts, t)
+
+	def _add_asset_signals(self, record: dict) -> None:
+		signals = record.get("asset_signals", [])
+		if not isinstance(signals, list) or not signals:
+			return
+		for s in sorted({x for x in signals if isinstance(x, str) and x}):
+			_inc(self.asset_signal_file_counts, s)
 
 	def _render_discipline_counts_tsv(self) -> str:
 		lines: list[str] = ["discipline\tcount"]
@@ -1112,6 +1169,7 @@ class Aggregator:
 		rows.append(("resource_file", "all", "has_resources", self.files_with_resources))
 		rows.extend([("resource_ext", "all", k, v) for k, v in self.resource_ext_counts.items()])
 		rows.append(("randomization_file", "all", "has_randomization", self.files_with_randomization))
+		rows.extend([("asset_signal_file", "all", k, v) for k, v in self.asset_signal_file_counts.items()])
 
 		exact = _duplicate_stats(self._sha256_counts)
 		ws = _duplicate_stats(self._sha256_ws_counts)
@@ -1155,6 +1213,12 @@ class Aggregator:
 		rows.extend([("ans_token_count", k, v) for k, v in self.ans_token_hist.items()])
 		rows.extend([("confidence_bin", k, v) for k, v in self.confidence_bins.items()])
 		rows.extend([("other_pgml_blank_marker_count", k, v) for k, v in self.other_pgml_blank_hist.items()])
+
+		sha_hist = _duplicate_group_size_hist(self._sha256_counts)
+		rows.extend([("sha256_dup_group_size", k, v) for k, v in sha_hist.items()])
+		sha_ws_hist = _duplicate_group_size_hist(self._sha256_ws_counts)
+		rows.extend([("sha256_ws_dup_group_size", k, v) for k, v in sha_ws_hist.items()])
+
 		return _render_long_histograms_tsv(rows)
 
 	def _render_macro_counts_segmented_tsv(self) -> str:

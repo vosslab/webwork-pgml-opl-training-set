@@ -347,6 +347,11 @@ value is blank).
 | Full OPL | 70,400 (96.8%) | 69,059 (94.9%) | 68,553 (94.3%) |
 | PGML corpus (this fork) | 9,016 (96.1%) | 8,669 (92.4%) | 8,584 (91.5%) |
 
+Per-file nonblank coverage (at least one nonblank tag value):
+
+- Full OPL: DBsubject 69,550 (95.6%), DBchapter 65,436 (90.0%), DBsection 64,370 (88.5%)
+- PGML corpus (this fork): DBsubject 8,737 (93.1%), DBchapter 7,390 (78.7%), DBsection 7,212 (76.8%)
+
 DB tag normalization (messiness) snapshot:
 
 - Full OPL:
@@ -476,6 +481,29 @@ Exact duplicates are computed by SHA-256 of file content (byte-for-byte).
 | Full OPL | 48,159 (66.2%) | 7,148 groups; 15,386 files; max group 16 |
 | PGML corpus (this fork) | 7,845 (83.6%) | 558 groups; 1,135 files; max group 6 |
 
+Whitespace-stripped duplicates (SHA-256 after removing ASCII whitespace characters) are also present:
+
+- Full OPL: 7,190 groups; 15,550 files; max group 16
+- PGML corpus (this fork): 569 groups; 1,176 files; max group 6
+
+### Duplicate cluster sizes (groups)
+
+These are counts of duplicate *groups* by group-size bucket (not counts of files).
+
+| corpus | histogram | 2 | 3 | 4 | 5-9 | 10-19 | 20+ |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Full OPL | sha256_dup_group_size | 6,491 | 423 | 153 | 76 | 5 | 0 |
+| Full OPL | sha256_ws_dup_group_size | 6,502 | 431 | 171 | 79 | 7 | 0 |
+| PGML corpus (this fork) | sha256_dup_group_size | 542 | 15 | 0 | 1 | 0 | 0 |
+| PGML corpus (this fork) | sha256_ws_dup_group_size | 540 | 24 | 3 | 2 | 0 | 0 |
+
+### Largest duplicate clusters (examples)
+
+This is a small sample of the largest duplicate clusters (one representative path per cluster):
+
+- Full OPL, sha256: group_size 16 (blankProblem.pg templates), group_size 12 (CityTech/OpenProblemLibrary duplicates)
+- PGML corpus (this fork), sha256: group_size 6 (Contrib/CCCS practice), group_size 3 (CCCS OpenStax-aligned files)
+
 ## Macro risk and units
 
 Top macro loads excluding the baseline set (`PGstandard.pl`, `PGcourse.pl`, `MathObjects.pl`, `PGML.pl`) highlight what
@@ -514,8 +542,27 @@ Selected macro counts that may indicate legacy/risk surface area (file loads):
   - `weightedGrader.pl`: 530
   - `extraAnswerEvaluators.pl`: 30
 
-Resources note: `Resources(...)` calls were not observed in either snapshot (0 files), so this does not currently
-surface external file dependencies such as images or applet assets.
+## Assets and external dependency signals
+
+`Resources(...)` calls were not observed in either snapshot (0 files). That does *not* imply there are no external
+assets; WeBWorK problems can refer to images/graphs/applets via other macros and patterns.
+
+The table below reports cheap file-level signals (outside strings/comments) for common asset hooks:
+
+| corpus | signal | files | pct |
+| --- | --- | ---: | ---: |
+| Full OPL | image_call | 9,719 | 13.4% |
+| Full OPL | init_graph_call | 4,822 | 6.6% |
+| Full OPL | plot_functions_call | 1,150 | 1.6% |
+| Full OPL | geogebra_token | 165 | 0.2% |
+| Full OPL | js_script_tag | 234 | 0.3% |
+| Full OPL | javascript_token | 282 | 0.4% |
+| PGML corpus (this fork) | image_call | 1,841 | 19.6% |
+| PGML corpus (this fork) | init_graph_call | 618 | 6.6% |
+| PGML corpus (this fork) | plot_functions_call | 61 | 0.6% |
+| PGML corpus (this fork) | geogebra_token | 3 | 0.0% |
+| PGML corpus (this fork) | js_script_tag | 4 | 0.0% |
+| PGML corpus (this fork) | javascript_token | 3 | 0.0% |
 
 ## Content hints (chem/bio terms)
 
