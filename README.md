@@ -12,6 +12,7 @@ training and related research, rather than to serve as a general-purpose WeBWorK
 
 - [docs/AUTHORS.md](docs/AUTHORS.md): Maintainers and notable contributors.
 - [docs/CHANGELOG.md](docs/CHANGELOG.md): User-facing log of changes in this fork.
+- [docs/CORPUS_CURATION.md](docs/CORPUS_CURATION.md): What was removed and how the corpus was curated.
 - [docs/MARKDOWN_STYLE.md](docs/MARKDOWN_STYLE.md): Markdown rules for this repo.
 - [docs/PYTHON_STYLE.md](docs/PYTHON_STYLE.md): Python coding rules for this repo.
 - [docs/REPO_STYLE.md](docs/REPO_STYLE.md): Repo conventions (naming, structure, docs).
@@ -21,6 +22,11 @@ training and related research, rather than to serve as a general-purpose WeBWorK
 - Clone the repository.
 - Problem files are `*.pg` under `OpenProblemLibrary/`, `Contrib/`, and `Pending/`.
 - Treat this repo as a dataset source: select and transform problems as needed for your training pipeline.
+
+## Purging methodology
+
+This fork was curated by removing non-problem-source files and filtering `*.pg` problems down to PGML-style content
+(including removing include-only wrappers and embedded blob payloads); see [docs/CORPUS_CURATION.md](docs/CORPUS_CURATION.md).
 
 ## Notes
 
