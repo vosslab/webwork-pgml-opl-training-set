@@ -39,3 +39,4 @@
 - Refine DBsubject bucketing for OPL: split `grade_level` and `meta_noise`/`meta_missing`, expand engineering/physics patterns and typo normalization, fix arithmetic-style DBsubjects as math, and add `discipline_unclassified_subject_counts.tsv` + `discipline_samples.tsv`.
 - Add capped content-hint audit outputs (`content_hints/chem_terms_count.tsv`, `content_hints/bio_terms_count.tsv`) for later classifier development without using content scanning for discipline bucketing.
 - Add [docs/CORPUS_STATS.md](docs/CORPUS_STATS.md) to summarize the current `output/` corpus reports in a human-readable form.
+- Clarify the full-OPL vs PGML-corpus comparison in [docs/CORPUS_STATS.md](docs/CORPUS_STATS.md), link it from `README.md`, and avoid hard-coding an `output/` directory name in [docs/CORPUS_CURATION.md](docs/CORPUS_CURATION.md).

@@ -15,7 +15,7 @@ widgets are effectively absent in this fork.
 
 Evidence is captured per run by `pg_analyze` in `summary/corpus_profile.tsv`.
 
-For a human-readable summary of the current `output/` reports, see
+For a human-readable summary of `pg_analyze` reports (generated under your chosen `-o` output directory), see
 [docs/CORPUS_STATS.md](docs/CORPUS_STATS.md).
 
 As of 2026-01-17 (a run over this fork), the profile reported:

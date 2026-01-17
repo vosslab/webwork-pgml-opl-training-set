@@ -13,6 +13,7 @@ training and related research, rather than to serve as a general-purpose WeBWorK
 - [docs/AUTHORS.md](docs/AUTHORS.md): Maintainers and notable contributors.
 - [docs/CHANGELOG.md](docs/CHANGELOG.md): User-facing log of changes in this fork.
 - [docs/CORPUS_CURATION.md](docs/CORPUS_CURATION.md): What was removed and how the corpus was curated.
+- [docs/CORPUS_STATS.md](docs/CORPUS_STATS.md): Self-contained corpus statistics and comparisons.
 - [docs/MARKDOWN_STYLE.md](docs/MARKDOWN_STYLE.md): Markdown rules for this repo.
 - [docs/PYTHON_STYLE.md](docs/PYTHON_STYLE.md): Python coding rules for this repo.
 - [docs/REPO_STYLE.md](docs/REPO_STYLE.md): Repo conventions (naming, structure, docs).
