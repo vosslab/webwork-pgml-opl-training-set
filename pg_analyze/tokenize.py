@@ -41,51 +41,10 @@ def pos_to_line(newlines: list[int], pos: int) -> int:
 #============================================
 
 
-_POD_START_RX = re.compile(r"(?m)^(?:=pod|=head\d|=begin|=item|=over|=for)\b")
-_POD_CUT_RX = re.compile(r"(?m)^=cut\b")
-
-
-def strip_pod_blocks(text: str) -> str:
-	"""
-	Remove POD blocks while preserving line count.
-	"""
-	out: list[str] = []
-	i = 0
-	while True:
-		m = _POD_START_RX.search(text, i)
-		if not m:
-			out.append(text[i:])
-			break
-
-		out.append(text[i:m.start()])
-		cut = _POD_CUT_RX.search(text, m.end())
-		if not cut:
-			pod_lines = text[m.start():].count("\n")
-			out.append("\n" * pod_lines)
-			break
-
-		cut_line_end = text.find("\n", cut.end())
-		if cut_line_end == -1:
-			cut_span_end = len(text)
-		else:
-			cut_span_end = cut_line_end + 1
-
-		pod_lines = text[m.start():cut_span_end].count("\n")
-		out.append("\n" * pod_lines)
-		i = cut_span_end
-
-	return "".join(out)
-
-
-#============================================
-
-
 def strip_comments(text: str) -> str:
 	"""
-	Remove Perl line comments, preserving strings, POD, and heredocs.
+	Remove Perl line comments, preserving strings and heredocs.
 	"""
-	text = strip_pod_blocks(text)
-
 	out_lines: list[str] = []
 	heredoc_end: str | None = None
 
@@ -143,6 +102,8 @@ def _scan_heredoc_terminator(line: str) -> str | None:
 
 		if (not in_sq) and (not in_dq) and (ch == "<") and (line[i + 1] == "<"):
 			j = i + 2
+			if j < len(line) and line[j] == "-":
+				j += 1
 			while j < len(line) and line[j].isspace():
 				j += 1
 			if j >= len(line):
