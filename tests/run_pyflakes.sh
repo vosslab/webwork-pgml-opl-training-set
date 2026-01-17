@@ -75,6 +75,9 @@ else
 		if [[ "${path}" == *TEMPLATE* ]]; then
 			continue
 		fi
+		if [ ! -f "${path}" ]; then
+			continue
+		fi
 		printf '%s\0' "${path}"
 	done | sort -zu > "${TRACKED_LIST}"
 	FILE_COUNT=$(tr -cd '\0' < "${TRACKED_LIST}" | wc -c | tr -d ' ')
