@@ -1,0 +1,72 @@
+## DESCRIPTION
+## Algebra: Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Simplifying expressions)
+## Date(6/3/2002)
+## Level(4)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.5')
+## Problem1('41')
+## KEYWORDS('algebra', 'reducing fractions', 'factoring')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+Context()->variables->are(a => "Real", b => "Real");
+
+$k = non_zero_random(-9,9,1);
+
+$ans1 = Formula("((a-$k)**2 + (b+$k)**2)(a+b)");
+$ans2 = Formula("(a-$k)**2 +(a-$k)*(b+$k) +(b+$k)**2");
+
+BEGIN_PGML
+Reduce the fraction to lowest terms: 
+
+    [``\frac{(a-[$k])^4 - (b+[$k])^4}{(a-[$k])^3-(b+[$k])^3} = \frac{A}{B} ``] 
+
+where 
+
+    A = [_]{$ans1}{20}  and 
+
+    B = [_]{$ans2}{20}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Use the formula    
+    [``P^2-Q^2 = (P-Q)(P+Q)``]    
+twice(!) to factor the numerator,     
+    [``\begin{aligned}
+    &(a-[$k])^4 - (b+[$k])^4 = \Big((a-[$k])^2 - (b+[$k])^2\Big)\Big((a-[$k])^2 + (b+[$k])^2\Big)\\
+    &= \Big((a-[$k]) - (b+[$k])\Big)\Big((a-[$k]) + (b+[$k])\Big)\Big((a-[$k])^2 + (b+[$k])^2\Big)\\ 
+    &= (a-b-[@ 2*$k @])(a+b)\Big((a-[$k])^2 + (b+[$k])^2\Big) \end{aligned} ``]
+    
+Then use the formula    
+    [``P^3-Q^3 = (P-Q)(P^2+PQ+Q^2)``]    
+to factor the denominator    
+    [``\begin{aligned}
+    &(a-[$k])^3-(b+[$k])^3 =\Big((a-[$k])-(b+[$k])\Big)\Big((a-[$k])^2+(a-[$k])(b+[$k])+(b+[$k])^2\Big)\\
+    &= (a-b-[@ 2*$k @])\Big((a-[$k])^2+(a-[$k])(b+[$k])+(b+[$k])^2\Big)
+    \end{aligned}``]
+    
+Finally, cancel the common term [`(a-b-[@ 2*$k @])`] from the numerator and denominator to obtain the reduced fraction
+
+    [``\frac{(a+b)\Big((a-[$k])^2 + (b+[$k])^2\Big)}{(a-[$k])^2+(a-[$k])(b+[$k])+(b+[$k])^2}``]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
+

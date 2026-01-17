@@ -1,0 +1,48 @@
+##DESCRIPTION
+##  Algebra problem: solve a quadratic equation
+##ENDDESCRIPTION
+
+## pphi tagged and PAID on 12-12-2003
+
+## DBsubject(Algebra)
+## DBchapter(Polynomial equations and functions)
+## DBsection(Polynomial equations)
+## Date(6/3/2002)
+## MLT(Roots)
+## MLTleader(1)
+## Level(1)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.6')
+## Problem1('53')
+## KEYWORDS('algebra', 'quadratic equations')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context("Numeric");
+$a = random(2,7,1);
+$a1 = $a*$a*$a;
+
+$ans = Real(1);
+
+BEGIN_PGML;
+How many real solutions does the equation [`x^3=[$a1]`] have?
+
+    Enter your answer here: [_]{$ans}{15}
+    
+How many real solutions does the equation [`x^3=-[$a1]`] have?
+
+    Enter your answer here: [_]{$ans}{15}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The equation [`x^3=[$a1]`] has one solution, [`x=\sqrt[3]{[$a1]}=[$a]`].
+    
+The equation [`x^3=-[$a1]`] has one solution, [`x=\sqrt[3]{-[$a1]}=-[$a]`].
+END_PGML_SOLUTION
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

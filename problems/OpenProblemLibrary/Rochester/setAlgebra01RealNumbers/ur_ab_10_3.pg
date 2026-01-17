@@ -1,0 +1,93 @@
+## DESCRIPTION
+## Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Inequalities and intervals)
+## Date(6/3/2002)
+## MLT(IntervalIntersect)
+## Level(3)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.2')
+## Problem1('24 23 25')
+## KEYWORDS('algebra','interval')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
+);
+
+$showPartialCorrectAnswers = 0;
+
+$a0 = random(-10,-2,1);
+$a1 = $a0+random(1,6,1);
+$a2 = $a1+random(1,6,1);
+
+# initialize arrays Q for questions, A for answers
+
+@Q=(); @A = ();
+
+# add question-answer pairs
+
+push @Q, "[`S\cap T `]";
+push @A,  "[`($a1,$a2]`]";
+
+push @Q,  "[`S\cap W `]";
+push @A, "[`($a1,$a2)`]";
+
+push @Q,  "[`T\cap W `]";
+push @A,  "[`[$a0,$a2)`]";
+
+push @Q, "[`S\cup T `]";
+push @A, "[`(-\infty,\infty) `]";
+
+push @Q, "[`S\cup W `]";
+push @A, "[`[$a0,\infty)`]";
+
+push @Q, "[`T\cup W `]";
+push @A, "[`(-\infty,$a2]`]";
+
+# randomly choose 4 question-answer pairs 
+
+@slice = random_subset(4,(0..@Q-1));
+@Q = @Q[@slice];
+@A = @A[@slice];
+
+# for permuting questions only
+
+@n = random_subset(4,(0..3));
+
+@alpha = ("A".."D");
+
+for (0..3){
+  $ans[$_] = DropDown([@alpha],$alpha[$n[$_]]);
+}
+
+BEGIN_PGML
+Let [`S=([$a1],\infty)`], [`T=(-\infty,[$a2]]`], and [`W=[[$a0],[$a2])`].
+
+Each of these intersections or unions happens to be one of the intervals A,B,C, or D.  For each one select the correct interval.
+
+[_]{$ans[0]} [$Q[$n[0]]]**  
+[_]{$ans[1]} [$Q[$n[1]]]**  
+[_]{$ans[2]} [$Q[$n[2]]]**  
+[_]{$ans[3]} [$Q[$n[3]]]**  
+
+    *A.* [$A[0]]**  
+    *B.* [$A[1]]**  
+    *C.* [$A[2]]**  
+    *D.* [$A[3]]**  
+END_PGML
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

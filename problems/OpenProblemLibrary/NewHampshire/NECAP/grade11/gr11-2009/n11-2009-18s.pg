@@ -1,0 +1,72 @@
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGtikz.pl', 'PGcourse.pl');
+
+# make sure we're in the context we want
+Context("Numeric");
+
+$graph2 = createTikZImage();
+$graph2->tikzLibraries('arrows.meta');
+$graph2->BEGIN_TIKZ
+\tikzset{>={Stealth[scale = 1.5]}}
+\filldraw[
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-1, -1) rectangle (12, 12.5);
+
+\draw[thick] (0,0) rectangle (11,11); 
+
+
+\foreach \x/\label in {3/Frequently,6/Sometimes,9/Never}
+\draw(\x,-0.25) node [below] {\label};
+
+\foreach \y in {10,20,...,100} {
+  \draw[lightgray] (0,{\y/10})-- (11,{\y/10});
+    \draw (0pt, {\y/10}) -- (-5pt, {\y/10}) node[left] {\(\y\)};
+}
+
+\filldraw[fill=LightBlue, draw=black] (0.7,0) rectangle (1.6,3.8);
+\filldraw[fill=LightSalmon, draw=black] (1.6,0) rectangle (2.4,4.2);
+\filldraw[fill=LightGreen, draw=black] (2.4,0) rectangle (3.3,7.2);
+
+\filldraw[fill=LightBlue, draw=black] (4.2,0) rectangle (5.1,2.0);
+\filldraw[fill=LightSalmon, draw=black] (5.1,0) rectangle (6,2.3);
+\filldraw[fill=LightGreen, draw=black] (6,0) rectangle (6.9,1.4);
+
+\filldraw[fill=LightBlue, draw=black] (7.8,0) rectangle (8.7,4.6);
+\filldraw[fill=LightSalmon, draw=black] (8.7,0) rectangle (9.6,3.5);
+\filldraw[fill=LightGreen, draw=black] (9.6,0) rectangle (10.5,1.4);
+
+\filldraw[fill=white, draw=black, rounded corners = 5] (5.5,6) rectangle (10,10.5);
+\filldraw[fill=LightBlue, draw=black] (6,6.25) rectangle (7,7.25); 
+\draw (7,6.75) node [right] {teenagers};
+\filldraw[fill=LightSalmon, draw=black] (6,7.75) rectangle (7,8.75); 
+\draw (7,8.25) node [right] {young adults};
+\filldraw[fill=LightGreen, draw=black] (6,9.25) rectangle (7,10.25); 
+\draw (7,9.75) node [right] {older adults};
+
+
+\draw (6,11.5) node {National TV Used as News Source (Percentage)};
+
+END_TIKZ
+
+BEGIN_PGML
+This graph shows the results of a study about how people of different ages use national TV as a source of news.
+
+>>[!!]{$graph2}{500}<<
+
+[_]{Real(58)} percent of the teenagers surveyed make at least some use of National TV for news.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Notice that 38 percent of teenagers frequently and 20 percent sometimes make use of National TV for news. That means that 58% make at least some ues of it
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Graphical representations)
+## Level(2)
+## MO(1)

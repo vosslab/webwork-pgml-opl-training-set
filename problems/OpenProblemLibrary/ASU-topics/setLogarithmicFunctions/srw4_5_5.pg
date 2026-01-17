@@ -1,0 +1,87 @@
+## DESCRIPTION
+## Algebra
+## ENDDESCRIPTION
+
+## Tagged by LD
+
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Applications and models - population growth)
+## Date(6/3/2002)
+## Institution(ASU)
+## MLT(Population_GivenPercentFindNumber)
+## Level(4)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('6.6')
+## Problem1('11')
+## TitleText2('Precalculus')
+## AuthorText2('Stewart, Redlin, Watson')
+## EditionText2('3')
+## Section2('4.6')
+## Problem2('11')
+## KEYWORDS('Algebra', 'exponential', 'exponential equation', 'modeling', 'Logarithmic', 'Applications')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context('Numeric')->variables->are(t => Real);
+
+$a    = random(100000, 300000, 1000);
+$year = random(2005,   2020);
+$yr2  = random(2025,   2035);
+$b    = random(2,      6, 1);
+$r    = $b / 100;
+$rp1  = 1+$r;
+$diff = $yr2 - $year;
+
+$c = int($a * exp($r * $y)) + 1150;
+
+$model = Formula("$a*(1+$r)^t");
+$yr3   = $yr2 + random(2, 10);
+$c     = $model->eval(t => $yr3 - $year);
+
+BEGIN_PGML
+The population of a certain city was [$a] in [$year], and the observed relative
+growth rate is [$b] percent per year.
+
+a) Let [`t`] be the number of years after [$year] and [`r`] be the relative growth rate.  Find a function that models the population after [`t`] years.
+
+    [`P(t)=`] [_]{$model}
+
+b) Find the projected population in the year [$yr2]: [_]{$model->eval(t => $diff)}
+
+c) In what year will the population reach [$c]? [_]{$yr3}
+END_PGML
+
+$cdiva = Real($c/$a);
+$t = ln($cdiva)/ln($rp1);
+$t = Real($t);
+
+BEGIN_PGML_SOLUTION
+\a. The model will be an exponential model: [`P(t) =  a(1+r)^t`], where the initial population will be [`a=229000`] and growth rate as [`r=[$b]/100 = [$r] `].  The model then is 
+
+    [``` P(t) = [$a]\ast[$rp1]^t ```]
+    
+\b. To find the projected population, first note that [$yr2] is [`t=[$diff]`] years after [$year]. This value of [`t`] will be substituted into the model so
+
+[``` P([$diff]) = [$a]\ast[$rp1]^{[$diff]} = [$model->eval(t => $diff)] ```]    
+
+\c. Use logarithms to solve the equation 
+[``[$c]=[$a]\ast [$rp1]^t ``] for [`t`].
+
+        [``\begin{aligned}
+        [$c]&=[$a]\ast [$rp1]^t \\
+        [$c]/[$a] &= [$rp1]^t \\
+        [$cdiva] &= [$rp1]^t \\
+        \ln([$cdiva]) &= \ln\big([$rp1]^t\big)=t \ln([$rp1]) \\
+        t &= \frac{\ln([$cdiva])}{\ln([$rp1])}\\
+        t &= [$t] \end{aligned}``]
+
+    So the year is [`[$year]+t =[@ $year+$t @]`]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

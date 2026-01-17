@@ -1,0 +1,192 @@
+#DESCRIPTION
+##  Calculus: Points of discontinuity
+##ENDDESCRIPTION
+
+## DBsubject(Calculus - single variable)
+## DBchapter(Limits and continuity)
+## DBsection(Continuity - classifying discontinuities)
+## Date(09/15/2010)
+## Institution(University of Minnesota)
+## Author(Justin Sukiennik)
+## Level(2)
+## MO(1)
+## TitleText1('Calculus: Concepts and Contexts')
+## AuthorText1('Stewart')
+## EditionText1('4 Custom UMTYMP Ed.')
+## Section1('2.4')
+## Problem1('')
+## KEYWORDS('calculus', 'function', 'continuous', 'type of discontinuity')
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl', 'PGML.pl', 'parserPopUp.pl', 'plots.pl',
+    'PGcourse.pl'
+);
+
+COMMENT('It is best to give no more than two scored attempts for this problem.'
+);
+
+$showPartialCorrectAnswers = 0;
+
+Context("Numeric");
+
+$plot = Plot(
+    xmin        => -10,
+    xmax        =>  10,
+    ymin        => -10,
+    ymax        =>  10,
+    xtick_delta =>  1,
+    ytick_delta =>  1,
+    xminor      =>  0,
+    yminor      =>  0,
+    xlabel      => '\(x\)',
+    ylabel      => '\(y\)',
+    aria_label  => 'The graph of y=f(x)',
+    axes_on_top => 1,
+);
+
+$a  = random( 1,  2, 1);
+$x1 = random(-6, -4, 1);
+$x2 = $x1 + random(2, 3, 1);
+$x3 = $x2 + random(2, 3, 1);
+$x4 = $x3 + random(2, 3, 1);
+
+if ($a == 1) {
+    $popup1 =
+        PopUp([ 'choose one', 'removable', 'jump', 'infinite' ], 'infinite');
+    $popup2 =
+        PopUp([ 'choose one', 'removable', 'jump', 'infinite' ], 'removable');
+    $popup3 =
+        PopUp([ 'choose one', 'removable', 'jump', 'infinite' ], 'removable');
+    $popup4 = PopUp([ 'choose one', 'removable', 'jump', 'infinite' ], 'jump');
+
+    $y1       = random(2, 7, 1);
+    $y2       = random(1, 5, 1);
+    $k        = $y2 * ($x2 - $x1);
+    $y3open   = random(-5, -2, 1);
+    $y3closed = random( 1,  7, 1);
+    $m1       = ($y3open - $y2) / ($x3 - $x2);
+    $y4left   = random( 2,  5, 1);
+    $y4right  = random(-5, -2, 1);
+    $m2       = ($y4left - $y3open) / ($x4 - $x3);
+
+    $plot->add_function(
+        [ "1/(x-$x1)", 'x', -10, $x1 - 0.01, color => 'blue', weight => 2 ],
+        [
+            "$k/(x-$x1)", 'x', $x1 + 0.01, $x2,
+            end_mark => 'open_circle',
+            color    => 'blue',
+            weight   => 2
+        ],
+        [
+            "$m1*(x-$x2)+$y2", 'x', $x2, $x3,
+            start_mark => 'open_circle',
+            end_mark   => 'open_circle',
+            color      => 'blue',
+            weight     => 2
+        ],
+        [
+            "$m2*(x-$x4)+$y4left", 'x', $x3, $x4,
+            start_mark => 'open_circle',
+            end_mark   => 'circle',
+            color      => 'blue',
+            weight     => 2
+        ],
+        [
+            "(x-$x4)^2+$y4right", 'x', $x4, 10,
+            start_mark => 'open_circle',
+            color      => 'blue',
+            weight     => 2
+        ],
+    );
+
+    $plot->add_dataset(
+        [ [ $x1, $y1 ],       color => 'blue', marks => 'circle' ],
+        [ [ $x3, $y3closed ], color => 'blue', marks => 'circle' ],
+    );
+}
+
+if ($a == 2) {
+    $popup1 = PopUp([ 'choose one', 'removable', 'jump', 'infinite' ], 'jump');
+    $popup2 =
+        PopUp([ 'choose one', 'removable', 'jump', 'infinite' ], 'removable');
+    $popup3 =
+        PopUp([ 'choose one', 'removable', 'jump', 'infinite' ], 'removable');
+    $popup4 =
+        PopUp([ 'choose one', 'removable', 'jump', 'infinite' ], 'infinite');
+
+    $y1left   = random(1, 3, 1);
+    $y1right  = $y1left + random(2, 3, 1);
+    $y2open   = random(-4, -2, 1);
+    $y2closed = $y2open - random(1, 3, 1);
+    $y3       = random( 2, 4, 1);
+    $y4       = random(-2, 2, 1);
+    $k        = ($y2open - $y1right) / ($x2 - $x1)**2;
+    $m        = ($y3 - $y2open) / ($x3 - $x2);
+    $p        = $y3 * ($x3 - $x4);
+
+    $plot->add_function(
+        [
+            "(x-$x1)^2+$y1left", 'x', -10, $x1,
+            end_mark => 'open_circle',
+            color    => 'blue',
+            weight   => 2
+        ],
+        [
+            "$k*(x-$x1)^2+$y1right", 'x', $x1, $x2,
+            start_mark => 'circle',
+            end_mark   => 'open_circle',
+            color      => 'blue',
+            weight     => 2
+        ],
+        [
+            "$m*(x-$x2)+$y2open", 'x', $x2, $x3,
+            start_mark => 'open_circle',
+            end_mark   => 'open_circle',
+            color      => 'blue',
+            weight     => 2
+        ],
+        [
+            "$p/(x-$x4)", 'x', $x3, $x4 - 0.01,
+            start_mark => 'open_circle',
+            color      => 'blue',
+            weight     => 2
+        ],
+        [
+            "-1/(x-$x4)^2", 'x', $x4 + 0.01, 10,
+            color  => 'blue',
+            weight => 2
+        ],
+    );
+
+    $plot->add_dataset(
+        [ [ $x2, $y2closed ], color => 'blue', marks => 'circle' ],
+        [ [ $x4, $y4 ],       color => 'blue', marks => 'circle' ],
+    );
+}
+
+BEGIN_PGML
+Use the given graph of the function [`f`] to determine the type of discontinuity at each [`x`]-value.
+
+>> [! Alty Texty !]{$plot} <<
+
+---
+
+ [_]{$popup1} *1.*  What type of discontinuity does [`f`] have at [`x=[$x1]`]?
+
+ [_]{$popup2} *2.*  What type of discontinuity does [`f`] have at [`x=[$x2]`]?
+
+ [_]{$popup3} *3.*  What type of discontinuity does [`f`] have at [`x=[$x3]`]?
+
+ [_]{$popup4} *4.*  What type of discontinuity does [`f`] have at [`x=[$x4]`]?
+
+---
+
+*Note:* _You can click on the graph to enlarge the image._
+
+---
+
+END_PGML
+
+ENDDOCUMENT();

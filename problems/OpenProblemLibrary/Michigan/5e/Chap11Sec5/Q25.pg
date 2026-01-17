@@ -1,0 +1,162 @@
+# DESCRIPTION
+# Problem from Calculus, single variable, Hughes-Hallett et al.,
+# WeBWorK problem written by Gavin LaRose, <glarose@umich.edu>
+
+## Tagged by glr 12/07/09
+
+## DBsubject(Differential equations)
+## DBchapter(First order differential equations)
+## DBsection(Applications - Newton's law of cooling)
+## Institution(University of Michigan)
+## Author(Gavin LaRose)
+## MLT(FO-AN-DE)
+## Level(5)
+## MO(1)
+## TitleText1('Calculus')
+## TitleText2('Calculus')
+## TitleText3('Calculus')
+## AuthorText1('Hughes-Hallett')
+## AuthorText2('Hughes-Hallett')
+## AuthorText3('Hughes-Hallett')
+## EditionText1('5')
+## EditionText2('6')
+## EditionText3('7')
+## Section1('11.5')
+## Section2('11.5')
+## Section3('11.5')
+## Problem1('25')
+## Problem2('27')
+## Problem3('40')
+## KEYWORDS('differential equation', 'calculus', 'exponential growth', 'exponential decay')
+
+## Textbook tags
+## HHChapter1('Differential Equations')
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+Context()->variables->add( t=>'Real', T=>'Real', k=>'Real' );
+$showPartialCorrectAnswers = 1;
+
+$hour1 = random(1,3,1);
+$temp1 = random(66,72,2);
+$hour2 = random(9,11,1);
+$delta = $hour2 - $hour1;
+$temp2 = random(53,60,1);
+$outtemp = random(5,15,1);
+$hour3 = random(6,10,1);
+$del2 = 12 - $hour1 + $hour3;
+
+$de = Compute( "k*($outtemp - T)" )->cmp( checker=>sub {
+    my ( $correct, $student, $ansHash ) = @_;
+    return $correct == $student || $correct == -1*$student;
+} );
+
+## solving this, we end up with
+$k = Compute( "ln(($temp1 - $outtemp)/($temp2 - $outtemp))/$delta" );
+$endtemp = Compute( "$outtemp + ($temp1 - $outtemp)*e^(-1*($k)*($del2))" );
+
+$worry = PopUp( [ "?", "yes", "no" ], $endtemp < 32 ? "yes" : "no" );
+$assumption = PopUp(["?",["Outside temperature is constant", "Outside temperature varies exponentially with time", "Outside temperature varies logarithmically with time", "Outside temperature varies with the season", "Outside temperature is random"], "I made no assumption about outside temperature"],"Outside temperature is constant");
+
+
+
+$effect = PopUp(["?",["This model probably predicts too little cooling at night because outside temperatures tend to fall at night", "This model probably predicts too little cooling during daylignt hours because outside temperatures tend to be warmer during the day","This model predicts too little cooling because outside temperatures are cooler in the winter"], "The rate of cooling in this model is correct; nothing in these calculations depends on the way that outside temperature varies during a day."],"This model probably predicts too little cooling at night because outside temperatures tend to fall at night");
+
+BEGIN_PGML
+
+At [$hour1]:00 pm one winter afternoon, there is a power
+failure at your house in Wisconsin, and  your heat does not work
+without electricity.  When the power goes out, it is
+[` [$temp1]^{\circ}`]F in your
+house.  At [$hour2]:00 pm, it is [` [$temp2]^{\circ} `]F
+in the house, and you notice
+that it is [` [$outtemp]^{\circ} `]F outside.
+
+*(a)* Assume that the temperature [`T`] inside your home, measured in degrees Fahrenheit, is related to the temperature outside by Newton's law of cooling. Express this relation as a differential equation.  Let t denote time, measured in hours.
+
+[`` \frac{dT}{dt} = ``][_]{$de}{35}
+
+
+_Use *k* for any constant of proportionality in
+your equation; your equation may involve *T* and the values
+in the problem._
+
+*(b)*
+Solve the differential equation to estimate the temperature in the
+house when you get up at [$hour3]:00 am the next morning.
+
+Temperature = [_]{$endtemp}{35} deg. F. 
+
+*(c)* The water pipes inside the house are well insulated from the outside, so their temperature depends only on the air temperature inside. Should you worry about these pipes freezing during the night?    
+
+[_]{$worry}
+
+*(d)* In your answers to parts (a) and (b), what assumption did you make about the temperature outside?
+
+[_]{$assumption}
+
+*(e)* What effect does this assumption have on the amount of cooling predicted by your model?
+
+[_]{$effect}
+
+END_PGML
+
+$t1mo = $temp1 - $outtemp;
+$t2mo = $temp2 - $outtemp;
+
+BEGIN_PGML_SOLUTION
+*(a)* Assuming the outside temperature [`[$outtemp]^{\circ} `]F. is constant  
+the differential equation is
+[``` \frac{dT}{dt} = -k(T - [$outtemp]).```]
+
+*(b)*
+Integrating both sides yields
+[``` \int\frac{dT}{T - [$outtemp]} =-\int k\, dt.```]
+The house is warmer than the outside so 
+[`T-[$outtemp]>0`] hence [` \ln (T - [$outtemp]) = -kt +C `], so   
+[``` T= [$outtemp] +Be^{-kt} ```] 
+for some constant [`B`].
+
+We know that initially [`T=[$temp1]^{\circ}`]F. Thus,
+letting [`t=0`] correspond to [$hour1] pm, we get
+[`\ [$temp1] = [$outtemp] B e^{0} \ `] so [`\ B = [$t1mo]`]. 
+Thus
+[``` T= [$outtemp] + [$t1mo] e^{-kt}.```]
+Since [$hour2]:00 pm corresponds to [`t=[$delta]`],
+[``` [$temp2] = [$outtemp] + [$t1mo] e^{-[$delta] k},```]
+so
+[``` [$t2mo] = [$t1mo] e^{-[$delta] k}, ```]
+and dividing by [$t1mo] and taking the natural log of both sides
+we have
+[``` k = -\frac{1}{[$delta]} \ln\left(\frac{[$t2mo]}{[$t1mo]}\right) \approx [$k]. ```]
+
+At [$hour3]:00 the next morning [` t=[$del2] `] we have
+[``` T \approx [$outtemp] + [$t1mo] e^{[$del2](-k)} = [$endtemp] ```] 
+degrees Fahrenheit so the pipes won't freeze.
+
+*(c,d,e)*
+We assumed that the temperature outside the house stayed
+constant at [`[$outtemp]^\circ`]F.
+This is probably incorrect because the
+temperature probably was warmer during the day
+and colder overnight.  Thus the temperature 
+inside the house should fall slower than we predicted 
+during the day, and faster during the night in order to 
+arrive at the measured value [`[$temp2]^{\circ}`] F. at 
+[$hour2]:00 pm.  Since the temperature is falling faster 
+at [$hour2]:00 pm than predicted it will probably get lower than 
+our predicted value [`[$endtemp]^{\circ}`] F
+at [$hour3] am, but not by much---not enough to freeze.
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,43 @@
+## DESCRIPTION
+## Determine how many glasses can be filled with some number of cans of juice.
+## ENDDESCRIPTION
+
+## DBsubject(Arithmetic)
+## DBchapter(Units)
+## DBsection(Conversions)
+## Level(4)
+## MO(1)
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'randomPerson.pl', 'PGcourse.pl');
+
+Context("Numeric");
+
+$p = randomPerson();
+$a=random(5,8,1);
+$amt = random(6,12,2);
+
+$g = $a *32 / $amt;
+
+BEGIN_PGML
+[$p] bought [$a] quarts of juice for a party.  One glass holds [$amt] fluid ounces of juice.
+
+The total number of full glasses that [$p->they] can fill is [_]{Real(floor($g))}.
+
+END_PGML
+
+# following is additional information if the number of glasses is not an integer. 
+$soln = $g == floor($g) ? '' : PGML('Since we are looking for full glasses, round down to [@floor($g)@].');
+
+BEGIN_PGML_SOLUTION
+Using dimensional analysis and starting with the number of quarts of juice:
+
+[```
+[$a]\;\text{quarts} \cdot \frac{32\;\text{ounces}}{1\;\text{quart}} \cdot
+\frac{1\;\text{glass}}{[$amt]\;\text{ounces}} = [$g]
+```]
+
+[$soln]*
+END_PGML_SOLUTION
+ENDDOCUMENT();
+

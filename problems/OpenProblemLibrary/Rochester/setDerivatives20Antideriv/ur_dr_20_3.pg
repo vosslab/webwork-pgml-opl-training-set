@@ -1,0 +1,43 @@
+## DESCRIPTION
+## Calculus
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/20/06
+
+## DBsubject(Calculus - single variable)
+## DBchapter(Integrals)
+## DBsection(Antiderivatives (with trigonometric functions))
+## Institution(ASU)
+## Level(2)
+## TitleText1('Calculus: Early Transcendentals')
+## AuthorText1('Rogawski')
+## EditionText1('1')
+## Section1('4.9')
+## Problem1('9 32 39')
+## TitleText2('Calculus: Early Transcendentals')
+## AuthorText2('Stewart')
+## EditionText2('6')
+## Section2('4.9')
+## Problem2('9 32 39')
+## KEYWORDS('derivatives', 'antiderivatives')
+
+## Updated 2025.03 by Peter Staab, switch to PGML and add a solution.
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+
+$a = random(2,20);
+$sign = random(-1,1,2);
+$a = $a * $sign;
+
+BEGIN_PGML
+Let [` \displaystyle f(x) = \frac{[$a]}{x^2+1}  `].
+
+Enter an antiderivative of [` f(x) `]
+
+[_]{Formula("$a * atan(x)")}{40}
+END_PGML
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

@@ -1,0 +1,37 @@
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Finding the slope)
+## Institution(W.H.Freeman)
+## Author(Brian Kell)
+## Level(2)
+## MO(1)
+## TitleText1('Calculus: Early Transcendentals')
+## AuthorText1('Rogawski')
+## EditionText1('2')
+## Section1('1.2')
+## Problem1('5')
+## KEYWORDS('calculus', 'algebra', 'linear equations', 'slope')
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context('Numeric')->noreduce('(-x)-y', '(-x)+y');
+
+$m = non_zero_random(-10, 10);
+$b = non_zero_random(-10, 10);
+
+$eqn = Formula("$m x + $b")->reduce;
+
+BEGIN_PGML
+If a line has the equation [` y=[$eqn] `],
+
+What is its slope? [_]{$m}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+A line given by an equation of the form
+[`y=mx+b`] has slope [`m`].  In this case,
+[`m=[$m]`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

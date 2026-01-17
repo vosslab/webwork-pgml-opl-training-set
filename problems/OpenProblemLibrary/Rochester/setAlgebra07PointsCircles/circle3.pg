@@ -1,0 +1,94 @@
+# Description
+# The first example using match lists
+# EndDescription
+
+##DESCRIPTION
+##ENDDESCRIPTION
+
+## Tagged by sawblade
+
+## DBsubject(Algebra)
+## DBchapter(Cartesian coordinate system)
+## DBsection(Circles)
+## Date(6/3/2002)
+## MLT(Circle_center_rad_from_equation)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('2.2')
+## Problem1('62')
+## KEYWORDS('algebra', 'circles', 'lines', 'graph')
+
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+
+Context("Numeric");
+Context()->variables->add(y=>"Real");
+Context()->flags->set(
+      reduceConstants => 0,
+      reduceConstantFunctions => 0
+   );
+
+
+##########################
+#define right hand side
+
+# determine the coefficients
+$a = random(2,5);
+$b = non_zero_random (-10,10);
+$c = non_zero_random (-10,10);
+$d = random (0,10);
+
+#calculate the center of the circle
+$hnum = -$b;
+$knum = -$c;
+$denom = 2*$a;
+$h = Compute("$hnum/$denom");
+$k = Compute("$knum/$denom");
+
+#calculate the radius
+$discrim = $b**2+$c**2+4*$a*$d;
+$r = Compute("sqrt($discrim)/($denom)");
+
+$f = Formula("$a*x^2 + $b*x + $a*y^2 + $c*y - $d")->reduce;
+
+BEGIN_PGML
+Find the center [`\ (h, k)\ `] and the radius [`\ r\ `] of the circle 
+
+     [``[$f] = 0 ``]. 
+
+[`h`] = [_]{$h}{10}
+
+[`k`] = [_]{$k}{10}
+
+[`r`] = [_]{$r}{10}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Complete the square
+
+[``\begin{gathered}
+  [$a]x^2+[$b]x+[$a]y^2+[$c]y = [$d] \\
+  x^2 + \frac{[$b]}{[$a]}x + y^2 + \frac{[$c]}{[$a]}y = \frac{[$d]}{[$a]}\\
+  x^2 + \frac{[$b]}{[$a]}x + \Big(\frac{[$b]}{2([$a])}\Big)^2
+  + y^2 + \frac{[$c]}{[$a]}y + \Big(\frac{[$c]}{2([$a])}\Big)^2
+  = \Big(\frac{[$b]}{2([$a])}\Big)^2 + \Big(\frac{[$c]}{2([$a])}\Big)^2  
+  + \frac{[$d]}{[$a]}\\
+  \Big(x+\frac{[$b]}{2([$a])}\Big)^2+\Big(y+\frac{[$c]}{2([$a])}\Big)^2
+  = \frac{[@ $b**2 + $c**2 + 4*$a*$d @]}{4([$a]^2)}
+  \end{gathered} ``]
+
+The center is [``(h,k)=\Big(\frac{-[$b]}{2([$a])}, \frac{-[$c]}{2([$a])}\Big)``] and the radius is [``r=\frac{\sqrt{[@ $b**2 + $c**2 + 4*$a*$d @]}}{2([$a])}``]. 
+END_PGML_SOLUTION
+
+ENDDOCUMENT() ; 

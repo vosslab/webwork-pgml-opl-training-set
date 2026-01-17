@@ -1,0 +1,64 @@
+#DESCRIPTION
+##  Algebra problem: simplifying fraction
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Simplifying expressions)
+## Date(6/3/2002)
+## MLT(monomial_times_polynomial)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.2')
+## Problem1('11')
+## TitleText2('Precalculus')
+## AuthorText2('Stewart, Redlin, Watson')
+## EditionText2('3')
+## Section2('1.1')
+## Problem2('15')
+## KEYWORDS('algebra', 'fraction')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+do {
+  $n1 = random(2,17,2);
+  $n2 = random(4,28,4);
+} until ($n1 != $n2);
+
+$n3 = random(5,10,1);
+
+$A = Real(-$n3*($n1/2));
+$B = Real($n3*($n2/2));
+
+BEGIN_PGML
+Use properties of real numbers to write the expression    
+    [`` -\frac{[$n3]}{2}([$n1] x- [$n2] y) ``]    
+in the equivalent form       
+    [`A\cdot x + B\cdot y`]   
+where [`A`] and [`B`] are real numbers. (Be sure to simplify the numbers [`A`] and [`B`].)
+    
+    [`A= `][_]{$A}{10} and [`B= `][_]{$B}{10}.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The distributive and associative laws say
+    [`` \begin{gathered} -\frac{[$n3]}{2}([$n1] x- [$n2] y) =
+-\frac{[$n3]}{2}([$n1]x) - \left(-\frac{[$n3]}{2}\right)([$n2]y) \\
+= -\frac{[$n3]}{2}([$n1]x) + \frac{[$n3]}{2}([$n2]y) =
+-\frac{([$n3])([$n1])}{2}x + \frac{([$n3])([$n2])}{2}y \\
+=  -\frac{[@ $n3*$n1 @]}{2}x + \frac{[@ $n3*$n2 @]}{2}y = 
+[$A]x + [$B]y. \end{gathered} ``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

@@ -1,0 +1,67 @@
+## DESCRIPTION
+## Algebra: Basic Algebra, Algebraic Expressions
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Polynomials: multiply)
+## Date(6/3/2002)
+## MLT(Sum_times_diff)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.4')
+## Problem1('26')
+## KEYWORDS('algebra, polynomial operations')
+
+
+DOCUMENT();     
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+
+$a1=random(2,5,1);
+$a2=random(2,10,1);
+
+$ans1 = Real($a1*$a1);
+$ans2 = Real($a2**2);
+
+BEGIN_PGML
+Multiply: 
+
+    [``([$a1] x -[$a2])([$a1] x+[$a2])``] = [_]{$ans1}[``x^2\ ``] - [`\ `][_]{$ans2} 
+END_PGML
+
+BEGIN_PGML_SOLUTION
+People who remember the identity  [``(A-B)(A+B)=A^2 - B^2 ``] can use it here.
+
+[``\begin{aligned}
+  &([$a1] x -[$a2])([$a1] x+[$a2])\\
+  &= ([$a1]x)^2 - [$a2]^2 \\
+  &= [$ans1]x^2 - [$ans2]
+  \end{aligned}``]
+
+People who don't remember the identity can multiply the polynomials to obtain the same result.
+
+[``\begin{aligned}
+  &([$a1] x -[$a2])([$a1] x+[$a2])\\
+  &= ([$a1] x)([$a1] x+[$a2])-[$a2]([$a1] x+[$a2])\\
+  &= ([$a1]x)([$a1]x)-([$a2])([$a1]x)+([$a1]x)([$a2]) - ([$a2])([$a2]) \\
+  &= ([$a1]x)^2+\Big(-([$a2])([$a1])+([$a1])([$a2])\Big)x - [$a2]^2 \\
+  &= [$ans1]x^2 + 0x - [$ans2]
+  \end{aligned}``]
+    
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,65 @@
+##DESCRIPTION
+## Linear model of women in U.S. Colleges.
+##ENDDESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(Evaluate)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## TitleText1('Essentials of Intermediate Algebra')
+## AuthorText1('Blitzer')
+## EditionText1('1')
+## Section1('2.1')
+## Problem1('')
+## KEYWORDS('functions')
+## Date: 2007/09 updated 2013/08 -rac
+
+DOCUMENT();    # This should be the first executable line in the problem.
+
+loadMacros(
+    "PGstandard.pl",            "PGML.pl",
+    "contextLimitedNumeric.pl", "PGcourse.pl"
+);
+
+Context('Numeric');
+
+$W = Formula("0.07*x+4.1");
+$M = Formula("0.01*x+3.9");
+
+Context("LimitedNumeric");
+
+$num = random(1993, 2015);
+
+$W0 = $W->eval(x => $num - 1984);
+
+$M0 = $M->eval(x => $num - 1984);
+
+BEGIN_PGML
+The function [` W(x) = [$W] `] models the number of women in millions enrolled in U.S. colleges [`x`] years after 1984.
+The function [`M(x)= [$M]`] models the number of men in millions, enrolled in U.S. colleges [`x`] years after 1984.
+
+a) Find the number (in millions) of women enrolled in U.S. colleges in the year [$num].
+
+    Answer: [_]{$W0} million women
+
+b) Find the number (in millions) of men enrolled in U.S. colleges in the year [$num].
+
+    Answer: [_]{$M0} million men
+
+END_PGML
+
+$n = $num - 1984;
+BEGIN_PGML_SOLUTION
+These values are found by first finding [`x`], the number of years that [$num] is after 1984.  This is [`[$num]-1984 = [$n] `].  Then substitute this value into the functions [`W(x)`] and [`M(x)`]:
+
+In [$num] the enrollment in U.S. colleges by gender is:
+
+a) [`0.07([$n])+4.1 = [$W0]`] million women
+
+b) [`0.01([$n])+3.9 = [$M0]`] million men
+END_PGML_SOLUTION
+ENDDOCUMENT();

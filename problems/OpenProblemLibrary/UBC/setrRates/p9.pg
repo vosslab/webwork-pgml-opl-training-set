@@ -1,0 +1,37 @@
+## DBsubject(Calculus - single variable)
+## DBchapter(Differentiation)
+## DBsection(Implicit differentiation)
+## Level(3)
+## MO(1)
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context("Numeric")->variables->add(y=>"Real");
+
+$a = random(1,9,1);
+$b = random(1,9,1);
+
+$ans = Formula("y*(1 - $a*y)/($a*x*y + $b)");
+
+BEGIN_PGML
+Let [` y = y(x)`] be implicitly defined by the equation    
+    [` x = [$a] x y + [$b] \ln(y) `].    
+Then
+
+    [` \displaystyle \frac{dy}{dx} `] = [_]{$ans}{40}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+ Differentiate both sides of the equation     
+     [`x = [$a] xy+[$b]\ln(y)`]    
+ with respect to [`x`]:
+
+    [``\begin{gathered}
+ 1 = [$a] y + [$a] x\frac{dy}{dx}+\frac{[$b]}{y}\frac{dy}{dx}\\
+ 1 - [$a] y = \left([$a] x + \frac{[$b]}{y}\right)\frac{dy}{dx} \\
+ 1- [$a] y = \left(\frac{[$a] xy + [$b]}{y}\right)\frac{dy}{dx}  \\
+ \frac{y(1-[$a] y )}{[$a] xy + [$b]} = \frac{dy}{dx}  
+ \end{gathered} ``]
+
+END_PGML_SOLUTION
+ENDDOCUMENT();

@@ -1,0 +1,81 @@
+## DESCRIPTION
+## Linear Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 5/3/06
+
+## DBsubject(Linear algebra)
+## DBchapter(Matrix factorizations)
+## DBsection(QR factorization)
+## Date(July 2013)
+## Institution(Rochester and Hope College)
+## Author(Paul Pearson)
+## Level(2)
+## MO(1)
+## TitleText1('Linear Algebra with Applications')
+## AuthorText1('Jeffrey Holt')
+## EditionText1('1')
+## Section1('8.3')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
+);
+
+$showPartialCorrectAnswers = 1;
+
+Context('Matrix');
+
+$normsq = 0;
+
+foreach $i (0..2) {
+	$myq[$i] = non_zero_random(-3,3,1);
+	$normsq = $normsq + $myq[$i] * $myq[$i];
+}
+
+$norm = sqrt($normsq);
+
+$mult = non_zero_random(1,5,1);
+
+$Q = Matrix([[$myq[0]],[$myq[1]],[$myq[2]]])/$norm;
+
+$R = Matrix([[$norm*$mult]]);
+
+$M = Matrix([[$myq[0]],[$myq[1]],[$myq[2]]])*$mult;
+
+$multAns = MultiAnswer($Q,$R)->with(
+  singleResult => 1,
+  checker      => sub {
+    my ($correct, $student, $self) = @_;
+    my ($Qstu, $Rstu) = @{$student};
+    my ($Qcor,    $Rcor)    = @{$correct};
+    if ( ($Qstu == $Qcor && $Rstu == $Rcor) or 
+         ($Qstu == -$Qcor && $Rstu == -$Rcor) ) 
+      { return 1; }
+    else { return 0;}
+  }
+);
+
+BEGIN_PGML
+Find the QR factorization of the given matrix.
+
+[``[$M] = ``] [_____]*{$multAns} [_____]*{$multAns} 
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The [`3\times 1`] matrix M is equivalent to a vector and Q is supposed to be an orthogonal matrix, that is, a sequence of orthonormal column vectors, so Q is equivalent to a single unit vector that is parallel to M.  The length of M is [`[$mult]\sqrt{[$normsq]}`]
+so      
+    [``Q = (\pm M)\big(\frac{1}{[$mult]\sqrt{[$normsq]}}\big)``]
+and 
+    [``R = \pm [$mult]\sqrt{[$normsq]} ``] 
+with the same plus or minus sign for both.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();       # This should be the last executable line in the problem.
+

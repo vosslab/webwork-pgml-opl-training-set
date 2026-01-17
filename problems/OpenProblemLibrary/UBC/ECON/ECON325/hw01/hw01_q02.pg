@@ -1,0 +1,41 @@
+
+##KEYWORDS('History of statistics'; 'Canada'; 'identify first official
+##statistician of Canada'.)
+# DESCRIPTION
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Classifying data)
+## Date(2015/06/07)
+## Institution(University of British Columbia)
+## Author(Nelson Chen)
+## Level(2)
+## level('1')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserRadioButtons.pl', 'PGcourse.pl');
+
+Context('Numeric');
+
+$radio = RadioButtons(
+    [ [
+        'Mode of travel to university (bus, car, bike or walk)',
+        'Grade Point Average (GPA)',
+        'Number of Economics courses',
+        'Age (in years)',
+        'Number of hours of study per week'
+    ] ],
+    0
+);
+
+BEGIN_PGML
+Below is a list of variables from an annual survey of university students. Variables may be classified as either numerical or categorical. Which variable is categorical?
+
+[_]{$radio}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The answer is mode of travel to university (bus, car, bike or walk).
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

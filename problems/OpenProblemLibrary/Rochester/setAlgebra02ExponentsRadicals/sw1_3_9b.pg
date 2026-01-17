@@ -1,0 +1,62 @@
+##DESCRIPTION
+##   Evaluation of a simple algebraic expression
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Algebra)
+## DBchapter(Properties of exponents, rational exponents and radicals)
+## DBsection(Properties of rational exponents and radicals)
+## Date(6/3/2002)
+## MLT(number_fraction_powers)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.3')
+## Problem1('9')
+## TitleText2('Precalculus')
+## AuthorText2('Stewart, Redlin, Watson')
+## EditionText2('3')
+## Section2('1.2')
+## Problem2('9')
+## KEYWORDS('algebra','exponent')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
+);
+
+Context("LimitedFraction");
+Context()->flags->set(showMixedNumbers=>0);
+
+$a = random(2,6,2);
+$b = random(3,7,2);
+$a1 = $a**3;
+$b1 = $b**3;
+
+$ans = Fraction($a**2,$b**2);
+
+BEGIN_PGML
+Simplify  [``\ \left(-\frac{[$a1]}{[$b1]}\right)^{2/3} ``].
+
+Your answer should be a reduced fraction.
+
+    [``\left(-\frac{[$a1]}{[$b1]}\right)^{2/3} ``] = [_]{$ans}{15}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[`` \begin{gathered} \left(-\frac{[$a1]}{[$b1]}\right)^{2/3} 
+= \frac{(-[$a1])^{2/3}}{[$b1]^{2/3}}
+= \frac{\Big((-[$a1])^{1/3}\Big)^2}{\Big([$b1]^{1/3}\Big)^2} \\
+= \frac{(-[$a])^2}{[$b]^2}
+= \frac{[@ $a**2 @]}{[@ $b**2 @]}
+= [$ans] \end{gathered} ``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

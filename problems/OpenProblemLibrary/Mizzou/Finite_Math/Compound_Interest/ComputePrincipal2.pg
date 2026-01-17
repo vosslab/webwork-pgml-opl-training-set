@@ -1,0 +1,61 @@
+##DESCRIPTION
+##  Compound Interest: Compute Principal
+##ENDDESCRIPTION
+
+## Author1('David Covert')
+## Author2('Jason Aubrey')
+## DBsubject(Financial mathematics)
+## DBchapter(Interest)
+## DBsection(Compound interest)
+## Date(Spring 2012)
+## Institution(University of Missouri)
+## Level(2)
+## KEYWORDS('financial mathematics', 'compound interest')
+## MO(1)
+
+## Updated 2025.02 by Peter Staab, switch to PGML and added a solution
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl',   'PGML.pl',
+    'randomPerson.pl', 'contextCurrency.pl',
+    'PGcourse.pl'
+);
+
+Context("Currency");
+
+$Amount = Currency(random(1200, 1800, 10));
+$apr    = random(5,    9,    0.001);
+$t      = random(2,5); # years
+$k      = list_random(4, 12, 52);    # compounding periods
+$i      = $apr / (100 * $k);         # periodic interest rate
+$n      = $t * $k;                   # number of compounding periods.
+
+$invest_amt = $Amount * (1 + $i)**(-$n);
+
+($periodically, $periods) =
+    $k == 4    ? ('quarterly', 'quarters')
+    : $k == 12 ? ('monthly',   'months')
+    :            ('weekly', 'weeks');
+$p = randomPerson();
+
+BEGIN_PGML
+
+In [$t] years, [$p] will need [$Amount] to pay [$p->their] college tuition.  How much [$p->do] [$p->they] need to invest today into an account earning an an interest rate of [`[$apr]`]% compounded [$periodically], so that [$p->they] [$p->have] enough money to pay [$p->their] tuition?
+
+The amount [$p] needs to invest is  [_]{$invest_amt}
+
+(*Note:* Your answers should include a dollar sign and be accurate to two decimal places)
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+In this case, we will use the future value of compound interest:
+[```P_t = P (1+i)^t```]
+and since [`P_t = [$Amount]`] is the future value and solving for the initial value [`P`] is
+[```P = P_t (1+i)^{-t}```]
+and [`i=\frac{[$apr]}{12 \cdot 100} `] and [`t=[$n]`] is the number of [$periods] in [$t] years.  The result is [``` P = [$invest_amt] ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

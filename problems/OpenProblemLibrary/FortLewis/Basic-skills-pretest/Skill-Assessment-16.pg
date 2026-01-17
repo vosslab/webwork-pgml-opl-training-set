@@ -1,0 +1,43 @@
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear equations)
+## Level(3)
+## MO(1)
+DOCUMENT(); 
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+#  Setup
+
+Context("LimitedNumeric");
+#Context("Fraction-NoDecimals");
+
+$a = random(2,4,2);
+$b = random(7,9,2);
+$bma = $b - $a;
+
+BEGIN_PGML
+
+Solve [```
+x - \frac{[$a]}{[$b]} x = [$bma]
+```]
+
+[` x = `]  [_]{Real("$b")}
+
+
+*Note:* Your answer should be completely simplified.
+Unsimplified answers will not be accepted.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[```
+\begin{aligned}
+x - \frac{[$a]}{[$b]} x & = [$bma] \qquad \qquad \text{Multiply by [$b]} \\
+[$b] x - [$a] x & = [@ $b*$bma @] \\
+[$bma] x & = [@ $b*$bma @] \\
+x & = [$b]
+\end{aligned}
+```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

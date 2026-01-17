@@ -1,0 +1,101 @@
+## DESCRIPTION
+## Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+## Modified by darnold on 06-10-2008
+
+## Modified('06/10/2008')
+## DBsubject(Algebra)
+## DBchapter(Absolute value expressions and functions)
+## DBsection(Absolute value inequalities)
+## Institution(Rochester)
+## Level(2)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.2')
+## Problem1('27 28')
+## KEYWORDS('algebra')
+
+DOCUMENT();         # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
+);
+
+# Award zero credit unless all answers are correct
+
+$showPartialCorrectAnswers = 0;
+install_problem_grader(~~&std_problem_grader);
+
+Context("Numeric");
+
+$a = random(1,5,1);
+$b = random(6,10,1);
+$c = $a-$b;
+$d = $a+$b;
+
+# question Q and answer A pairs
+
+@Q=(); @A=();
+
+push @Q, "[`|x-$a| \lt $b `]";
+push @A,  "[` x \in ($c,$d) `]";
+
+push @Q, "[`|x-$a| \leq $b `]";
+push @A,  "[` x \in [$c,$d] `]";
+
+push @Q, "[`|x-$a| = $b `]";
+push @A,  "[`  x \in \lbrace $c,$d \rbrace `]";
+
+push @Q, "[`|x-$a| \geq $b `]";
+push @A,  "[` x \in (-\infty,$c] \cup [$d,\infty ) `]";
+
+push @Q, "[`|x-$a| \gt $b `]";
+push @A,  "[` x \in (-\infty,$c) \cup ($d,\infty ) `]";
+
+push @Q, "[`|x-$a| \lt \infty `]";
+push @A,  "[` x \in (-\infty,\infty) `]";
+        
+# choose 5 Q-A pairs
+
+@slice = random_subset(5,(0..5));
+@Q = @Q[@slice];
+@A = @A[@slice];
+
+# answer labels
+
+@alph = ("A".."E");
+@n = random_subset(5,(0..4));
+
+# the $i-th question will be $Q[$n[$i]], the $i-th answer will be $A[$i] 
+# so the correct answer will be in the $n[$i]-th place.
+
+for (0..4){
+  $drop[$_] = DropDown([@alph],$alph[$n[$_]]);
+}
+
+BEGIN_PGML
+Each inequality below is equivalent to one of the expressions A,B,C,D or E that involve sets and intervals.  For each inequality select the equivalent expression.
+
+You must get all of the answers correct to receive credit.
+
+[_]{$drop[0]} [$Q[$n[0]]]**  
+[_]{$drop[1]} [$Q[$n[1]]]**  
+[_]{$drop[2]} [$Q[$n[2]]]**  
+[_]{$drop[3]} [$Q[$n[3]]]**  
+[_]{$drop[4]} [$Q[$n[4]]]**  
+
+    *A*. [$A[0]]**  
+    *B*. [$A[1]]**  
+    *C*. [$A[2]]**  
+    *D*. [$A[3]]**  
+    *E*. [$A[4]]**  
+END_PGML
+
+ENDDOCUMENT();

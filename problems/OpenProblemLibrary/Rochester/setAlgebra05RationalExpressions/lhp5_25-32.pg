@@ -1,0 +1,60 @@
+##DESCRIPTION
+##  lhp5_25-32.pg.
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 2-20-2004
+
+## DBsubject(Algebra)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Simplify rational expressions)
+## Date(6/3/2002)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.5')
+## Problem1('4')
+## TitleText2('Precalculus')
+## AuthorText2('Stewart, Redlin, Watson')
+## EditionText2('3')
+## Section2('1.4')
+## Problem2('1')
+## KEYWORDS('algebra, simplifying rational expression','algebra', 'fraction functions')
+
+DOCUMENT();     
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context("Numeric");
+
+$a = random(2,6,2);
+$b = random(1,5,2);
+## (x-$a)(x-2)/(x-$b)(x-2)
+$b1 = (2+$a);
+$c1 = 2*$a;
+$b2 = (2+$b);
+$c2 = 2*$b;
+
+$rat=Formula("(x^2-$b1*x+$c1)/(x^2-$b2*x+$c2)")->reduce;
+
+$ans1 = Formula("x-$a");
+$ans2 = Formula("x-$b");
+
+BEGIN_PGML
+Simplify the expression [``[$rat]``].   
+    
+The answer has the form of [``\ \frac{f(x)}{g(x)}\ ``] where
+  
+    [`f(x)`] =  [_]{$ans1}{10} and 
+  
+    [`g(x)`] = [_]{$ans2}{10}
+  
+END_PGML
+
+BEGIN_PGML_SOLUTION
+    [``[$rat]=\frac{([$ans1])(x-2)}{[$ans2])(x-2)}``].    
+Cancelling [`(x-2)`] from the numerator and denominator, one obtains the answer    
+    [``\frac{[$ans1]}{[$ans2]}``].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

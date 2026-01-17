@@ -1,0 +1,54 @@
+## DBsubject(Geometry)
+## DBchapter(Vector geometry)
+## DBsection(Dot product, length, and unit vectors)
+## Author(Stewart)
+## MLT(DotProdAngleWordProblems)
+## MLTleader(1)
+## Level(4)
+## MO(1)
+
+## Tagged by ynw2d
+
+DOCUMENT();
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+ 
+Context("Numeric");
+
+## Lots of set up goes here
+$l = random(2,20);
+$w = random(2,20);
+$h = random(2,20);
+$n = sqrt($l**2 + $w**2);
+$d = sqrt($l**2 + $w**2 + $h**2);
+
+$ans = Compute("arccos($n/$d)");
+## Ok, we are ready to begin the problem...
+##
+
+BEGIN_PGML
+A rectangular box has a base [$l] inches long and [$w] inches wide, and the height of the box is [$h] inches.  
+Find the angle between the diagonal of the box and 
+the diagonal of its base.  The angle should be measured in
+radians.  
+
+    angle = [_]{$ans}{10}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Let [`A`] be one corner of the base, [`B`] be the opposite corner on the base, and [`C`] be the point that is directly above [`B`] on the top of the box. [`ABC`] is a right triangle with right angle at [`B`], and [`AC`] is its hypotenuse.  [`AC`] is also a diagonal of the box, and [`AB`] is a diagonal of the base of the box. Therefore angle [`A`] of this triangle is the angle that we want.
+
+Its cosine is 
+    [``\begin{aligned} \cos(A) &= \frac{\text{length of }AB}{\text{length of }AC} \\
+    &= \frac{\sqrt{[$l]^2+[$w]^2}}{\sqrt{[$l]^2+[$w]^2+[$h]^2}} \end{aligned} ``]    
+so    
+    [``A = \arccos\left(\frac{\sqrt{[$l]^2+[$w]^2}}{\sqrt{[$l]^2+[$w]^2+[$h]^2}}\right) \approx [$ans] \text{ radians}``].    
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
+
+

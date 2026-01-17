@@ -1,0 +1,65 @@
+## DESCRIPTION
+## Algebra: Basic Algebra, Algebraic Expressions
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Polynomials: add, subtract)
+## Date(6/3/2002)
+## MLT(Poly_minus_poly)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.4')
+## Problem1('3')
+## KEYWORDS('algebra, polynomial operations')
+
+DOCUMENT();     
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+
+$a1=random(2,5,1);
+$a2=random(2,10,1);
+$a3=random(2,10,1);
+$a4=random(2,10,1);
+$a5=random(2,10,1);
+$a6=random(2,10,1);
+$a7=random(2,10,1);
+
+$ans1 = Real($a1*$a2-$a5);
+$ans2 = Real(-$a1*$a3-$a6);
+$ans3 = Real($a1*$a4+$a7);
+
+BEGIN_PGML
+
+Simplify the expression [``\ [$a1] ([$a2] x^2 -[$a3] x+[$a4])-([$a5] x^2+[$a6] x-[$a7]) ``].
+
+    [``\ [$a1] ([$a2] x^2 -[$a3] x+[$a4])-([$a5] x^2+[$a6] x-[$a7]) ``]  
+    = [_]{$ans1}{5}[``x^2``]+[_]{$ans2}{5}[``x``]+[_]{$ans3}{5} 
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Use the distributive law to combine like terms.  
+
+[``\begin{aligned} &[$a1] ([$a2] x^2 -[$a3] x+[$a4])-([$a5] x^2+[$a6] x-[$a7]) \\
+&\begin{matrix}
+\; =&([$a1])([$a2])x^2 &+ ([$a1])(-[$a3])x &+ ([$a1])([$a4])&+\\
+&-[$a5] x^2 &-[$a6] x &-(-[$a7])
+\end{matrix} \\
+&= \Big(([$a1])([$a2])-[$a5]\Big)x^2 + \Big( ([$a1])(-[$a3])-[$a6]\Big) x + \Big( ([$a1])([$a4])+[$a7]\Big) \\
+&= ([$ans1])x^2+([$ans2])x+([$ans3])
+\end{aligned}``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

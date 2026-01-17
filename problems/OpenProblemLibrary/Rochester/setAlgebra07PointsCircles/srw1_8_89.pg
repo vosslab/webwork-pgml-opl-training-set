@@ -1,0 +1,70 @@
+#DESCRIPTION
+##  Algebra problem: Coordinates and Graphs
+##ENDDESCRIPTION
+
+## Tagged by sawblade
+
+## DBsubject(Algebra)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Applications and models)
+## Date(6/3/2002)
+## Level(3)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('2.2')
+## Problem1('77')
+## TitleText2('Precalculus')
+## AuthorText2('Stewart, Redlin, Watson')
+## EditionText2('3')
+## Section2('1.8')
+## Problem2('83')
+## KEYWORDS('algebra', 'graph')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context("Numeric");
+
+$a = non_zero_random(1,2,1);
+$asq = $a*$a;
+$b = non_zero_random(4,8,1);
+$bsq=$b**2;
+$c= $b*$b - 4;
+
+$n = $b**2-$a**2;
+$ans1 = Compute("$n*pi");
+
+BEGIN_PGML
+Find the area of the region that lies outside the circle [```x^2+y^2=[$asq]```]
+but inside the circle [```x^2+y^2-4y-[$c]=0.```] 
+  
+The area is [_]{$ans1}{10} square units
+END_PGML
+
+BEGIN_PGML_SOLUTION
+To locate the second circle, complete the square.
+
+    [``\begin{gathered}
+    x^2+y^2-4y=[$c] \\
+    x^2+y^2-4y+4 = [$bsq]\\
+    x^2+(y-2)^2 = [$b]^2 \end{gathered} ``]
+    
+The first circle is the circle centered at (0,0) with radius [$a].
+The second circle is the circle centered at (0,2) with radius [$b].
+Because
+
+    (radius of second circle) [`\geq`] 2+(radius of first circle)
+
+the first circle lies entirely inside the second circle, so
+
+    [``\begin{aligned} (\text{area of region}) &= (\text{area of second circle})-(\text{area of first circle}) \\
+   &= \pi([$b]^2) - \pi([$a]^2) \end{aligned}``]
+   
+square units.
+END_PGML_SOLUTION
+ 
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

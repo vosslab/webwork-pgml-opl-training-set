@@ -1,0 +1,81 @@
+## DESCRIPTION
+##  Statistics: Descriptive statistics
+## ENDDESCRIPTION
+
+## naw tagged this problem.
+
+## DBsubject(Statistics)
+## DBchapter(Simple linear regression)
+## DBsection(Correlation)
+## Date(06/01/2005)
+## Institution(UVA)
+## Author(Nolan A. Wages)
+## Level(3)
+## TitleText1('Statistics for Management and Economics')
+## AuthorText1('Keller, Warrack')
+## EditionText1('6')
+## KEYWORDS('statistics', 'descriptive statistics')
+
+# Updated 2025.04 by Peter Staab (Fitchburg State University).  Converted to PGML,
+# and added a solution.
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserPopUp.pl', 'PGcourse.pl');
+
+$showPartialCorrectAnswers = 0;
+
+# Make an array of questions
+
+@questions = (
+    'The coefficient of variation allows us to compare the variation in two sets '
+        . 'of data based on different measurement units.',
+    'If the coefficient of correlation \(r = \pm 1\), then the best-fit linear '
+        . 'equation will actually include all of the data points.',
+    'The coefficient of correlation r is a number that indicates the direction and '
+        . 'the strength of the relationship between the dependent variable y and the '
+        . 'independent variable x.',
+    'If the coefficient of correlation r = 0, then there is no linear '
+        . 'relationship between the dependent variable y and the independent variable x.',
+    'Since the sample is always smaller than the population, the sample mean is '
+        . 'always smaller than the population mean.',
+    'Expressed in percentiles, the interquartile range is the difference between '
+        . 'the 25th and the 75th percentiles.',
+    'A straight line that slopes upward and exactly fits all data points would produce '
+        . 'a correlation coefficient value of one.',
+    'When the standard deviation is expressed as a percentage of the mean, the '
+        . 'result is the coefficient of correlation',
+);
+
+@answers = (1, 1, 1, 1, 0, 1, 1, 0);
+
+@shuffle = random_subset(4, 0 .. $#questions);
+
+@dd = map { DropDownTF($answers[$_]) } @shuffle;
+
+BEGIN_PGML
+
+Select True or False from each pull-down menu, depending on whether 
+the corresponding statement is true or false.
+
+a) [_]{$dd[0]} [$questions[$shuffle[0]]]*
+
+b) [_]{$dd[1]} [$questions[$shuffle[1]]]*
+
+c) [_]{$dd[2]} [$questions[$shuffle[2]]]*
+
+d) [_]{$dd[3]} [$questions[$shuffle[3]]]*
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+a) [$dd[0]]
+
+b) [$dd[1]]
+
+c) [$dd[2]]
+
+d) [$dd[3]]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

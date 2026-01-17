@@ -1,0 +1,64 @@
+## DESCRIPTION
+## Calculus
+## ENDDESCRIPTION
+
+## Tagged by tda2d
+
+## DBsubject(Calculus - single variable)
+## DBchapter(Integrals)
+## DBsection(Riemann sums)
+## Institution(Rochester)
+## MLT(small)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## KEYWORDS('integral' 'summation' 'area' 'riemann')
+
+## Updated 2025.02 by Peter Staab, switch to PGML and add a solution.
+
+
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context("Numeric");
+Context()->flags->set(reduceConstants=>0);
+Context()->flags->set(reduceConstantFunctions=>0);
+
+$a = random(0,5);      ## left endpoint
+$dx = random(2,4);        ## delta x
+$n = random(3,4);
+$b = $a + $n*$dx;            ## right endpoint, 3 subdivisions
+$c = random(2,4);
+$d = random(2,4);
+$e = random(1,6);
+
+$f = Formula("$c*x^2 + $d*x + $e");
+
+
+# find the function values on the left and right endpoints.
+
+@left_fvalues = map { $f->eval( x => $a + $dx*$_)} (0..$n-1);
+@right_fvalues = map { $f->eval( x => $a + $dx*$_)} (1..$n);
+
+($L, $R) = (0, 0);
+for $i (0..$n-1) {
+    $L += $dx * $left_fvalues[$i];
+    $R += $dx * $right_fvalues[$i];
+}
+
+BEGIN_PGML
+
+Consider the integral [``` \int_{[$a]}^{[$b]} ([$f])\,dx ```]
+
+a) Find the Riemann sum for this integral using left endpoints and [` n= [$n] `].
+
+    [`L_[$n] =`] [_]{Real($L)}
+
+b) Find the Riemann sum for this same integral, using right endpoints and [` n = [$n] `].
+
+    [`R_[$n] =`] [_]{Real($R)}
+
+END_PGML
+
+ENDDOCUMENT();

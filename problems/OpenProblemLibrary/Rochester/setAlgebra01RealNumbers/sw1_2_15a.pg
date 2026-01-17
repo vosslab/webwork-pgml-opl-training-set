@@ -1,0 +1,55 @@
+## DESCRIPTION
+## Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Division)
+## Date(6/3/2002)
+## MLT(basic_division)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.2')
+## Problem1('15')
+## KEYWORDS('algebra', 'fraction')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
+);
+
+$n1 = random(2,10,1);
+$n2 = random(3,11,1);
+$d1 = random(32,69,1);
+$d2 = random(25,49,1);
+
+Context("LimitedFraction");
+Context()->flags->set(showMixedNumbers=>0);
+
+$ans=Fraction($n1*$d2,$n2*$d1);
+
+BEGIN_PGML
+Divide the fractions, and reduce your answer.    
+    [`` \frac{[$n1]}{[$d1]}\div\frac{[$n2]}{[$d2]} ``]
+
+The reduced answer is [_]{$ans}{20}
+END_PGML
+
+
+BEGIN_PGML_SOLUTION
+[``\frac{[$n1]}{[$d1]}\div\frac{[$n2]}{[$d2]} = 
+\frac{[$n1]}{[$d1]}\times\frac{[$d2]}{[$n2]} 
+= \frac{([$n1])([$d2])}{([$d1])([$n2])} = \frac{[@ $n1*$d2 @]}{[@ $d1*$n2 @]}=[$ans] ``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

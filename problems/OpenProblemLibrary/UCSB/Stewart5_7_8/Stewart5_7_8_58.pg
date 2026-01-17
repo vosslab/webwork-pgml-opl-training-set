@@ -1,0 +1,39 @@
+## DBsubject(Calculus - single variable)
+## DBchapter(Integrals)
+## DBsection(Improper integrals)
+## Institution(UCSB)
+## MLT(improper_nat_log_parameterized)
+## Level(3)
+## Static(1)
+## TitleText1('Calculus: Early Transcendentals')
+## AuthorText1('Stewart')
+## EditionText1('5')
+## Section1('7.8')
+## Problem1('58')
+## KEYWORDS('integration', 'improper integrals')
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+$conv = Interval('(1,inf)');
+
+Context()->variables->are('p'=>'Real');
+$I = Compute("1/(p-1)");
+$I->{limits} = [2,8];
+
+BEGIN_PGML
+a. Find the values of [`p`] for which the following integral converges:
+[```\int_{e}^{\,\infty} {\frac{1}{x\left(\ln(x)\right)^p}}\, dx```]
+The values of [`p`] are in the interval [_]{$conv}{10}[@helpLink('interval')@]*
+
+b. For the values of [`p`] at which the integral converges, evaluate it.  
+[``\int_{e}^{\,\infty} {\frac{1}{x\left(\ln(x)\right)^p}}\, dx = ``][_]{$I}{20}  
+Your answer should be a formula involving [`p`].
+END_PGML
+
+ENDDOCUMENT();

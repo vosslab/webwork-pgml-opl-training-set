@@ -1,0 +1,54 @@
+##DESCRIPTION
+##  Algebra problem: quadratic equation
+##ENDDESCRIPTION
+
+## tsch tagged and PAID on 12-12-2003
+
+## DBsubject(Algebra)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Solving equations)
+## Date(6/3/2002)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('3.3')
+## Problem1('36 37 38')
+## KEYWORDS('algebra', 'quadratic equations')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGchoicemacros.pl','parserPopUp.pl', 'PGcourse.pl');
+
+Context("Numeric");
+
+$a =  random(2,4,1);
+$b =  random(2,4,1);
+$c =  random(3,8,1);
+
+$f=Compute("$a*x^2+$b*x+$c");
+
+$YN = DropDown(["Yes","No"],"No");
+
+BEGIN_PGML;
+Find all real solutions of equation [`[$f] = 0`].
+
+Does the equation have real solutions? [_]{$YN}
+ 
+If your answer is *Yes*, input the solutions. Otherwise leave the following answers blank.
+  
+[` x = `] [_]{str_cmp($ans1)}{20} or [` x_2 = `] [_]{str_cmp($ans2)}{20} 
+  
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The quadratic formula says the solutions to this quadratic equation 
+are 
+
+[``x = \frac{-[$b]\pm \sqrt{[$b]^2 - 4([$a])([$c])}}{2([$a])}``].
+
+But [``\sqrt{[$b]^2 - 4([$a])([$c])}``] is not a real number because [``[$b]^2 - 4([$a])([$c])``] is negative, and square roots of negative numbers are not real numbers.  Thus the solutions are not real numbers, so the equation has no real roots.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

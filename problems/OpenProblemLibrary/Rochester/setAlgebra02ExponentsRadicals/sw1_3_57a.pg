@@ -1,0 +1,52 @@
+#DESCRIPTION
+##  Algebra problem: combining powers
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Arithmetic)
+## DBchapter(Irrational numbers)
+## DBsection(Simplify radical numbers)
+## Date(6/3/2002)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## MLT(RatDenom_various)
+## EditionText1('3')
+## Section1('1.3')
+## Problem1('57')
+## KEYWORDS('algebra', 'powers')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("LimitedNumeric");
+
+$a = Real(list_random(2,3,5,6,7,10,11)); # square-free
+
+BEGIN_PGML
+Rationalize the denominator of [``\ \frac{1}{\sqrt{[$a]}} \ ``]    
+in other words, find integers [`\ a \ `] and [`\ b\ `] so that 
+    [``\frac{1}{\sqrt{[$a]}}=\frac{\sqrt{a}}{b} ``].    
+    
+Answers:
+
+    [`a`]=[_]{$a}{10}  
+    [`b`]=[_]{$a}{10}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Multiply by [``1 = \frac{\sqrt{[$a]}}{\sqrt{[$a]}}``]. Multiplying by 1 doesn't change the value of the fraction but it does change the way it looks:  
+
+    [``\frac{1}{\sqrt{[$a]}}=\frac{1}{\sqrt{[$a]}}\frac{\sqrt{[$a]}}{\sqrt{[$a]}}= \frac{\sqrt{[$a]}}{[$a]} ``].    
+    
+Now the denominator is an integer, and the numerator is the square root of an integer, as required in this problem.   Sometimes it's a little bit easier to use the fraction when its denominator is an integer. 
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

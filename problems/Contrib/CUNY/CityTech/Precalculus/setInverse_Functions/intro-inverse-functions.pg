@@ -1,0 +1,159 @@
+##DESCRIPTION
+##   
+##ENDDESCRIPTION
+
+##KEYWORDS('algebra', 'function', 'inverse function')
+
+## DBsubject('Algebra')
+## DBchapter('Inverse functions')
+## DBsection('Finding the inverse function')
+## Date('6/13/2018')
+## Author('K. Andrew Parker')
+## Institution('City Tech')
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+   "PGstandard.pl",     # Standard macros for PG language
+   "MathObjects.pl",
+   "PGML.pl",
+   "PGchoicemacros.pl",
+   "PGgraphmacros.pl",
+   "parserPopUp.pl",
+   "niceTables.pl"
+);
+
+# Print problem number and point value (weight) for the problem
+TEXT(beginproblem());
+
+# Show which answers are correct and which ones are incorrect
+$showPartialCorrectAnswers = 0;
+
+##############################################################
+#
+#  Setup
+#
+#
+Context("Numeric");
+Context()->variables->add(y=>Real);
+
+@f = (Formula("x^2"), Formula("e^x"), Formula("1/x"), Formula("1/x^2"), Formula("x^3"), Formula("x^3-x"));
+
+@ans = ("False", "True", "True", "False", "True", "False");
+
+
+###########################################
+
+@gr = ();
+@im = ();
+@q = ();
+for my $i (0..5) { 
+  $gr[$i] = init_graph(-5,-5,5,5,size=>[300,300],axes=>[0,0],grid=>[10,10]);
+  if ($i != 5) {
+    add_functions($gr[$i],"$f[$i] for x in <-5,5> using color:blue and weight:2");
+  } else {
+    add_functions($gr[$i],"$f[$i] for x in <-5,-0.0001> using color:blue and weight:2");
+    add_functions($gr[$i],"$f[$i] for x in <0.0001,5> using color:blue and weight:2");
+  }
+#  $im[$i] = image(insertGraph($gr[$i]), width=>200, height=>200, tex_size=>400);
+    $q[$i] = PopUp(["?","True","False"],$ans[$i]);
+}
+
+@perm = NchooseK(6,6);
+
+@gr = @gr[@perm];
+
+
+
+#* swapping inputs/outputs 
+#* relation to swapping [`x/y`] 
+#* coordinate pairs are "reversed" 
+#* line of reflection: [`y = x`] 
+#* Horizontal Line Test (HLT)/Vertical Line Test (VLT) and their relation
+
+
+##############################################################
+#
+#  Text
+#
+#
+
+Context()->texStrings;
+BEGIN_PGML
+
+>> ### What are one-to-one functions? What is the horizontal line test? ### <<
+
+
+A function is *one-to-one* if every pair of different inputs have different outputs, i.e. if we have two inputs [`x_1 \not= x_2 `], then [`f(x_1) \not= f(x_2) `].  
+
+In other words, a function is one-to-one if every single output in the range of the function corresponds to just one input in the domain; hence the terminology "one-to-one."  
+
+This concept is important because if a function [`f(x)`] is one-to-one, then we can define a new function, called the *inverse function*, and denote it by [`f^{-1}(x)`], where we swap the inputs and outputs.
+
+In terms of the graph of a function [` y = f(x) `], the function [`f(x)`] is one-to-one if and only if it satisfies the *horizontal line test*, which consists of checking that  every horizontal line intersects the graph of the function at most once. 
+
+>> #### Practice #### <<
+
+For each of the following, use the horizontal line test to determine whether or not each function is one-to-one.
+
+(a) [`y = [$f[$perm[0]]]`] is a one-to-one function. [_]{$q[$perm[0]]}
+>> [@ image(insertGraph($gr[0]), width=>200, height=>200, tex_size=>400) @]*** <<
+
+(b) [`y = [$f[$perm[1]]]`] is a one-to-one function. [_]{$q[$perm[1]]}
+>> [@ image(insertGraph($gr[1]), width=>200, height=>200, tex_size=>400) @]*** <<
+
+(c) [`y = [$f[$perm[2]]]`] is a one-to-one function. [_]{$q[$perm[2]]}
+>> [@ image(insertGraph($gr[2]), width=>200, height=>200, tex_size=>400) @]*** <<
+
+(d) [`y = [$f[$perm[3]]]`] is a one-to-one function. [_]{$q[$perm[3]]}
+>> [@ image(insertGraph($gr[3]), width=>200, height=>200, tex_size=>400) @]*** <<
+
+(e) [`y = [$f[$perm[4]]]`] is a one-to-one function. [_]{$q[$perm[4]]}
+>> [@ image(insertGraph($gr[4]), width=>200, height=>200, tex_size=>400) @]*** <<
+
+(f) [`y = [$f[$perm[5]]]`] is a one-to-one function. [_]{$q[$perm[5]]}
+>> [@ image(insertGraph($gr[5]), width=>200, height=>200, tex_size=>400) @]*** <<
+
+
+
+
+
+END_PGML
+
+
+##############################################################
+#
+#  Answers
+#
+#
+
+
+
+
+BEGIN_PGML_HINT
+
+To apply the horizontal line test, imagine a ruler held horizontally on the graph. As you slide the ruler up and down the [`y`]-axis, does the ruler ever intersect the graph more than once? If so, the function is *not* one-to-one (because then you've found an output that gets "hit" by more than one input).
+
+END_PGML_HINT
+
+BEGIN_PGML_SOLUTION
+
+(a) [`[$q[$perm[0]]]`]
+
+(b) [`[$q[$perm[1]]]`]
+
+(c) [`[$q[$perm[2]]]`]
+
+(d) [`[$q[$perm[3]]]`]
+
+(e) [`[$q[$perm[4]]]`]
+
+(f) [`[$q[$perm[5]]]`]
+
+
+END_PGML_SOLUTION
+
+
+ENDDOCUMENT();        

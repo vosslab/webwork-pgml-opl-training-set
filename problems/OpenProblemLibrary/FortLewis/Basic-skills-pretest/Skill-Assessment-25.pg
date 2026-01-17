@@ -1,0 +1,42 @@
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear equations)
+## Level(3)
+## MO(1)
+DOCUMENT(); 
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context("LimitedNumeric");
+
+$a = list_random(5,7);
+$b = random(2,3,1);
+$c = random(15,25,5);
+
+$x = Real($b * $c + $a);
+
+
+BEGIN_PGML
+
+Solve: [``` \frac{x - [$a]}{[$b]} = [$c]. ```]
+
+[` x = `]  [_]{$x} 
+
+---
+
+Note: Your answer should be completely simplified.
+Unsimplified answers will not be accepted.  
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[``` 
+\begin{aligned}
+\frac{x - [$a]}{[$b]} &= [$c], \qquad \qquad \text{Multiply by [$b]} \\
+x-[$a] & = [@ $b * $c @] \\
+x & = [@ $b*$c @] + [$a] = [$x]
+\end{aligned}
+```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

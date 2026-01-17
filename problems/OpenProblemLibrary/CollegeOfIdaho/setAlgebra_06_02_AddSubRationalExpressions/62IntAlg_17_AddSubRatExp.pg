@@ -1,0 +1,68 @@
+##DESCRIPTION
+##  Rational Expressions and Functions: Add and Subtract
+
+##ENDDESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Simplifying expressions)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(Least_common_denominator)
+## Level(2)
+## TitleText1('Essentials of Intermediate Algebra')
+## AuthorText1('Blitzer')
+## EditionText1('1')
+## Section1('6.2')
+## Problem1('')
+## KEYWORDS('rational expressions','rational functions')
+## Date: 2007/11 updated 2017/10 --rac
+
+DOCUMENT(); # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'contextRationalFunction.pl','PGcourse.pl');
+
+#  Setup
+
+Context("RationalFunction-Strict");
+
+# --- Form: a/bx^2 + c/x -------------------------------------------
+#  Answer: (a + bcx)/bx^2
+
+do{ $a = random(2,5,1);
+    $b = random(2,7,1); 
+ } until( gcd($a,$b)==1);
+$c = random(1,5,1);
+
+
+$f1 = Compute("$a/($b x^2)");
+$f2 = Compute("$c/x");
+$bc = $b*$c;
+$ans = Compute("($a+$bc*x)/($b*x^2)");
+
+#  Main text
+
+BEGIN_PGML
+Perform the indicated operation.  Note that the denominators
+are different.  Your answer should be a single fraction, not a sum 
+of two fractions. Simplify the result, if possible.
+[``` [$f1] + [$f2] ```]
+
+Answer:  [_]{$ans}{25} 
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+  
+Consider the two denominators: [`[$b] x^2`] and [`[$c] x`]
+  
+Their least common multiple is [`[$bc] x^2`]. This is the common denominator that we'll need in order to combine the fractions.
+[```
+\begin{aligned}
+[$f1] + [$f2]  & = [$f1] + [$f2] \cdot \frac{[$b] x}{[$b] x}  \\
+                & =[$f1] + \frac{ [$bc] }{[$b]x^2} \\
+                & = [$ans]
+\end{aligned}
+```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

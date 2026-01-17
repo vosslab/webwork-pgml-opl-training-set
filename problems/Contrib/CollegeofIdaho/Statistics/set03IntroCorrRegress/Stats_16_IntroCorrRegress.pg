@@ -1,0 +1,106 @@
+## DESCRIPTION
+##  For a dataset, find the correlation coefficient and the regression line.
+## ENDDESCRIPTION
+## DBsubject(Statistics)
+## DBchapter(Simple linear regression)
+## DBsection(Regression)
+## Institution(The College of Idaho)
+## Author(R Cruz, L Danielson, J Guild)
+## Level(3)
+## TitleText1('The Basic Practice of Statistics')
+## AuthorText1('David Moore')
+## EditionText1('5e')
+## Section1('5')
+## Problem1('')
+## KEYWORDS('statistic', 'regression','correlation')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+
+loadMacros(
+    'PGstandard.pl',         'PGML.pl',      
+    'contextCurrency.pl',
+    'PGstatisticsmacros.pl', 'parserPopUp.pl',
+    'PGcourse.pl'
+);
+
+#  Set-up
+
+@b  = (32.98, 49.72, 88.01, 97.34, 64.30, 106.27, 52.44, 70.29, 43.58);
+@ab = (
+    '32.98', '49.72', '88.01', '97.34', '64.30', '106.27',
+    '52.44', '70.29', '43.58'
+);
+@t  = (4.50, 5.28, 10.00, 16.00, 7.70, 16.00, 7.00, 10.00, 5.50);
+@at = (
+    '4.50', '5.28',  '10.00', '16.00', '7.70', '16.00',
+    '7.00', '10.00', '5.50'
+);
+
+@slice = random_subset(6, 0 .. 8);
+
+@sb  = @b[@slice];
+@sab = @ab[@slice];
+@st  = @t[@slice];
+@sat = @at[@slice];
+
+$r = Real(sample_correlation(~~@sat, ~~@sab));
+($m, $b) = linear_regression(~~@sab, ~~@sat);
+$m=Real($m); $b=Real($b);
+
+$explainb = "Yes, \(r\) is close to \(1.\)";
+$popupb   = DropDown([ "No",       "Yes" ],      "Yes");
+$popupe   = DropDown([ "Decrease", "Increase" ], "Increase");
+
+$line = Formula("$m *x + $b");
+
+$bill = random(40, 100, 5);
+$tip  = $line->eval(x => $bill);
+
+$increase  = random(5, 10, 5);
+$changetip = $increase * $m;
+
+Context("Currency");
+$ans_d = Currency($tip)->with(tolType => 'absolute', tolerance => '0.04');
+
+# ANS( $popupe->cmp() );
+
+$ans_e2 =
+    Currency($changetip)->with(tolType => 'absolute', tolerance => '0.04');
+
+BEGIN_PGML
+The amounts of 6 restaurant bills and the corresponding amounts of the tips are given in the below. Assume that bill amount is the explanatory variable and tip amount the response variable. 
+
+[#
+    [. **Bill** .] [. [$sab[0]] .][. [$sab[1]] .][. [$sab[2]] .]
+    [. [$sab[3]] .][. [$sab[4]] .][. [$sab[5]] .]*
+    [. **Tip** .] [. [$sat[0]] .][. [$sat[1]] .][. [$sat[2]] .]
+    [. [$sat[3]] .][. [$sat[4]] .][. [$sat[5]] .]*
+#]{align => 'r|rrrrrr', padding => [0.5,0.5]}
+  
+a)  Compute the correlation: [` r \approx`] [_]{$r}{15} 
+
+b)  Does there appear to be a significant correlation?  [_]{$popupb}
+
+c)  The regression equation is [`\hat{y}=`] [_]{$line}{15}. 
+
+    _For parts (d) and (e): Enter your answer in dollars: $xx.xx_
+
+d)  If the amount of the bill is $[`[$bill],`] the best prediction for the amount of the tip is [_]{$ans_d->cmp}{10}.
+
+e)  According to the regression equation, for every $[`[$increase] `] increase in the bill, the tip should [_]{$popupe} by [_]{$ans_e2->cmp}{10}.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+a) [`r \approx [$r]`]
+
+b) [$explainb]*
+
+c) [`\hat{y} = [$line] `]
+
+d) The predicted amount is [`[$b] + [$m]([$bill]) \approx [$ans_d]`] 
+
+e) The tip should increase by [$ans_e2]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();       # This should be the last executable line in the problem.

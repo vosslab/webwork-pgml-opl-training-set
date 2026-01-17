@@ -1,0 +1,77 @@
+# DESCRIPTION
+# gives an exponential equation and asks to find the x and y intercepts
+# ENDDESCRIPTION
+
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Graphs)
+## Institution(University of Missouri-Columbia)
+## Author(Patrick Spencer)
+## Level(2)
+## MO(1)
+## KEYWORDS('exponential functions', 'functions', 'inverse functions', 'intercepts')
+
+
+###########################################################################
+# initialization
+###########################################################################
+DOCUMENT();
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+
+###########################################################################
+# setup contexts and variables
+###########################################################################
+Context("Point");
+Context()->flags->set(
+      reduceConstants => 0,
+      reduceConstantFunctions => 0
+   );
+$e = Compute("e");
+$base = list_random($e,10,2,3,4,5,6,7,8,9);
+$b = random(-1,1,2)*random(2,10);
+$d = random(2,10);
+
+if ($base==$e){$f = Compute("e^{$b*x}-$d");}
+else {$f=Compute("$base^($b*x)-$d");}
+
+
+## compute intercepts
+$xint_x = Compute("ln($d)/($b*ln($base))");
+$xint = Point($xint_x,0);
+$yint = Point(0,1-$d);
+ ########################################################################### # state the problem ########################################################################### #Context()->texStrings; 
+BEGIN_PGML
+Find the [`x`]- and [`y`]-intercepts of [``f(x)=[$f]``]. Write _NONE_ if such a point does not exist.
+
+[`x`]-intercept = [_]{$xint}{15}
+
+[`y`]-intercept = [_]{$yint}{15}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The [`x`] intercept is a point where the graph of [`y=f(x)`] intersects the [`x`]-axis.  Every point on the [`x`]-axis has [`y`]-coordinate equal to 0, so the [`x`]-intercept is a point [`(x,0)`] where [`0=y=f(x)`].  
+
+Solving this equation for [`x`] we obtain  
+
+[``\begin{gathered} 0 =y = [$base]^{[$b]x}-[$d]\\
+    [$d] = [$base]^{[$b]x} \\
+    \ln([$d]) = ln\big([$base]^{[$b]x}\big) = [$b]x \ln([$base])\\
+    \frac{\ln[$d]}{[$b]\ln([$base])} \approx [$xint_x] \approx x \end{gathered}``]
+    
+so the [`x`]-intercept is [$xint], approximately.
+    
+The [`y`]-intercept is a point where the graph of [`y=f(x)`] intersects the [`y`]-axis.  Every point on the [`y`]-axis has [`x`] coordinate equal to 0, so the [`y`]-intercept is a point [`(0,y)`] where [`y=f(0)`].  Solving for [`y`] one has 
+[``y = [$base]^{([$b])(0)}-[$d] = 1-[$d]``]
+so the [`y`]-intercept is [$yint].
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

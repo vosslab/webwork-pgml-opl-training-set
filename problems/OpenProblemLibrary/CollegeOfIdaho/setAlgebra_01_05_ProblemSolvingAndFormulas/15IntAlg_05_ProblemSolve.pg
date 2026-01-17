@@ -1,0 +1,122 @@
+##DESCRIPTION
+## Word problem
+## 
+##ENDDESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MO(1)
+## Level(5)
+## TitleText1('Essentials of Intermediate Algebra')
+## AuthorText1('Blitzer')
+## EditionText1('1')
+## Section1('1.5')
+## Problem1('')
+## KEYWORDS('mathematical models','problem solving','formulas','algebra')
+## Date: 2007/09
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "parserNumberWithUnits.pl",
+  "parserImplicitPlane.pl",
+  "contextCurrency.pl",
+  "PGcourse.pl"
+);
+
+#TEXT(beginproblem());
+
+######################################
+#  Setup
+
+$new_price = random(30000,34000,100);
+$a = random(1200,2300,10);
+$answer = random(5,12,1);
+$b = $new_price - $a*($answer);
+
+Context("Currency");
+Context()->flags->set(trimTrailingZeros=>1);
+$showPrice = Currency($new_price);
+$showa = Currency($a);
+$showb =Currency($b);
+
+# part a)
+
+Context("ImplicitPlane");
+Context()->variables->are(t => "Real");
+
+$ans_str="$new_price-$a t=$b";
+
+# Context("ImplicitPlane") enables Formula objects to hold equations.
+# The Formula object performs all the type checks on the 
+# student's answer before it reaches the custom pickyChecker. 
+# See example below.
+
+# create a pickyChecker that we can use on a Formula object
+
+sub pickyChecker {
+  my $cor_str = shift ;  # the correct answer string
+  return sub {
+    my ($correct, $student, $ansHash) = @_;
+    my ($cor_left, $cor_right) = split "=", $cor_str;
+    my $stu_str = $ansHash->{original_student_ans};
+    ${$ansHash}{student_ans}=$stu_str;
+    ${$ansHash}{preview_latex_string}=$stu_str;
+    ${$ansHash}{correct_ans_latex_string}=$cor_str;
+    my ($stu_left, $stu_right) = split "=", $stu_str;
+    $cor_left = Formula($cor_left);
+    $cor_right = Formula($cor_right);
+    $stu_left = Formula($stu_left);
+    $stu_right = Formula($stu_right);
+    if ( ($cor_left == $stu_left && $cor_right == $stu_right) ||
+         ($cor_right == $stu_left && $cor_left == $stu_right)
+       ){ return 1; }
+    else { return 0; }
+  }
+}
+
+$ans_a = Formula($ans_str)->cmp(checker=>pickyChecker($ans_str));
+
+$ans_b = NumberWithUnits("$answer",'yr');
+
+######################################
+#  Main text
+
+BEGIN_PGML
+In 2003, the price of a certain automobile was approximately 
+[$showPrice] with a depreciation of [$showa] per year.  After how many
+years will the car's value be [$showb]? 
+
+a) Write an equation to model the problem.  Let _t_
+represent the number of years after 2003.  For example, the year 2005
+would be represented by _t_ = 2.  
+Your equation must strictly model the wording of the problem.
+
+    Answer: [_____________]{$ans_a}
+
+b) Solve the equation to find the answer to the question above.
+Include the units, in this case _years_.  [@ helpLink('units') @]*
+
+    Answer: [_________]{$ans_b}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Part a) "Depreciation of [$showa] per year" means the value of the car decreases [$showa] per year. Thus, after [`t`] years its value will be $([`[$new_price]-[$a]t`]).  If its value is [$showb] then 
+     [`[$new_price]-[$a]t = [$b]`]    
+dollars.  This equation models the problem. 
+
+Part b)  Solving for [`t`],
+    [``\begin{gathered} [$new_price]-[$a]t = [$b] \\
+    [$new_price]-[$b]=[$a]t \\ 
+    ([$new_price]-[$b])/[$a] = t \\ 
+    [@ ($new_price-$b)/$a @] = t \end{gathered} ``]  
+So it takes [$ans_b] for the value to fall to [$showb].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
+

@@ -1,0 +1,84 @@
+##DESCRIPTION
+##  Write out the meaning of an inequality
+## 
+##ENDDESCRIPTION
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Inequalities)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(WriteMeaning)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## TitleText1('Essentials of Intermediate Algebra')
+## AuthorText1('Blitzer')
+## EditionText1('1')
+## Section1('1.1')
+## Problem1('')
+## KEYWORDS('real numbers','algebraic expressions')
+## Date: 2007/08  updated 2024/12 --rac
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "parserPopUp.pl",
+  "PGML.pl"
+);
+
+######################################
+#  Setup
+
+$m[0] = random(-9,9,1);  #Less than
+$n[0] = $m[0] + random(2,4,1);
+$m[1] = random(-9,9,1);   #Less or equal
+$n[1] = $m[1] + random(0,5,1);
+$m[2] = random(-9,9,1);  #Greater or equal
+$n[2] = $m[2] - random(0,4,1);
+$m[3] = random(-9,9,1);   #Greater 
+$n[3] = $m[3] - random(1,5,1);
+@display_ineq = ("$m[0] < $n[0]",
+                 "$m[1] \le $n[1]",
+                 "$m[2] \ge $n[2]",
+                 "$m[3] > n[3]");
+
+@ans = ("is less than",
+        "is less than or equal to",
+        "is greater than or equal to",
+        "is greater than");
+$a = random(2,3,1);
+$b = $a - 2;
+
+$ans_a = DropDown(["is less than","is less than or equal to","is greater than","is greater than or equal to"],$ans[$a]);
+
+$ans_b =  DropDown(["is less than","is less than or equal to","is greater than","is greater than or equal to"],$ans[$b]);
+
+######################################
+#  Main text
+
+BEGIN_PGML
+Write out the meaning of each inequality.  
+
+    \a) [`[$display_ineq[$a]]`]
+    
+        Answer:  [`[$m[$a]]`] [____]{$ans_a} [`[$n[$a]]`] 
+        
+    \b) [`[$display_ineq[$b]]`]
+    
+        Answer:  [`[$m[$b]]`] [____]{$ans_b} [`[$n[$b]]`] 
+
+END_PGML
+
+######################################
+# Solution
+
+BEGIN_PGML_SOLUTION
+
+\a)  [`[$m[$a]]`] [$ans_a] [`[$n[$a]]`] 
+
+\b) [`[$m[$b]]`] [$ans_b] [`[$n[$b]]`] 
+END_PGML_SOLUTION
+
+;
+ENDDOCUMENT();

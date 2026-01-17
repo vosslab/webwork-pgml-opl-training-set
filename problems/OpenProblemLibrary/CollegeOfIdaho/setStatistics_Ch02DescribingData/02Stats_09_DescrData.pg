@@ -1,0 +1,65 @@
+## DESCRIPTION
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Summary statistics)
+## Institution(The College of Idaho)
+## Author(R Cruz, L Danielson, J Guild)
+## MLT(stat-des-five-num)
+## Level(2)
+## MO(1)
+## TitleText1('The Basic Practice of Statistics')
+## AuthorText1('David Moore')
+## EditionText1('5e')
+## Section1('2')
+## Problem1('')
+## KEYWORDS('statistics', 'quartile', 'Q1', 'Q2','five number summary', 'median')
+
+# Updated 2025.04 by Peter Staab (Fitchburg State University).  Converted to PGML,
+# and added a solution.
+
+DOCUMENT();    # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGstatisticsmacros.pl', 'PGcourse.pl');
+
+$a1 = Real(random(19, 25, 1));
+
+@p = map { random($a1 - 5, $a1 + 5) } (1 .. 10);
+
+($min, $Q1, $median, $Q3, $max) = five_point_summary(@p);
+
+BEGIN_PGML
+Find the five-number summary for the following 10 values:
+
+[``` [@ join(', ', @p)@] ```]
+
+*NOTE:* Different books define the word "quartile" in different ways which can lead to somewhat different results.   In this exercise we define the first quartile to be the median of the bottom half of the data set, and the third quartile to be the median of the top half.  
+
+a) Find the minimum: [_]{$min}{5}
+
+b) Find [`Q_{1}`]: [_]{$Q1}{5}
+
+c) Find the median: [_]{$median}{5}
+
+d) Find [`Q_{3}`]: [_]{$Q3}{5}
+
+e) Find the maximum: [_]{$max}{5}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+First, it is helpful to have the data sorted or 
+
+[``` [@ join(', ', num_sort(@p)) @] ```]
+
+a) min = [$min]
+
+b) [`Q_1`] is the median of the first half of the data or [$Q1]
+
+c) The median is the middle value of [$median]
+
+d) [`Q_3`] is the median of the  top half of the data or [$Q3]
+
+e) max = [$max]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

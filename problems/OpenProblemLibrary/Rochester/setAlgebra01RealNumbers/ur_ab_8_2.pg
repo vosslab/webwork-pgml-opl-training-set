@@ -1,0 +1,56 @@
+## DESCRIPTION
+## Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Absolute value expressions and functions)
+## DBsection(Absolute value inequalities)
+## Institution(Rochester)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.2')
+## Problem1('39 35')
+## KEYWORDS('algebra', 'inequality')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("Interval");
+
+$a = random(2,5,1);
+$b = random(-5,5,1);
+$c = random(3,10,1);
+$ab = $a*$b;
+$ac = $a*$c;
+
+$ans = Interval(-$b-$c,-$b+$c);
+
+BEGIN_PGML
+The set of [`x`] that satisfy the inequality [`` |[$a] x+[$ab]|<[$ac] ``] is an interval on the real number line.  Write this interval in *interval notation*.  [@ helpLink("interval") @]*
+
+    The interval is [_]{$ans}{15}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The inequality [`|[$a] x+[$ab]|<[$ac]`] means
+    [`-[$ac] < [$a] x+[$ab] < [$ac] `].    
+Subtract [$ab]    
+    [``\begin{gathered} -[$ac]-[$ab] < [$a] x < [$ac]-[$ab] \\
+    [@ -$ac-$ab @] < [$a] x < [@ $ac-$ab @] \end{gathered}``]    
+then divide through by [$a] to obtain
+    [`[@ -$c-$b @] <  x < [@ $c-$b @] `].    
+Thus [`x`] is in the interval [`[$ans]`]. 
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

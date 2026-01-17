@@ -1,0 +1,55 @@
+##DESCRIPTION
+## Solve a linear equation
+
+##ENDDESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(Solve)
+## Level(5)
+## MO(1)
+## TitleText1('Essentials of Intermediate Algebra')
+## AuthorText1('Blitzer')
+## EditionText1('1')
+## Section1('1.4')
+## Problem1('')
+## KEYWORDS('linear equations','solving equations')
+## Date: 2007/08
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+$time  = random(10, 15, 1);
+$money = 165 * $time + 2771;
+
+$year = Compute(1996 + $time);
+
+BEGIN_PGML
+The average cost of tuition and fees at public four year colleges in the
+United States can be modeled by the formula
+[``` T = 165x+2771, ```]
+where _T_ represents the average cost of tuition and fees for the school
+year ending _x_ years after 1996.  Use the formula to determine the year
+when tuition and fees at public U.S. colleges average $[$money].
+
+(Note: Give the year. For example, if you calculate that the answer is 9 years
+after 1996, then enter _2005_.)
+
+Answer: [_]{$year}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+In this case, the value of [`T`] is given by [$money] and then we solve:
+[``` [$money] = 165 x + 2771 ```]
+
+Subtract 2771 from both sides:
+
+[```[$money-2771] = 165 x ```]
+and divide by 165 to get
+[```[@($money-2771)/165@] = x ```]
+and add this value to 1996 to get that the year the average tuition reached $[$money] is [$year].
+END_PGML_SOLUTION
+ENDDOCUMENT();

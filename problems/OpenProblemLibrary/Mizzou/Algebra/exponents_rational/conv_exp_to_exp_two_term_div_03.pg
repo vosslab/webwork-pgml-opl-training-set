@@ -1,0 +1,86 @@
+# DESCRIPTION
+# 
+# ENDDESCRIPTION
+
+## DBsubject(Algebra)
+## DBchapter(Properties of exponents, rational exponents and radicals)
+## DBsection(Properties of rational exponents and radicals)
+## MO(1)
+## Institution(University of Missouri-Columbia)
+## Author(Rick Lynch)
+## MLT(add_fraction_exponents)
+## Level(2)
+
+###########################################################################
+# initialization 
+###########################################################################
+DOCUMENT();
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "contextFraction.pl",
+  "PGcourse.pl",
+);
+
+$showPartialCorrectAnswers = 1;
+
+###########################################################################
+# setup contexts and variables 
+###########################################################################
+Context("Fraction-NoDecimals");
+@vars = ("x","y","z","a","b","c","p","q","r");
+$ch = random(0,scalar(@vars)-1,1);
+$var = $vars[$ch];
+
+$r = random(2,3);
+do {$a = random(2,13)} until (gcd($a,$r) == 1);
+do {$b = $a + non_zero_random(-4*$r,4*$r)} until ($b > 0);
+
+$ans = Fraction($a - $b, $r);
+
+$case = random(0,1,1);
+if ($case == 0) {
+  $expression = "\displaystyle \frac{ \left($var^{$a}\right)^{1/$r}}{$var^{$b/$r}}";
+} else {
+  $expression = "\displaystyle \frac{ $var^{$a/$r}}{\left($var^{$b}\right)^{1/$r}}";
+}
+
+
+###########################################################################
+# state the problem 
+###########################################################################
+BEGIN_PGML
+Simplify and write the following as a power of [`[$var]`] using a single rational exponent. 
+
+If    
+    [`[$expression] = [$var]^m `]    
+then     
+    [`m = `] [_]{$ans->cmp(studentsMustReduceFractions=>1)}{5}
+END_PGML
+
+
+BEGIN_PGML_SOLUTION
+Recall the properties of exponents:
+
+[``\frac{x^a}{x^b} = x^{a-b}``]
+
+and 
+
+[`` (x^m)^p = x^{mp}``]
+
+Using these properties, we can simplify the expression:
+
+[`\begin{aligned}
+[$expression] &= \frac{[$var]^{[$a]/[$r]}}{[$var]^{[$b]/[$r]}}\\
+&=[$var]^{\frac{[$a]}{[$r]} - \frac{[$b]}{[$r]}} \\
+&= [$var]^{[$ans]}
+\end{aligned}`]
+
+which  means [`m = [$ans]`].
+END_PGML_SOLUTION
+
+
+
+
+
+ENDDOCUMENT();

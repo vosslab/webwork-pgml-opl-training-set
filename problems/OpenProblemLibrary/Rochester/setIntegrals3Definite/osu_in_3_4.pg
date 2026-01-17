@@ -1,0 +1,41 @@
+## DESCRIPTION
+## Calculus
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/26/06
+
+## DBsubject(Calculus - single variable)
+## DBchapter(Integrals)
+## DBsection(Definite integrals (without trigonometric functions))
+## Institution(OSU)
+## MLT(DefIntPowerEndptParameter)
+## MLTleader(1)
+## Level(3)
+## TitleText1('Calculus: Early Transcendentals')
+## AuthorText1('Rogawski')
+## EditionText1('1')
+## Section1('5.3')
+## Problem1('47')
+## KEYWORDS('Calculus', 'Riemann Integral','Integral', 'Definite')
+
+## Updated 2025.02 by Peter Staab, switch to PGML and add a solution.
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context('Numeric')->variables->are(b => Real);
+
+$a = random(3, 9);
+$b = $a + 1;
+$c = (2**$b - 1) / $b;
+
+BEGIN_PGML
+Evaluate the following.
+
+[`` \int_b^{2b} x^{[$a]}\, dx ``] =[_]{Compute("$c*b^$b")}
+
+**Note:** the result should be a function of [`b`].
+END_PGML
+
+ENDDOCUMENT(); 

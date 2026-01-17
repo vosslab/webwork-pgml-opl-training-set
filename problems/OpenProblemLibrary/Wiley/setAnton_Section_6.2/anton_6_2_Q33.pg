@@ -1,0 +1,122 @@
+## DBsubject(Calculus - single variable)
+## DBchapter(Applications of integration)
+## DBsection(Volumes by disks)
+## Institution(John Wiley & Sons)
+## Author(Brian Burns)
+## Level(4)
+## MO(1)
+## TitleText1('Calculus')
+## AuthorText1('Anton')
+## EditionText1('9')
+## Section1('6.2')
+## Problem1('33')
+#***************************************************************
+#   Initialization - Load standard PG and MathObjects macros   
+#***************************************************************
+DOCUMENT();
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "PGgraphmacros.pl",
+  "contextFraction.pl",
+  "PGtikz.pl",
+  "PGcourse.pl"
+);
+#
+# Set Up - Set up variable context and formulation of problem
+
+Context("Fraction");
+#**********************************
+
+#***********************************
+$a=random(1,4,1);
+$b=random(2,4,1);
+# (x0,y0) = point where the two curves intersect
+$x0=Fraction($a,$b-1); #x0
+$y0sq = Fraction($a*$b,$b-1); # y0^2 
+
+#for solution
+$VolS1coeff=Compute("(1/2)*($a/($b-1))^2+$a^2/($b-1)+$a^2/2");
+$VolS2coeff=Compute("($b/2)*($a/($b-1)^2)");
+$VolCoeff=$VolS1coeff-$VolS2coeff;
+#answer
+$ans=$VolCoeff*Compute("pi");
+
+# *********************
+#   Problem Statement
+# *********************
+
+BEGIN_PGML
+Find the volume of the solid [`S`] generated when the region enclosed by the curves [`y = \sqrt{x+[$a]}`] , [`y=\sqrt{[$b]x}`] and [`y=0`] is revolved about the [`x`]-axis. (Hint: work the problem in two parts.)
+
+    Volume of solid = [_]{$ans} cubic units
+END_PGML
+
+# To get a nice looking plot, instead of the curves in the problem
+# plot the curves x=y^2-2 and x=y^2/3
+# They intersect at (1,sqrt{3})
+
+$sqrt3=sqrt(3); # y coordinate of intersection on plot
+$sqrt3d2 = sqrt(3/2)/2;
+
+#label for intersection on plot
+$x0_str = $x0->string;
+$y0sq_str= $y0sq->string;
+
+
+$graph_image = createTikZImage();
+$graph_image->tikzLibraries("arrows.meta");
+$graph_image -> BEGIN_TIKZ
+%\draw[help lines] (-2,-1) grid (3,3);
+\draw[thin, domain=0:2, variable=\y] plot(\y*\y-2,\y);
+\draw (-2,0) node [anchor=north]{\(-$a\)};
+\draw[thin, domain=0:2, variable=\y] plot(\y*\y/3,\y);
+\draw[-Stealth, thin] (-2.5,0)--(2.5,0) node[anchor=west]{\(x\)};
+\draw[-Stealth,thin]  (0,-0.5)--(0,2) node[anchor=south]{\(y\)};
+\draw[fill=black] (1,$sqrt3) circle  (0.05);
+\draw (1, $sqrt3-0.1) node[anchor=west]{\(\ ($x0_str,\sqrt{$y0sq_str})\)};
+\draw (-5/4,$sqrt3/2) node[anchor=east]{\(y_1=\sqrt{x+$a}\ \)};
+\draw (1/4,$sqrt3/2) node[anchor=west]{\(y_2=\sqrt{$b x}\)};
+END_TIKZ
+
+
+BEGIN_PGML_SOLUTION
+The curves [`y = \sqrt{x+[$a]}`] and [`y = \sqrt{[$b]x}`] intersect where
+
+    [`` \begin{gathered} x+[$a] = [$b]x \\
+    [$a]=[@ $b-1@] x \\
+    [$x0] = x \\
+    y=\sqrt{[$b]x} = \sqrt{[$y0sq]} 
+    \end{gathered} ``]
+    
+The first curve [`y_1 = \sqrt{x+[$a]}`] is defined where [`x \geq -[$a]`].  The second curve [`y_2=\sqrt{[$b]x}`] is defined where [`x\geq 0`].  The figure shows the region enclosed by the two curves and the [`x`]-axis.  
+
+>> [@ image($graph_image, width => 400, tex_size => 600) @]* <<
+
+>> (Sketch is not drawn to scale)<<
+
+
+Let [`S_1`] be the solid obtained by revolving around the [`x`]-axis the region enclosed by the first curve [`y_1 = \sqrt{x+[$a]}`], the vertical line [`x=[$x0]`], and the [`x`]-axis.  
+
+Let [`S_2`] be the solid obtained by revolving around the [`x`]-axis the region enclosed by the second curve [`y_2 = \sqrt{[$b]x}`], the vertical line [`x=[$x0]`], and the [`x`]-axis.  
+
+The solid [`S`] is obtained by removing [`S_2`] from [`S_1`].  Therefore
+
+    volume([`S`]) = volume([`S_1`]) - volume([`S_2`])
+
+is the answer to this problem:  
+
+    volume([`S_1`]) = [``\pi\int_{-[$a]}^{[$x0]} y_1^2\; dx = \pi\int_{-[$a]}^{[$x0]} x+[$a]\;dx = \left.\pi\Big(\frac{x^2}{2} + [$a]x\Big)\right|_{-[$a]}^{[$x0]} = [$VolS1coeff] \pi ``]
+
+    volume([`S_2`]) = [``\pi\int_{0}^{[$x0]} y_1^2 \;dx = \pi\int_{0}^{[$x0]} [$b]x \;dx = \left.[$b]\pi \frac{x^2}{2}\right|_0^{[$x0]} = [$VolS2coeff] \pi ``]  
+
+    volume([`S`]) = volume([`S_1`])-volume([`S_2`]) = [`[$VolCoeff]\pi`]  cubic units 
+   
+*Remark*  One can ignore the hint and solve this problem using the method of cylindrical shells.  Solving for [`x`] one has [`x=y^2-[$a]`] on the first curve and [`x=y^2/[$b]`] on the second curve as [`y`] runs from [`0`] to [`\sqrt{[$y0sq]}`] so the cylindrical shells method says 
+
+    volume([`S`])=[``2\pi \int_0^{\sqrt{[$y0sq]}} \Big(\frac{y^2}{[$b]}-(y^2-[$a])\Big) y\; dy``]
+    
+Of course the answer is the same as before.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

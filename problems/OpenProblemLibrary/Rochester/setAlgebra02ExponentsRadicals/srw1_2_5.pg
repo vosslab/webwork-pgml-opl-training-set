@@ -1,0 +1,55 @@
+## DESCRIPTION
+## Algebra: Basic Algebra, Exponents and Radicals
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Evaluating expressions)
+## Date(6/3/2002)
+## MLT(Fractions_raised_to_power)
+## Level(2)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.3')
+## Problem1('5')
+## KEYWORDS('algebra')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+$showPartialCorrectAnswers = 1;
+
+$a = random(2,4,1); 
+$b = random(-4,-2,1); 
+$c = random(2,5,1); 
+
+$ans = ($a/$b)**$c;
+
+BEGIN_PGML
+Evaluate the expression [`` \left( \frac{[$a]}{[$b]} \right)^{[$c]} ``].
+
+Your answer may be a simplified fraction, or a decimal number accurate to five decimal places, but other algebraic expressions are not allowed.
+
+    [`` \left( \frac{[$a]}{[$b]} \right)^{[$c]} \ ``] = [_]{num_cmp($ans, mode=>"frac")}{10}
+END_PGML
+
+$d = gcd($a,$b);
+$num = $a/$d;
+$den = -$b/$d;
+
+BEGIN_PGML_SOLUTION 
+[`` \left( \frac{[$a]}{[$b]} \right)^{[$c]} 
+  = \left(\frac{-[$num]}{[$den]}\right)^{[$c]} = \frac{(-[$num])^{[$c]}}{[$den]^{[$c]}}   
+ = \frac{[@ (-$num)**$c @]}{[@ $den**$c @]} ``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
+

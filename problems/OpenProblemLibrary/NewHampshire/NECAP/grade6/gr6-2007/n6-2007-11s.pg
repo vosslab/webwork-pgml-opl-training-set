@@ -1,0 +1,30 @@
+#DESCRIPTION
+##Type of
+#ENDDESCRIPTION
+## DBsubject(Geometry)
+## DBchapter(Shapes)
+## DBsection(Perimeter)
+## Level(3)
+## Static(1)
+## MO(1)
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+$x   = random(5, 9);
+$xsq = $x**2;
+
+BEGIN_PGML
+A square garden has [$xsq] square feet.  So the perimeter of the garden must be
+[_]{Real(4*$x)} feet
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Since the garden is square,each side must be [`\sqrt{[$xsq]}=[$x]`] feet.
+
+The perimeter is the sum of the lengths of the four [$x] foot sides so it is [@ 4*$x @] feet.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
+

@@ -1,0 +1,116 @@
+##DESCRIPTION
+## Word problem
+## 
+##ENDDESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(Percent_word_problems)
+## Level(5)
+## MO(1)
+## TitleText1('Essentials of Intermediate Algebra')
+## AuthorText1('Blitzer')
+## EditionText1('1')
+## Section1('1.5')
+## Problem1('')
+## KEYWORDS('mathematical models','problem solving','formulas','algebra')
+## Date: 2007/09
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "parserImplicitPlane.pl",
+  "contextCurrency.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
+
+######################################
+#  Setup
+
+Context("Currency");
+
+$ans_b = random(90,130,1);
+$b = random(10,25,5);
+$a = $ans_b*(1+ $b/100);
+$price = Currency($a);
+$string = "ddd.cc";
+$ans_b = Currency($ans_b); # answer for part b)
+
+Context("ImplicitPlane");
+Context()->variables->are(x=>"Real");
+
+$p = $b/100;
+$ans_str = "x + $p * x = $a";
+
+# Context("ImplicitPlane") enables Formula objects to hold equations.
+# The Formula object performs all the type checks on the 
+# student's answer before it reaches the custom pickyChecker. 
+# See example below.
+
+# create a pickyChecker that we can use on a Formula object
+
+sub pickyChecker {
+  my $cor_str = shift ;  # the correct answer string
+  return sub {
+    my ($correct, $student, $ansHash) = @_;
+    my ($cor_left, $cor_right) = split "=", $cor_str;
+    my $stu_str = $ansHash->{original_student_ans};
+    ${$ansHash}{student_ans}=$stu_str;
+    ${$ansHash}{preview_latex_string}=$stu_str;
+    ${$ansHash}{correct_ans_latex_string}=$cor_str;
+    my ($stu_left, $stu_right) = split "=", $stu_str;
+    $cor_left = Formula($cor_left);
+    $cor_right = Formula($cor_right);
+    $stu_left = Formula($stu_left);
+    $stu_right = Formula($stu_right);
+    if ( ($cor_left == $stu_left && $cor_right == $stu_right) ||
+         ($cor_right == $stu_left && $cor_left == $stu_right)
+       ){ return 1; }
+    else { return 0; }
+  }
+}
+
+# answer for part a)
+
+$ans_a = Formula($ans_str)->cmp(checker=>pickyChecker($ans_str));
+
+######################################
+#  Main text
+
+BEGIN_PGML
+The selling price of a textbook is [$price].  If the bookstore's markup is [$b]% of the bookstore's cost, what was the bookstore's cost for the textbook?
+
+a) Write an equation to model the problem.  Use _x_ to
+represent the bookstore's cost (in dollars).  Your answer must strictly model the wording of this problem.
+
+    Answer: [_______________]{$ans_a}
+
+b) Solve the equation to find the bookstore's cost. (Your answer should be in the form _$[$string]_. In other words it should include dollars and cents).
+
+    Answer: [____________]{$ans_b}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Part a)
+    (selling price) = (store's cost) + (markup)    
+If the store's cost is x and its markup is ([$b]% of x)=([$p]x) then    
+    (selling price) = x + ([$p]x)    
+so    
+    [``[$a] = x + [$p]x ``]
+
+Part b)
+    [``\begin{gathered} [$a] = x + [$p]x \\ 
+    [$a] = (1+[$p])x = [@ 1+$p @]x \\ 
+    [$a]/[@ 1+$p @]= x \\ 
+    [@ $a/(1+$p) @] = x \end{gathered} ``].    
+Thus the bookstore's cost is [$ans_b] for a textbook.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

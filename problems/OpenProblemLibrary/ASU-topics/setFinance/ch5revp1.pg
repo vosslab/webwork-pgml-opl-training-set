@@ -1,0 +1,48 @@
+## DESCRIPTION
+## Applied Mathematics
+## ENDDESCRIPTION
+
+## Tagged by XW
+
+## DBsubject(Financial mathematics)
+## DBchapter(Interest)
+## DBsection(Compound interest)
+## Institution(ASU)
+## Level(3)
+## KEYWORDS('percent', 'mathematics for business', 'algebraic expression')
+
+## Updated 2025.02 by Peter Staab, switch to PGML
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context('LimitedNumeric')
+    ->flags->set(tolType => 'digits', tolerance => 2, tolTruncation => 1);
+
+$A = random(4, 20) * 100;
+$b = random(2, 9);
+
+$c = random(4, 15);
+$r = $c / 100;
+
+$n = 12 * $b;
+$i = $r / 12;
+$P = Real($A / ((1 + $i)**$n));
+
+BEGIN_PGML
+Find the principal needed to get  $[$A] in [$b] years at [$c]% compounded monthly.
+
+Principal = $[_]{$P}
+END_PGML
+
+BEGIN_PGML_HINT
+Use the compound interest formula [`A = P(1+i)^n `] to find [`P`].
+END_PGML_HINT
+
+BEGIN_PGML_SOLUTION
+Use the compound interest formula [`A = P(1+i)^n `]
+with [` A= [$A]`], [`i = \frac{[$r]}{12}`], [`n=[$n] `]
+to find [`P`].  The result is $[@sprintf("%.2f", $P)@].
+END_PGML_SOLUTION
+ENDDOCUMENT();    # This should be the last executable line in the problem.

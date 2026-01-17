@@ -1,0 +1,83 @@
+##DESCRIPTION
+#
+# File Created: 5/13/2008
+# Last Modified: 11/17/2011
+# Problem Author: Darwyn Cook
+# WeBWorK Entry: 
+# Location: Alfred University
+#
+##ENDDESCRIPTION
+
+##
+
+## DBsubject(Calculus - single variable)
+## DBchapter(Infinite sequences and series)
+## DBsection(Strategy for testing series)
+## Date(11/17/2010)
+## Institution(Alfred University)
+## Author(Darwyn Cook)
+## MLT(which_tests_apply)
+## Level(3)
+## Static(1)
+## MO(1)
+## TitleText1('Calculus: with Early Transcendentals')
+## AuthorText1('Anton')
+## EditionText1('8')
+## Section1('.')
+## Problem1('')
+
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl", 
+  "parserCheckboxList.pl", 
+  "parserPopUp.pl",
+  "PGcourse.pl"
+);
+
+$showPartialCorrectAnswers = 0;
+
+$test = CheckboxList(
+  [ "Divergence Test",
+    "Geometric Series Test",
+    "Integral Test",
+    "P-Series Test",
+    "Comparison Test",
+    "Limit Comparison Test",
+    "Ratio Test",
+    "Alternating Series Test"
+  ],
+  [2,3]
+);
+
+$convergeQ = PopUp(
+  ["??", "Yes, it converges.","No, it diverges.", "The test(s) fail to decide this."],
+  "Yes, it converges."
+);
+
+BEGIN_PGML
+Consider the infinite series     
+    [`` \sum_{n=1}^{\infty} \frac{1}{n^2} ``]    
+Which of the following convergence tests is a good way to decide whether or not this series converges?  Check all that apply.    
+    [_]{$test}
+
+Does the series converge?    
+    [_]{$convergeQ}
+END_PGML 
+
+BEGIN_PGML_SOLUTION
+* [``0=\lim_{n\to\infty} 1/n^2 \ ``] so the "divergence test" does not apply.
+* Our series is not a geometric series.
+* Our series is a series of positive terms and [``\int_1^\infty 1/x^2\; dx < \infty ``] so the integral test says that the series converges. 
+* Our series is a "p-series" with [`p=2`] which is larger than 1, so the "P-series test" says that the series converges.
+* To use the "comparison test" we'd need another series [``\ \sum_{n=1}^{\infty} b_n \ ``] that satisfies the criteria for the comparison test, and where it's easier to decide the convergence or divergence of this series than it is for 
+our series.  I can't think of any good candidates for the series [``\ \sum_{n=1}^{\infty} b_n``], can you?
+* The "limit comparison test" has the same issue as the "comparison test".
+* [``\lim_{n\to\infty} \frac{1/(n+1)^2}{1/n^2} = 1 ``] so the "ratio test" does not yield any useful information.
+* Our series is not an alternating series.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

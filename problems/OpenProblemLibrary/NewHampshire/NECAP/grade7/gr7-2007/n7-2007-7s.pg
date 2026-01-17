@@ -1,0 +1,40 @@
+## DESCRIPTION
+##  Convert the length of a couch from inches to feet.
+## ENDDESCRIPTION
+
+## DBsubject(Arithmetic)
+## DBchapter(Units)
+## DBsection(Conversions)
+## Level(3)
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',   'PGML.pl',
+    'randomPerson.pl', 'contextFraction.pl',
+    'PGcourse.pl'
+);
+
+$showPartialCorrectAnswers = 1;
+Context("LimitedProperFraction");
+
+$p = randomPerson();
+$l = random(65, 92);
+
+$length = Fraction($l, 12)->cmp(requireProperFractions => 1);
+
+BEGIN_PGML
+[$p]'s couch is [$l] inches long.
+
+How long is [$p->their] couch in feet?  [___]{$length}
+
+Note: the answer should be as a mixed number with reduced fractions. 
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+[`87=7\times 12 +3`] so the couch is [`7 \frac{3}{12}=7 \frac{1}{4}`] feet long.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
+

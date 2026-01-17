@@ -1,0 +1,83 @@
+## DESCRIPTION
+## Radicals and Rational Exponents: Rational Exponents
+## ENDDESCRIPTION
+
+
+## Author1('David Covert')
+## Author2('Teri Christiansen')
+## Author3('Rick Lynch')
+## DBsubject(Algebra)
+## DBchapter(Properties of exponents, rational exponents and radicals)
+## DBsection(Properties of rational exponents and radicals)
+## MO(1)
+## Date(Spring 2012)
+## Institution(University of Missouri)
+## Level(2)
+## TitleText1('College Algebra')
+## AuthorText1('Beecher, Penna, Bittinger')
+## EditionText1('4')
+## Section1('.7')
+## Problem1('')
+## KEYWORDS('radical expression', 'rational powers')
+
+
+##################################
+#  Initialization
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "contextFraction.pl",
+  "PGcourse.pl",
+);
+
+###################################
+# Setup
+
+Context("Numeric")->variables->add(
+y=>"Real",
+t=>"Real",
+s=>"Real",
+u=>"Real",
+v=>"Real",
+p=>"Real",
+q=>"Real",
+r=>"Real",
+w=>"Real",
+z=>"Real");
+
+$var = list_random('p','q','r','u','v','x','y','z');
+
+do {
+  $n = random(3,10,1);
+  $m = random(3,20,1);
+} until (gcd($n, $m) != 1 && $n != $m);
+
+$tmp1 = min($n,$m);
+$tmp2 = max($n,$m);
+$n = $tmp1;
+$m = $tmp2;
+
+$expression = " $var^{$n/$m}";
+
+Context("Fraction-NoDecimals");
+$na = Fraction($n,gcd($n,$m));
+$ma = Fraction($m,gcd($n,$m));
+
+Context()->texStrings;
+BEGIN_PGML
+Simplify and convert to radical notation.   The answers [`m`] and [`n`] should be as small as possible. 
+
+If    
+    [`[$expression] = \sqrt[m]{[$var]^n}`]    
+then    
+    [`m = `] [_]{$ma->cmp(studentsMustReduceFractions=>1)}{5}  and [`n = `] [_]{$na->cmp(studentsMustReduceFractions=>1)}{5}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[``[$expression]=x^{[$na]/[$ma]}=\sqrt[[$ma]]{x^[$na]}``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

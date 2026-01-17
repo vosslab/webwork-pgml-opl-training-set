@@ -1,0 +1,82 @@
+## DESCRIPTION
+##  Statistics: Inference about Comparing Two Populations
+## ENDDESCRIPTION
+
+## naw tagged this problem.
+
+## DBsubject(Statistics)
+## DBchapter(Simple linear regression)
+## DBsection(Correlation)
+## Date(07/8/2005)
+## Institution(UVA)
+## Author(Nolan A. Wages)
+## Level(3)
+## TitleText1('Statistics for Management and Economics')
+## AuthorText1('Keller, Warrack')
+## EditionText1('6')
+## Section1('.')
+## Problem1('')
+## KEYWORDS('statistics', 'Two Populations', 'Inference')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+
+loadMacros(
+    'PGstandard.pl',         'PGML.pl',
+    'PGchoicemacros.pl',     'parserRadioButtons.pl',
+    'PGstatisticsmacros.pl', 'PGcourse.pl'
+);
+
+$showPartialCorrectAnswers = 0;
+
+@questions = (
+    'Which value of the coefficient of correlation r indicates a stronger '
+        . 'correlation than 0.65?',
+    'If the coefficient of correlation is 0.90, the percentage of the variation '
+        . 'in the dependent variable y that is explained by the variation in the '
+        . 'independent variable x is:',
+    'If the coefficient of determination is 0.975, then the slope of the regression line:',
+    'In regression analysis, if the coefficient of determination is 1.0, then:',
+    'Correlation analysis is used to determine:'
+
+);
+
+# Each element should be the list of options with the correct answer in the first slot.
+@options = (
+    [ '-0.75', '0.55', '0.60',  '-0.45' ],
+    [ '81%',   '90%',  '0.90%', '0.81%' ],
+    [
+        'could be either positive or negative',
+        'must be positive',
+        'must be negative',
+        'could be 0'
+    ],
+    [
+        'the sum of squares for error must be 0.',
+        'the sum of squares for error must be 1',
+        'the sum of squares for regression must be 1',
+        'the sum of squares for regression must be 0'
+    ],
+    [
+        'the strength of the relationship between x and y',
+        'the least squares estimates of the regression parameters',
+        'the predicted value of y for a given value of x',
+        'the coefficient of determination'
+    ]
+);
+
+@shuffle = random_subset(2, 0 .. 4);
+
+@rb = map { RadioButtons([ $options[$_] ], 0, labels => 'ABC') } @shuffle;
+
+BEGIN_PGML
+
+a) [$questions[$shuffle[0]]] 
+
+    [_]{$rb[0]}
+
+b) [$questions[$shuffle[1]]] 
+
+    [_]{$rb[1]}
+END_PGML
+
+ENDDOCUMENT();       # This should be the last executable line in the problem.

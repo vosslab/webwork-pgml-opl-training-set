@@ -1,0 +1,62 @@
+## DESCRIPTION
+## Functions: Input and Output
+## ENDDESCRIPTION
+
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Applications and models - general)
+## Date(01/01/10)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(4)
+## TitleText1('Functions Modeling Change')
+## AuthorText1('Connally')
+## EditionText1('3')
+## Section1('3.2')
+## Problem1('38')
+## KEYWORDS('exponential functions','annual growth rate','linear growth')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserPopUp.pl', 'PGcourse.pl');
+
+@shuffle = random_subset(5, 0 .. 4);
+%s       = map { $_ => $shuffle[$_] } 0 .. 4;
+%r       = reverse %s;
+
+@forms = (
+    'f(x) = A(2)^{-x}',
+    'f(x) = B(0.7)^x',
+    'f(x) = B(0.3)^x',
+    'f(x) = P_0 + r x',
+    'f(x) = P_0(1 + r)^x'
+);
+
+@dd = map { DropDown([ 'A' .. 'E' ], $r{$_}) } (0 .. 4);
+
+#  Main text
+
+BEGIN_PGML
+Match each story with a formula.  Assume that the
+constants [` P_0, r, b, A `] are all positive.
+
+1. The percent of a lake's surface covered by algae, initially at 35%, was halved each year since the passage of anti-pollution laws. [_]{$dd[0]}
+
+2. The amount of charge on a capacitor in an electric circuit decreases by 30% each second. [_]{$dd[1]}
+
+
+3. Polluted water is passed through a series of filters.  Each filter removes all but 30% of the remaining impurities from the water. [_]{$dd[2]}
+
+4. In 1950, the population of a town was 3000 people. Over the course of the next 50 years, the town  grew at a rate of 250 people per year. [_]{$dd[3]}
+
+5. In 1950, the population of a town was 3000 people. Over the course of the next 50 years, the town  grew at a rate of 10% per decade. [_]{$dd[4]}
+
+A. [`[$forms[$s{0}]]`]
+B. [`[$forms[$s{1}]]`]
+C. [`[$forms[$s{2}]]`]
+D. [`[$forms[$s{3}]]`]
+E. [`[$forms[$s{4}]]`]
+
+END_PGML
+
+ENDDOCUMENT();

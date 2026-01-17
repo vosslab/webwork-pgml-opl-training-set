@@ -1,0 +1,45 @@
+## DESCRIPTION
+##   Absolute Extrema
+## ENDDESCRIPTION
+
+## Tagged by nhamblet
+
+## DBsubject(Calculus - single variable)
+## DBchapter(Applications of differentiation)
+## DBsection(Global extrema)
+## Level(2)
+## TitleText1('Calculus: Early Transcendentals')
+## AuthorText1('Rogawski')
+## EditionText1('1')
+## Section1('4.2')
+## Problem1('35')
+## KEYWORDS('Optimization', 'Absolute', 'Extrema','Calculus','Derivatives')
+
+## Updated 2025.02 by Peter Staab, switch to PGML and add a solution.
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+$a1 = random(3,7);
+$coef2 =  2*$a1**2;
+$coef0 = random(1,11);
+
+$f = Compute("x^4 - $coef2 x^2 + $coef0")->reduce; 
+
+# df = 4x^3 - 4 $a1^2 x = 4x(x^2-a1^2) = 4x (x-a1)(x+a1)
+# critcal points at x=-a1, 0, a1
+
+# Set up the interval for min at x=a1 and max at d1
+$e1 = -$a1+1;
+$d1 = 2*$a1+1;
+
+BEGIN_PGML
+Consider the function [` f(x) = [$f]`] on the interval [` [$e1] \leq x \leq [$d1] `].
+
+a) [`f`] has an absolute minimum value of [_]{$f->eval(x => $a1)}
+
+b) [`f`] has an absolute maximum value of [_]{$f->eval(x => $d1)}
+END_PGML
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

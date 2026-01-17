@@ -1,0 +1,68 @@
+## DESCRIPTION
+##  Find the mean of a set of numbers.
+## ENDDESCRIPTION
+
+## Tagged by dgt5v
+
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Summary statistics)
+## Institution(ASU)
+## MLT(stat-des-mean)
+## MLTleader(1)
+## Level(2)
+## KEYWORDS('Statistics','Mean','measures','mode','median')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGstatisticsmacros.pl', 'PGcourse.pl');
+
+$showPartialCorrectAnswers = 1;
+
+$a1 = random(10, 20);
+$a2 = random(5,  25);
+
+@data = (
+    $a1, $a1, $a1, $a2,
+    random($a1 + 1, $a1 + 3),
+    random($a1 - 3, $a1 - 1),
+    random($a1 + 4, $a1 + 6),
+    random($a1 - 6, $a1 - 4)
+);
+
+@sdata = @data[ random_subset(8, 0 .. 7) ];
+
+($sum) = stats_SX_SXX(@data);
+$n = 8;
+
+$output = "";
+$output .= "x_{$_}= $sdata[$_-1], " for (1 .. 8);
+
+BEGIN_PGML
+For the given data, find [`  \Sigma x `],  [`n`], and [` \overline{x}`]:
+
+[``` [$output]```]
+
+a) [`\Sigma x=`][_]{Real($sum)}{10}
+
+b) [`n =`] [_]{Real($n)}{10}
+
+c) [` \overline{x} = `] [_]{Real($sum/$n)}{10}
+
+END_PGML
+
+BEGIN_PGML_HINT
+Recall that 
+- [`\Sigma x`] is the sum of all of the data.
+- [` n`] is the number of datapoints. 
+- [`\bar{x}`] is the mean.
+END_PGML_HINT
+
+BEGIN_PGML_SOLUTION
+
+a) [`\Sigma x = [$sum] `]
+b) [` n = [$n] `]
+c) [` \bar{x} = \frac{[$sum]}{[$n]} = [@ $sum/$n @] `]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();       # This should be the last executable line in the problem.

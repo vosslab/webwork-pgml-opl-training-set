@@ -1,0 +1,69 @@
+# WeBWorK problem written by Chris Hughes
+# Portland Community College
+
+# Template:
+
+#  Multiply the following numbers, writing your answer in scientific notation
+
+#       (a x 10^b)*(c x 10^d)
+
+#  We choose a and c are INTEGER on [1,10],
+#  b and d are INTEGER on [2,5].
+
+# Last updated: Jordan 8/4/13; Carl Yao, 7/03/13; G. Jennings 9/30/25
+# ENDDESCRIPTION
+
+## DBCCSS('8.EE.1','8.EE.3','8.EE.4')
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Scientific notation)
+## Institution(PCC)
+## Author(Alex Jordan, Carl Yao, Chris Hughes)
+## Level(3)
+## MO(1)
+## KEYWORDS('exponent','scientific','notation')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'contextScientificNotation.pl','PGcourse.pl');
+
+$a = random(2,9,1);
+$b = random(2,5,1);
+
+$c = $a;
+$c = random(2,9,1) while($c==$a);
+$d = random(2,5,1);
+
+Context("Numeric");
+
+#product
+$p = ($a*10**$b)*($c*10**$d);
+
+Context("ScientificNotation");
+#answer
+$ans = ScientificNotation($p);
+
+
+BEGIN_PGML
+Multiply the following numbers, writing your answer in scientific notation.
+
+     [`([$a]\times 10^{[$b]})([$c]\times 10^{[$d]})=`][__________________]{$ans}
+
+END_PGML
+
+
+BEGIN_PGML_SOLUTION
+
+We multiply the 'numeric' parts and the 'exponent' parts as follows
+
+    [`
+           \begin{aligned}
+              ([$a]\times 10^{[$b]})([$c]\times 10^{[$d]})
+        &= [$a]\cdot [$c] \times 10^{[$b]+[$d]}\\
+        & = [$a*$c]\times 10^{[$b+$d]}[$solnString]**\\
+        &= [$ans]
+           \end{aligned}
+    `]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

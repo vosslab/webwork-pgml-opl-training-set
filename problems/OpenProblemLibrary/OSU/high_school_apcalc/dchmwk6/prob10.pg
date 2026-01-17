@@ -1,0 +1,45 @@
+## DESCRIPTION
+## Calculus
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 5/29/06
+
+## DBsubject(Calculus - single variable)
+## DBchapter(Applications of differentiation)
+## DBsection(Global extrema)
+## Institution(OSU)
+## Level(3)
+## KEYWORDS('calculus','critical point','minimum','maximum')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGchoicemacros.pl', 'PGcourse.pl');
+
+$showPartialCorrectAnswers = 1;
+
+$m = random(2, 9);
+$n = 2 * random(2, 5) - 1;
+$a = -random(int($n / $m) + 1, int($n / $m) + 3);
+$b = random(1, 4);
+
+##max
+$x1 = $b;
+$y1 = $x1**$n * exp($m * $x1);
+##min
+$x2 = -$n / $m;
+$y2 = $x2**$n * exp($m * $x2);
+
+BEGIN_PGML
+Consider the function [` f(x) = x^{[$n]}e^{[$m] x}, \quad [$a] \leq x \leq
+[$b] `].
+
+a) The absolute maximum value is [_]{Real($y1)}{20}
+
+b) This occurs at [` x `] equals [_]{Real($x1)}{20}
+
+c) The absolute minimum value is [_]{Real($y2)}{20}
+
+d) This occurs at [` x `] equals [_]{Real($x1)}{20}
+END_PGML
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

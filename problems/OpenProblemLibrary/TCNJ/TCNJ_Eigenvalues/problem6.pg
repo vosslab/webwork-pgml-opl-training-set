@@ -1,0 +1,106 @@
+## DESCRIPTION
+## Linear Algebra
+## ENDDESCRIPTION
+
+## Tagged by tda2d
+
+## DBsubject(Linear algebra)
+## DBchapter(Eigenvalues and eigenvectors)
+## DBsection(Computing eigenvalues and eigenvectors)
+## Institution(TCNJ)
+## Level(2)
+## TitleText1('Linear Algebra with Applications')
+## AuthorText1('Jeffrey Holt')
+## EditionText1('1')
+## Section1('6.1')
+## Problem1('')
+## KEYWORDS('eigenvalues' 'eigenvectors')
+
+
+DOCUMENT();        # This should be the first executable line in the problem.
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserPopUp.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+ 
+# Do not show which answers are incorrect.
+$showPartialCorrectAnswers = 1;
+
+Context("Matrix");
+
+# randomized invertible matrix
+
+sub randInvMat{
+  my $P = Matrix(
+    [ [non_zero_random(-2,2,1), 0, 0, 0],
+      [random(-1,1,2), random(-1,1,2), 0, 0],
+      [random(-1,1,2), 0, random(-1,1,2), 0],
+      [random(-1,1,2), 0, 0, random(-1,1,2)]
+    ]
+  );
+  my $Q = Matrix(
+    [  [1, random(-1,1,2),random(-1,1,2), random(-1,1,2) ],
+       [0, 1, random(-1,1,2), random(-1,1,2) ],
+       [0, 0, 1, random(-1,1,2) ],
+       [0, 0, 0, 1]
+    ]
+  );
+  return $P*$Q;
+};
+
+# make four random matrices that have known eigenvalues
+
+for ($i=0; $i<4; $i++){
+    $eig2[$i] = (-4,-3,-2,2,3,4)[random(0,5,1)];
+    $eig1[$i] = random(-1,1,2);  
+    my $e = Matrix([ 
+      [ $eig1[$i], 0, 0, 0],
+      [ 0, $eig2[$i], 0, 0],
+      [ 0, 0, -$eig1[$i], 0],
+      [ 0, 0, 0, -$eig2[$i]]
+    ]);
+    my $A = randInvMat();
+    my $Ainv = $A->inverse;
+    $M[$i]=$A*$e*$Ainv;
+};
+
+$lambda[0]=$eig2[0]; 
+$choice[0]=DropDown(["Yes","No"],"Yes",placeholder=>"Select an answer");
+
+do {
+  $lambda[1]=random(-8,8,1);
+} until (abs($lambda[1]) != abs($eig2[1]) && abs($lambda[1]) != 1);
+$choice[1]=DropDown(["Yes","No"],"No",placeholder=>"Select an answer");
+
+$lambda[2]=$eig1[2];
+$choice[2]=DropDown(["Yes","No"],"Yes",placeholder=>"Select an answer");
+
+do {
+  $lambda[3]=random(-8,8,1);
+} until (abs($lambda[3]) != abs($eig2[3]) && abs($lambda[3]) != 1);
+$choice[3]=DropDown(["Yes","No"],"No",placeholder=>"Select an answer");
+
+# reindex to make questions appear in a random order
+
+@q = random_subset(4,(0,1,2,3));
+      
+BEGIN_PGML
+Determine if [`\lambda`] is an eigenvalue of the matrix [`A`]:
+
+[`A = [$M[$q[0]]],\quad \lambda=[$lambda[$q[0]]]\quad`][_____]{$choice[$q[0]]}
+
+[`A = [$M[$q[1]]],\quad \lambda=[$lambda[$q[1]]]\quad`][_____]{$choice[$q[1]]}
+
+[`A = [$M[$q[2]]],\quad \lambda=[$lambda[$q[2]]]\quad`][_____]{$choice[$q[2]]}
+
+[`A = [$M[$q[3]]],\quad \lambda=[$lambda[$q[3]]]\quad`][_____]{$choice[$q[3]]}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[`\lambda`] is an eigenvalue of [`A`] if and only if the matrix [`\lambda I - A`] is singular.  One may check for singularity by row reducing the matrix [`\lambda I - A`], or by computing its determinant, or some other convenient method.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

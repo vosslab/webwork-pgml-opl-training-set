@@ -1,0 +1,69 @@
+## DBsubject(Arithmetic)
+## DBchapter(Units)
+## DBsection(Conversions)
+## Institution(Louisiana Tech University)
+## Author(Niel Crews)
+## Level(2)
+## TitleText1('TBD')
+## AuthorText1('TBD')
+## EditionText1('TBD')
+## Section1('.')
+## Problem1('')
+## KEYWORDS('units','conversion')
+
+## NOTES : In this problem students will need to convert 
+## temperature between unit systems
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+# Now we do the randomization of variables, and other computations
+# as needed for this problem.  Sometimes we compute the answers here.
+
+@MATERIAL_ARRAY = ("A styrofoam plate","A plastic food storage container","Bullet-proof Lexan","An unscented beeswax candle");
+
+@TEMP_ARRAY = (165,180,265,145);
+
+$INDEX = random(0,3,1);
+
+$MATERIAL = $MATERIAL_ARRAY[$INDEX];
+
+$TEMPF = $TEMP_ARRAY[$INDEX];
+
+Context("Numeric");
+Context()->flags->set(
+  tolerance => 0.0025,
+  tolType => "relative",
+);
+
+$TEMPC = Real(($TEMPF - 32)/1.8);
+$TEMPK = Real($TEMPC + 273.15);
+$TEMPR = Real($TEMPF + 459.67);
+
+BEGIN_PGML
+[$MATERIAL] melts at [$TEMPF][`^\circ`]F. What is this temperature in
+
+    degrees Celsius? [_]{$TEMPC}{10} [`{}^\circ C`]
+
+    Kelvin? [_]{$TEMPK}{10} [`K`]
+
+    degrees Rankine? [_]{$TEMPR}{10} [`{}^\circ R`]
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Convert the Fahrenheit temp to the Celcius scale:
+
+    [`[$TEMPF] ^\circ F = ([$TEMPF]-32)/1.8 ^\circ C = [$TEMPC] ^\circ C`]
+
+Convert the Celcius temp to the Kelvin scale:
+
+    [`[$TEMPC] ^\circ C = ([$TEMPC] + 273.15) K = [$TEMPK] K`]
+
+Convert the Fahrenheit temp to the Rankine scale:
+
+    [`[$TEMPF] ^\circ F = ([$TEMPF]+459.67) ^\circ R = [$TEMPR] ^\circ R`]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

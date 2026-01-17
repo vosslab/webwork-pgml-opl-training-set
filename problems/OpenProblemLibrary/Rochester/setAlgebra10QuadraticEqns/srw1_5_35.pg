@@ -1,0 +1,56 @@
+##DESCRIPTION
+##  Algebra problem: complete the square of a quadratic equation
+##ENDDESCRIPTION
+
+## Tagged by sawblade
+
+## DBsubject(Algebra)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Completing the square)
+## Date(6/3/2002)
+## MLT(cts_monic)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('3.3')
+## Problem1('15')
+## KEYWORDS('algebra', 'completing the square')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+$showPartialCorrectAnswers = 1;
+
+Context("Numeric");
+
+$a1 = Real(random(1,9,1));
+$a1sq=$a1*$a1;
+$b1 = 2*$a1;
+$c1 = random(1,200,1);
+$d1 = $c1-$a1sq;
+
+BEGIN_PGML
+
+Complete the square. 
+
+    [``x^2+[$b1] x +[$c1]``]=[``\Big(x+``][_]{$a1}{20}[``\Big)^2+\ ``][_]{$d1}{20}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+In the polynomial [``x^2+[$b1] x +[$c1]``] the coefficient of [`x`] is [$b1].  Also [``[$b1]=2([$a1])``].  Thus 
+
+    [``(x+[$a1])^2=x^2+[$b1]x+[$a1sq]``],
+    
+and
+
+    [`` \Big(x+[$a1]\Big)^2-[$a1sq]=x^2+[$b1]x ``].
+
+so 
+    [``x^2+[$b1] x +[$c1]=\Big(x+[$a1]\Big)^2-[$a1sq]+[$c1]=\Big(x+[$a1]\Big)^2+([$d1])``]
+END_PGML_SOLUTION
+ENDDOCUMENT();        # This should be the last executable line in the problem.

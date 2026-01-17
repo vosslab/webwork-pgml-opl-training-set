@@ -1,0 +1,38 @@
+#DESCRIPTION
+## Determine if a variable is quantitative or categorical.
+##ENDDESCRIPTION
+
+## Tagged by Jonathan Baik
+## 2014-04-01
+
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Classifying data)
+## Date(05/02/2012)
+## Institution(University of BC)
+## Author(Lance R)
+## Level(2)
+## TitleText1('No Text')
+## AuthorText1('?')
+## EditionText1('?')
+## Section1('.')
+## Problem1('2')
+## KEYWORDS('statistics', 'multiple choice', 'variables')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserRadioButtons.pl', 'PGcourse.pl');
+
+$radio = RadioButtons([ 'quantitative', 'categorical', 'none of these' ], 0);
+
+BEGIN_PGML
+ What type of variable is _"monthly rainfall in Vancouver"_?
+  
+[_]{$radio}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Since rainfall is measured in inches or centimeters, it is a quantitative variable. 
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

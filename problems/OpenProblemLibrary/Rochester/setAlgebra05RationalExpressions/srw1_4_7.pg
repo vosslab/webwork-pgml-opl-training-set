@@ -1,0 +1,102 @@
+## DESCRIPTION
+## Algebra: Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Rational expressions: multiply, divide)
+## Date(6/3/2002)
+## MLT(RatExp1)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.5')
+## Problem1('8 9 5')
+## KEYWORDS('algebra', 'factoring', 'fractions')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+
+$showPartialCorrectAnswers = 0;
+
+$a1 = random(1,5,1);
+$a2 = $a1*$a1;
+$a3 = $a1*$a1*$a1;
+
+$t1 = 2*$a1;
+
+# questions, factored questions, answers
+@que = (); @fac = (); @ans = ();
+
+push @que, "\frac{x-$a1 }{x^2+$a2 } \cdot \frac{x+$a1 }{x^2-$a2 }";
+push @fac, "\frac{(x-$a1)(x+$a1)}{(x^2+$a2)(x-$a1)(x+$a1)}";
+push @ans, "\frac{1 }{x^2+$a2 } ";
+
+push @que, "\frac{x^2-$a2 }{x^3-$a3} ";
+push @fac, Formula("((x-$a1)(x+$a1))/((x-$a1)(x^2 + $a1 x + $a2))")->reduce->TeX;
+push @ans, Formula("(x+$a1)/(x^2+$a1 x+$a2)")->reduce->TeX;
+
+push @que, "\frac{x^2-$a2 }{x^2+$t1 x+$a2}";
+push @fac, "\frac{(x-$a1)(x+$a1)}{(x+$a1)^2}";
+push @ans, "\frac{x-$a1 }{x+$a1}";
+
+# Now randomize the question/factored question/answer triples:
+
+@slice = random_subset(3,(0..scalar(@que)-1));
+@que = @que[@slice];
+@fac = @fac[@slice];
+@ans = @ans[@slice];
+
+# select answers with pop-ups
+
+@pu=();
+push @pu, DropDown(["A","B","C"],"A");
+push @pu, DropDown(["A","B","C"],"B");
+push @pu, DropDown(["A","B","C"],"C");
+
+# permute the order in which questions are presented
+
+@perm = random_subset(3,(0..2));
+
+
+####################################################################
+
+BEGIN_PGML
+Match each expression 1, 2, or 3 with the letter A, B, or C labeling an equivalent expression.	
+
+All of your answers must be correct to receive credit.
+
+    [_]{$pu[$perm[0]]} 1. [``\ [$que[$perm[0]]]``]
+
+    [_]{$pu[$perm[1]]} 2. [``\ [$que[$perm[1]]]``]
+
+    [_]{$pu[$perm[2]]} 3. [``\ [$que[$perm[2]]]``]
+
+    A. [``[$ans[0]]``] 
+
+    B. [``[$ans[1]]``] 
+
+    C. [``[$ans[2]]``] 
+END_PGML
+
+BEGIN_PGML_SOLUTION
+1. [``[$que[$perm[0]]]=[$fac[$perm[0]]]=[$ans[$perm[0]]]``]
+
+2. [``[$que[$perm[1]]]=[$fac[$perm[1]]]=[$ans[$perm[1]]]``]
+
+3. [``[$que[$perm[2]]]=[$fac[$perm[2]]]=[$ans[$perm[2]]]``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

@@ -1,0 +1,53 @@
+##DESCRIPTION
+##  Middle School problem:
+##ENDDESCRIPTION
+
+## ProblemTester('Laura Travis')
+## Publisher('Prentice Hall')
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Summary statistics)
+## Date(9/1/2012)
+## Institution(Mississippi College)
+## Author(John Travis)
+## Level(2)
+## MO(1)
+## TitleText1('Pre-Algebra')
+## AuthorText1('')
+## EditionText1('')
+## Section1('.')
+## Problem1('')
+## KEYWORDS('prealgebra','common core')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGstatisticsmacros.pl', 'PGcourse.pl');
+
+Context('LimitedNumeric');
+
+@temps = (
+    non_zero_random(-20, 20),
+    non_zero_random(-20, -4),
+    non_zero_random(-16, 16),
+    non_zero_random(-16, 16),
+    non_zero_random(-16, 16),
+    non_zero_random(-16, 16)
+);
+
+$mean = stats_mean(@temps);
+
+BEGIN_PGML
+
+The average of [` [@ join(', ', map { "$_^{\\circ}"} @temps) @] `]
+is [_]{Real($mean)}
+END_PGML
+
+$sum = 0;
+$sum += $_ for (@temps);
+BEGIN_PGML_SOLUTION
+The sum of the numbers is [$sum], therefore the average or mean is 
+
+[``` \frac{[$sum]}{6} = [$mean] ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,59 @@
+#DESCRIPTION
+##  Algebra problem: Coordinates and Graphs
+##ENDDESCRIPTION
+
+## pphi tagged and PAID on 12-12-2003
+
+## DBsubject(Algebra)
+## DBchapter(Cartesian coordinate system)
+## DBsection(Graphs of equations)
+## Date(6/3/2002)
+## MLT(Is_graph_symmetric)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## Static(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('2.2')
+## Problem1('41')
+## KEYWORDS('algebra', 'graph')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
+);
+
+$showPartialCorrectAnswers = 0;
+
+Context("Numeric");
+
+$xsymm = DropDown(["Yes","No"],"No");
+$ysymm = DropDown(["Yes","No"],"Yes");
+$osymm = DropDown(["Yes","No"],"No");
+
+BEGIN_PGML
+For the graph of the equation [``\ y=x^4+x^2``],
+answer the following questions:
+
+    a) Is the graph symmetric with respect to the [`x`]-axis? [_]{$xsymm}
+
+    b) Is the graph symmetric with respect to the [`y`]-axis? [_]{$ysymm}
+
+    c) Is the graph symmetric with respect to the origin? [_]{$osymm}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) No, the graph is not symmetric about the [`x`]-axis.  The point [`(1,2)`] is on the graph but its reflection in the [`x`]-axis, [`(1,-2)`], is not.
+
+b) Yes, the graph is symmetric about the [`y`]-axis.  Replacing [`x`] with [`-x`] in the equation produces an equation [``y=(-x)^4+(-x)^2=x^4+x^2``] which is the same as the original equation.  Thus [`(x,y)`] satisfies the (original) equation if and only if its reflection in the [`y`]-axis [`(-x,y)`] satisfies it. 
+
+c) No, the graph is not symmetric about the origin.  The point [`(1,2)`] is on the graph but its reflection in the origin [`(-1,-2)`], is not.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

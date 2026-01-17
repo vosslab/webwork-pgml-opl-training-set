@@ -1,0 +1,40 @@
+##DESCRIPTION
+##   Statistics: Regression
+##ENDDESCRIPTION
+
+##Tagged by up2p
+
+## DBsubject(Statistics)
+## DBchapter(Simple linear regression)
+## DBsection(Correlation)
+## Institution(ASU)
+## Level(2)
+## KEYWORDS('Statistics')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserPopUp.pl', 'PGcourse.pl');
+
+$r = random(-.975,-.75,.025);
+
+$dd = DropDown([['positive', 'negative', 'zero', 'it cannot be determined']],1);
+
+$rsq = $r**2;
+
+BEGIN_PGML
+
+The linear correlation coefficient of a set of data points is [`[$r]`]. 
+
+a) What is the sign of the slope of the regression line? [_]{$dd}
+
+b) Determine the coefficient of determination. [_]{Real($rsq)}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) If the correlation coefficient is negative, then the slope is also *negative*. 
+
+b) The coefficient of determination is [`r^2= ([$r])^2 = [$rsq] `].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

@@ -1,0 +1,55 @@
+## DESCRIPTION
+## Algebra: Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Factoring)
+## DBsection(Factoring trinomials)
+## Date(6/3/2002)
+## Level(2)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.4')
+## Problem1('53')
+## KEYWORDS('algebra', 'factoring')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGchoicemacros.pl', 'PGcourse.pl');
+
+Context("Numeric");
+
+$a = Real(random(2,4,1));
+$b = Real(random(2,4,1));
+$c = Real(random(2,4,2));
+$d = Real(random(3,7,2));
+$coef = 5*$c;
+
+$t = -5*$d+$b*$c;
+$n = $b*$d;
+
+$poly = Formula("$coef*x^2-$t*x-$n")->reduce;
+
+BEGIN_PGML;
+Factor the polynomial [`[$poly]`]. The answer can be written as    
+    [`[$poly]=(5x-B)(Cx+D)`]     
+with [` B`], [`C`], and [`D `] integers, where 
+
+    [`B=`][_]{$b}{10}, and       
+    [`C=`][_]{$c}{10}, and     
+    [`D=`][_]{$d}{10}
+  
+END_PGML
+
+BEGIN_PGML_SOLUTION
+    [`(5x-B)(Cx+D)=(5C)x^2+(5D-BC)x-BD`]    
+so [`[$poly]=(5x-B)(Cx+D)`] if and only if    
+    [`5C=[$coef]`] and [`BD=[$n]`] and [`5D-BC=-[$t]`].    
+Thus [`C=[$c]`], and there are only a few possibilities for integers [`B`] and [`D`] because [`BD=[$n]`].  One possibility is [`B=[$b]`] and [`D=[$d]`], and if this is true then also [`5D-BC = 5([$d])-([$b])([$c])=-[$t]`] so all three equations are satisfied.  Thus    
+    [`B=[$b]`] and [`C=[$c]`] and [`D=[$d]`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

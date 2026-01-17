@@ -1,0 +1,77 @@
+## DESCRIPTION
+## Algebra: Coordinates and Graphs
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Cartesian coordinate system)
+## DBsection(Graphs of equations)
+## Date(6/3/2002)
+## MLT(Symmetry_and_intercepts)
+## Level(2)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('2.2')
+## Problem1('9')
+## KEYWORDS('algebra', 'graph')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
+);
+
+$showPartialCorrectAnswers = 0;
+
+Context("Numeric");
+Context()->variables->add(y=>"Real");
+
+$y=Real(random(0,3));
+$value = Real($y**2);
+
+$f = Formula("y^2-$value")->reduce;
+
+$xint = List(-$value);
+if ($y==0) {$yint = List($y);}
+else {$yint = List($y,-$y);}
+
+$xsymm = DropDown(["Yes","No"],"Yes");
+$ysymm = DropDown(["Yes","No"],"No");
+$osymm = DropDown(["Yes","No"],"No");
+
+
+BEGIN_PGML
+For the graph of the equation     
+    [``x=[$f]``]    
+answer the following questions.  If a question has more than one answer enter them all, separated by commas.  If it has no answers, enter *None*.
+
+a) The [`x`]-intercepts are [`x`] = [_]{$xint}{10}
+
+b) The [`y`]-intercepts are [`y`] = [_]{$yint}{10}
+
+c) Is the graph symmetric with respect to the [`x`]-axis? [_]{$xsymm}
+
+d) Is the graph symmetric with respect to the [`y`]-axis? [_]{$ysymm}
+
+e) Is the graph symmetric with respect to the origin? [_]{$osymm}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) [`x`]-intercepts: The [`y`] coordinate of every point on the [`x`]-axis is zero.  Thus the graph crosses the [`x`]-axis at a point where [`y=0`], so plug [`y=0`] into the equation [`x=[$f]`] to find the [`x`] intercept, [`x=-[$value] `].  
+
+b) [`y`]-intercepts: The [`x`] coordinate of every point on the [`y`]-axis is zero.  Thus the graph crosses the [`y`]-axis at points where [`x=0`], so plug [`x=0`] into the equation [`x=[$f]`] and solve for [`y`] to find the [`y`]-intercept, [`y= \pm [$y]`].  
+
+c) Yes, the graph is symmetric about the [`x`]-axis because a point [`(x,y)`] satisfies the equation [`x=[$f]`] if and only if [`(x,-y)`] satisfies the equation.  In other words, replacing [`y`] with [`-y`] doesn't change the equation because [`y^2=(-y)^2`].
+
+d) No, the graph is not symmetric about the [`y`]-axis because if [`(x,y)`] satisfies the equation then [`(-x,y)`] does not (unless [`x`] happens to be zero).  In other words, if [`x=[$f]`] then [`-x \neq [$f] `] (unless [`x=0`]). 
+
+e) No, the graph is not symmetric about the origin, because if [`(x,y)`] satisfies the equation then [`(-x,-y)`] does not (unless [`x`] happens to be zero).  
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
+

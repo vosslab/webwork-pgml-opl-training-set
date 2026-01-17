@@ -1,0 +1,82 @@
+##DESCRIPTION
+## Word problem
+## 
+##ENDDESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Isolating variables)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## Level(2)
+## MO(1)
+## TitleText1('Essentials of Intermediate Algebra')
+## AuthorText1('Blitzer')
+## EditionText1('1')
+## Section1('1.5')
+## Problem1('')
+## KEYWORDS('mathematical models','problem solving','formulas','algebra')
+## Date: 2007/09
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+######################################
+#  Setup
+
+Context("Numeric");
+Context()->variables->are(a=>'Real',
+                          s=>'Real',
+                          t=>'Real',
+                          v=>'Real');
+
+$n = random(0,1,1);
+
+######################################
+#  Main text
+if ($n==0){
+$answer = Formula("(2s - 2v*t)/t^2"); 
+BEGIN_PGML
+Solve for [`a`] :    
+    [`` s = \frac{1}{2}at^2 + vt ``]    
+NOTE:  Enter [`\mathbf{ t \wedge 2 }`] for [` t^2 `].
+
+     [`a = `][_______________]{$answer}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Assume [`t\neq 0`].  Then one can divide by [`t^2`] so    
+    [``\begin{gathered} s = \frac{1}{2}at^2 + vt \\ 
+    s-vt = \frac{1}{2}at^2 \\ 
+    2(s-vt)/t^2 = a \end{gathered} ``]    
+This is the expected solution so the computer marks it "correct".
+
+But if [`t=0`] the expected solution is nonsense.  For if [`t=0`] then the equation says [`s = 0 + 0 = 0`] which says nothing about [`a`].  So if [`t=0`] then [`a`] could be any number. 
+END_PGML_SOLUTION
+}
+
+else{
+$answer = Formula("(s - (1/2)*a*t^2)/t");
+BEGIN_PGML
+Solve for [`v`] :    
+    [`` s = \frac{1}{2}at^2 + vt ``]    
+NOTE:  Enter [`\mathbf{ t \wedge 2 }`] for [` t^2 `].
+
+     [`v = `][_______________]{$answer}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Assume [`t\neq 0`].  Then one can divide by [`t`] so    
+    [``\begin{gathered} s = \frac{1}{2}at^2 + vt \\ s-\frac{1}{2}at^2 = vt \\ (s-(1/2)at^2)/t = v \end{gathered} ``]    
+This is the expected solution so the computer marks it "correct".
+
+But if [`t=0`] the expected solution is nonsense.  For if [`t=0`] then the equation says [`s = 0 + 0 = 0`] which says nothing about [`v`].  So if [`t=0`] then [`v`] could be any number. 
+END_PGML_SOLUTION
+}
+
+ENDDOCUMENT();

@@ -1,0 +1,44 @@
+##DESCRIPTION
+##  Find the total and mean of a set of bank deposits.
+##ENDDESCRIPTION
+
+## ProblemTester('Laura Travis')
+## Publisher('Prentice Hall')
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Summary statistics)
+## Date(9/1/2012)
+## Institution(Mississippi College)
+## Author(John Travis)
+## Level(2)
+## MO(1)
+## TitleText1('Pre-Algebra')
+## KEYWORDS('prealgebra','common core')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGstatisticsmacros.pl', 'PGcourse.pl');
+
+Context('LimitedNumeric');
+
+@data = map { random(10, 200, 5) } (1 .. 5);
+
+($sum) = stats_SX_SXX(@data);
+
+BEGIN_PGML
+
+The following deposits were made into a bank account last month:
+[@ join(', ', map { "\$$_"} @data) @]
+
+a) The total of all deposits = $[_]{Real($sum)}{10}
+
+b) The average amount of the deposits = $[_]{Real($sum/5)}{10}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a) The total of the deposits is the sum or $[$sum].
+
+b) The average of the depositis is [`` \frac{[$sum]}{5} = $[@ $sum/5 @] ``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();   

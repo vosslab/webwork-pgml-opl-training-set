@@ -1,0 +1,72 @@
+# ************************************
+#   Comments + Keyword Clarification
+
+#    Anton, Calculus, 2.6.24
+# ************************************
+# DESCRIPTION
+# Find the derivative of a function using the chain rule
+
+# ENDDESCRIPTION
+## DBsubject(Calculus - single variable)
+## DBchapter(Differentiation)
+## DBsection(Chain rule (with trigonometric functions))
+## Institution(John Wiley & Sons)
+## Level(2)
+## MO(1)
+## TitleText1('Calculus')
+## AuthorText1('Anton')
+## EditionText1('9')
+## Section1('2.6')
+## Problem1('24')
+## KEYWORDS('Derivative', 'Chain rule')
+#***************************************************************
+#   Initialization - Load standard PG and MathObjects macros   
+#***************************************************************
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+# Set Up - Set up variable context and formulation of problem
+
+Context("Numeric");
+
+$a = random(3,9,2);
+$b = random(2,8,2);
+$bsq = $b**2;
+
+$f = Compute("sqrt($a*x-sin^2($b*x) )");
+
+#**************
+#   Answers
+#**************
+
+$Df = $f->D('x');
+
+# *********************
+#   Problem Statement
+# *********************
+
+BEGIN_PGML
+
+Let [`` f(x) =[$f] ``] with [`0<x<[$a]/[$bsq]`].  Find [`f'(x) `].
+
+    [` f'(x) = `] [_]{$Df->cmp(limits=>[.01,$a/$bsq])}{50}
+ 
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+[``f(x)=\big([$a]x-\sin^2([$b]x)\big)^{1/2}``] so the chain rule says
+
+    [``\begin{aligned}
+    f'(x) &= \frac{1}{2}\big([$a]x-\sin^2([$b]x)\big)^{-1/2} \frac{d\big([$a]x-\sin^2([$b]x)\big)}{dx}\\
+   &= \frac{1}{2}\big([$a]x-\sin^2([$b]x)\big)^{-1/2}\Big([$a]-\frac{d\sin^2([$b]x)}{dx}\Big)\\
+   &= \frac{1}{2}\big([$a]x-\sin^2([$b]x)\big)^{-1/2}\Big([$a]-2\sin([$b]x)\frac{d\sin([$b]x)}{dx}\Big)\\
+   &=\frac{1}{2}\big([$a]x-\sin^2([$b]x)\big)^{-1/2}\Big([$a]-2\sin([$b]x)\cos([$b]x)\frac{d([$b]x)}{dx}\Big)\\
+   &= \frac{1}{2}\big([$a]x-\sin^2([$b]x)\big)^{-1/2}\Big([$a]-2\sin([$b]x)\cos([$b]x)([$b])\Big)
+\end{aligned}``]
+
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

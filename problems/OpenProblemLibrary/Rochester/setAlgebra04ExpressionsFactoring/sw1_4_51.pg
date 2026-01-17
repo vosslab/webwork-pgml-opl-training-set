@@ -1,0 +1,47 @@
+## DESCRIPTION
+## Algebra: Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Factoring)
+## DBsection(Factoring: special forms)
+## Date(6/3/2002)
+## MLT(simpleDiffSq)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.4')
+## Problem1('51')
+## KEYWORDS('algebra', 'factoring')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context("Numeric");
+
+$a = Real(random(2,4,1));
+$b = Real(random(2,4,1));
+
+$n = $a*$b*$b;
+
+BEGIN_PGML;
+Factor the polynomial [`[$a] x^2-[$n]`]. The answer can be written as    
+    [`[$a] x^2-[$n]=A(x+B)(x+C)`]    
+with integers [`A`], [` B`], [`C`], where [`B<C `] and    
+
+    [`A=`][_]{$a}{10},     
+    [`B=`][_]{-$b}{10},    
+    [`C=`][_]{$b}{10}
+  
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[``[$a] x^2-[$n] = [$a](x^2-[@ $b**2 @])=[$a](x-[$b])(x+[$b])``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

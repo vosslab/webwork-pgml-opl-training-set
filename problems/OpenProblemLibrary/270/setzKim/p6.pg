@@ -1,0 +1,37 @@
+## DESCRIPTION
+##   Find the Average
+## ENDDESCRIPTION
+
+## Tagged by nhamblet
+
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Summary statistics)
+## Institution(ASU)
+## Level(2)
+## KEYWORDS('Average','Averages')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+# Now we do the randomization of variables, and other computations
+# as needed for this problem.  Sometimes we compute the answers here.
+
+$a = random( 1, 9);
+$b = random(-3, 2);
+
+$avg = ($a + $b) / 2;
+
+BEGIN_PGML
+What is the average of [$a] and [$b] ?
+
+	Average = [_]{Real($avg)}{10}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The average of two values is the sum divided by 2.  In this case
+[``` \frac{[$a]+[$b]}{2} = [$avg] ```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

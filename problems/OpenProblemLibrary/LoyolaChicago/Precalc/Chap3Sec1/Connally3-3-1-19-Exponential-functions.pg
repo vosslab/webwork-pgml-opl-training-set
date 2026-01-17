@@ -1,0 +1,59 @@
+## DESCRIPTION
+## Functions: Input and Output
+## ENDDESCRIPTION
+
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Applications and models - population growth)
+## Date(01/01/10)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MLT(Population_GivenPercentFindModel)
+## Level(4)
+## MO(1)
+## TitleText1('Functions Modeling Change')
+## AuthorText1('Connally')
+## EditionText1('3')
+## Section1('3.1')
+## Problem1('19')
+## KEYWORDS('exponential functions','growth rate','growth factor')
+
+## Updated 2025.01 by Peter Staab, switch to PGML.
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+#  Setup
+
+Context("Numeric")->variables->are(t => Real);
+
+$a           = random(2000, 2500, 10);
+$rpercent    = random(-3.9, -3.1, 0.1);
+$rpercentpos = -($rpercent);
+$r           = $rpercent / 100;
+$b           = 1 + $r;
+
+$f = Formula("$a * ($b)**t");
+
+BEGIN_PGML
+
+Find a formula for [` P = f(t) `], the  size of the population that begins in year
+[` t = 0 `] with [` [$a] `] members and decreases at a [` [$rpercentpos] `]%  annual
+rate.  Assume that time is measured in years.
+
+[` P = f(t) = `] [_]{$f}{20}
+
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+The starting value is [`a=[$a]`]. The growth rate is [`r=[$r]`]% (note that it is negative), 
+so [`b=1+r=[$b]`]. The formula is 
+
+[```P = [$f]```]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

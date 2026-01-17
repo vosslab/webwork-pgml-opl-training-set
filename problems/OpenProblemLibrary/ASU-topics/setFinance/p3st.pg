@@ -1,0 +1,45 @@
+## DESCRIPTION
+## Applied Mathematics
+## ENDDESCRIPTION
+
+## Tagged by XW
+
+## DBsubject(Financial mathematics)
+## DBchapter(Interest)
+## DBsection(Compound interest)
+## Institution(ASU)
+## MLT(value_later)
+## Level(3)
+## KEYWORDS('percent', 'mathematics for business', 'algebraic expression')
+
+## Updated 2025.02 by Peter Staab, switch to PGML and added a solution.
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+Context('LimitedNumeric')
+    ->flags->set(tolType => 'digits', tolerance => 3, tolTruncation => 1);
+
+$P = random(1, 10) * 100;
+$b = random(2, 18);
+$b = 8 if ($b == 12);
+
+$c = random(3, 18);
+$r = $c / 100;
+$A = Real($P * (1 + $r / 12)**$b);
+
+BEGIN_PGML
+Find the amount  if $[$P] is invested at an annual rate of [$c]% compounded monthly 
+for [$b] months.
+
+Amount = $[_]{$A}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+For this, we will use the formula:
+[``` A = P (1+i)^n ```]
+where [`P`] is the principal (original amount),  [`i`] is the compound interest rate (in this case [`[$c]/12`] and [`n`] is the number of compounding periods or [`[$b]`] in this case.  The result is 
+
+[``` A = [$P] (1 + [$r]/12)^[$b] = [@sprintf("%.2f", $A) @] ```]
+END_PGML_SOLUTION
+ENDDOCUMENT();

@@ -1,0 +1,39 @@
+##DESCRIPTION
+##   Statistics: Introduction
+##ENDDESCRIPTION
+
+##Tagged by up2p
+
+## DBsubject(Statistics)
+## DBchapter(Simple linear regression)
+## DBsection(Correlation)
+## Institution(ASU)
+## Level(1)
+## KEYWORDS('Statistics')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserRadioButtons.pl', 'PGcourse.pl');
+
+Context('Numeric');
+
+$radio = RadioButtons(
+    [ [
+        '0 and 1,', '-1 and 0', '-1 and 1',
+        '\(-\infty\) to \(\infty\)',
+        'None of the above.'
+    ] ],
+    0, labels => 'ABC'
+);
+
+BEGIN_PGML
+The coefficienct of determination falls between
+
+[_]{$radio}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[$radio]: The coefficient of determination is a number between 0 and 1. 
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

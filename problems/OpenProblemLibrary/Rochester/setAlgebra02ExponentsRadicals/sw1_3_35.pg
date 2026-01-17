@@ -1,0 +1,53 @@
+#DESCRIPTION
+##  Algebra problem: combining powers
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Algebra)
+## DBchapter(Properties of exponents, rational exponents and radicals)
+## DBsection(Properties of rational exponents and radicals)
+## Date(6/3/2002)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.3')
+## Problem1('35')
+## KEYWORDS('algebra', 'powers')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
+);
+
+Context("LimitedFraction");
+Context()->flags->set(showMixedNumbers=>0);
+
+$a = random(2,6,1);
+$a1 = $a**2;
+$b = random(2,6,1);
+$d = random(2,6,2);
+
+$ans1 = Real($a*$b);
+$ans2 = Fraction($d+2,2*$d);
+BEGIN_PGML
+    [`` ([$a1] b)^{1/2}([$b] b^{1/[$d]}) = n b^r ``]    
+
+where  
+    [`n`], the coefficient, is: [_]{$ans1}, and   
+    [`r`], the exponent of b, is: [_]{$ans2}    
+
+Your answers must be integers or reduced fractions, not other algebraic expressions.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[`` ([$a1] b)^{1/2}([$b] b^{1/[$d]}) = [$a1]^{1/2} b^{1/2} [$b] b^{1/[$d]} = [$b]\sqrt{[$a1]}\;b^{1/2+1/[$d]}=[$ans1] b^{[$ans2->num]/[$ans2->den]}``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

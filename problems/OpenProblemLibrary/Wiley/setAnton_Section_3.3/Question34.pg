@@ -1,0 +1,80 @@
+# ************************************
+#   Comments + Keyword Clarification
+#
+#    Anton, Calculus, 3.3.34
+# ************************************
+# DESCRIPTION
+# Find the derivative of a function using the chain rule
+#
+# ENDDESCRIPTION
+## DBsubject(Calculus - single variable)
+## DBchapter(Differentiation)
+## DBsection(Logarithmic differentiation)
+## Institution(John Wiley & Sons)
+## Level(3)
+## MO(1)
+## TitleText1('Calculus')
+## AuthorText1('Anton')
+## EditionText1('9')
+## Section1('3.3')
+## Problem1('34')
+## KEYWORDS('Derivative', 'Chain rule', 'Logarithmic differentiation')
+#***************************************************************
+#   Initialization - Load standard PG and MathObjects macros   
+#***************************************************************
+
+DOCUMENT();
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+#
+# Set Up - Set up variable context and formulation of problem
+#
+Context("Numeric");
+
+$a = random(2,5,1);
+$b = random(2,9,1);
+
+$f = Formula(" ($a+$b*x^2)^ln(x) ")->reduce;
+
+$base = Formula(" ($a+$b*x^2) ")->reduce;
+$g = Formula(" 2*$b*x ")->reduce;
+$gprime = Formula(" $g*ln{x}/{$a+$b*x^2}+ln($a+$b*x^2)/x ")->reduce;
+
+$fprime = Formula(" $f*$gprime ")->reduce;
+$fprime ->{limits}=>[0.1,4];
+
+
+# *********************
+#   Problem Statement
+# *********************
+
+BEGIN_PGML
+
+Find [` dy/dx `] using the method of logarithmic differentiation when [`` y = [$f] ``].
+
+[` dy/dx = `][_]{$fprime }{25}
+ 
+END_PGML
+
+# *****************
+# Solution
+# *****************
+
+BEGIN_PGML_SOLUTION
+
+[`` y = [$f]``] so  [``\  \ln{y} = \left(\ln{x}\right)\left( \ln([$base])\right) ``].
+
+Therefore the derivative of [` \ln y`] is [`` \frac{1}{y} \frac{dy}{dx} = \frac{\ln([$base])}{x} + \frac{[$g]}{[$base]} \ln{x}  ``].
+
+Multiplying through by [`\ y\ `] we obtain 
+
+[`` \frac{dy}{dx}  = [$fprime] ``].
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

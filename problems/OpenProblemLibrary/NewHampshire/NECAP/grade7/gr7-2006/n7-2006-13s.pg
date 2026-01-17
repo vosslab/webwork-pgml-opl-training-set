@@ -1,0 +1,51 @@
+## DESCRIPTION
+##  Uses proportions to find the dimensions of an enlarged photograph.
+## ENDDESCRIPTION
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Ratio/proportions)
+## MLT(Application_2Dratio)
+## MLTleader(1)
+## Level(4)
+## Static(1)
+## MO(1)
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',   'PGML.pl',
+    'randomPerson.pl', 'parserPopUp.pl',
+    'PGcourse.pl'
+);
+
+Context("Numeric");
+
+do { ($w, $h) = (random(3, 8), random(3, 8)); } until ($w != $h);
+$factor = random(3, 5);
+$p      = randomPerson();
+
+$dd = DropDown([ 'Yes', 'No' ], 1);
+
+BEGIN_PGML
+[$p] has a photograph that is [$w] inches wide and [$h] inches tall.
+
+a) [$p->They] [$p->verb('enlarge')] the photograph proportionally so that it is [@ $w*$factor @] inches wide.
+So it must be [_]{Real($factor*$h)} inches tall.
+
+b) Can [$p] enlarge the photograph proportionally to [@2*$w@] inches by [@ 2*$h-2 @] inches?  [_]{$dd}
+
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+a) Note that the the photograph is enlarged by a factor of [`` \frac{[@$factor*$w@]\;\text{inches}}{[$w]\;\text{inches}} = [$factor]``].  Therefore the height of the enlargement would be [`[$factor] \cdot [$h] =  [@ $factor*$h @]`] inches. 
+
+b) If the width is to be enlarged to [@ 2*$w @] inches, which is double the width, then the height would also need to be doubled, however [` [@ 2*$h-2 @] \neq 2 \cdot [$h]`].  So it is impossible to enlarge the photograph proportionally to [@2*$w@] inches by [@ 2*$h-2 @] inches.
+
+ON THE NEAP EXAMINATION YOU WERE ASKED TO EXPLAIN YOUR ANSWER TO b. 
+
+SOMETHING SIMILAR TO THE SOLUTION ABOVE WOULD BE REQUIRED FOR FULL CREDIT.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
+

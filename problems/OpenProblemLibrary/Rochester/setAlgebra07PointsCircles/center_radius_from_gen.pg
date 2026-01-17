@@ -1,0 +1,67 @@
+##DESCRIPTION
+##TYPE('equation answer')
+## finding an equation of the line with a given slope and a
+## point on the line;
+##ENDDESCRIPTION
+
+## Tagged by sawblade
+
+## DBsubject(Algebra)
+## DBchapter(Cartesian coordinate system)
+## DBsection(Circles)
+## Date(6/3/2002)
+## MLT(Circle_center_rad_from_equation)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('2.2')
+## Problem1('62')
+## KEYWORDS('algebra', 'lines')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl','PGcourse.pl');
+
+Context("Numeric");
+Context()->variables->add(y=>"Real");
+
+$A = random(-10,10,1);
+$B = random(-10,10,1);
+$C = random(-20,20,1);
+
+while($C -$A**2/4 - $B**2/4 >0) {$C = random(-20,20,1);}
+
+$xpart = Formula("x^2 + $A*x")->reduce;
+$ypart = Formula("y^2 + $B*y")->reduce;
+$f = Formula("$xpart + $ypart + $C")->reduce;
+
+$r = Real(sqrt(-($C -$A**2/4 - $B**2/4)));
+
+Context("Point");
+$center = Point(-$A/2,-$B/2);
+
+BEGIN_PGML
+Find the center and radius of the circle whose equation is 
+
+    [`[$xpart] + [$ypart] + [$C] = 0`].
+
+The center of the circle is [_]{$center}{10}. [@ helpLink('point') @]* 
+
+The radius of the circle is [_]{$r}{10} .
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Complete the square    
+
+    [``\begin{gathered}
+    [$xpart]+[$ypart] = -[$C]\\
+    [$xpart]+([$A]/2)^2 + [$ypart]+([$B]/2)^2 = ([$A]/2)^2 + ([$B]/2)^2 - [$C]\\
+    (x+[$A]/2)^2 + (y+[$B]/2)^2 = [@ $A**2 + $B**2 - 4*$C @]/4
+    \end{gathered} ``]
+    
+The center is [`(-[$A]/2, -[$B]/2)`] and the radius is [`\frac{\sqrt{[@ $A**2 + $B**2 - 4*$C @]}}{2}`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

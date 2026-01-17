@@ -1,0 +1,58 @@
+##DESCRIPTION
+## Word problem
+## 
+##ENDDESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Isolating variables)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## Level(1)
+## MO(1)
+## TitleText1('Essentials of Intermediate Algebra')
+## AuthorText1('Blitzer')
+## EditionText1('1')
+## Section1('1.5')
+## Problem1('')
+## KEYWORDS('mathematical models','problem solving','formulas','algebra')
+## Date: 2007/09
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+######################################
+#  Setup
+
+Context("Numeric");
+Context()->variables->are(A=>'Real',
+                          l=>'Real',
+                          w=>'Real');
+$l=Formula("l"); $w=Formula("w");
+($var,$denom)=random_subset(2,($l,$w));
+$ans = Formula("A/$denom");
+
+######################################
+#  Main text
+
+BEGIN_PGML
+Solve for [`[$var]`]:  
+>>[`A = lw `]<<
+
+[` [$var] = `][_____]{ $ans}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Divide both sides of the equation by [`[$denom]`] to obtain  
+    [`A/[$denom]=[$var]`].
+
+This solution works in almost every case, but what would happen if [`A=0`]?  What if [`A=[$denom]=0`]?  If [`A=[$denom]=0`] can you explain why the equation 
+[`A=lw`] tells us _nothing_ about [`[$var]`]?
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

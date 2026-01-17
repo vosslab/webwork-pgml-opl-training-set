@@ -1,0 +1,44 @@
+#DESCRIPTION
+##  Algebra problem: Modeling with equations 
+##ENDDESCRIPTION
+
+## tsch tagged and PAID on 12-12-2003
+
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Date(6/3/2002)
+## Level(3)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('3.2')
+## Problem1('23')
+## KEYWORDS('algebra', 'modeling', 'equations')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+
+$a = random(15,40,5);
+$b = Real(random(60,100,5));
+$ar = $a*$b;
+
+BEGIN_PGML
+A rectangular garden is [$a] ft wide. If its area is [$ar] [`\text{ft}^2`],
+what is the length of the garden?
+
+    length = [_]{$b}{5} ft.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+If the garden is [`L`] feet long then its area is [`(L)([$a])=[$ar]`] sq. ft. so [`L = [$ar]/[$a] = [$b]`] ft.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

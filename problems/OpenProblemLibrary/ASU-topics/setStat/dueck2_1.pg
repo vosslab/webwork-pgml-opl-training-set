@@ -1,0 +1,71 @@
+## DESCRIPTION
+##  Statistics 
+## ENDDESCRIPTION
+
+## Tagged by dgt5v
+
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Summarizing data in tables)
+## Institution(ASU)
+## Level(2)
+## KEYWORDS('Statistics','Frequency')
+
+## Updated 2025.02 by Peter Staab, switch to PGML
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+$showPartialCorrectAnswers = 1;
+
+@freq = (
+random(1,10),
+random(1,10),
+random(5,15),
+random(10,20),
+random(10,20),
+random(5,15));
+$total = 0; 
+$total += $_ for (@freq); 
+
+@rel_freq = map { Real($_) / $total } @freq; 
+
+BEGIN_PGML
+
+[# [. Grade on Statistics Exam .] [. Frequency .]*{headerrow => 1}
+    [. Below 50 .] [. [$freq[0] .]*
+    [. 50-59 .] [. [$freq[1] .]*
+    [. 60-59 .] [. [$freq[2] .]*
+    [. 70-59 .] [. [$freq[3] .]*
+    [. 80-59 .] [. [$freq[4] .]*
+    [. 90-100 .] [. [$freq[5] .]*
+#]{horizontalrules => 1}
+ 
+Given the frequency table above, construct the relative frequency table that corresponds with the above table.
+
+[# [. Grade on Statistics Exam .] [. Relative Frequency .]*{headerrow => 1}
+    [. Below 50 .] [. [_]{$rel_freq[0]} .]*
+    [. 50-59 .] [. [_]{$rel_freq[1]} .]*
+    [. 60-59 .] [. [_]{$rel_freq[2]} .]*
+    [. 70-59 .] [. [_]{$rel_freq[3]} .]*
+    [. 80-59 .] [. [_]{$rel_freq[4]} .]*
+    [. 90-100 .] [. [_]{$rel_freq[5]} .]*
+#]{horizontalrules => 1, padding => [0.25, 0.25]}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+First, we need to know the total number of observations.  The is the sum of the second column or [$total].  Next, for each number in the top table, divide by [$total].  The result is:
+
+[# [. Grade on Statistics Exam .] [. Relative Frequency .]*{headerrow => 1}
+    [. Below 50 .] [. [$rel_freq[0]] .]*
+    [. 50-59 .] [. [$rel_freq[1]]  .]*
+    [. 60-59 .] [. [$rel_freq[2]]  .]*
+    [. 70-59 .] [. [$rel_freq[3]]  .]*
+    [. 80-59 .] [. [$rel_freq[4]] .]*
+    [. 90-100 .] [. [$rel_freq[5]] .]*
+#]{horizontalrules => 1, padding => [0.25, 0.25]}
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();       # This should be the last executable line in the problem.

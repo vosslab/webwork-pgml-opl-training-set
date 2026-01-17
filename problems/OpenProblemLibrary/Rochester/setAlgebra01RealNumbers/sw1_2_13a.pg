@@ -1,0 +1,51 @@
+#DESCRIPTION
+##  Algebra problem: simplifying fraction
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Addition/subtraction)
+## Date(6/3/2002)
+## MLT(add_fracs_same_denom)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.2')
+## Problem1('13')
+## KEYWORDS('algebra', 'fraction')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
+);
+
+$n1 = random(2,17,1);
+$n2 = random(3,21,1);
+$d1 = random(2,8,2);
+
+Context("LimitedFraction");
+Context()->flags->set(showMixedNumbers=>0);
+
+$fract = Fraction($n1+$n2,$d1);
+
+BEGIN_PGML
+Add the fractions, and reduce your answer.     
+    [`` \frac{[$n1]}{[$d1]}+\frac{[$n2]}{[$d1]} ``]    
+The reduced answer is [_]{$fract}{15}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+    [`` \frac{[$n1]}{[$d1]}+\frac{[$n2]}{[$d1]} = \frac{[$n1]+[$n2]}{[$d1]} = \frac{[@ $n1+$n2 @]}{[$d1]} = [$fract] ``] .
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

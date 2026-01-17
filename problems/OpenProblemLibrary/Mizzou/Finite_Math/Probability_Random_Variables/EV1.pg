@@ -1,0 +1,69 @@
+##DESCRIPTION
+##  Introduction to Probability: Expected Value
+##ENDDESCRIPTION
+
+
+## Author1('David Covert')
+## Author2('Jason Aubrey')
+## DBsubject(Probability)
+## DBchapter(Random variables)
+## DBsection(Expectation)
+## Date(Spring 2012)
+## Institution(University of Missouri)
+## Level(2)
+## MO(1)
+## KEYWORDS('probability', 'expected value', 'random variable')
+
+DOCUMENT();      
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "niceTables.pl",
+  "PGcourse.pl"
+);
+
+
+Context("Numeric");
+
+$n1 = random(1,3,1);
+$n2 = $n1 + random(1,2,1);
+$n3 = $n2 + random(1,2,1);
+$n4 = $n3 + random(1,2,1);
+
+$a = Real(random(0.10,0.30,0.01));
+$b = Real(random(0.10,0.30,0.01));
+$c = Real(random(0.10,0.30,0.01));
+$d = 1-$a-$b-$c;
+
+$ans = Real($n1*$a + $n2*$b + $n3*$c + $n4*$d);
+
+$data = DataTable(
+  [
+    ['\(X\)',$n1,$n2,$n3,$n4],
+    ['\(P(X)\)', $a, $b, $c, $d]
+  ],
+  center=>0,
+  horizontalrules =>1,
+  texalignment => '||l||c|c|c|c||',
+  rowheaders => 1
+);
+
+##############################################################
+
+BEGIN_PGML
+
+Find the expected value for the random variable:
+
+    [$data]*
+
+[`E(X)`] = [_]{$ans}{10}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[`E(X)=[$n1]P([$n1])+[$n2]P([$n2])+[$n3]P([$n3])+[$n4]P([$n4])=[$ans]`]
+END_PGML_SOLUTION
+
+
+ENDDOCUMENT();

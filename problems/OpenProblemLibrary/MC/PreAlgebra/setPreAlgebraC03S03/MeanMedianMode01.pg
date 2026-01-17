@@ -1,0 +1,59 @@
+##DESCRIPTION
+##  Middle School problem:
+##ENDDESCRIPTION
+
+## ProblemTester('Laura Travis')
+## Publisher('Prentice Hall')
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Summary statistics)
+## Date(10/02/2012)
+## Institution(Mississippi College)
+## Author(John Travis)
+## Level(2)
+## MO(1)
+## TitleText1('Pre-Algebra')
+## AuthorText1('')
+## EditionText1('')
+## Section1('.')
+## Problem1('')
+## KEYWORDS('prealgebra','common core','mean','median','mode')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGstatisticsmacros.pl', 'PGcourse.pl');
+
+$N = random(15, 20);
+
+@data = map { random(1, 9) } (1 .. $N);
+
+@sdata = num_sort(@data);
+
+$mean = stats_mean(@data);
+$median =
+    $N % 2 == 0
+    ? 0.5 * ($sdata[ $N / 2 ] + $sdata[ $N / 2 + 1 ])
+    : $sdata[ 0.5 * ($N + 1) ];
+
+BEGIN_PGML
+
+Your teacher is trying to encourage her students to read more books.  For the current 9-weeks period, a student in her class read the following numbers of books:
+
+[``` [@ join(', ', @sdata) @] ```]
+
+a) The mean number of books read is [_]{$mean}{10}
+b) The median number of books read is [_]{$median}{10}
+
+**Express answers that are not integers to two decimal places.**
+
+END_PGML
+
+$sum = 0;
+$sum += $_ for (@data);
+BEGIN_PGML_SOLUTION
+a) The sum of the number of books is [$sum].  The average number of books is the [`` \frac{[$sum]}{[$N]} = [$mean] ``]
+
+b) Since the number of points is [@ $N %2 == 0 ? 'even' : 'odd' @], the median is the [@ $N % 2 == 0 ? 'average of the middle two numbers' : 'middle number' @] or [$median]. 
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

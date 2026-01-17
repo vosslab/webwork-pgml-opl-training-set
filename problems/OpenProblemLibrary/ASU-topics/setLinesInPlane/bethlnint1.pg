@@ -1,0 +1,43 @@
+## DESCRIPTION
+## Algebra
+## ENDDESCRIPTION
+
+## Tagged by LD
+
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Equations of lines: slope-intercept form)
+## Institution(ASU)
+## MLT(MLT02)
+## Level(2)
+## KEYWORDS('Algebra', 'lines')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context('Point');
+
+# choose values for the coordinates of the point and the slope
+$x     = random(-10, 10);
+$y     = random(-10, 10);
+$slope = random(-10, 10);
+
+$yint = Point(0, $y - $slope * $x);
+
+BEGIN_PGML
+A line through [`([$x], [$y])`] with a slope of [`[$slope]`] has a [`y`]-intercept of [_]{$yint}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Recall that the slope through two points [`P(x_1, y_1)`] and [`Q(x_2, y_2)`] is 
+[``` m = \frac{y_2-y_1}{x_2-x_1} ```]
+which can be written
+[``` m(x_2-x_1) = y_2 -y_1 ```]
+Let [`P`] be the point given and [`Q`] be the [`y`]-intercept with [`x_2=0`] and [`y_2`] being sought. Adding [`y_1`] to both sides of the equation is
+[``` y_2 = y_1 + m(x_2-x_1) = [$y] + [$slope] (0-[$x]) = [@ $y-$slope*$x @] ```]
+
+So the [`y`]-intercept is [`[$yint]`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

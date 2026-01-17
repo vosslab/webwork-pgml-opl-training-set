@@ -1,0 +1,91 @@
+##DESCRIPTION
+##  Polynomial Equations
+## 
+##ENDDESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Polynomial equations and functions)
+## DBsection(Applications and models)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## Level(3)
+## TitleText1('Essentials of Intermediate Algebra')
+## AuthorText1('Blitzer')
+## EditionText1('1')
+## Section1('5.7')
+## Problem1('')
+## KEYWORDS('polynomial equations')
+## Date: 2007/11
+
+DOCUMENT(); # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "parserImplicitEquation.pl",
+  "parserNumberWithUnits.pl",
+  "PGcourse.pl"
+);
+
+
+######################################
+#  Setup
+Context("ImplicitEquation");
+Context()->variables->are(x => "Real");
+Context()->flags->set(ImplicitPoints => 1);
+
+$a = random(5,15,1);
+$b = random(3,5,1);
+
+$length = ($a**2+$b**2)/(2*$b); 
+
+$ans_a = ImplicitEquation("x^2 = $a^2 + (x-$b)^2", solutions => [[$length]], limits=>[$length-2,$length+2]);
+
+$ans_b = NumberWithUnits("$length", "ft");
+
+
+######################################
+#  Main text
+
+BEGIN_PGML
+A tree is supported by a wire anchored in the ground [$a] feet from its base.  The wire is [$b] feet longer than the height that it reaches on the tree. How long is the wire?
+
+a) Use the Pythagorean theorem to write a polynomial equation to solve to answer the question.  Use the variable [`x`] to represent *the length of the wire*.
+
+    Answer:  [_]{$ans_a}{15}
+
+b)  Solve the equation and give the length of the wire.
+
+    Answer:  [_]{$ans_b}{10} [@ helpLink('units') @]*
+END_PGML
+
+$a2plusb2 = $a**2+$b**2;
+$twob = 2*$b;
+
+BEGIN_PGML_SOLUTION
+Part a)  The wire is [`x`] feet long.  The wire reaches to a point on the tree that is at a certain height.  The height plus [$b] equals [`x`] so    
+    height = [`x-[$b]`]    
+feet. The other end of the wire touches the ground [$a] feet from the base of the tree.  
+
+Assume the tree is vertical and the ground is horizontal.  Then the tree, the ground, and the wire form a right triangle with  
+    base [$a] feet long,    
+    height [`x-[$b]`] feet long    
+    hypotenuse [`x`] feet long.    
+Therefore the Pythagorean Theorem says  
+    [``[$a]^2 + (x-[$b])^2 = x^2``]
+
+Part b)  Multiplying out and simplifying, one has
+    [`` \begin{gathered} 
+    [$a]^2 + (x-[$b])^2 = x^2 \\
+    [$a]^2 + x^2 - (2)([$b])x + [$b]^2 = x^2
+    \end{gathered} ``]    
+Subtract [`x^2`] from both sides    
+    [``\begin{gathered} [$a]^2 + [$b]^2 - (2)([$b])x = 0 \\
+    [$a]^2 + [$b]^2 = (2)([$b])x \\
+    [$a2plusb2]/[$twob] = x \\
+    [@ $a2plusb2/$twob @] = x
+    \end{gathered} ``]    
+So the wire is [$ans_b] long.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

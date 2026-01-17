@@ -1,0 +1,33 @@
+## DBsubject(Calculus - single variable)
+## DBchapter(Integrals)
+## DBsection(Improper integrals)
+## Institution(UCSB)
+## Level(3)
+## Static(1)
+## TitleText1('Calculus: Early Transcendentals')
+## AuthorText1('Stewart')
+## EditionText1('5')
+## Section1('7.8')
+## Problem1('57')
+## KEYWORDS('integration', 'improper integrals')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+$ans1 = Interval("(-inf,1)");
+
+Context()->variables->are('p' => 'Real');
+$I = Compute("1/(1-p)");
+$I->{limits} = [ -5, 0 ];
+
+BEGIN_PGML
+a. Find the values of [`p`] for which the following integral converges:
+[```\int_{0}^{\,1} {\frac{1}{x^p}}\, dx```]
+The values of [`p`] are in the interval [_]{$ans1}{10}[@helpLink('interval')@]*
+a. For the values of [`p`] at which the integral converges, evaluate it.  
+[``\int_{0}^{\,1} {\frac{1}{x^p}}\, dx = ``][_]{$I}{15}  
+(Your answer should be a formula in terms of [`p`]).
+END_PGML
+
+ENDDOCUMENT();

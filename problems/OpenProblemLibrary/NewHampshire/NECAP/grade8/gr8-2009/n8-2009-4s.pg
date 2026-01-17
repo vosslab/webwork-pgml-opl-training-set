@@ -1,0 +1,30 @@
+#DESCRIPTION
+## Find the area of an enlarged photograph.
+#ENDDESCRIPTION
+## DBsubject(Geometry)
+## DBchapter(Shapes)
+## DBsection(Area)
+## Level(3)
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+$x = list_random(4, 5, 8, 10, 12);
+$y = list_random(4, 5, 8, 10, 12);
+
+$scale = random(3, 5);
+$area  = Real($scale**2 * $x * $y);
+
+BEGIN_PGML
+To make a poster, Jeff will enlarge the length and width of a photograph by a scale factor of [$scale].  The photograph is [$x] inches wide and [$y] inches long.  What will be the area of the poster? 
+
+Area = [_]{$area}{10} square inches
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+Enlarging by a scale factor of [$scale] will change the [$x] inch width to [@ $x*$scale @] inches and the [$y] inch length to [@ $y*$scale @] inches.  The area will then be [`[@ $x*$scale @] \times[@ $y*$scale @] =[$area]`] square inches.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

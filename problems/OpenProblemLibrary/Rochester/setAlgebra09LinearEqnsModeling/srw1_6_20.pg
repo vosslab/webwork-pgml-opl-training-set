@@ -1,0 +1,54 @@
+##DESCRIPTION
+##   Algebra: Modeling
+##ENDDESCRIPTION
+
+##Tagged by up2p
+
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Date(6/3/2002)
+## MLT(FindingIntersection)
+## Level(5)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('3.2')
+## Problem1('56')
+## KEYWORDS('Algebra', 'Modeling', 'word problem')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+
+$delay = random(10,30,10);
+## delay in minutes
+$rs = random(12,14,1);
+## robber's speed
+$ms = random(15,16,1);
+## marshall's speed
+$closingspeed = $ms-$rs;
+$headstart = Real($rs*$delay/60);
+
+$persuithrs = Real($headstart/$closingspeed);
+
+BEGIN_PGML
+After robbing a bank in Dodge City, a robber gallops off at [$rs] mi/h.
+[$delay] minutes later, the marshall leaves to pursue the robber at [$ms] mi/h. How long
+(in hours) does it take the marshall to catch up to the robber?
+
+    [_]{$persuithrs}{10} hours
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Assume robber gallops directly away from Dodge City and the marshall follows the same path.  When the marshall leaves the robber has been riding away at [$rs] mi/hr for [$delay] minutes = [$delay]/60 hours, so the robber is ([$rs] mi/hr)([$delay]/60 hr)=[$headstart] mi ahead of the marshall.  After that the marshall overtakes the robber at (robber's speed)-(marshall's speed)=([$ms]-[$rs]) mi/hr = [$closingspeed] mi/hr, so it takes the marshall ([$headstart] mi)/([$closingspeed] mi/hr) [`\approx`] [$persuithrs] hours to close the gap and catch the robber.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

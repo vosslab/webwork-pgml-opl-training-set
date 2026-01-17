@@ -1,0 +1,58 @@
+##DESCRIPTION
+## Word problem
+## 
+##ENDDESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Isolating variables)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MO(1)
+## TitleText1('Essentials of Intermediate Algebra')
+## AuthorText1('Blitzer')
+## EditionText1('1')
+## Section1('1.5')
+## Problem1('')
+## KEYWORDS('mathematical models','problem solving','formulas','algebra')
+## Date: 2007/09
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+######################################
+#  Setup
+
+Context("Numeric");
+Context()->variables->are(A=>'Real',
+                          b=>'Real',
+                          h=>'Real');
+
+$b=Formula("b"); $h=Formula("h");
+($var, $denom) = random_subset(2,($b,$h));
+$answer = Compute("2A/$denom");
+
+######################################
+#  Main text
+
+BEGIN_PGML
+Solve for _[$var]_ :    
+    [` A = \frac{1}{2}bh `]
+
+    [` [$var] = `] [__________]{$answer}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+If one assumes that [`A\neq 0`] then one can solve the equation by multiplying both sides by 2 and dividing both sides by [`[$denom]`] to obtain the expected answer    
+    [`2A/[$denom] = [$var] `].
+
+But if one does not assume that [`A\neq 0`] then this solution is incomplete because it doesn't take into account everything that can happen if [`A=0`].  For example, what if [`A=[$denom]=0`]?  Can you explain why, if [`A=[$denom]=0`], the equation [`A=bh`] tells us nothing about [$var]?
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,51 @@
+## DESCRIPTION
+## Algebra: Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Factoring)
+## DBsection(Factoring: special forms)
+## Date(6/3/2002)
+## MLT(diffCubes)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.4')
+## Problem1('64')
+## KEYWORDS('algebra', 'factoring')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl',  'PGcourse.pl');
+
+Context("Numeric");
+
+$a = Real(random(2,5,1));
+$a3 = $a**3;
+
+BEGIN_PGML;
+Factor the polynomial [`x^3-[$a3]`]. The answer can be written as    
+    [`x^3-[$a3]=(x-A)(x^2+Bx+C)`]    
+where    
+    [`A=`][_]{$a}, and [`B=`][_]{$a}, and [`C=`][_]{$a*$a} 
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[`x^3-[$a3]=x^3-[$a]^3`] is the difference of two cubes. The difference of two cubes formula says
+    [`P^3-Q^3=(P-Q)(P^2+PQ+Q^2)`]    
+so    
+    [``\begin{aligned} x^3-[$a3] &=x^3-[$a]^3\\
+    &=(x-[$a])(x^2+[$a]x+[@ $a*$a @])\end{aligned}``]    
+
+*Alternate solution*
+
+If    
+    [`x^3-[$a3]=(x-A)(x^2+Bx+C)`]    
+then [`x^3-[$a3]=0`] when [`x=A`], in other words, [`A^3=[$a3]`] so [`A=[$a]`].  Thus [`x^3-[$a3]=(x-[$a])(x^2+Bx+C)`] so we can find the other factor [`x^2+Bx+C`] by dividing [`x-[$a]`] into [`x^3-[$a3]`] with long division.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

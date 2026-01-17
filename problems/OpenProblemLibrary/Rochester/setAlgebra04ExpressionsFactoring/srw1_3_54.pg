@@ -1,0 +1,57 @@
+##DESCRIPTION
+##  Algebra problem: factor a quadratic equation
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Algebra)
+## DBchapter(Factoring)
+## DBsection(Factoring trinomials)
+## Date(6/3/2002)
+## MLT(AlgFac8)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.4')
+## Problem1('49')
+## KEYWORDS('algebra', 'factoring')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl','PGcourse.pl');
+
+Context("Numeric");
+
+$b = Real(random(2,4,1));
+$c = Real(random(2,4,2));
+$d = Real(random(3,7,2));
+
+$coef = 5*$c;
+$t = 5*$d+$b*$c;
+$n = $b*$d;
+
+BEGIN_PGML;
+Factor the polynomial [`[$coef] x^2+[$t] x+[$n]`]. The answer can be written as    
+
+    [`[$coef] x^2+[$t] x+[$n]=(5x+B)(Cx+D)`]    
+
+with integers [` B`], [`C`], and [`D `], where  
+
+    [`B`] equals: [_]{Real([$b])}{10}, and       
+    [`C`] equals: [_]{Real([$c])}{10}, and       
+    [`D`] equals: [_]{Real([$d])}{10}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+    [`(5x+B)(Cx+D)=(5C)x^2+(5D+BC)x+BD`]    
+so [`[$coef] x^2+[$t] x+[$n]=(5x+B)(Cx+D)`] if and only if    
+    [`5C=[$coef]`] and [`BD=[$n]`] and [`5D+BC = [$t]`].    
+Thus    
+    [`C=[$coef]/5=[$c]`],    
+and there are only a few possibilities for integers [`B`] and [`D`] so that [`BD=[$n]`]. Working through these possibilities, one finds that [`B=[$b]`] and [`D=[$d]`] satisfy both equations [`BD=[$n]`] and [`5D+BC = 5D+B([$c])=[$t]`].  So the answer is   
+     [`B=[$b]`] and [`C=[$c]`] and [`D=[$d]`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

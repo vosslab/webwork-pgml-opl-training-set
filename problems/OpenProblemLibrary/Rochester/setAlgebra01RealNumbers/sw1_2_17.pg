@@ -1,0 +1,90 @@
+#DESCRIPTION
+##  Algebra problem: true or false for inequality 
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Arithmetic)
+## DBchapter(Irrational numbers)
+## DBsection(Inequalities)
+## Date(6/3/2002)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.2')
+## Problem1('17')
+## TitleText2('Precalculus')
+## AuthorText2('Stewart, Redlin, Watson')
+## EditionText2('3')
+## Section2('1.1')
+## Problem2('24')
+## KEYWORDS('algebra', 'inequality')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
+);
+# both answers must be correct for credit
+
+install_problem_grader(~~&std_problem_grader);
+$showPartialCorrectAnswers=0;
+
+## Set up our variables.
+$a = random(1,5,1);
+$b = random(6,10,1);
+$c = random(-10,2,1);
+$d = random(-10,-1,1);
+$e = random(6,19,1);
+
+#True-false question Q and answer A pairs:
+
+@Q=(); @A=();
+
+push @Q, "[`-$a < -$b`]";
+push @A, "F";
+
+push @Q, "[`$c < \sqrt{$b}`]";
+push @A, "T";
+
+push @Q, "[`$d < $d`]";
+push @A, "F";
+
+push @Q, "[`\pi > 3.1416`]";
+push @A, "F";
+
+push @Q, "[`$e-1 < $e`]";
+push @A, "T";
+
+push @Q, "[`$a.$a > $a.\bar{$a}`]";
+push @A, "F";
+
+## Now randomly choose 2 question/answer pairs out of the 5 question strings above.
+
+@slice = random_subset(2,(0..@Q-1));
+
+@Q=@Q[@slice];
+@A=@A[@slice];
+
+for (0,1){
+  $tf[$_] = DropDownTF($A[$_]);
+}
+
+BEGIN_PGML
+Enter a T or an F in each answer space below
+to indicate whether the corresponding statement is true or
+false.
+
+Both answers must be correct to receive credit.  
+
+[_]{$tf[0]}{5} [$Q[0]]**  
+
+[_]{$tf[1]}{5} [$Q[1]]**  
+END_PGML
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

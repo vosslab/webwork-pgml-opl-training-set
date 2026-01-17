@@ -1,0 +1,57 @@
+## DESCRIPTION
+## Algebra: Basic Algebra, Algebraic Expressions
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Polynomials: multiply)
+## Date(6/3/2002)
+## Level(3)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.4')
+## Problem1('96')
+## KEYWORDS('algebra', 'Word Problems', 'Translations')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+
+$A = random(2,7,1);
+$B = random(2,7,1);
+while ($A==$B) {$B=random(2,7,1);}
+
+$ans = Formula("(x+2*$A )*(x+2*$B)");
+BEGIN_PGML
+A square rug lies in the middle of a rectangular room.  There are [$A] feet of
+uncovered floor on two opposite sides of the rug.  On the other two opposite sides of the rug there are [$B] feet of uncovered floor.  Each side of the rug is [`x`] feet long.  Find a polynomial expression for the area of the room.
+
+The area of the room is  
+    [_]{$ans}{15} square feet.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+"There are [$A] feet of
+uncovered floor on two opposite sides of the rug" so, measuring in one direction, from one side of the room to the opposite side of the room, there are [$A] feet of uncovered floor, then [`x`] feet of rug, then another [$A] feet of uncovered floor, so the distance across the room in this direction is  
+    [`([$A]+x+[$A]) = (x+[@ 2*$A @])`] feet.  
+
+Measuring across the room in the other direction there are [$B] feet of uncovered floor, then [`x`] feet of rug, then another [$B] feet of uncovered floor, so the distance across the room in this other direction is  
+    [`([$B]+x+[$B]) = (x+[@ 2*$B @])`] feet.  
+    
+The area of the rectangular room is the product of these two distances  
+    area = [`[$ans]`] square feet
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
+

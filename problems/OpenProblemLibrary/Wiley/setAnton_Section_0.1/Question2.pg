@@ -1,0 +1,139 @@
+# ************************************
+#   Comments + Keyword Clarification
+#
+#    Anton, Calculus, 0.1.2
+# ************************************
+# DESCRIPTION
+# Evaluate function values using the given table of (x,y) values
+#
+# ENDDESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Functions)
+## DBsection(Definition, concept)
+## Institution(John Wiley & Sons)
+## Level(1)
+## MO(1)
+## TitleText1('Calculus')
+## AuthorText1('Anton')
+## EditionText1('9')
+## Section1('0.1')
+## Problem1('2')
+## KEYWORDS('Functions')
+#***************************************************************
+#   Initialization - Load standard PG and MathObjects macros   
+#***************************************************************
+DOCUMENT();
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "niceTables.pl",
+  "PGcourse.pl"
+);
+
+# Set Up - Set up variable context and formulation of problem
+#
+#*************************************
+#   Create array of numeric strings
+#      Eight x values will be consecutive starting at a random negative value
+#      The eight y values will be randomly chosen from {-5,...,9} with 
+#      the restrictions:
+#         o y=5 is not allowed
+#         o The 2nd and 5th y's are equal
+#         o No others y's are equal
+#*************************************
+
+Context("Numeric");
+
+$Xstart = random(-5,-2,1);
+@x = ($Xstart..$Xstart+7);
+@yvals = random_subset(7,((-5..4),(6..9)) );  # 5 is not allowed
+@y=(@yvals[0..3],$yvals[1],@yvals[4..6]);
+
+
+$data = DataTable([
+    [("\(x\)",@x)],
+    [("\(y\)",@y)],  
+],
+horizontalrules=>1,
+texalignment=>"r|||c|c|c|c|c|c|c|"
+);
+
+# answers
+
+$ansA = List($x[1],$x[4]);
+$ansB = String("None");
+$ansC = Real($y[4]);
+
+# find $i where $y[$i]<=0
+
+@i = ();
+for (0..7){
+    push @i,$x[$_] if $y[$_]<= 0;
+}
+$ansD=List(@i);
+
+# find minimum y and the corresponding x's
+
+$minY = min(@y);
+$ansE1=Real($minY);
+
+@i=();
+for (0..7){
+    push @i,$_ if $y[$_]==$minY;
+}
+$ansE2 = List(@x[@i]);
+
+#find maximum y and the corresponding x's
+
+$maxY = max(@y);
+$ansF1 = Real($maxY);
+
+@i=();
+for (0..7){
+    push @i,$_ if $y[$_]==$maxY;
+}
+$ansF2 = List(@x[@i]);
+
+##*********************
+##   Problem Statement
+##*********************
+
+BEGIN_PGML
+The table shows corresponding values of two variables, [`x`] and [`y`]. Based on the table, answer the following questions.  If multiple values answer the question enter them all, separated by commas.  If a question has no answer enter *None*.
+
+[$data]*
+
+\a) For what values of [`x`] is [`y=[$y[4]]`]?  [_____]{$ansA}    
+
+\b) For what values of [`x`] is [`y=5`]?  [_____]{$ansB}     
+
+\c) For what values of [`y`] is [`x = [$x[4]]`]? [_____]{$ansC}
+
+\d) For what values of [`x`] is [`y \le 0`]? [_____]{$ansD}
+
+\e) What is the minimum value of [`y`]?  [_____]{$ansE1}  At what values of [`x`] does it occur?  [____]{$ansE2}
+
+\f) What is the maximum value of [`y`]?  [_____]{$ansF1}  At what values of [`x`] does it occur?  [____]{$ansF2}
+END_PGML
+
+### *******************************
+##   Answer and Solution section
+## *******************************
+
+BEGIN_PGML_SOLUTION
+\a) [$ansA]
+
+\b) [$ansB]
+
+\c) [$ansC]
+
+\d) [$ansD]
+
+\e) [$ansE1] is the minimum [`y`].  It occurs when [`x`] is [$ansE2].
+
+\f) [$ansF1] is the maximum [`y`].  It occurs when [`x`] is [$ansF2].
+
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

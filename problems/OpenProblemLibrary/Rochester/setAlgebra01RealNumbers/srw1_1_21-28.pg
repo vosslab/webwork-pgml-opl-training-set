@@ -1,0 +1,105 @@
+## DESCRIPTION
+## Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Inequalities and intervals)
+## Date(6/3/2002)
+## MLT(WordsToInequal)
+## Level(2)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.2')
+## Problem1('21 22')
+## KEYWORDS('inequality')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "parserPopUp.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+# No credit unless all answers are correct
+
+$showPartialCorrectAnswers = 0;
+install_problem_grader(~~&std_problem_grader);
+
+Context("Numeric");
+
+$a = random(-10,10,1);
+$b = random(1,3,1);
+
+# to format |x-a|
+
+if ($a<0){my $aa = abs($a); $xminusa = "x+$aa";}
+elsif ($a>0){$xminusa = "x-$a";}
+else {$xminusa = "$x";}
+
+# question Q and answer A pairs
+
+@Q=(); @A=();
+
+push @Q, " [`x`] is less than $a" ;
+push @A, " [`x \lt $a`]";
+
+push @Q, " [`x`] is any real number" ;
+push @A, " [`-\infty \lt x \lt \infty`]";
+
+push @Q, " [`x`] is greater than $a" ;
+push @A, " [`$a \lt x`]";
+
+push @Q, " [`x`] is less than or equal to $a" ;
+push @A, " [`x \leq $a`]";
+
+push @Q, " [`x`] is greater than or equal to $a";
+push @A, " [`x \geq $a`]";
+
+push @Q, " The distance from [`x`] to $a is less than or equal to $b";
+push @A, " [`| $xminusa | \leq $b`]";
+
+push @Q, " The distance from [`x`] to $a is more than $b";
+push @A, " [`| $xminusa | \gt $b`]";
+
+# randomly select 5 question-answer pairs
+
+@slice = random_subset(5,(0..@Q-1));
+@Q = @Q[@slice];
+@A = @A[@slice];
+
+# Permute questions only.  The $i-th question will be $Q[$n[$i]] so 
+# its answer will be the $n[$i]]-th answer, whose label is $alph[$n[$i]].
+
+@n = random_subset(5,(0..4));
+
+@alph = ("A".."E");
+for (0..4){
+  $drop[$_] = DropDown([@alph],$alph[$n[$_]]);
+}
+
+BEGIN_PGML
+Each of these statements has an equivalent mathematical expression labeled A,B,C,D or E.  For each statement select the equivalent mathematical expression.  
+
+All of the answers must be correct for you to receive credit.
+
+    [_]{$drop[0]} [$Q[$n[0]]]**  
+    [_]{$drop[1]} [$Q[$n[1]]]**  
+    [_]{$drop[2]} [$Q[$n[2]]]**  
+    [_]{$drop[3]} [$Q[$n[3]]]**  
+    [_]{$drop[4]} [$Q[$n[4]]]**  
+
+        *A.* [`\ `] [$A[0]]**  
+        *B.* [`\ `] [$A[1]]**  
+        *C.* [`\ `] [$A[2]]**  
+        *D.* [`\ `] [$A[3]]**  
+        *E.* [`\ `] [$A[4]]**  
+END_PGML 
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

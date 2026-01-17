@@ -1,0 +1,76 @@
+## DESCRIPTION
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Summary statistics)
+## Institution(The College of Idaho)
+## Author(R Cruz, L Danielson, J Guild)
+## MLT(stat-des-mean-median)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## TitleText1('The Basic Practice of Statistics')
+## AuthorText1('David Moore')
+## EditionText1('5e')
+## Section1('2')
+## Problem1('')
+## KEYWORDS('statistics', 'skewed', 'mean', 'median')
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl',         'PGML.pl',
+    'PGstatisticsmacros.pl', 'parserPopUp.pl',
+    'PGcourse.pl'
+);
+
+#  Setup
+
+$a[5]  = Real(random(70, 85));
+$a[4]  = $a[5] - random(0, 3);
+$a[3]  = $a[4] - random(1, 5);
+$a[2]  = $a[3] - random(0, 10);
+$a[1]  = $a[2] - random(1, 3);
+$a[0]  = $a[1] - random(1, 20);
+$a[6]  = $a[5] + random(1, 3);
+$a[7]  = $a[6] + random(0, 4);
+$a[8]  = $a[7] + random(0, 3);
+$a[9]  = $a[7] + random(1, 3);
+$a[10] = random($a[9], 100);
+
+$mean   = stats_mean(@a);
+$median = $a[5];
+
+if ($mean > $median)  { $ans = "SKEWED RIGHT"; }
+if ($mean < $median)  { $ans = "SKEWED LEFT"; }
+if ($mean == $median) { $ans = "SYMMETRIC"; }
+
+$i  = $mean > $median ? 0 : ($mean < $median ? 1 : 2);
+$dd = DropDown([ 'Skewed Right', 'Skewed Left', 'Symmetric' ], $i);
+
+BEGIN_PGML
+Calculate the mean and median of the following grades on a math test:
+
+[``` [@ join(", ", reverse(@a)) @] ```]
+
+a) Mean = [_]{$mean}{10}
+
+b) Median = [_]{$median}{10} 
+
+c) Is this data set skewed to the right, symmetric, or skewed to the left? [_]{$dd}
+END_PGML
+
+($sum) = stats_SX_SXX(@a);
+
+$skew = $i == 0 ? '<' : $i == 1 ? '>' : '=';
+
+BEGIN_PGML_SOLUTION
+
+a) The mean is the sum of the data over the number of data or 
+[``` \bar{x} = \frac{[$sum]}{11} = [$mean] ```]
+
+b) Notice that the data is ordered (decreasing), so the median is the middle (or sixth) value or [$median]
+
+c) Since mean [` [$skew]`] mean, then the data set is [$dd].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();       # This should be the last executable line in the problem.

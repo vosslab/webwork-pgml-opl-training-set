@@ -1,0 +1,43 @@
+## DESCRIPTION
+## Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Absolute value expressions and functions)
+## DBsection(Applications using absolute values)
+## MO(1)
+## Institution(Rochester)
+## Level(2)
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+## Before doing anything, we must import the macro definitions on the next few lines.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+
+do {$a = random(100,500,1);
+    $b = random(100,500,1);
+    $ans = Real(abs($a-$b));
+} until ( $ans > 7 );
+
+BEGIN_PGML
+Find the distance between [$b] and [$a].  Your answer may be an algebraic expression.
+
+     Answer: [_]{$ans}{20}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[`|[$b]-[$a]| = [$ans] `].
+END_PGML_SOLUTION
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

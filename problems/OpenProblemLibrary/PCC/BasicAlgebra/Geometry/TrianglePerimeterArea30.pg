@@ -1,0 +1,156 @@
+# WeBWorK problem written by Carl Yao
+# Portland Community College
+#
+# Find the perimeter and area of an obtuse triangle.
+#
+# Last edited by Jordan 8/29/13; Carl Yao on 7/17/13
+#
+# ENDDESCRIPTION
+
+## DBCCSS('6.G.1')
+## DBsubject(Geometry)
+## DBchapter(Shapes)
+## DBsection(Area)
+## Institution(PCC)
+## Author(Alex Jordan, Carl Yao, Chris Hughes)
+## Level(3)
+## MO(1)
+## KEYWORDS('area','perimeter','triangle')
+
+##############################################
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "PGgraphmacros.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "parserNumberWithUnits.pl",
+  "PGcourse.pl"
+);
+
+##############################################
+
+Context("Numeric");
+
+$xmin = 0;         #The viewing window
+$xmax = 40;
+$ymin = 0;
+$ymax = 40;
+
+$xLabelShift = $xmax/40;
+$yLabelShift = $ymax/40;
+
+# We want a triangle with integer sides and approximate 
+# integer height so one can approximate its
+# area = (1/2)base*height using these numbers
+
+# Make the sides of the triangle integers
+
+$roughheight = random(20,30,1);
+$rightSide = $roughheight + random(2,4,1);
+$base = random(10,15,1);
+$offset = round(sqrt($rightSide**2 - $roughheight**2));
+$bigbase = $base + $offset;
+$leftSide = round(sqrt($bigbase**2 + $roughheight**2));
+
+# get the exact area from Heron's formula 
+
+$perimeter = $base + $leftSide + $rightSide;
+$s = $perimeter/2;
+$area = sqrt($s*($s-$leftSide)*($s-$rightSide)*($s-$base));
+
+# approximate the height to the nearest integer
+$height = round(2*$area/$base);
+
+# with this approximation the max error in the 
+# area = base*height/2 formula is  
+# about (delta height)/height < 0.5/20 = 2.25 % 
+
+@x = (($xmax-2*$base)/2,($xmax+2*$base)/2);
+@y = (($ymax-$height)/2,($ymax+$height)/2);
+
+$cornersize = min(($x[1]-$x[0]),($y[1]-$y[0]))/10;
+
+$picture = init_graph($xmin,$ymin,$xmax,$ymax,
+      pixels=>[400,400]);
+
+$xTop = $x[0]+$bigbase;
+
+$picture->lb( new Label($x[0]+$base/2, $y[0]-$yLabelShift,"$base m",'black','center','middle'));
+$picture->lb( new Label($xTop+$xLabelShift,($y[0]+$y[1])/2,"$height m",'black','left','middle'));
+$picture->lb( new Label($x[0]+1.5*$base, ($y[0]+$y[1])/2,"$rightSide m",'black','center','middle'));
+$picture->lb( new Label($x[0]+0.5*$base,($y[0]+$y[1])/2,"$leftSide m",'black','left','middle'));
+
+$picture->new_color("darkblue",  100,100,255); 
+
+$picture->moveTo($xTop,$y[1]);
+$picture->lineTo($xTop,$y[0], red,1,"dashed");
+$picture->lineTo($x[0]+$base,$y[0], red,1,"dashed"); 
+$picture->lineTo($xTop,$y[1], darkblue,3);
+$picture->lineTo($x[0],$y[0], darkblue,3);
+$picture->lineTo($x[0]+$base,$y[0], darkblue,3);
+
+$picture->moveTo($x[0]+$bigbase,$y[0]+$cornersize);
+$picture->lineTo($x[0]+$bigbase-$cornersize,$y[0]+$cornersize, darkblue,3);
+$picture->lineTo($x[0]+$bigbase-$cornersize,$y[0], darkblue,3);
+
+$approxarea = $base*$height/2;
+$ansP = NumberWithUnits($perimeter,"m");
+$ansA = NumberWithUnits($approxarea,"m^2");
+
+
+$text = "an obtuse triangle with sides of lengths $base m, $rightSide m, and $leftSide m; its height perpendicular to the side of length $base m is approximately equal to $height m (rounded to the nearest meter).";
+
+
+
+##############################################
+
+$refreshCachedImages = 1;
+
+BEGIN_PGML
+
+Find the perimeter (exactly) and area (approximately) of the triangle.
+
+The height is rounded off to the nearest meter, so if you use it to compute the area your result will only be correct to within 2 or 3 percent of the true area. 
+>>[@ image(insertGraph( $picture  ), tex_size=>400, height=>400, width=>400, extra_html_tags => 'alt = "$text"  title = "$text"') @]* <<
+
+Its perimeter is [_____________]{$ansP} and its area is [_____________]{$ansA->cmp(tolerance=>0.03,tolType=>'relative')} [`\pm 3 \%`]. 
+
+(Use *m* for meters and *m[$CARET]2* for square meters.)
+
+END_PGML
+
+##############################################
+
+BEGIN_PGML_SOLUTION
+
+To find the perimeter of a triangle, we simply add up the length of its 3 sides:
+
+[``\begin{aligned}
+      \text{triangle perimeter} &= [$base] + [$leftSide] + [$rightSide]\\
+       & =[$ansP]
+     \end{aligned}``]
+
+Don't forget the length unit [`\textrm{m}`].  
+----
+A triangle's area formula is:
+
+    [`` \text{triangle area} = \frac{1}{2} \cdot \text{base} \cdot \text{height} ``]
+
+Using this formula with the approximate height, we have:
+
+[``\begin{aligned}
+       \text{triangle area} &= \frac{1}{2} \cdot \text{base} \cdot \text{height}\\
+       & \approx\frac{1}{2} \cdot [$base] \cdot [$height] \pm 3 \%\\
+       & \approx[$ansA]  \pm 3 \%
+     \end{aligned}``]
+
+Don't forget the area unit [`\textrm{m}^{2}`].
+
+There are other ways to compute the area.  One, called *Heron's formula*, uses only the lengths of the sides so it gives an exact result if one knows the side lengths exactly, as we do in this problem. You may look up Heron's formula on the internet or in a geometry textbook.  Heron's formula says the area is about [`[$area] \text{ m}^2`].
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

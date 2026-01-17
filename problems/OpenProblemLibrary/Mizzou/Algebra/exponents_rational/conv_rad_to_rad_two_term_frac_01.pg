@@ -1,0 +1,99 @@
+## DESCRIPTION
+## Radicals and Rational Exponents: Rational Exponents
+## ENDDESCRIPTION
+
+
+## Author1('David Covert')
+## Author2('Teri Christiansen')
+## Author3('Rick Lynch')
+## DBsubject(Algebra)
+## DBchapter(Properties of exponents, rational exponents and radicals)
+## DBsection(Properties of rational exponents and radicals)
+## MO(1)
+## Date(Spring 2012)
+## Institution(University of Missouri)
+## MLT(RadicalsToRadical2015)
+## Level(2)
+## TitleText1('College Algebra')
+## AuthorText1('Beecher, Penna, Bittinger')
+## EditionText1('4')
+## Section1('.7')
+## Problem1('')
+## KEYWORDS('radical expression', 'rational powers')
+
+##################################
+#  Initialization
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "contextFraction.pl",
+  "PGcourse.pl",
+);
+
+###################################
+# Setup
+
+Context("Numeric")->variables->add(
+y=>"Real",
+t=>"Real",
+s=>"Real",
+u=>"Real",
+v=>"Real",
+p=>"Real",
+q=>"Real",
+r=>"Real",
+w=>"Real",
+z=>"Real");
+
+$var = list_random('p','q','r','u','v','x','y','z');
+
+do  {
+$n2 = random(6,8,1);
+$n3 = random(2,5,1);
+do {$b = random(2,10,1)} until (gcd($n2,$b) ==1);
+do {$c = random(2,10,1)} until (gcd($n3,$c) ==1);
+$num = $b*$n3 - $c*$n2;
+$den = $n2*$n3;
+} until (abs($num) < $den && $num != 0 );
+$expression = "  \dfrac{ \sqrt[$n2]{$var^{$b}}   }{~ \sqrt[$n3]{$var^{$c}} ~}  ";
+
+if ($num > 0){
+  $RHS = "\sqrt[n]{$var^m}";
+  $pow = "m/n";
+}
+else {
+  $RHS = "\frac{1}{\sqrt[n]{$var^m}}";
+  $pow = "-m/n";
+}
+
+Context("Fraction-NoDecimals");
+$n = Fraction($den,gcd($den,$num));
+$m = Fraction(abs($num),gcd($den,$num));
+
+BEGIN_PGML
+Use rational exponents to simplify, then find the smallest positive integers [`m`] and [`n`] that satisfy the following equation. 
+
+    [``[$expression] = [$RHS] ``]    
+
+Answer:    
+
+    [`m = `]  [_]{$m->cmp(studentsMustReduceFractions=>1)}{5} and [`n = `] [_]{$n->cmp(studentsMustReduceFractions=>1)}{5}  
+END_PGML
+
+
+BEGIN_PGML_SOLUTION
+ 
+
+    [``\begin{aligned}
+   [$expression] &= [$RHS] \\
+   [$var]^{([$b]/[$n2]-[$c]/[$n3])} &= [$var]^{[$pow]} \\
+   [$b]/[$n2]-[$c]/[$n3] &= [$pow] \\
+   [$m]/[$n] &= m/n
+   \end{aligned}``]
+END_PGML_SOLUTION
+
+
+ENDDOCUMENT();

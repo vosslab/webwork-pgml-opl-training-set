@@ -1,0 +1,47 @@
+##DESCRIPTION
+##  Algebra problem: solve a quadratic equation
+##ENDDESCRIPTION
+
+## pphi tagged and PAID on 12-12-2003
+
+## DBsubject(Algebra)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Solving equations)
+## Date(6/3/2002)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.6')
+## Problem1('49')
+## KEYWORDS('algebra', 'quadratic equations')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserMultiAnswer.pl','PGchoicemacros.pl', 'PGcourse.pl');
+
+$showPartialCorrectAnswers = 1;
+
+Real($a = random(2,9,1));
+$b = $a**2;
+
+$ans = MultiAnswer($a,-$a)->with(
+    singleResult => 1,
+    checker => sub {
+        my ($correct,$student,$multi_ans,$ans_hash) = @_; 
+        my ($corr1,$corr2) = @{$correct};
+        my ($x1,$x2) = @{$student};  
+        return (($corr1 == $x1 && $corr2 == $x2) or ($corr1 == $x2 && $corr2 == $x1)) ;
+    },
+);
+
+BEGIN_PGML;
+Find all real solutions of the equation [`x^2=[$b]`].  
+
+    [` x = `] [_]{$ans}{10} [`\ `] or [`\ x = `] [_]{$ans}{10} 
+END_PGML  
+
+BEGIN_PGML_SOLUTION
+    [`x=\pm [$a]`]
+END_PGML_SOLUTION
+ENDDOCUMENT();        # This should be the last executable line in the problem.

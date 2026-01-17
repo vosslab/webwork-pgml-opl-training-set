@@ -1,0 +1,59 @@
+#DESCRIPTION
+##  Algebra problem: raising integers to powers
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Algebra)
+## DBchapter(Properties of exponents, rational exponents and radicals)
+## DBsection(Properties of exponents)
+## Date(6/3/2002)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.3')
+## Problem1('29')
+## KEYWORDS('algebra', 'powers')
+## MLT(Division_exponents_multivar)
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("LimitedNumeric");
+
+$a = random(2,4,1);
+$b = random(2,5,1);
+$c = random(5,6,1);
+$d = $c+1;
+$e = $c;
+
+$ans1 = Real($b*$d-$b*$e);
+$ans2 = Real($c*$d-$e);
+$ans3 = Real($c*$e-$a*$d);
+
+BEGIN_PGML
+    [`` \frac{(x^{[$a]} y^{[$b]} z^{[$c]})^{[$d]}}{(x^{[$c]} y^{[$b]} z)^{[$e]}} = y^rz^s/x^t ``]  
+    
+where     
+    [`r`], the exponent of [`y`], is: [_]{$ans1}{10}    
+    [`s`], the exponent of [`z`], is: [_]{$ans2}{10}    
+    [`t`], the exponent of [`x`], is: [_]{$ans3}{10}    
+
+Your answers must be numbers not algebraic expressions.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[`` \frac{(x^{[$a]} y^{[$b]} z^{[$c]})^{[$d]}}{(x^{[$c]} y^{[$b]} z)^{[$e]}} 
+= \frac{x^{[@ $a*$d @]} y^{[@ $b*$d @]} z^{[@ $c*$d @]}}{x^{[@ $c*$e @]} y^{[@ $b*$e @]} z^{[$e]}} 
+= y^{[$ans1]} z^{[$ans2]}/x^{[$ans3]} ``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

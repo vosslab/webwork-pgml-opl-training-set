@@ -1,0 +1,72 @@
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl', 'PGML.pl',
+    'PGtikz.pl',     'contextUnits.pl',
+    'PGcourse.pl'
+);
+
+Context('Units')->withUnitsFor("length");
+
+# create a rectangular plot with a corner out of it.
+
+$m = random(5, 9);
+$n = random(5, 9);
+$x = random(1, 4);
+$y = random(1, 4);
+
+$graph_image = createTikZImage();
+$graph_image->tikzLibraries("arrows.meta");
+
+$graph_image->BEGIN_TIKZ
+\tikzset{>={Stealth[scale = 1.5]}}
+\filldraw[
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-2,-2) rectangle ({$m+1.5},{$n+1.5});
+
+\draw (0,0) grid ($m, {$n-$y});
+\draw (0,{$n-$y}) grid ({$m-$x}, $n);
+
+END_TIKZ
+
+$perim = Compute("(2*$m+2*$n) ft");
+
+$area = Compute("($m*$n - $x*$y) ft^2");
+
+$alt_text =
+    "A grid of $m by $n squares with a $x by $y grid in the upper right corner missing.";
+
+BEGIN_PGML
+
+A plot of a garden is given below with the length of the side of a small square of 1 foot.
+
+[! [$alt_text] !]{$graph_image}{400}
+
+a) Find the perimeter of the garden: [_]{$perim}
+
+b) Find the area of the garden [_]{$area}
+
+**Note:** use units on each and [@ helpLink('units') @]* is a list of valid units.
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+The perimeter is the length of the boundary, so it would be in units of feet. Starting in the lower left and going clockwise the perimeter is the sum of lines
+of length [$perim].
+
+An easy  way to find the area is to think of the garden as consisting of a [@ $n-$x @] foot by [@ $y @] foot rectangle at the top of the diagram and a [$m] foot by [@ $n-$y @] foot rectangle.
+
+The top rectangle has an area of [@ ($n-$x)*$y @] and the bottom rectangle has an area of [@ $m*($n-$y) @].  The total is [$area]. 
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
+
+## DBsubject(Geometry)
+## DBchapter(Shapes)
+## DBsection(Perimeter)
+## Level(1)

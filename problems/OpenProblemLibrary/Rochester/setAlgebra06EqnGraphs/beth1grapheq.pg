@@ -1,0 +1,92 @@
+## DESCRIPTION
+## Algebra: Coordinates and Graphs
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Cartesian coordinate system)
+## DBsection(Graphs of equations)
+## Date(6/3/2002)
+## MLT(Is_graph_symmetric)
+## Level(2)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('2.2')
+## Problem1('43 44')
+## KEYWORDS('algebra', 'graph')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+
+$showPartialCorrectAnswers = 0;
+
+$a = non_zero_random(1,16,1);
+
+#choose the exponents
+$b = random(2,4);
+$c = random(2,4);
+$d = random(2,4);
+$e = random(2,4);
+
+if (($b % 2==0) and ($d % 2==0)) {
+  $ans1 = DropDown(["Yes","No"], "Yes");
+  $sol1 = "Yes, [`\ g(-x,y)=g(x,y)`] so it's symmetric about the [`y`]-axis."
+  }
+else {
+  $ans1 = DropDown(["Yes","No"], "No");
+  $sol1 = "No, [`\ g(-x,y)\neq g(x,y)`] so it's not symmetric about the [`y`]-axis."
+}
+
+if (($c % 2==0) and ($e % 2==0)) {
+  $ans2 = DropDown(["Yes","No"], "Yes");
+  $sol2 = "Yes, [`\ g(x,-y)=g(x,y)`] so it's symmetric about the [`x`]-axis." 
+  }
+else {
+  $ans2 = DropDown(["Yes","No"], "No");
+  $sol2 = "No, [`\ g(x,-y)\neq g(x,y)`] so it's not symmetric about the [`x`]-axis."
+  }
+
+if ((($b + $c) % 2==0) and (($d + $e) % 2==0)) {
+  $ans3 = DropDown(["Yes","No"], "Yes");
+  $sol3 = "Yes, [`\ g(-x,-y)=g(x,y)`] so it's symmetric about the origin."
+  }
+else {
+  $ans3 = DropDown(["Yes","No"], "No");
+  $sol3 = "No, [`\ g(-x,-y)\neq g(x,y)`] so it's not symmetric about the origin."
+  }
+
+BEGIN_PGML
+For the graph of the equation    
+
+    [``x^[$b] y^[$c] +x^[$d] y^[$e] =[$a] ``]    
+    
+answer the following questions:
+
+    a) Is the graph symmetric with respect to the [`y`]-axis? [_]{$ans1} 
+
+    b) Is the graph symmetric with respect to the [`x`]-axis? [_]{$ans2} 
+
+    c) Is the graph symmetric with respect to the origin?  [_]{$ans3}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Let [``g(x,y)=x^[$b] y^[$c] +x^[$d] y^[$e]``].
+
+a) [$sol1]**
+
+b) [$sol2]**
+
+c) [$sol3]**
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

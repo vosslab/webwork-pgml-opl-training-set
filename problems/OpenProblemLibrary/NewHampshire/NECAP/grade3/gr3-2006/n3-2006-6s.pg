@@ -1,0 +1,49 @@
+## DBsubject(Geometry)
+## DBchapter(Shapes)
+## DBsection(Perimeter)
+## Level(3)
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',     'PGML.pl',
+    'PGchoicemacros.pl', 'PGgraphmacros.pl',
+    'PGtikz.pl',         'PGcourse.pl'
+);
+
+$x = random(5, 15);
+$y = random(2, 5);
+
+$graph = createTikZImage();
+$graph->tikzLibraries("arrows.meta");
+$graph->BEGIN_TIKZ
+\tikzset{>={Stealth[scale = 1.5]}}
+\filldraw[
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-0.5,0) rectangle (10.5,4);
+\filldraw[draw=black, fill = LightYellow] (1,1) rectangle (9,3);
+\draw (5,3) node [above] {$x cm.};
+\draw (5,1) node [below] {$x cm.};
+\draw (1,2) node [left] {$y cm.};
+\draw (9,2) node [right] {$y cm.};
+\draw (5,2) node {\Large I love mathematics};
+END_TIKZ
+
+BEGIN_PGML
+Look at this bookmark. (Notice that cm. is an abbreviation for centimeters)
+
+>>[! !]{$graph}{500} <<
+  
+What is the distance around the edge of the bookmark?  [_]{Real(2*$x+2*$y)} cm.
+ 
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The length around the bookmark (which is called the perimeter   
+is the sum of the lengths of the four sides, [`[$x]+[$x]+[$y]+[$y]= [@ 2*$x+2*$y @]`] centimeters.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

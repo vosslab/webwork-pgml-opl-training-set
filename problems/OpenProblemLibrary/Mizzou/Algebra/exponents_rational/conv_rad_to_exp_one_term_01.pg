@@ -1,0 +1,71 @@
+## DESCRIPTION
+## Radicals and Rational Exponents: Rational Exponents
+## ENDDESCRIPTION
+
+
+## Author1('David Covert')
+## Author2('Teri Christiansen')
+## Author3('Rick Lynch')
+## DBsubject(Algebra)
+## DBchapter(Properties of exponents, rational exponents and radicals)
+## DBsection(Properties of rational exponents and radicals)
+## MO(1)
+## Date(Spring 2012)
+## Institution(University of Missouri)
+## MLT(number_fraction_powers)
+## Level(2)
+## TitleText1('College Algebra')
+## AuthorText1('Beecher, Penna, Bittinger')
+## EditionText1('4')
+## Section1('.7')
+## Problem1('')
+## KEYWORDS('radical expression', 'rational powers')
+
+
+##################################
+#  Initialization
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
+);
+
+###################################
+# Setup
+
+Context("Numeric")->variables->add(
+y=>"Real",
+t=>"Real",
+s=>"Real",
+u=>"Real",
+v=>"Real",
+p=>"Real",
+q=>"Real",
+r=>"Real",
+w=>"Real",
+z=>"Real");
+
+$a = random(5,12,1);
+$n = random(3,10,1);
+do {$m = random(3,10,1)} until (gcd($n, $m) ==1);
+
+$expression = " \sqrt[$n]{$a^{$m}}";
+
+Context("Fraction-NoDecimals");
+$answer = Fraction($m,$n);
+
+BEGIN_PGML
+Simplify and write the following using a rational exponent. 
+
+If    
+    [`\displaystyle [$expression] = [$a]^m`]    
+then    
+    [`m = `] [_]{$answer->cmp(studentsMustReduceFractions=>1)}{5}
+END_PGML
+
+
+ENDDOCUMENT();

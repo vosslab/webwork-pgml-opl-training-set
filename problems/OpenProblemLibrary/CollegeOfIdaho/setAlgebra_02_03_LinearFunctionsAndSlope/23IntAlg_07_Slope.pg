@@ -1,0 +1,94 @@
+##DESCRIPTION
+## Slope
+
+##ENDDESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Finding the slope)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(Slope_from_picture)
+## Level(2)
+## MO(1)
+## TitleText1('Essentials of Intermediate Algebra')
+## AuthorText1('Blitzer')
+## EditionText1('1')
+## Section1('2.3')
+## KEYWORDS('slope')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGtikz.pl', 'PGcourse.pl');
+
+@slope = ("1/2", "-1/3", "-2", "3", "-1/2", "1", "0", "-2/3", "2", "3/2", "-1");
+$n     = random(0, 8, 2);
+
+@m     = map { Real($slope[ $n + $_ ])->value } (0 .. 2);
+@num   = (-3, -2, -1, 1, 2, 3);
+@slice = random_subset(3, 0 .. 3);
+@b     = @num[@slice];    #This is for the labels to show up
+@line  = map { Formula("$slope[$n + $_] x+$b[$_]") } (0 .. 2);
+
+# determine the bounds of the lines for nicer plotting
+
+@xmax = map {
+    $m[$_] * 7.5 + $b[$_] > 7.5        ? (7.5 - $b[$_]) / $m[$_]
+        : $m[$_] * 7.5 + $b[$_] < -7.5 ? (-7.5 - $b[$_]) / $m[$_]
+        : 7.5
+} (0 .. 2);
+@xmin = map {
+    $m[$_] * -7.5 + $b[$_] > 7.5        ? (7.5 - $b[$_]) / $m[$_]
+        : $m[$_] * -7.5 + $b[$_] < -7.5 ? (-7.5 - $b[$_]) / $m[$_]
+        : -7.5
+} (0 .. 2);
+
+$graph = createTikZImage();
+$graph->tikzLibraries('arrows.meta');
+$graph->BEGIN_TIKZ
+\tikzset{>={Stealth[scale=1.5]}}
+\filldraw[
+    draw=LightBlue,
+    fill=white,
+    rounded corners=10pt,
+    thick,use as bounding box
+] (-8.5,-8.5) rectangle (8.5,8.5);
+\draw[gray] (-7,-7) grid (7,7);
+\draw[->,thick] (-7.5,0) -- (7.5,0) node[above left,outer sep=3pt] {\(x\)};
+\foreach \x in {-7,...,-1,1,2,...,7}
+    \draw(\x,5pt) -- (\x,-5pt) node [below] {\(\x\)};
+\draw[->,thick] (0,-7.5) -- (0,7.5) node[below right,outer sep=3pt] {\(y\)};
+\foreach \y in {-7,...,-1,1,2,...,7}
+    \draw (5pt,\y) -- (-5pt,\y) node[left] {\(\y\)};
+\draw[blue,ultra thick,<->] plot[domain=$xmin[0]:$xmax[0]] (\x,{$m[0]*\x+$b[0]});
+\draw[red,ultra thick, dashed,<->] plot[domain=$xmin[1]:$xmax[1]] (\x,{$m[1]*\x+$b[1]});
+\draw[green, dotted,ultra thick,<->] plot[domain=$xmin[2]:$xmax[2]] (\x,{$m[2]*\x+$b[2]});
+END_TIKZ
+
+#  Main text
+
+BEGIN_PGML
+>>
+ [@  image( insertGraph($graph), width=>500, 
+    height=> 500, tex_size=>600 ) 
+ @]*
+<<
+  
+Use the graph, given above, to find the slope of each line. 
+
+a) Slope of Line 1 (blue, solid) = [_]{Real($m[0])}
+
+b) Slope of Line 2 (red, dashed) = [_]{Real($m[1])}
+
+b)  Slope of Line 3 (green, dotted) = [_]{Real($m[2])}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+a) Slope of Line 1 (blue) = [$m[0]]
+
+b) Slope of Line 2 (red) = [$m[1]]
+
+c)  Slope of Line 3 (green) =  [$m[2]]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

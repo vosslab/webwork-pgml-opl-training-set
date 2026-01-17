@@ -1,0 +1,34 @@
+#DESCRIPTION
+##  Statistics: Find a correlation coefficient.
+##ENDDESCRIPTION
+
+## Tagged by Jonathan Baik
+## 2014-04-01
+
+## DBsubject(Statistics)
+## DBchapter(Simple linear regression)
+## DBsection(Correlation)
+## Date(09/25/2012)
+## Institution(UBC)
+## Author(Lance R)
+## Level(2)
+## KEYWORDS('statistics', 'probability', 'random variables')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserRadioButtons.pl', 'PGcourse.pl');
+
+$radio = RadioButtons([ [ '0.95', '0.01', '0.56', '-0.95', '1.1', '-1.1', ] ],
+    0, labels => 'ABC');
+
+BEGIN_PGML
+A past STAT 200 student tells you that there is a very strong positive linear association between the STAT 200 final exam score and the WeBWorK Assignment total. What is a plausible value of the correlation coefficient ([`r`])?
+  
+[_]{$radio}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+If there is a strong positive relationship, the you should look for a positive number close to 1 and recall that [` -1 \leq r \leq 1`].  Among the options is [$radio].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,62 @@
+#DESCRIPTION
+##Type of
+#ENDDESCRIPTION
+## DBsubject(Geometry)
+## DBchapter(Circle geometry)
+## DBsection(Circumference and area)
+## Level(2)
+## MO(1)
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',     'PGML.pl',   'PGtikz.pl',
+    'PGcourse.pl'
+);
+
+Context("Numeric")->flags->set(tolerance => 0.005, tolType => "absolute");
+$r    = random(7.1, 7.9, 0.1);
+$circ = Real(2 * pi * $r);
+$area = Real(pi * $r**2);
+
+$graph_image = createTikZImage();
+$graph_image->tikzLibraries("arrows.meta");
+$graph_image->BEGIN_TIKZ
+\tikzset{>={Stealth[scale = 1.5]}}
+\filldraw[
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-5.5,-5.5) rectangle (5.5, 5.5);
+\draw[very thick, DarkBlue] (0,0) circle[radius = 5];
+\draw (0,0) -- ({5*cos(30)},{5*sin(30)}) node [midway, above left] {$r cm};
+END_TIKZ
+
+BEGIN_PGML
+
+>> [! A circle of radius [$r] !]{$graph_image}{400} <<
+
+
+a) The circumference of a circle with radius [$r] cm is [_]{$circ}{5} cm.
+
+    Your answer must be accurate to two decimal places.
+
+b) The area of a circle with radius [$r] cm is [_]{$area}{5} square cm.
+
+    Your answer must be accurate to two decimal places.
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+ Solution 
+The circumference of a circle is [`2 \pi`] times the radius (where [`\pi`] is approximately 3.1416.   
+[`2\times 3.1416\times [$r]= [$circ]`].
+
+The area of a circle is [`\pi`] times the square of the radius.  
+[`3.1416\times [$r]^2=[$area]`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
+

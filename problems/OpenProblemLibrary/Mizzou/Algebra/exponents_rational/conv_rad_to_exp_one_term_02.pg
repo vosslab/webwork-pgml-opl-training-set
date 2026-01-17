@@ -1,0 +1,77 @@
+## DESCRIPTION
+## Radicals and Rational Exponents: Rational Exponents
+## ENDDESCRIPTION
+
+
+## Author1('David Covert')
+## Author2('Teri Christiansen')
+## Author3('Rick Lynch')
+## DBsubject(Algebra)
+## DBchapter(Properties of exponents, rational exponents and radicals)
+## DBsection(Properties of rational exponents and radicals)
+## MO(1)
+## Date(Spring 2012)
+## Institution(University of Missouri)
+## MLT(RadicalsToRationalPower2015)
+## Level(2)
+## TitleText1('College Algebra')
+## AuthorText1('Beecher, Penna, Bittinger')
+## EditionText1('4')
+## Section1('.7')
+## Problem1('')
+## KEYWORDS('radical expression', 'rational powers')
+
+##################################
+#  Initialization
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "contextFraction.pl",
+  "PGcourse.pl",
+);
+
+TEXT(beginproblem());
+
+###################################
+# Setup
+
+Context("Numeric")->variables->add(
+y=>"Real",
+t=>"Real",
+s=>"Real",
+u=>"Real",
+v=>"Real",
+p=>"Real",
+q=>"Real",
+r=>"Real",
+w=>"Real",
+z=>"Real");
+
+$var = list_random('p','q','r','u','v','x','y','z');
+
+$n = random(3,10,1);
+do {$m = random(3,10,1)} until ($n != $m);
+
+$expression = " \sqrt[$n]{\sqrt[$m]{$var}}";
+
+Context("Fraction-NoDecimals");
+$answer = Fraction(1,$n*$m);
+
+BEGIN_PGML
+Simplify and write the following using a rational exponent. 
+
+If    
+    [`[$expression] = [$var]^m `]    
+then    
+    [`m = `] [_]{$answer->cmp(studentsMustReduceFractions=>1)}{5} 
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[``[$expression] = \Big([$var]^{1/[$m]}\big)^{1/[$n]} = [$var]^{(1/[$n])(1/[$m])}``]
+END_PGML_SOLUTION
+
+
+ENDDOCUMENT();

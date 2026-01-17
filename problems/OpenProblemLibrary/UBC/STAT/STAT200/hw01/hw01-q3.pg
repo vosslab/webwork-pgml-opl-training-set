@@ -1,0 +1,36 @@
+#DESCRIPTION
+##  Statistics: Introduction
+##ENDDESCRIPTION
+
+## Tagged by Jonathan Baik
+## 2014-04-01
+
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Graphical representations)
+## Date(05/03/2012)
+## Institution(University of BC)
+## Author(Lance R)
+## Level(1)
+
+## Updated 2025.02 by Peter Staab, switch to PGML and add a solution.
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserRadioButtons.pl', 'PGcourse.pl');
+
+$rb = RadioButtons(
+    [ [ 'histogram', "bar chart", "frequency table", "pie chart" ] ], 0);
+
+BEGIN_PGML
+Which of the following is **NOT** a display method for categorical data:
+
+[_]{$rb}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+A histogram requires numerical data, whereas the other methods can be used for categorical data.  
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

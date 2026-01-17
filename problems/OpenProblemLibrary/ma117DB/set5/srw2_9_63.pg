@@ -1,0 +1,58 @@
+##DESCRIPTION
+##  Algebra problem: one-to-one functions, inverses
+##ENDDESCRIPTION
+
+ 
+## tcao , PAID on 11-24-2003
+
+## DBsubject(Algebra)
+## DBchapter(Inverse functions)
+## DBsection(1-1 functions)
+## Date(6/3/2002)
+## Level(3)
+## TitleText1('Precalculus')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('2.7')
+## Problem1('50')
+## KEYWORDS('algebra', 'one-to-one function', 'inverse')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "MathObjects.pl",
+  "PGcourse.pl"
+);
+
+$showPartialCorrectAnswers = 1;
+
+Context("Numeric");
+
+$a = random(2,9,1);
+$ans3 = Formula("sqrt(x)-$a");
+
+Context("Interval");
+
+$ansInt = Compute("[-$a, infinity)");
+
+BEGIN_PGML
+The function [`f(x)=(x+[$a])^2`] is not one-to-one. Choose the largest possible
+domain containing the number 100 so that the function restricted to the domain is one-to-one.
+
+The largest possible domain is [_________________]{$ansInt} (use [@ helpLink("interval","interval notation") @]*).
+
+If [`f`] is restricted to the above domain, then the inverse function is [`g(x)=`][_______________]{$ans3}.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The function [`f(x)=(x+[$a])^2`] is one-to-one on the intervals [`(-\infty, -[$a]]`] and [`[-[$a], \infty)`].
+The second one contains the number 100.
+
+Solving the equation [`y=(x+[$a])^2`] for [`x`] will give us two solutions: [`x = \pm\sqrt{y} - [$a]`].
+The correct sign is + for the square root because [`x \geq [$a]`] in the domain [`[-[$a],\infty)`].
+Exchanging the [`x`] and [`y`] variables will give us the answer [`g(x) = [$ans3]`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
+

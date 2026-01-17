@@ -1,0 +1,57 @@
+#DESCRIPTION
+##  Algebra problem:  Systems of equations and inequalities
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Linear algebra)
+## DBchapter(Matrices)
+## DBsection(Inverses)
+## Date(6/3/2002)
+## MLT(3x3YesNoCoeffs)
+## MLTleader(1)
+## Level(3)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('7.5')
+## Problem1('11')
+## KEYWORDS('algebra', 'inverse', 'matrix')
+DOCUMENT();    # This should be the first executable line in the problem.
+
+loadMacros(
+    'PGstandard.pl',             'PGML.pl',
+    'parserRadioMultiAnswer.pl', 'PGcourse.pl'
+);
+
+$showPartialCorrectAnswers = 1;
+
+Context('Matrix');
+
+$a = non_zero_random(-3, 3, 1);
+$c = non_zero_random(-3, 3, 1);
+$b = -$c - 2 + $a * $c;
+
+$M    = Matrix([ [ $a, $b, 1 ], [ -1, 1, -1 ], [ 1, $c, 0 ] ]);
+$Minv = Matrix([
+    [ $c,      $c,      $c + 1 - $a * $c ],
+    [ -1,      -1,      $a - 1 ],
+    [ -$c - 1, -$c - 2, $a - $c - 2 + $a * $c ]
+]);
+
+$rma = RadioMultiAnswer(
+    [
+        ['The inverse of the matrix does not exist.'],
+        [ 'The inverse of the matrix is %s*.', $Minv ]
+    ],
+    1
+);
+
+BEGIN_PGML
+Find the inverse of the matrix [``[$M]``].
+
+Choose the correct option.
+[_]{$rma}
+END_PGML
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

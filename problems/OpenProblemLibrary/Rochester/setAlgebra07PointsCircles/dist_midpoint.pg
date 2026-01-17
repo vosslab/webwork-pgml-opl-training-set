@@ -1,0 +1,57 @@
+##DESCRIPTION
+##  find distance between two points, find coordinates of the midpoint of
+##  a line segment connecting them
+##ENDDESCRIPTION
+
+
+## Tagged by sawblade
+
+## DBsubject(Algebra)
+## DBchapter(Cartesian coordinate system)
+## DBsection(Midpoint and distance formulas)
+## Date(6/3/2002)
+## MLT(Find_midpoint_and_distance)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('2.1')
+## Problem1('6')
+## KEYWORDS('algebra', 'coordinate geometry', 'distance', 'midpoint')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+
+$x1 = random(-10,5,1);
+$y1 = random(-10,10,1);
+$x2 = random(-10,10,1);
+$y2 = random(-10,11,1);
+$len1 = Compute("sqrt(($x1-$x2)**2 + ($y1-$y2)**2)");
+
+Context("Point");
+$mid = Point(($x1+$x2)/2,($y1+$y2)/2);
+
+BEGIN_PGML
+Consider the two points [`([$x1] ,[$y1] )`] and [`([$x2] ,[$y2] )`].
+
+The distance between them is: [_]{$len1}{10}
+
+The midpoint of the line segment that joins them is: [_]{$mid}{10} [@ helpLink("points") @]*
+END_PGML
+
+BEGIN_PGML_SOLUTION
+distance = [``\sqrt{([$x2]-[$x1])^2+([$y2]-[$y1])^2}``]
+
+midpoint = [``\left(\frac{[$x1]+[$x2]}{2},\frac{[$y1]+[$y2]}{2}\right)``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
+

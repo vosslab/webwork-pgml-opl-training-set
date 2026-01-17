@@ -1,0 +1,172 @@
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGtikz.pl', 'PGcourse.pl');
+
+$h = random(24, 48, 3);
+$w = random(24, 48, 6);
+
+$graph_image = createTikZImage();
+$graph_image->tikzLibraries("arrows.meta");
+$graph_image->BEGIN_TIKZ
+\tikzset{>={Stealth[scale = 1.5]}}
+\filldraw[
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-5.5,-7.5) rectangle (5.5,5);
+
+\draw[thick] (4,0) arc [ radius =4, start angle = 0, end angle = 180]; 
+\draw[thick] (-4,-6) rectangle (4,0);
+\draw (0,-6) node [below] {$w in.};
+\draw (4,-3) node [right] {$h in.};
+
+END_TIKZ
+
+$area_circle = pi * ($w / 2)**2;
+$area_rect   = Real("$w*$h");
+
+$area = $area_circle + $area_rect;
+BEGIN_PGML
+The window below is a rectangle with a semicircle.
+
+>> [! !]{$graph_image}{400} <<
+
+Find the area of the window: [_]{$area} sq. inches.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+The rectangular part has area [`h \cdot w = [$h]\cdot [$w] =[$area_rect] `] square inches. The circular part is a half circle of radius [`[$w]/2= [@ $w/2 @]`] and so has area  
+[`\frac{1}{2}\pi\times [@ $w/2 @]^2 = [$area_circle] `] square inches.
+
+Therefore, the area of the window to the nearest square inch is [`[$area]`] square inches
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
+## DBsubject(Geometry)
+## DBchapter(Shapes)
+## DBsection(Area)
+## Level(2)
+## MO(1)
+
+$graph->moveTo(,);
+$graph->lineTo( , ,'black');
+$graph->lineTo( , ,'black');
+$graph->lineTo( , ,'black');
+$graph->lineTo( , ,'black');
+
+$graph->moveTo(,);
+$graph->lineTo( , ,'black');
+
+         $label1=  new Label( ,  , ' ','black',('center','center'));
+         $label1->font(GD::Font->Giant);
+         $graph -> lb($label1);
+         $label2=  new Label( ,  , ' ','black',('center','center'));
+         $label2->font(GD::Font->Giant);
+         $graph -> lb($label2);
+         $label3=  new Label( ,  , ' ','black',('center','center'));
+         $label3->font(GD::Font->Giant);
+         $graph -> lb($label3);
+         $label4=  new Label( ,  , ' ','black',('center','center'));
+         $label4->font(GD::Font->Giant);
+         $graph -> lb($label4);
+         $label5=  new Label( ,  , ' ','black',('center','center'));
+         $label5->font(GD::Font->Giant);
+         $graph -> lb($label5);
+         $label6=  new Label( ,  , ' ','black',('center','center'));
+         $label6->font(GD::Font->Giant);
+         $graph-> lb($label6);
+         $label7=  new Label( ,  , ' ','black',('center','center'));
+         $label7->font(GD::Font->Giant);
+         $graph -> lb($label7);
+         $label8=  new Label( ,  , ' ','black',('center','center'));
+         $label8->font(GD::Font->Giant);
+         $graph -> lb($label8);
+         $label9=  new Label( ,  , ' ','black',('center','center'));
+         $label9->font(GD::Font->Giant);
+         $graph -> lb($label9);
+         $label10=  new Label( ,  , ' ','black',('center','center'));
+         $label10->font(GD::Font->Giant);
+         $graph -> lb($label10);
+         $label11=  new Label( ,  , ' ','black',('center','center'));
+         $label11->font(GD::Font->Giant);
+         $graph -> lb($label11);
+         $label12=  new Label( ,  , ' ','black',('center','center'));
+         $label12->font(GD::Font->Giant);
+        $graph -> lb($label12);
+         $label13=  new Label( ,  , ' ','black',('center','center'));
+         $label13->font(GD::Font->Giant);
+         $graph -> lb($label13);
+         $label14=  new Label( ,  , ' ','black',('center','center'));
+         $label14->font(GD::Font->Giant);
+         $graph -> lb($label14);
+         $label15=  new Label( ,  , ' ','black',('center','center'));
+         $label15->font(GD::Font->Giant);
+         $graph -> lb($label15);
+         $label16=  new Label( ,  , ' ','black',('center','center'));
+         $label16->font(GD::Font->Giant);
+         $graph -> lb($label16);
+         $label17=  new Label( ,  , ' ','black',('center','center'));
+         $label17->font(GD::Font->Giant);
+         $graph -> lb($label17);
+         $label18=  new Label( ,  , ' ','black',('center','center'));
+         $label18->font(GD::Font->Giant);
+         $graph -> lb($label18);
+         $label19=  new Label( ,  , ' ','black',('center','center'));
+         $label19->font(GD::Font->Giant);
+         $graph -> lb($label19);
+         $label20=  new Label( ,  , ' ','black',('center','center'));
+         $label20->font(GD::Font->Giant);
+         $graph -> lb($label20);
+
+--More--(57%)
+
+#TWO HALVES OF A CIRCLE
+$func = Compute("2+sqrt{1-(x-3)**2}");
+$fund = Compute("2-sqrt{1-(x-3)**2}");
+plot_functions( $graph, "$func for x in " .
+"<2,4> using color:blue " .
+"and weight:3");
+plot_functions( $graph, "$fund for x in " .
+"<$2,4> using color:blue " .
+"and weight:1");
+
+         $circle_object1 = closed_circle( , ,'black' );
+         $graph -> stamps($circle_object1);
+ the domain is
+$xmin = -2;
+$xmax = $root2 + 1;
+# and the number of gridlines we graph
+$xgrid = $xmax + 2;
+$ygrid = $ymax - int($ymin) + 2;
+
+$graph = init_graph($xmin, int($ymin)-1, $xmax,
+$ymax+1, axes=>[0,0], grid=>[$xgrid,$ygrid],
+size=>[150,150]);
+$scale=100;
+$poly = new GD::Polygon;
+foreach $pt ([3,5], [4,5], [5,4], [5,3], [4,2], [3,2], [2,3], [2,4])
+   {$poly->addPt($pt->[0]*$scale,$pt->[1]*$scale)}
+$blue = $graph->im->colorAllocate(100,100,255);
+$graph->im->filledPolygon($poly,$blue);
+$graph->im->setThickness(3);
+$graph->im->openPolygon($poly,$graph->{colors}{black});
+$graph->im->setThickness(1);
+
+#arrow
+$poly2 = new GD::Polygon;
+foreach $pt ([3.75,1.23], [3.7,1.20], [3.7,1.26])
+   {$poly2->addPt($pt->[0]*$scale,$pt->[1]*$scale)}
+$black = $graph->im->colorAllocate(0,0,00);
+$graph->im->filledPolygon($poly2,$black);
+$graph->im->setThickness(3);
+$graph->im->openPolygon($poly2,$graph->{colors}{black});
+$graph->im->setThickness(1);
+
+IF YOU ARE PRACTICING FOR THE NECAP EXAMINATION, DO THIS WITHOUT$BR A CALCULATO
+ THIS IS A NECAP PROBLEM FOR WHICH A  CALCULATOR $BR WOULD NOT BE ALLOWED.$PAR 
+ 
+IN THIS PROBLEM ON THE NECAP EXAM YOU WERE EXPECTED $BR
+ TO SHOW YOUR WORK.  SOMETHING SIMILAR TO THE SOLUTION $BR
+ ABOVE WOULD BE APPROPRIATE.

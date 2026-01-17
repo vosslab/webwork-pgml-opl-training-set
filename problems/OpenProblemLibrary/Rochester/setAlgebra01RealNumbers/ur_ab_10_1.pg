@@ -1,0 +1,101 @@
+## DESCRIPTION
+## Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Inequalities and intervals)
+## Date(6/3/2002)
+## MLT(IntervalSetBuilder)
+## Level(3)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.2')
+## Problem1('33 34 31 30')
+## KEYWORDS('algebra','interval')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
+);
+
+$showPartialCorrectAnswers = 0;
+
+$c =random(1,5,1);
+$d =random(6,10,1);
+
+# initialize question Q and answer A arrays;
+
+@Q = (); @A = ();
+
+# question and answer pairs
+
+push @Q, "[` ($c,$d) `]";
+push @A, "[`\{ x \;|\; $c < x \lt $d \} `]";
+
+push @Q, "[` [$c,$d) `]";
+push @A, "[` \{ x \;|\; $c \leq x < $d \} `]";
+
+push @Q, "[` ($c,$d] `]";
+push @A, "[` \{ x \;|\; $c < x \leq $d \} `]";
+
+push @Q, "[` [$c,$d] `]";
+push @A, "[` \{ x \;|\; $c \leq x \leq $d \} `]";
+
+push @Q, "[` ($c,\infty) `]";
+push @A, "[` \{ x \;|\; x > $c  \} `]";
+
+push @Q, "[` [$c,\infty) `]";
+push @A, "[` \{ x \;|\; $c \leq x  \} `]";
+
+push @Q, "[` (-\infty, $c) `]";
+push @A, "[` \{ x \;|\; x < $c \} `]";
+
+push @Q, "[` (-\infty, $c] `]";
+push @A, "[` \{ x \;|\; x \leq $c \} `]";
+
+# randomly select 5 question-answer pairs
+
+@slice = random_subset(5,(0..@Q-1));
+@Q = @Q[@slice];
+@A = @A[@slice];
+
+# to permute the questions again, but not the answers
+
+@n = random_subset(5,(0..4));
+
+@alph = ("A".."E");
+
+#answer checkers
+
+for (0..4){
+  $ans[$_] = DropDown([@alph],$alph[$n[$_]]);
+}
+
+BEGIN_PGML
+Match each interval below with set-builder notation for the same interval.
+
+[_]{$ans[0]} [$Q[$n[0]]]**  
+[_]{$ans[1]} [$Q[$n[1]]]**  
+[_]{$ans[2]} [$Q[$n[2]]]**  
+[_]{$ans[3]} [$Q[$n[3]]]**  
+[_]{$ans[4]} [$Q[$n[4]]]**  
+
+    *A.* [$A[0]]**    
+    *B.* [$A[1]]**    
+    *C.* [$A[2]]**    
+    *D.* [$A[3]]**    
+    *E.* [$A[4]]**    
+END_PGML
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
+

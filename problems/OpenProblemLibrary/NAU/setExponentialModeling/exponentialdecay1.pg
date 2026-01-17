@@ -1,0 +1,47 @@
+# DESCRIPTION
+# Exponential Decay Model
+# ENDDESCRIPTION
+
+## Tagged by CTD
+
+## Author('C. Tyler Diggans');
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Applications and models - population growth)
+## Date(8/21/12)
+## Institution(NAU)
+## MLT(Population_GivenPercentFindNumber)
+## Level(2)
+## KEYWORDS('exponential function', 'exponential decay')
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+$showPartialCorrectAnswers = 1;
+
+$p    = random(1,     8,     .25);
+$p0   = random(10000, 50000, 50);
+$t0   = random(2010,  2022);
+$year = random(2026,  2040);
+
+$pop = Round($p0 * (1 - ($p / 100))**($year - $t0));
+
+BEGIN_PGML
+
+A town in the midwest has been experiencing a steady population decline of [$p]% per year for the past decade. If there were [$p0] residents in the year [$t0] and the trend continues, what will the population be in the year [$year]? [_]{$pop}
+
+*Round your answer to the nearest person. Do not use commas to separate thousands in the number.*
+  
+END_PGML
+
+$q     = 1 - $p / 100;
+$tdiff = $year - $t0;
+BEGIN_PGML_SOLUTION
+The population of this town is exponential and the model is 
+[``` P(t) = P_0 (1+p/100)^t ```]
+where [`p=-[$p/100]`] is the rate of decline as a fraction, [`P_0 = [$p0] `] and [`t`] is the number of years since [$t0]. Thus the model is
+[``` P(t) = [$p0] ([$q])^t ```]
+To find the population in [$year], use [`t=[$year]-[$t0]= [$tdiff]`], resulting in [`P([$tdiff]) = [$pop]`]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

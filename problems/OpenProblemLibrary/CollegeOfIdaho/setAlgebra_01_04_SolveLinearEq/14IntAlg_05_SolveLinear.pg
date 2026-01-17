@@ -1,0 +1,65 @@
+##DESCRIPTION
+## Solve a linear equation
+
+##ENDDESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear equations)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(LinearEquations_03)
+## Level(3)
+## MO(1)
+## TitleText1('Essentials of Intermediate Algebra')
+## AuthorText1('Blitzer')
+## EditionText1('1')
+## Section1('1.4')
+## Problem1('')
+## KEYWORDS('linear equations','solving equations')
+## Date: 2007/08
+
+## Updated 2025.02 by Peter Staab, switch to PGML and added a solution.
+
+DOCUMENT();    # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'contextFraction.pl', 'PGcourse.pl');
+
+Context("Fraction");
+
+$a  = random(5, 9);
+$b  = non_zero_random(-10, 10);
+$c  = random(2, 4);
+$d  = non_zero_random(-10, 11);
+$db = $d - $b;
+$ac = $a - $c;
+$x  = Fraction($db, $ac);
+
+BEGIN_PGML
+Solve the equation  for [` x `]:
+[```[$a] x + [$b] = [$c] x + [$d]```]
+
+ [` x = `] [_]{$x}{20}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[```
+\begin{aligned}
+[$a] x + [$b] & = [$c] x + [$d] \\
+[$a] x & = [$c] x + [$db] \\
+[$ac] x & = [$db] \\
+x & = \frac{[$db]}{[$ac]}
+\end{aligned}
+```]
+END_PGML_SOLUTION
+
+#  Answers
+
+($num, $den) = reduce($d - $b, $a - $c);
+$ans = Compute("$num/$den");
+if ($den == 1) { $ans = Compute("$num"); }
+# ANS($ans->cmp);
+
+$showPartialCorrectAnswers = 1;
+
+ENDDOCUMENT();

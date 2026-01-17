@@ -1,0 +1,82 @@
+## DESCRIPTION
+## Linear Algebra
+## ENDDESCRIPTION
+## DBsubject(Linear algebra)
+## DBchapter(Linear transformations)
+## DBsection(One-to-one and onto)
+## Date(July 2013)
+## Institution(Hope College)
+## Author(Paul Pearson)
+## MO(1)
+## MLT(InjSurMat)
+## MLTleader(1)
+## Level(3)
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "MatrixUnits.pl",
+  "VectorListCheckers.pl",
+  "parserRadioButtons.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+Context('Matrix');
+
+$U = GL3Z();
+
+$Ared = Matrix([
+[2, -1],
+[1, 3],
+[3, 2],
+]);
+
+$A = $U * $Ared;
+
+($m,$n) = $A->dimensions;
+
+$i1 = Vector( $A->column(1) );
+$i2 = Vector( $A->column(2) );
+
+$kernel = List("NONE");
+$image = List($i1,$i2)->cmp(list_checker=>~~&basis_checker_list_of_vectors);
+
+$dim_kernel = Compute("0");
+$dim_image = Compute("2");
+
+$mc = RadioButtons(
+    [ "injective", "surjective", "bijective", "none of these" ],
+    "injective"
+);
+
+BEGIN_PGML
+Let [` f : \mathbb{R}^{[$n]} \to \mathbb{R}^{[$m]} `] be the linear transformation determined by [` f(\vec{x}) = A \vec{x} `] where    
+    [``A=[$A].``]    
+
+\1. For each of the following vector spaces, 
+    * if the space doesn't have a basis enter *NONE*.   
+    * if the space has a basis then enter a list of vectors that form a basis for the space.  Separate basis vectors with commas if the basis has more than one vector .     [@ helpLink('vector') @]*     
+(Remember: basis vectors must be linearly independent.)  
+
+    \a)  Basis for [` \mathrm{Kernel}(f) `]? [_]{$kernel}{20}
+
+    \b)  Basis for [` \mathrm{Image}(f) `]? [_]{$image}{20} 
+
+\2. The dimension of the kernel of [` f `] is [_____]{$dim_kernel}.
+
+\3. The dimension of the image of [` f `] is [_____]{$dim_image}.
+
+\4. The linear transformation \( f \) is  
+ 
+    [_]{$mc}
+END_PGML
+
+COMMENT('Injective.  Kernel is 0 dimensional and image is 2 dimensional.');
+
+ENDDOCUMENT();

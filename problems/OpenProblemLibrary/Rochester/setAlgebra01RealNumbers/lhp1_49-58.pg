@@ -1,0 +1,72 @@
+## DESCRIPTION
+## Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Absolute value expressions and functions)
+## DBsection(Solving equations with absolute values)
+## Institution(Rochester)
+## Level(3)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.2')
+## Problem1('47 50 48 52')
+
+
+DOCUMENT();     
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+#TEXT(beginproblem(),);
+
+Context("LimitedNumeric");
+
+$a=random(1,19,1);
+$b=random(2,9,1);
+
+$ans1 = Real($a);
+$ans2 = Real(-$a-$b);
+$ans4 = Real(-1);
+
+Context("Numeric");
+$ans3 = Formula("x-$a");
+
+BEGIN_PGML
+
+This exercise concerns the definition of absolute values. 
+Evaluate the following expressions.  Numerical answers must each
+be simplified to a single number.
+
+
+    [`|-[$a]|= `][_]{$ans1}{10}  
+    [`-[$a]-|-[$b]|= `][_]{$ans2}{10} 
+
+
+If [`[$a]<x`], simplify the expression by removing the absolute sign  
+    [`|[$a]-x| = `][_]{$ans3}{10}  
+
+
+If [`y<-[$b]`], simplify the following expression as much as possible
+
+    [` \displaystyle \frac{|y+[$b]|}{y+[$b]} = `][_]{$ans4}{10} 
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[`[$a]>0`] so [`|-[$a]| = [$a]`].
+
+[`-[$a]-|-[$b]|= -[$a]-[$b]=-[@$a+$b@]`].
+
+If [`[$a]<x`] then [`[$a]-x < 0`] so [`|[$a]-x|=-([$a]-x)=x-[$a]`].
+
+If [`y<-[$b]`] then [`y+[$b]<0`] so [`|y+[$b]|=-(y+[$b]) `].  Thus [`` \frac{|y+[$b]|}{y+[$b]} = \frac{-(y+[$b])}{y+[$b]}=-1 ``].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

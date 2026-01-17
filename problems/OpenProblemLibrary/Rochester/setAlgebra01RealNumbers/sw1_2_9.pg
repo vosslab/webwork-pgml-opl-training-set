@@ -1,0 +1,52 @@
+##DESCRIPTION
+##   Evaluation of a simple algebraic expression
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Simplifying expressions)
+## Date(6/3/2002)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.2')
+## Problem1('9')
+## KEYWORDS('algebra')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "contextLimitedNumeric.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("LimitedNumeric");
+
+$a = random(2,15,1);
+$b = random(3,16,2);
+
+$ans = Real($a*$b);
+
+BEGIN_PGML
+Use the properties of real numbers to rewrite the expression    
+    [`[$a]([$b] m)`]    
+in the equivalent form     
+    [`A\cdot m`]    
+where [`A`] is a real number.
+
+The number [`A`] is  [_]{$ans}{10}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The associative law says    
+    [`[$a]([$b]m)=([$a]\cdot[$b])m `]    
+so [`A = [$a]\cdot[$b] = [$ans] `]. 
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

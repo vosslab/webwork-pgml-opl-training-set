@@ -1,0 +1,50 @@
+## DESCRIPTION
+## Linear functions
+## ENDDESCRIPTION
+
+## BookTitle('Algebra: Form and Function')
+## BookChapter('Linear functions, expressions, and equations')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Equations of lines: slope-intercept form)
+## Date(01/01/10)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## MLT(MLT09)
+## Level(3)
+## MO(1)
+## TitleText1('Algebra: Form and Function')
+## AuthorText1('McCallum, Connally, and Hughes-Hallett')
+## EditionText1('1')
+## Section1('5.1')
+## Problem1('38')
+## KEYWORDS('linear functions')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context("Numeric");
+
+$m = random(3,   15,  1);
+$b = random(200, 300, 1);
+
+BEGIN_PGML
+Give the slope and [`y`]-intercept 
+for the graph of the function [` f(x) = [$b] - [$m] x `].
+
+a) The slope is [_]{Real($m)}
+
+
+b) The [`y`]-intercept is [_]{$b}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+In this case, identify that the coefficient of the [`x`] term is the slope and the constant term is the [`y`]-intercept
+
+a) [`m=[$m]`]
+
+b) [`b=[$b]`]
+END_PGML_SOLUTION
+ENDDOCUMENT();

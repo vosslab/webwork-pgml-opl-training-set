@@ -1,0 +1,69 @@
+##DESCRIPTION
+## Asks for the algebraic expression for an English phrase
+##
+##ENDDESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Algebraic expressions)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(English_to_expression)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## TitleText1('Essentials of Intermediate Algebra')
+## AuthorText1('Blitzer')
+## EditionText1('1')
+## Section1('1.1')
+## Problem1('')
+## KEYWORDS('real numbers','algebraic expressions')
+## Date: 2007/08  
+## Update: 2013/10 --ra cruz
+## Update1: 2024/07 --ra cruz
+
+DOCUMENT();    # This should be the first executable line in the problem.
+
+loadMacros("PGstandard.pl", "PGML.pl");
+
+######################################
+#  Setup
+
+@num = ('One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine');
+$a   = random(1, 9, 1);
+@moreORless = ("more",   "less");
+@f          = ("x + $a", "x - $a");
+
+$b        = random(1, 9, 1);
+@decORinc = ("decreased", "increased");
+@g        = ("$b - x",    "$b + x");
+$choose   = random(0, 1, 1);
+
+$ans_a = Formula($f[$choose]);
+$ans_b = Formula($g[$choose]);
+
+######################################
+#  Main text
+
+BEGIN_PGML
+Write each English phrase as an algebraic expression. Let [`x`]
+represent the number.  
+
+    \a) [$num[$a-1]] [$moreORless[$choose]] than a number   
+    Answer:  [_]{$ans_a}{15}
+
+    \b) [$num[$b-1]] [$decORinc[$choose]] by a number   
+    Answer:  [_]{$ans_b}{15}
+END_PGML
+
+######################################
+# Solution
+
+BEGIN_PGML_SOLUTION
+
+    \a) [`[$ans_a]`]  
+
+    \b) [`[$ans_b]`]  
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

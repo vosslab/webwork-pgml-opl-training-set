@@ -1,0 +1,56 @@
+##DESCRIPTION
+##   Evaluation of a simple algebraic expression
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Arithmetic)
+## DBchapter(Irrational numbers)
+## DBsection(Rational exponents)
+## Date(6/3/2002)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.3')
+## Problem1('9')
+## KEYWORDS('algebra','exponent')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
+);
+
+Context("LimitedFraction");
+Context()->flags->set(showMixedNumbers=>0);
+
+$a = random(3,9,2);
+$b = random(2,8,2);
+$a1 = $a**2;
+$b1 = $b**2;
+
+$ans = Fraction($a**3,$b**3);
+
+BEGIN_PGML
+Simplify [``\ \left(\frac{[$a1]}{[$b1]}\right)^{3/2} ``].
+
+Your answer should be a reduced fraction.
+
+    [``\left(\frac{[$a1]}{[$b1]}\right)^{3/2} ``] = [_]{$ans}{15}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[``\begin{gathered} \left(\frac{[$a1]}{[$b1]}\right)^{3/2}
+= \frac{[$a1]^{3/2}}{[$b1]^{3/2}}
+= \frac{([$a1]^{1/2})^3}{([$b1]^{1/2})^3}
+= \frac{[$a]^3}{[$b]^3}
+= \frac{[@ $a**3 @]}{[@ $b**3 @]}
+= [$ans] \end{gathered} ``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

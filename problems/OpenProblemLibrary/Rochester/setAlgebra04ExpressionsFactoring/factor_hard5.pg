@@ -1,0 +1,105 @@
+## DESCRIPTION
+## Algebra: Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Factoring)
+## DBsection(Factoring: special forms)
+## Date(6/3/2002)
+## MLT(groupingSpecialF)
+## MLTleader(1)
+## Level(3)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.4')
+## Problem1('67 78')
+## KEYWORDS('factoring', 'identities')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'MathObjects.pl','PGML.pl', "parserMultiAnswer.pl", 'PGcourse.pl');
+
+Context("Numeric");
+Context()->variables->are(a => "Real", b => "Real", c => "Real");
+Context()->noreduce('x^(-a)');
+
+$A = random(1,9,1);
+$B = non_zero_random(-8,8,1);
+while (gcd($A,$B) > 1 || $B==-$A) {$B = random(1,9,1);}
+
+$C = random(1, 9,1);
+
+$c1 = $A**2;
+$c2 = 2*$A*$B;
+$c3 = $B**2;
+$c4 = $C**2;
+
+$e = random(2,7,1);
+$e2 = 2*$e;
+
+$E = non_zero_random(-8,8,2);
+
+$expr1 = Formula("$c1*a^$e2 + $c2*a^$e*b + $c3*b^2")->reduce;
+$expr2 = Formula("$c4*c^$E")->reduce;
+
+$expr3 = Formula("$A*a**$e+$B*b")->reduce;
+$expr4 = Formula("$C*c**($E/2)")->reduce;
+
+$ans = MultiAnswer($expr3+$expr4, $expr3-$expr4)->with(
+  singleResult => 0,
+  checker => sub {
+      my ( $correct, $student, $self ) = @_;
+      my ( $f1stu, $f2stu ) = @{$student};
+      my ( $f1, $f2 ) = @{$correct};
+      if ( $expr1-$expr2 == $f1stu*$f2stu ){
+        @score = (1,1); #default 
+        # but check for constants
+        if ($f1stu->D('a')->isZero && 
+            $f1stu->D('b')->isZero &&
+            $f1stu->D('c')->isZero){
+          $self->setMessage(1,"Constant expressions aren't allowed here");
+          @score = (0,0);
+        }
+        if ($f2stu->D('a')->isZero && 
+            $f2stu->D('b')->isZero &&
+            $f2stu->D('c')->isZero){
+          $self->setMessage(2,"Constant expressions aren't allowed here");
+          @score = (0,0);
+        }
+      }
+      return @score;
+  }
+);
+
+
+BEGIN_PGML
+
+The expression [`[$expr1]-[$expr2]`] 
+can be factored into a product of two expressions,    
+    [`[$expr1] - [$expr2]=A \cdot B `]     
+where neither [`A`] nor [`B`] is a constant.  
+
+Find [`A`] and [`B`].  
+  
+    [`A = `] [_]{$ans}{15}
+  
+    [`B = `] [_]{$ans}{15}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+    [``\begin{aligned} 
+    & \Big([$expr1]\Big)-[$expr2] \\
+    &=([$expr3])^2 -([$expr4])^2 \end{aligned} ``]    
+is the difference of two squares, so it breaks down into a product of two factors    
+    [``\begin{aligned}
+    &([$expr3])^2 -([$expr4])^2\\
+    &= ([$expr3]-[$expr4])([$expr3]+[$expr4]) \end{aligned} ``]
+    
+END_PGML_SOLUTION
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.;

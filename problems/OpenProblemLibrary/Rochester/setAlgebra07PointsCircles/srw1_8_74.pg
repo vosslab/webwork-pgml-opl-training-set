@@ -1,0 +1,59 @@
+#DESCRIPTION
+##  Algebra problem: Coordinates and Graphs
+##ENDDESCRIPTION
+
+## Tagged by sawblade
+
+## DBsubject(Algebra)
+## DBchapter(Cartesian coordinate system)
+## DBsection(Circles)
+## Date(6/3/2002)
+## MLT(Circle_from_center_and_point)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('2.2')
+## Problem1('65')
+## TitleText2('Precalculus')
+## AuthorText2('Stewart, Redlin, Watson')
+## EditionText2('3')
+## Section2('1.8')
+## Problem2('65')
+## KEYWORDS('algebra', 'graph')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context("Numeric");
+
+$a = non_zero_random(-6,6,1);
+$b = non_zero_random(-6,6,1);
+
+$ans1 = 0;
+$ans2 = 0;
+$ans3 = $a**2+$b**2;
+
+BEGIN_PGML
+Find an equation of the circle with center at the origin and passing through
+[`([$a],[$b])`] in the form of 
+[`(x-A)^2+(y-B)^2=C`] where [`A, B, C`] are constant. 
+   
+    [`A`] = [_]{Real([$ans1])}{10}
+  
+    [`B`] = [_]{Real([$ans2])}{10}
+  
+    [`C`] = [_]{Real([$ans3])}{10}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Every point on a circle is the same distance from its center.  So a point [`(x,y)`] is on the circle if and only if the distance from the center [`(0,0)`] to [`(x,y)`] equals the distance from the center to [`([$a],[$b])`], that is, if and only if 
+
+    [``\sqrt{(x-0)^2+(y-0)^2} = \sqrt{([$a]-0)^2+([$b]-0)^2}``]
+    
+Square both sides of this equation to put it in the required form.
+END_PGML_SOLUTION
+ 
+ENDDOCUMENT();        # This should be the last executable line in the problem.

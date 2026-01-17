@@ -1,0 +1,66 @@
+# DESCRIPTION
+# Gives a linear equation in the form ax + by = c and asks to find intercepts
+# algebraically
+# ENDDESCRIPTION
+
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Graphs of lines)
+## Institution(University of Missouri-Columbia)
+## Author(Rick Lynch)
+## Level(2)
+## KEYWORDS('x-intercepts', 'y-intercepts', 'lines')
+
+## Updated 2025.02 by Peter Staab, switch to PGML and add a solution
+
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'contextFraction.pl', 'PGcourse.pl');
+
+Context("LimitedFraction");
+$A = non_zero_random(-20,20);
+$B = non_zero_random(-20,20);
+$C = non_zero_random(-20,20);
+
+$x0 = Fraction($C,$A);
+$y0 = Fraction($C,$B); 
+
+Context(context::Fraction::extending("Point"));
+$xint = Point($x0,0);
+$yint = Point(0,$y0);
+
+BEGIN_PGML
+Find the [`x`]-intercept and [`y`]-intercept of the line: [` [$A]x+[$B]y=[$C] `]
+
+a) [`x`]-intercept: [_]{$xint}
+
+b) [`y`]-intercept: [_]{$yint}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+a)  The [`x`]-intercept is where the line crosses the [`x`]-axis or when [`y=0`].  Set this in the equation and solve for [`x`].
+    [```
+    \begin{aligned}
+    [$A] x + 0 & = [$C] \\
+    x & = \frac{[$C]}{[$A]} 
+    \end{aligned}
+    ```]
+
+    Thus the [`x`]-intercept is [``[$xint]``].
+
+b)  The [`y`]-intercept is where the line crosses the [`y`]-axis or when [`x=0`].  Set this in the equation and solve for [`y`].
+    [```
+    \begin{aligned}
+    0 + [$B] y & = [$C] \\
+    y & = \frac{[$C]}{[$B]}
+    \end{aligned}
+    ```]
+
+    Thus the [`y`]-intercept is [``[$yint]``].
+
+    
+END_PGML_SOLUTION
+
+
+COMMENT('determine intercepts of a linear function');
+ENDDOCUMENT();

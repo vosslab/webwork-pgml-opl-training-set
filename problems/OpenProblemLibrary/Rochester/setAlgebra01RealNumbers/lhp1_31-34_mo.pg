@@ -1,0 +1,78 @@
+## DESCRIPTION
+## lhp1_31-34_mo.pg.
+## Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+## Modified by darnold on 06-09-2008
+
+## Modified('6/9/2008')
+##ENDDESCRIPTION
+
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Inequalities and intervals)
+## Institution(Rochester)
+## MLT(InequalInterval)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## KEYWORDS('algebra, interval notation')
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "contextInequalities.pl",
+  "PGcourse.pl"
+);
+
+###################
+#
+#  Setup
+
+$a=random(2,30);
+$b=random(1,30);
+$c=random(1,30);
+$d=random(1,30);
+$a1 = $a-3;
+$b1 = $b-5;
+$c1 = $c-4;
+$d1 = $d-5;
+
+$pair1  = "[$a1,$a]";
+$pair2  = "($b1,$b]";
+$pair3  = "($c1,$c)";
+$pair4  = "[$d1,$d)";
+
+Context("Inequalities"); # So the question will display correctly as an inequality
+
+$ineq1 = Inequality($pair1);
+$ineq2 = Inequality($pair2);
+$ineq3 = Inequality($pair3);
+$ineq4 = Inequality($pair4);
+
+Context("Interval"); # require answer to be in interval notation
+
+$inter1 = Interval($pair1);
+$inter2 = Interval($pair2);
+$inter3 = Interval($pair3);
+$inter4 = Interval($pair4);
+
+BEGIN_PGML
+Sketch the following sets on a piece of paper and write them in interval notation. Enter the interval in the answer box. You may enter *infinity* for [`\infty`] and *-infinity* for [`-\infty`]. For example, you may write *(-infinity, 5]* for the interval [`(-\infty,5]`]. 
+
+[`[$ineq1] `] = [_]{$inter1}{20}
+
+[`[$ineq2] `] = [_]{$inter2}{20}
+
+[`[$ineq3] `] = [_]{$inter3}{20}
+
+[`[$ineq4] `] = [_]{$inter4}{20}
+
+END_PGML
+
+
+ENDDOCUMENT();

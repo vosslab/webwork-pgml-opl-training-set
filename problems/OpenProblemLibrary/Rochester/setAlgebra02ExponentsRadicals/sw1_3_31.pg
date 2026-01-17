@@ -1,0 +1,56 @@
+#DESCRIPTION
+##  Algebra problem: raising integers to powers
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Algebra)
+## DBchapter(Properties of exponents, rational exponents and radicals)
+## DBsection(Properties of exponents)
+## Date(6/3/2002)
+## MLT(Quotient_in_power)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.3')
+## Problem1('31')
+## KEYWORDS('algebra', 'powers')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("LimitedNumeric"),
+
+$q1 = random(-3,-1,1);
+$q2 = random(-8,-5,1);
+$r1 = random(2,5,1);
+$r2 = random(-5,-2,1);
+$s1 = random(-5,-2,1);
+$s2 = random(2,5,1);
+
+$ans1 = Real(-($s1-$s2));
+$ans2 = Real(-($q2-$q1));
+$ans3 = Real(-($r2-$r1));
+
+BEGIN_PGML
+    [`` \left(\frac{x^{[$q1]} y^{[$r1]} z^{[$s1]}}{y^{[$r2]} z^{[$s2]} x^{[$q2]}}\right)^{-1} = z^r/(x^s y^t) ``]  
+    
+where  
+    [`r`], the exponent of [`z`], is: [_]{$ans1}{10}    
+    [`s`], the exponent of [`x`], is: [_]{$ans2}{10}    
+    [`t`], the exponent of [`y`], is: [_]{$ans3}{10}    
+
+Your answers must be numbers not algebraic expressions.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[`` \left(\frac{x^{[$q1]} y^{[$r1]} z^{[$s1]}}{y^{[$r2]} z^{[$s2]} x^{[$q2]}}\right)^{-1} = \frac{y^{[$r2]} z^{[$s2]} x^{[$q2]}}{x^{[$q1]} y^{[$r1]} z^{[$s1]}} = x^{[@ $q2-$q1 @]} y^{[@ $r2-$r1 @]} z^{[@ $s2-$s1 @]} = z^{[$ans1]}/(x^{[$ans2]} y^{[$ans3]}) ``]
+END_PGML_SOLUTION
+ENDDOCUMENT();        # This should be the last executable line in the problem.

@@ -1,0 +1,33 @@
+#DESCRIPTION
+##Type of
+#ENDDESCRIPTION
+## DBsubject(Geometry)
+## DBchapter(Shapes)
+## DBsection(Perimeter)
+## Level(1)
+## MO(1)
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'randomPerson.pl', 'PGcourse.pl');
+
+$p   = randomPerson();
+$f   = random(5, 9);
+$a   = 10 * $f;
+$ans = 2 * $f + 2 * 10;
+BEGIN_PGML
+[$p] has a rectangular plot that is [$a] square meters in area. [$p->They] keeps [$p->their] five goats,
+[$p->their] twelve chickens  and [$p->their] brown and white horse in the plot which is enclosed
+on all four sides by a white picket fence.  The length of the plot is
+10 meters. 
+
+So the total length of the white picket fence is  [_]{$ans} meters.
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+If the length of the plot is 10 meters and the area is [$a] square meters then  
+the width must be [`[$a]/10=[[$f]]`] meters.  The length of the fence is the perimeter
+of the plot which is [`2\times 10 +2\times [$f]=[$ans]`] meters.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

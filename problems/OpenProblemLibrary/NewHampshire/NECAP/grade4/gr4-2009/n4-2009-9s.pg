@@ -1,0 +1,74 @@
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Graphical representations)
+## MLT(Statistics_Exploratory_EarlyHistograms)
+## Level(2)
+
+DOCUMENT();
+loadMacros(
+    'PGstandard.pl',         'PGML.pl',
+    'parserRadioButtons.pl', 'randomPerson.pl',
+    'PGtikz.pl',             'PGcourse.pl'
+);
+
+Context("Numeric");
+
+$p = randomPerson();
+
+$w = [ [ 4, 4, 4, 4 ], [ 1, 2, 4, 2 ], [ 4, 3, 2, 1 ], [ 4, 3, 1, 2 ] ];
+
+@gr = ('W', 'X', 'Y', 'Z');
+
+for $i (0 .. 3) {
+
+    $graph[$i] = createTikZImage();
+    $graph[$i]->tikzLibraries('arrows.meta');
+    $graph[$i]->BEGIN_TIKZ
+\tikzset{>={Stealth[scale = 1.5]}}
+\filldraw[
+    draw = LightBlue,
+    fill = white,
+    rounded corners = 10pt,
+    thick,
+    use as bounding box
+] (-1, -1) rectangle (11, 7);
+\draw[->, thick] (-1, 0) -- (10, 0);
+
+\foreach \x/\label in {2/Robins,4/Blue Jays,6/Cardinals,8/Finches}
+    \draw(\x,0.25)--(\x,-0.25) node [below] {\label};
+\draw[->, thick] (0, -1) -- (0, 6);
+\foreach \y in {1, ..., 5}
+    \draw (5pt, \y) -- (-5pt, \y) node[left] {\(\y\)};
+
+\filldraw[fill=LightSalmon, draw=black] (1.2,0) rectangle (2.8,$w->[$i][0]);
+\filldraw[fill=LightBlue, draw=black]  (3.2,0) rectangle (4.8,$w->[$i][1]);
+\filldraw[fill=Pink, draw=black]  (5.2,0) rectangle (6.8,$w->[$i][2]);
+\filldraw[fill=LightYellow, draw=black]  (7.2,0) rectangle (8.8,$w->[$i][3]);
+
+\draw (5,6) node {Birds $p Saw (Graph $gr[$i])};
+
+END_TIKZ
+}
+
+$rb = RadioButtons(~~@gr, 3);
+
+BEGIN_PGML
+[$p] saw some birds during a nature hike.  The type of bird [$p->they] saw most often was a robin. The type of bird [$p->they] saw lesat often was a cardinal. 
+
+[# 
+    [. [!!]{$graph[0]}{300} .] [.[!alt text!]{$graph[1]}{300}.]*
+    [. [!!]{$graph[2]}{300} .] [.[!alt text!]{$graph[3]}{300}.] 
+#]
+
+Which bar graph above could show the number of birds [$p] saw? 
+
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Since Bar Graph Z has more robins than any other bird and fewer Cardinals than any other bird,  it is certainly the answer that the NECAP examiners intended and the answer you should give.
+
+However, Bar Graph W actually also satisfies the requirement since when all are seen equally often, all are seen  most often and all are seen least often.  It is nice for you to notice this, but it is better to give the answer you know they want than to point out their error if you want a high score.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

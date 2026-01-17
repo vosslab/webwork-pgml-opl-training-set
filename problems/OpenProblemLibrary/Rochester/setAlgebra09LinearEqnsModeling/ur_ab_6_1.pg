@@ -1,0 +1,71 @@
+##DESCRIPTION
+##   Algebra: Modeling
+##ENDDESCRIPTION
+
+##Tagged by up2p
+
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Date(6/3/2002)
+## MLT(Averages)
+## Level(3)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('3.2')
+## Problem1('15')
+## KEYWORDS('Algebra', 'Modeling', 'word problem')
+
+DOCUMENT(); 
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+
+$a = random(60,90,10);
+if ($a == 60) {
+   $g = 'D'
+   }
+if ($a == 70) {
+   $g = 'C'
+   }
+if ($a == 80) {
+   $g = 'B'
+   }
+if ($a == 90) {
+   $g = 'A'
+   }
+
+$c1 = random($a - 4, $a - 1, .25);
+$c2 = random($a - 4, $a - 1, .25);
+$c3 = random($a + 1, $a + 4, .25);
+
+$ans = Real(4*$a -$c1 - $c2 - $c3);
+BEGIN_PGML
+In a certain class grades are determined by students' scores on four tests, each worth 100 points. A student has scores of [$c1], [$c2], and [$c3] points on the first three tests.  The student needs an average of at least [$a]% to earn a grade of [$g].  What is the minimum score that the student needs on the fourth test to ensure a [$g]?  (The answer need not be an integer.)
+
+   The student needs at least [_]{$ans}{10} points on the fourth test to earn a [$g].
+END_PGML 
+
+BEGIN_PGML_SOLUTION
+If the student earns [`x`] points on the fourth test the student's average score will be 
+
+    [``\text{average score} = \frac{[$c1]+[$c2]+[$c3]+x}{100+100+100+100}``]
+    
+so to earn the grade [$g] the student needs
+
+    [``\begin{gathered}
+    [$a]\%=\frac{[$a]}{100}\leq \frac{[$c1]+[$c2]+[$c3]+x}{100+100+100+100}\\
+    (4)([$a])\leq [$c1]+[$c2]+[$c3]+x \\
+    (4)([$a])-[$c1]-[$c2]-[$c3] \leq x \\
+    [$ans] \leq x \end{gathered} ``]
+END_PGML_SOLUTION
+
+
+ENDDOCUMENT();

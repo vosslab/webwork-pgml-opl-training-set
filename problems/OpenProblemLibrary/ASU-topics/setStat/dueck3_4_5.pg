@@ -1,0 +1,71 @@
+## DESCRIPTION
+##  Statistics 
+## ENDDESCRIPTION
+
+## Tagged by dgt5v
+
+## DBsubject(Statistics)
+## DBchapter(Exploratory data analysis/descriptive statistics)
+## DBsection(Summary statistics)
+## Institution(ASU)
+## MLT(stat-des-five-num)
+## Level(3)
+## KEYWORDS('Statistics','Quartiles', 'measures')
+
+# Updated 2025.04 by Peter Staab (Fitchburg State University).  Converted to PGML, added a hint and a solution.
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGstatisticsmacros.pl', 'parserPopUp.pl', 'PGcourse.pl');
+
+$med= random(20,50);
+$data[0] = $med+1;
+$data[1] = $med-2;
+$data[2] = random($med+3,$med+5);
+$data[3] = random($med-5,$med-3);
+$data[4] = random($med+7, $med+8);
+$data[5] = random($med-8,$med-7);
+$data[6] = random($med+9,$med+11);
+$data[7] = random($med-11, $med-9);
+$data[8] = random($med+15, $med+19);
+$data[9] = random($med-19, $med-15);
+$data[10] = random($med+21, $med+24);
+$data[11] = random($med-24, $med-21);
+$data[12] = random($med+27, $med+31);
+$data[13] = random($med-26, $med-29);
+$data[14] = $med  +39; 
+$data[15] = $med - 72; 
+
+@data = num_sort(@data); 
+
+# present the data in a random order
+@sdata = @data[random_subset(16,0..15)];
+
+($min, $Q1, $median, $Q3, $max) = five_point_summary(@data);
+$IQR = $Q3-$Q1;
+
+$outlier = $data[0] <= $med-1.5*$IQR || $data[15] >= $med+1.5*$IQR ? 1 : 0;
+
+$dd = DropDownTF($outlier);
+
+BEGIN_PGML
+Calculate the 5 number summary and the interquartile range of the following data: 
+
+[``` [@ join(', ', @sdata)@] ```]
+
+a) min = [_]{Real($min)}{10}
+
+b) [` Q_1 `]  = [_]{Real($Q1)}{10}
+
+c) median = [_]{Real($median)}{10}
+
+d) [` Q_3 `] = [_]{Real($Q3)}{10}
+
+e) max = [_]{Real($max)}{10}
+
+f) IQR = [_]{Real($IQR)}{10}
+
+g) There is a potential outlier in this data set [_]{$dd}
+END_PGML
+
+ENDDOCUMENT();       # This should be the last executable line in the problem.

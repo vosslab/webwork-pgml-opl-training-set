@@ -1,0 +1,65 @@
+## DESCRIPTION
+## Equations for lines in the plane
+## ENDDESCRIPTION
+
+## BookTitle('Algebra: Form and Function')
+## BookChapter('Linear functions, expressions, and equations')
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Equations of lines: slope-intercept form)
+## Date(01/01/10)
+## Institution(Fort Lewis College)
+## Author(Paul Pearson)
+## Level(2)
+## MO(1)
+## TitleText1('Algebra: Form and Function')
+## AuthorText1('McCallum, Connally, and Hughes-Hallett')
+## EditionText1('1')
+## Section1('5.4')
+## Problem1('2')
+## KEYWORDS('linear equations')
+
+DOCUMENT();
+
+loadMacros(
+    'PGstandard.pl',       'PGML.pl',
+    'contextFraction.pl',  'contextLimitedPolynomial.pl',
+    'parserAssignment.pl', 'PGcourse.pl'
+);
+
+Context('Fraction');
+
+$a = random(50, 100, 10);
+do { $b = random(50, 100, 10); } until ($a != $b);
+$c    = random(100, 500, 50);
+$m    = Compute("-$a/$b");
+$yint = Compute("$c/$b");
+
+Context("LimitedPolynomial-Strict")->variables->add(y => "Real");
+parser::Assignment->Allow;
+
+$line = Formula("y = $yint + $m * x");
+
+BEGIN_PGML
+Write the linear equation [` [$a] x + [$b] y = [$c] `] in slope-intercept form [` y = m x + b `].  Enter your answer as an equation in slope-intercept form.
+
+[_]{$line}
+
+[@  helpLink('equations')  @]*
+END_PGML
+
+BEGIN_PGML_SOLUTION
+In this case, solve the equation for [`y`].
+
+[```
+\begin{aligned}
+[$a] x + [$b] y & = [$c] \\
+& \qquad \qquad \text{subtract \([$a] x\)} \\
+[$b] y & = -[$a]x + [$c] \\
+& \qquad \qquad \text{divide by [$b]} \\
+y & = -\frac{[$a]}{[$b]}x + \frac{[$c]}{[$b]} \\
+y & = [$m] x + [$yint]
+\end{aligned}
+```]
+END_PGML_SOLUTION
+ENDDOCUMENT();

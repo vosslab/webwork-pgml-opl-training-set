@@ -1,0 +1,52 @@
+##DESCRIPTION
+##   Algebra: linear equations
+##ENDDESCRIPTION
+
+##Tagged by up2p
+
+## DBsubject(Algebra)
+## DBchapter(Rational equations and functions)
+## DBsection(Rational equations)
+## Date(6/3/2002)
+## Level(2)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.6')
+## Problem1('29')
+## KEYWORDS('algebra', 'linear equations')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'contextFraction.pl', 'PGcourse.pl');
+
+Context("Fraction");
+
+$a = random(3,9,1);
+$b = random(1,5,2);
+$c = random(2,8,2);
+
+$ans = Fraction(2*$c-6*$a+3*$b,-3*$b);
+BEGIN_PGML;
+Solve the equation [`` \frac{[$a]}{x+1}-\frac{[$b]}{2} = \frac{[$c]}{3x+3}``].
+
+    [` x = `] [_]{$ans}{10}
+  
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[``\begin{gathered}
+\frac{[$a]}{x+1}-\frac{[$b]}{2} = \frac{[$c]}{3x+3}\\
+\frac{[$a]}{x+1}-\frac{[$b]}{2} = \frac{[$c]}{3(x+1)}\\
+(x+1)(2)(3)\Big(\frac{[$a]}{x+1}-\frac{[$b]}{2}\Big) = 
+(x+1)(2)(3)\Big(\frac{[$c]}{3(x+1)}\Big) \\
+\frac{(x+1)(2)(3)([$a])}{x+1} + \frac{(x+1)(2)(3)([$b])}{2} =
+\frac{(x+1)(2)(3)([$c])}{3(x+1)} \\
+[@ 6*$a @]-([@ 3*$b @])(x+1) = [@ 2*$c @] \\
+[@ 6*$a @]-[@ 3*$b @]x - [@ 3*$b @] = [@ 2*$c @] \\
+-[@ 3*$b @]x = [@ 2*$c @]-[@ 6*$a @]+[@ 3*$b @]\\
+-[@ 3*$b @]x =  [@ 2*$c-6*$a+3*$b @]\\
+x = [$ans] \end{gathered} ``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

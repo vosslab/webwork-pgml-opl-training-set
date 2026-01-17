@@ -1,0 +1,54 @@
+##DESCRIPTION
+##   Evaluation of a simple algebraic expression
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Algebra)
+## DBchapter(Properties of exponents, rational exponents and radicals)
+## DBsection(Properties of exponents)
+## Date(6/3/2002)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.3')
+## Problem1('21')
+## KEYWORDS('algebra','exponent')
+## MLT(Mult_exponents_one_var)
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("LimitedNumeric");
+
+$a = random(1,9,1);
+$b = Real(random(5,7,1));
+$b1 = $b*$a;
+$c = random(2,4,1);
+$d = random(2,4,1);
+$e = random(9,12,1);
+
+$n = Real(-$c-$d+$e);
+BEGIN_PGML
+    [`` x^{[$c]}\left(\frac{1}{[$a]} x^{[$d]}\right)([$b1] x^{-[$e]}) = c/x^n ``]  
+
+where  
+    the coefficient [`c`] is [_]{$b},  
+    and the exponent [`n`] is [_]{$n}.
+    
+(Your answers should be numbers, not algebraic expressions.)
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[`` x^{[$c]}\left(\frac{1}{[$a]} x^{[$d]}\right)([$b1] x^{-[$e]}) = \frac{[$b1]}{[$a]} x^{[$c]+[$d]-[$e]} = [$b]/x^{[$n]} ``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

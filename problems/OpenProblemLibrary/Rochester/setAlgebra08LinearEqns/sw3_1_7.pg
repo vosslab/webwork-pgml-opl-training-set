@@ -1,0 +1,55 @@
+##DESCRIPTION
+##   Algebra: linear equations
+##ENDDESCRIPTION
+
+##Tagged by up2p
+
+## DBsubject(Algebra)
+## DBchapter(Rational equations and functions)
+## DBsection(Rational equations)
+## Date(6/3/2002)
+## MLT(x_in_2denom)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('3.1')
+## Problem1('7')
+## KEYWORDS('algebra', 'linear equations', 'rantional equations')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
+);
+
+Context("Fraction");
+
+$a = random(2,9,1);
+$b = random(2,4,1);
+$c = non_zero_random(-10,10,1);
+
+$ans = Fraction(2*$a + $b,2*$c);
+BEGIN_PGML
+Solve the equation [``\ \frac{[$a]}{x}+\frac{[$b]}{2x} = [$c]\ ``] algebraically.
+
+    [`x`] = [_]{$ans}{10}
+
+Please also use your calculator to verify your answer. 
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[``\begin{gathered}
+  \frac{[$a]}{x}+\frac{[$b]}{2x} = [$c]\\
+  (2x)\Big(\frac{[$a]}{x}+\frac{[$b]}{2x}\Big) = (2x)([$c])\\
+  (2)([$a])+[$b] = [@ 2*$c @]x \\
+  [@ 2*$a+$b @] = [@ 2*$c @]x \\
+  \frac{[@ 2*$a+$b @]}{[@ 2*$c @]}=[$ans]=x
+  \end{gathered} ``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

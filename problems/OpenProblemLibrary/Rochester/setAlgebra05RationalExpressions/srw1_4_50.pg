@@ -1,0 +1,99 @@
+## DESCRIPTION
+## Algebra: Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Algebra of real numbers and simplifying expressions)
+## DBsection(Simplifying expressions)
+## Date(6/3/2002)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.5')
+## Problem1('47 48')
+## KEYWORDS('algebra', 'factoring', 'fractions')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
+);
+
+$showPartialCorrectAnswers = 0;
+
+Context("Numeric");
+
+$tag = random(0,5,1);
+@choose1 = ("x","y","a","b","s","t");
+$x = $choose1[$tag];
+
+Context()->variables->are($x => "Real", h => "Real");
+
+@que=(); @sol1=(); @sol2=(); @ans=();
+
+push @que, "\frac{\sqrt{$x+h}-\sqrt{$x}}{h}";
+push @sol1, "\frac{\sqrt{$x+h}-\sqrt{$x}}{h}\cdot \frac{\sqrt{$x+h}+\sqrt{$x}}{\sqrt{$x+h}+\sqrt{$x}}";
+push @sol2, "\frac{(\sqrt{$x+h})^2-(\sqrt{$x})^2}{h(\sqrt{$x+h}+\sqrt{$x})}";
+push @ans, "\frac{1}{\sqrt{$x+h}+\sqrt{$x}}";
+
+push @que, "\frac{\sqrt{$x+h}+\sqrt{$x}}{h}";
+push @sol1, "\frac{\sqrt{$x+h}+\sqrt{$x}}{h}\cdot \frac{\sqrt{$x+h}-\sqrt{$x}}{\sqrt{$x+h}-\sqrt{$x}}";
+push @sol2, "\frac{(\sqrt{$x+h})^2-(\sqrt{$x})^2}{h(\sqrt{$x+h}-\sqrt{$x})}";
+push @ans, "\frac{1}{\sqrt{$x+h}-\sqrt{$x}}";
+
+# Now randomize the questions/solution/answer groups:
+
+@slice = random_subset(2,(0,1));
+@que = @que[@slice];
+@sol1 = @sol1[@slice];
+@sol2 = @sol2[@slice];
+@ans = @ans[@slice];
+
+# and re-randomize the question appearances
+
+@perm = random_subset(2,(0,1));
+
+# DropDowns for answers
+
+@ddl = ();
+push @ddl, DropDown(["A","B"],"A");
+push @ddl, DropDown(["A","B"],"B");
+
+################################################################
+
+BEGIN_PGML
+Match each expression 1, 2 below with the letter A or B labeling the
+equivalent expression.
+
+All of your answers must be correct for you to receive credit.
+
+    [_]{$ddl[$perm[0]]} 1. [``\ [$que[$perm[0]]]``]
+    
+    [_]{$ddl[$perm[1]]} 2. [``\ [$que[$perm[1]]]``]
+    
+    A. [``\ [$ans[0]]``]
+    
+    B. [``\ [$ans[1]]``]
+END_PGML
+
+BEGIN_PGML_SOLUTION
+1.
+
+    [``\begin{aligned} & [$que[$perm[0]]] = [$sol1[$perm[0]]]\\
+     & = [$sol2[$perm[0]]] = [$ans[$perm[0]]] \end{aligned}``]
+     
+2.
+
+    [``\begin{aligned} & [$que[$perm[1]]] = [$sol1[$perm[1]]]\\
+     & = [$sol2[$perm[1]]] = [$ans[$perm[1]]] \end{aligned}``]
+END_PGML_SOLUTION
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

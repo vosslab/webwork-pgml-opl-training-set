@@ -1,0 +1,171 @@
+##DESCRIPTION
+
+##ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Matrices)
+## DBsection(Markov chains)
+## Date(6/3/2013)
+## Author(Darwyn Cook)
+## Level(3)
+## MO(1)
+## TitleText1('Linear Algebra with Applications')
+## AuthorText1('Holt')
+## EditionText1('1')
+## Section1('3.5')
+## Problem1('52')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserPopUp.pl', 'PGcourse.pl');
+
+# Print problem number and point value (weight) for the problem
+
+# Show which answers are correct and which ones are incorrect
+# $showPartialCorrectAnswers = 1;
+
+#  Setup
+
+Context("Matrix");
+
+#transition matrix, used in calculations
+#it's hard-coded in the problem statement to make the fractions easier to read
+
+$A=Matrix([[1,0,1/3],[0,1,1/3],[0,0,1/3]]);
+
+# initial state vectors
+
+$x01 = random(0.01,0.5,0.01);
+$x02 = random(0.01,0.5,0.01);
+$x03 = 1-$x01-$x02;
+$x0 = ColumnVector($x01,$x02,$x03);
+
+$x11 = random(0.01,0.5,0.01);
+$x12 = random(0.01,0.5,0.01);
+$x13 = 1-$x11-$x12;
+$x1 = ColumnVector($x11,$x12,$x13);
+
+# The eigenvalues of A are 1, 1, and 1/3.  The corresponding
+# (right-)eigenvectors are column vectors:
+# [1,0,0] and [0,1,0] for eigenvalue 1,
+# and [1,1,-2] for eigenvalue 1/3.  Thus if
+# [x,y,z] is a column vector then
+# [x,y,z] = (x+z/2)[1,0,0]+(y+z/2)[0,1,0] -(z/2)[1,1,-2]
+# so (A^n)[x,y,z]=(x+z/2)[1,0,0]+(y+z/2)[0,1,0] +(1/3^n)(-z/2)[1,1,2]
+# which approaches the fixed point [x-z/2, y-z/2, 0] as n->infinity
+
+# n-th power of A
+sub Apow {
+    my $n=shift;
+    my $r=1/3**$n;
+    my $s=(1-$r)/2;
+    return Matrix([[1,0,$s],[0,1,$s],[0,0,$r]]);
+};
+$A2=Apow(2);
+$A4=Apow(4);
+$A8=Apow(8);
+$Ax0=$A*$x0;
+$A2x0=$A2*$x0;
+$A4x0=$A4*$x0;
+$A8x0=$A8*$x0;
+$Ax1 = $A*$x1;
+$A2x1=$A2*$x1;
+$A4x1=$A4*$x1;
+$A8x1=$A8*$x1;
+
+# projection to fixed point (alias A^infinity)
+$Ainf = Matrix([[1,0,1/2],[0,1,1/2],[0,0,0]]);
+
+#steady state vectors
+$y0=ColumnVector($Ainf*$x0);
+$y1=ColumnVector($Ainf*$x1);
+
+# pop-up questions
+
+$supportQ = DropDown(["??","Yes","No"],"Yes");
+$proveQ = DropDown(["??","Yes","No"],"No");
+
+BEGIN_PGML
+
+Let
+
+    [``A = \begin{bmatrix} 1 & 0 & 1/3 \\ 0 & 1 & 1/3 \\ 0 & 0 & 1/3 \end{bmatrix}``]
+
+be the transition matrix for a Markov process, and
+
+    [``\mathbf{x_0} = [$x0],\quad \mathbf{x_1}=[$x1]``]
+
+be state vectors repesenting two different initial states of the process.
+
+Consider these states
+
+    [``\mathbf{y_0} = [$y0],\quad \mathbf{y_1}=[$y1]``].
+
+It is claimed that [`\mathbf{y_0}`] is the stable fixed point corresponding to the initial point [`\mathbf{x_0}`], and [`\mathbf{y_1}`] is the stable fixed point corresponding to the initial point [`\mathbf{x_1}`].
+
+Provide some numerical evidence to test the claim:
+
+    [`A*\mathbf{x_0}`] = [_]*{$Ax0},
+    [`\quad A^2*\mathbf{x_0}`] = [_]*{$A2x0}{10},
+    [`\quad A^4*\mathbf{x_0}`] = [_]*{$A4x0}{10},
+    [`\quad A^8*\mathbf{x_0}`] = [_]*{$A8x0}{10}
+
+and
+
+    [`A*\mathbf{x_1}`] = [_]*{$Ax1}
+    [`\quad A^2*\mathbf{x_1}`] = [_]*{$A2x1}{10},
+    [`\quad A^4*\mathbf{x_1}`] = [_]*{$A4x1}{10},
+    [`\quad A^8*\mathbf{x_1}`] = [_]*{$A8x1}{10}
+
+
+If the claim were true then what must these limits be?
+
+    [``\lim_{n\to\infty} \big(A^n*\mathbf{x_0}\big)``] = [_____]*{$y0}{10}
+
+    [``\lim_{n\to\infty} \big(A^n*\mathbf{x_1}\big)``] = [_____]*{$y1}{10}
+
+And what must the next two vectors be?
+
+    [`A*\mathbf{y_0}`] = [_____]*{$y0}
+
+    [`A*\mathbf{y_1}`] = [_____]*{$y1}
+
+Does the numerical evidence tend to support the claim? [_]{$supportQ}
+
+Is the numerical evidence enough to _*prove*_ that the claim is true? [_]{$proveQ}
+
+END_PGML
+
+
+BEGIN_PGML_SOLUTION
+
+We compute:
+[```
+\begin{aligned}
+A*\mathbf{x_0}& = [$Ax0] \\
+A^2\mathbf{x_0}&=A*A*\mathbf{x_0}=[$A2] * \mathbf{x_0}=[$A2x0]\\
+A^4\mathbf{x_0}&=A^2*A^2*\mathbf{x_0} = [$A4]*\mathbf{x_0}=[$A4x0]\\
+A^8\mathbf{x_0}&=A^4*A^4*\mathbf{x_0} = [$A8]*\mathbf{x_0}=[$A8x0]\\
+\end{aligned}
+```]
+These results do seem to be getting close to [``[$y0]=\mathbf{y_0}``], so they support the claim but they do not prove it.
+
+[```
+\begin{aligned}
+A*\mathbf{x_1}& = [$Ax1] \\
+A^2\mathbf{x_1}&=A*A*\mathbf{x_1}=[$A2] * \mathbf{x_1}=[$A2x1]\\
+A^4\mathbf{x_1}&=A^2*A^2*\mathbf{x_1} = [$A4]*\mathbf{x_1}=[$A4x1]\\
+A^8\mathbf{x_1}&=A^4*A^4*\mathbf{x_1} = [$A8]*\mathbf{x_1}=[$A8x1]\\
+\end{aligned}
+```]
+These results do seem to be getting close to [``[$y1]=\mathbf{y_1}``], so they support the claim but they do not prove it.
+
+To prove the claim one must look at _all_ the infinitely many terms in the sequence
+[``\big(A^n(\mathbf{x_0})\big)_{n=1}^{\infty}``] and show that they _all_ get close to [`\mathbf{y_0}`] when [`n`] is large enough, and similarly for [`\mathbf{x_1}`] and [`\mathbf{y_1}`].  Four terms isn't enough, one must look at all the terms where [`n`] is large.
+
+If the claim is true then [``A*\mathbf{y_0}={y_0}``] because [`\mathbf{y_0}`] is a fixed point for the Markov process, and
+[``\lim_{n\to\infty}A*\mathbf{x_0}=\mathbf{y_0}``]
+because [`\mathbf{y_0}`] is the fixed point corresponding to the initial point [`\mathbf{x_0}`].  The same goes for [`\mathbf{y_1}`] and [`\mathbf{x_1}`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

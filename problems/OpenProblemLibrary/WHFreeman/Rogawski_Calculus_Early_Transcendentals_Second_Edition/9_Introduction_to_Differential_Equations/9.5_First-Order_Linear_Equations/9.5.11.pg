@@ -1,0 +1,109 @@
+## DBsubject(Differential equations)
+## DBchapter(First order differential equations)
+## DBsection(Integrating factor)
+## Institution(The College of Idaho)
+## Author(LA Danielson)
+## Level(3)
+## MO(1)
+## TitleText1('Calculus: Early Transcendentals')
+## AuthorText1('Rogawski')
+## EditionText1('2')
+## Section1('9.5')
+## Problem1('11')
+## KEYWORDS('calculus', 'differential equations', 'linear equation', 'first order')
+
+DOCUMENT();
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+Context()->variables->set(x => { limits => [ .1, 2 ] });
+
+##xy' = $a y - $b x
+
+$a = Real(random(2,9,1));
+$b = Real(random(1,9,1));
+
+$ap1 = $a+1;
+$am1 = $a-1;
+
+$y1 = Real(random(-9,9,1));
+
+$alpha = Formula("x^(-$a)")->cmp(
+    checker => sub {
+        my ($correct, $student, $ans) = @_;
+        return 0 if $student == Formula(0); 
+        if ($self->{_filter_name} ne 'produce_equivalence_message') {
+            my $context = Context()->copy;
+            $context->flags->set(no_parameters => 0);
+            $context->variables->add(C0 => 'Parameter');
+            $student = Formula($context, $student);
+            $correct = Formula($context, "C0 * x**(-$a)");
+        }
+        return $correct == $student;
+    }
+);
+
+Context("Fraction");
+Context()->variables->add(C=>'Real');
+
+$bdivam1 = Fraction("$b/$am1");
+
+$ans1 = Formula("$bdivam1*x + C*x^$a")->reduce;
+
+$C = Fraction("$y1-$b/$am1");
+
+$ans2 = Formula("$bdivam1*x + $C*x^$a")->reduce;
+
+BEGIN_PGML
+In this problem you will solve the initial value problem    
+    [` x y' = [$a] y - [$b] x\ `] with [`\ y(1) = [$y1] `].
+
+    (a) Identify an integrating factor, [`\alpha(x)`].    
+        [`\alpha(x)`] = [_]{$alpha} 
+
+    (b) Find a general solution of the differential equation [` x y' = [$a] y - [$b] x`].    
+    Your "general solution" should be valid at every point in an open rectangle that includes the initial condition [`(x,y)=(1,[$y1])`].     
+    Use [`C`] for the arbitrary constant.      
+        [`y(x)`] = [_]{$ans1}{15} 
+
+    (c) Solve the initial value problem.    
+        [`y(x)`] = [_]{$ans2}{15}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+(a) The first step is to divide by [`x`] to rewrite the differential equation in the standard form for linear ODEs    
+    [`` y' - \frac{[$a]}{x} y = -[$b] \ .``]    
+Dividing by [`x`] assumes that [`x\neq 0`], and the initial conditions say [`y=[$y1]`] when [`x=1`], so the solution must be defined in an open interval around the point [`x=1`]. Thus in the following we'll assume that [`x>0`]. 
+ 
+From the standard form of the ODE it follows that an integrating factor is    
+    [`` \begin{aligned} \alpha(x) &= \exp\left(\int -\frac{[$a]}{x} \;dx\right) \\
+       & = \exp(-[$a]\ln(x)+K) = e^K x^{-[$a]} \end{aligned}``]    
+where [`K`] is some constant.  Any choice of [`K`] will work; [`K=0`] gives the 
+simplest formula, so we'll take     
+    [``\alpha(x)=x^{-[$a]}``].    
+     
+(b) When multiplied by the integrating factor [`\alpha(x)=x^{-[$a]}`], the standard form of the linear ODE becomes:
+    [`` x^{-[$a]} y' - [$a] x^{-[$ap1]} y = -[$b] x^{-[$a]}``]    
+so            
+    [`` \Big( x^{-[$a]} y\Big)' = -[$b] x^{-[$a]}``]    
+That's the whole point of an integrating factor -- multiplying the standard form of the ODE by the integrating factor turns the left-hand side into a derivative.  Now one can integrate both sides 
+    [``x^{-[$a]} y = \int -[$b] x^{-[$a]} \; dx = [$bdivam1] x^{-[$am1]} + C``]    
+then multiply by [`x^{[$a]}`] to solve for [`y`] and obtain the general solution 
+    [``y = [$ans1]``]    
+where [`C`] is an arbitrary constant.
+
+(c) The initial condition says [`y=[$y1]`] when [`x=1`] so, plugging these values into the general solution, one obtains    
+    [``\begin{gathered} [$y1] = [$bdivam1] + C \\
+     [$y1]-[$bdivam1] = [$C] = C \end{gathered}``]    
+Thus the solution to the initial value problem is    
+    [`` y = [$ans2] ``]
+
+Remark: it turns out that the solutions in parts (b) and (c) also satisfy the ODE when [`x< 0`], but one should not expect something like that to happen in all problems.  
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

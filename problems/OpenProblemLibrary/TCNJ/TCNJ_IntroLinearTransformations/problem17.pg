@@ -1,0 +1,65 @@
+## DESCRIPTION
+## Linear Algebra
+## ENDDESCRIPTION
+
+## Tagged by tda2d
+
+## DBsubject(Linear algebra)
+## DBchapter(Linear transformations)
+## DBsection(Properties)
+## Date(July 2013)
+## Institution(TCNJ and Hope College)
+## Author(Paul Pearson)
+## Level(3)
+## MO(1)
+## TitleText1('Linear Algebra with Applications')
+## AuthorText1('Jeffrey Holt')
+## EditionText1('1')
+## Section1('3.1')
+## Problem1('')
+## KEYWORDS('vector space', 'linear transformation' 'matrix' 'image')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'contextLimitedPoint.pl', 'PGcourse.pl');
+
+$showPartialCorrectAnswers = 1;
+
+Context('LimitedPoint');
+
+$c = random(-1,1,2);
+$a = random(3,5,1) * $c; 
+$b = random(6,9,1) * (-1) * $c;
+
+$ans11 = $a * 2;
+$ans12 = $a * 1;
+$ans21 = $b * (-1);
+$ans22 = $b * 3;
+$ans31 = $ans11 + $ans21;
+$ans32 = $ans12 + $ans22;
+
+BEGIN_PGML
+Let [`T : {\mathbb R}^2 \to {\mathbb R}^2`] be a linear transformation
+that sends the vector
+[`\vec{u} =(5,2) `] into [` (2,1) `] and maps  [`\vec{v}= (1,3)`] into 
+[` (-1, 3) `].   
+
+Use properties of a linear transformation to calculate the following.
+(Enter your answers as ordered pairs, such as [`(1,2)`], including the parentheses.)
+  
+[` T([$a] \vec{u}) = `] [_]{Compute("($ans11,$ans12)")}{15},
+  
+[` T([$b] \vec{v}) = `] [_]{Compute("($ans21,$ans22)")}{15},
+
+[` T([$a] \vec{u} + [$b] \vec{v}) = `] [_]{Compute("($ans31,$ans32)")}{15}.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[` T([$a] \vec{u}) = [$a]T(\vec{u})=[$a](2,1)=([$ans11],[$ans12])`]
+[` T([$b] \vec{v}) = [$b]T(\vec{v})=[$b](1,3)=([$ans21],[$ans22])`]
+[``\begin{aligned} T([$a] \vec{u} + [$b] \vec{v}) &= [$a]T(\vec{u})+[$b]T(\vec{v})\\
+&=([$ans11],[$ans12])+($ans21,$ans22)  \\
+&= ($ans31,$ans32) \end{aligned}``]
+END_PGML_SOLUTION
+;
+ENDDOCUMENT();       # This should be the last executable line in the problem.

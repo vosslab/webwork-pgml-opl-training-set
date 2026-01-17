@@ -1,0 +1,97 @@
+# WeBWorK problem written by Chris Hughes
+# Portland Community College
+#
+# Template:
+# Add the two binomials, making sure to simplify your answer
+# as much as possible.
+#
+#    (a x^2 + b x) + (c x^2 + d x)
+#
+#
+# a, b, c, d can  be any non-zero, integer on the interval [-20,20]. 
+#
+# Last updated: Carl Yao, 6/28/13
+# ENDDESCRIPTION
+
+## DBCCSS('A-APR.1')
+## DBsubject(Algebra)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Polynomials: add, subtract)
+## Institution(PCC)
+## Author(Alex Jordan, Carl Yao, Chris Hughes)
+## MLT(Poly_plus_poly)
+## Level(2)
+## MO(1)
+## KEYWORDS('polynomial','add','simplify','binomial','combine', 'like terms')
+
+##############################################
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+#  "PCCmacros.pl",
+  "contextLimitedPolynomial.pl",
+#  "PGpolynomialmacros.pl",
+  "PGcourse.pl"
+);
+
+##############################################
+
+Context("Numeric");
+Context()->noreduce("(-x)+y","(-x)-y");
+
+# setup the first binomial: ($a x^2 + $b x)
+
+$a = non_zero_random(-10,10,1);
+do { $b = non_zero_random(-10,10,1); } until ($b != $a);
+
+$p1 = Compute("$a*x^2 + $b*x")->reduce;
+
+# setup the second binomial: ($c x^2 + $d x)
+
+$c = non_zero_random(-10,10,1);
+do{ $d = non_zero_random(-10,10,1); } until ($d != $c);
+
+$p2 = Compute("$c*x^2 + $d*x")->reduce;
+
+$ans = Formula(" ($a+$c)*x^2 + ($b+$d)*x ")->reduce;
+
+$ans->context(Context("LimitedPolynomial-Strict"));
+
+###############################################
+
+BEGIN_PGML
+
+Add the two binomials, making sure to simplify your answer
+as much as possible.
+
+    [` ([$p1]) + ([$p2]) `]
+
+    [________________]{$ans}
+
+END_PGML
+
+$p11 = Formula("$a*x^2")->reduce;
+$p12 = Formula("$b x")->reduce;
+$p21 = $c>0 ? "$c x^2" : "($c x^2)" ;
+$p22 = $d>0 ? "$d x" : "($d x)" ;
+$absc = abs($c); $absd = abs($d); 
+$sum1 = $c>0 ? "$a+$c" : "$a-$absc";
+$sum2 = $d>0 ? "$b+$d" : "$b-$absd";
+
+BEGIN_PGML_SOLUTION
+
+We combine like terms as follows
+
+ [` \begin{aligned}
+       ([$p1])+([$p2])& = \left( [$p11]+[$p21] \right)+\left([$p12]+[$p22] \right)\\
+         &= ([$sum1])x^2 + ([$sum2])x \\  
+         & = [$ans]
+         \end{aligned} `]
+END_PGML_SOLUTION
+##############################################
+
+ENDDOCUMENT();

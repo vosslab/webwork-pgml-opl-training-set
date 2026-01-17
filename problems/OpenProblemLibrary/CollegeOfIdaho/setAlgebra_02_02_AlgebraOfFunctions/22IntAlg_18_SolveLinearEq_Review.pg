@@ -1,0 +1,57 @@
+##DESCRIPTION
+## REVIEW: Solve a linear equation
+
+##ENDDESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear equations)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(Variable_intermsof_variables)
+## Level(2)
+## MO(1)
+## TitleText1('Essentials of Intermediate Algebra')
+## AuthorText1('Blitzer')
+## EditionText1('1')
+## Section1('2.2')
+## Problem1('')
+## Date: 2007/10
+
+DOCUMENT(); # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+#  Setup
+
+Context("Numeric");
+Context()->variables->are(R=>"Real",a=>"Real",b=>"Real");
+$var = list_random("a", "b");
+
+$m = random(6,10,1);
+
+$v2 = $var eq 'b' ? Formula("R/$m - a") :Formula("R/$m - b");
+
+
+#  Main text
+
+BEGIN_PGML
+Solve the equation for [` [$var] `]. 
+  [```R = [$m] (a + b)```]
+
+[` [$var] = `] [_]{$v2 }
+END_PGML
+
+
+$v3 = $var eq 'b' ?   'a' : 'b';
+
+BEGIN_PGML_SOLUTION
+[```
+\begin{aligned}
+R & = [$m](a+b) \\
+\frac{R}{[$m]} &= a+b \\
+[$var] & = \frac{R}{[$m]} - [$v3]
+\end{aligned}
+```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,91 @@
+#DESCRIPTION
+##  Algebra problem: true or false for inequality 
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Arithmetic)
+## DBchapter(Fractions/rational numbers)
+## DBsection(Inequalities)
+## Date(6/3/2002)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.2')
+## Problem1('18')
+## TitleText2('Precalculus')
+## AuthorText2('Stewart, Redlin, Watson')
+## EditionText2('3')
+## Section2('1.1')
+## Problem2('22')
+## KEYWORDS('algebra', 'inequality', 'fraction')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "parserPopUp.pl",
+  "PGcourse.pl"
+);
+TEXT(beginproblem());
+$showCorrectPartialAnswers = 1;
+
+# require both answers correct for credit
+
+install_problem_grader(~~&std_problem_grader);
+$showPartialCorrectAnswers=0;
+
+## First we set up our variables.
+$a = random(5,25,1);
+$a1 = $a+1;
+$a2 = $a+2;
+$a3 = $a+3;
+$b = random(5,25,1);
+$b1 = $b+1;
+$b2 = $b+2;
+$b3 = $b+3;
+
+$ans1 = DropDownTF("T");
+$ans2 = DropDownTF("F");
+
+BEGIN_PGML
+Enter a T or an F in each answer space below
+to indicate whether the corresponding statement is true or
+false. 
+
+To receive credit both of the answers must be correct.
+
+    [_]{$ans1}{5} [``\ \frac{[$a]}{[$a1]} < \frac{[$a2]}{[$a3]}``]    
+
+    [_]{$ans2}{5} [``\ -\frac{[$b]}{[$b1]} < -\frac{[$b1]}{[$b2]}``]
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+It's easy to compare fractions if they have a common denominator.  
+
+([$a1])([$a3]) is a common denominator for the first pair of fractions.    
+    [``\ \frac{[$a]}{[$a1]} = \frac{([$a])([$a3])}{([$a1])([$a3])} = \frac{[@ $a*$a3 @]}{([$a1])([$a3])}``].    
+    [``\frac{[$a2]}{[$a3]}=\frac{([$a1])([$a2]}{([$a1])([$a3])} = \frac{[@ $a1*$a2 @]}{([$a1])([$a3])} ``].    
+Comparing the numerators,   
+    [` [@ $a*$a3 @] < [@ $a1*$a2 @] `]    
+so the first statement is *true*, [``\ \frac{[$a]}{[$a1]} < \frac{[$a2]}{[$a3]}``].
+
+([$b1])([$b3]) is a common denominator for the second pair of fractions.    
+    [``\ -\frac{[$b]}{[$b1]} = \frac{(-[$b])([$b3])}{([$b1])([$b3])} = \frac{-[@ $b*$b3 @]}{([$b1])([$b3])}``].    
+    [``-\frac{[$b2]}{[$b3]}=\frac{(-[$b1])([$b2]}{([$b1])([$b3])} = \frac{-[@ $b1*$b2 @]}{([$b1])([$b3])} ``].    
+Comparing the numerators,   
+    [` -[@ $b*$b3 @] > -[@ $b1*$b2 @] `]    
+so the second statement is *false*, in fact [``\ -\frac{[$b]}{[$b1]} > -\frac{[$b2]}{[$b3]}``].
+
+(This comparison was easy because the common denominator was positive.  How would you have to modify it if the common denominator were negative?)
+
+Of course, one may also compare fractions by converting them into decimal numbers either by hand or on a calculator.  
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

@@ -1,0 +1,67 @@
+#DESCRIPTION
+##  Algebra problem: Coordinates and Graphs
+##ENDDESCRIPTION
+
+
+## Tagged by sawblade
+
+## DBsubject(Algebra)
+## DBchapter(Cartesian coordinate system)
+## DBsection(Circles)
+## Date(6/3/2002)
+## MLT(Circle_equation_from_center_rad)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('2.2')
+## Problem1('63')
+## TitleText2('Precalculus')
+## AuthorText2('Stewart, Redlin, Watson')
+## EditionText2('3')
+## Section2('1.8')
+## Problem2('63')
+## KEYWORDS('algebra', 'graph')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+
+$a = Real(random(1,20,1));
+$b = Real(random(1,20,1));
+$c = Real(random(1,6,1));
+
+$ans3 = Real($c**2);
+
+BEGIN_PGML
+Find an equation of the circle with center [`([$a],-[$b])`] and radius [`[$c]`]
+in the form of 
+
+     [`(x-A)^2+(y-B)^2=C`] 
+
+where [`A, B, C`] are constant. 
+
+    [`A`] = [_]{$a}{10}
+    
+    [`B`] = [_]{-$b}{10}
+    
+    [`C`] = [_]{$ans3}{10}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[`(x,y)`] is a point on the circle if and only if the distance from [`(x,y)`] to the center is [$c], so it's on the circle if and only if 
+
+    [``\sqrt{(x-[$a])^2+(y-(-[$b]))^2}=[$c]``]
+    
+Square both sides to get the requested form of the equation.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

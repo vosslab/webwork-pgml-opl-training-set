@@ -1,0 +1,59 @@
+## DESCRIPTION
+## Algebra: Basic Algebra, Exponents and Radicals
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Properties of exponents, rational exponents and radicals)
+## DBsection(Properties of rational exponents and radicals)
+## Date(6/3/2002)
+## MLT(roots_to_powers)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.3')
+## Problem1('27')
+## KEYWORDS('algebra', 'powers')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "contextFraction.pl",
+#  "PGchoicemacros.pl",
+  "PGcourse.pl"
+);
+
+Context("Fraction");
+
+$a = random(2,5,1);
+$b = random(2,5,1);
+$c = random(2,5,1);
+$d = random(2,5,1);
+$e = random(2,5,1);
+
+$ansR = Compute("$a/2+$c/3+$e/5");
+$ansS = Compute("$b/2+$d/3");
+
+BEGIN_PGML
+The expression [``\ \sqrt{x^[$a] y^[$b]} \sqrt[3]{x^[$c ] y^[$d]} \sqrt[5]{x^[$e]} \ ``] equals [``\ x^ry^s \ ``]  
+where [`\ r`], the exponent of [`\ x`], is: [_]{$ansR}  
+and [`\ s`], the exponent of [`\ y`], is: [_]{$ansS}
+END_PGML
+
+BEGIN_PGML_SOLUTION 
+[``\begin{gathered} \sqrt{x^[$a] y^[$b]} \sqrt[3]{x^[$c] y^[$d]}\sqrt[5]{x^[$e]} = 
+(x^[$a] y^[$b])^{1/2} (x^[$c] y^[$d])^{1/3} (x^[$e])^{1/5}  \\
+=   x^{[$a]/2} y^{[$b]/2} x^{[$c]/3} y^{[$d]/3} x^{[$e]/5}
+= x^{([$a]/2+[$c]/3+[$e]/5)} y^{([$b]/2+[$d]/3)} \\
+=  x^{[@ $ansR->num @]/[@ $ansR->den@]} y^{[@ $ansS->num @]/[@ $ansS->den @]}. \end{gathered} ``]  
+Therefore [`r = [$ansR]`] and [`s=[$ansS]`].
+END_PGML_SOLUTION
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

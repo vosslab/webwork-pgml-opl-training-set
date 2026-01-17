@@ -1,0 +1,52 @@
+## DBsubject(Calculus - single variable)
+## DBchapter(Differentiation)
+## DBsection(Derivatives involving multiple rules (all rules))
+## Institution(UCSB)
+## MLT(extrig)
+## Level(3)
+## MO(1)
+## TitleText1('Calculus: Early Transcendentals')
+## AuthorText1('Stewart')
+## EditionText1('5')
+## Section1('3.5')
+## Problem1('23')
+## KEYWORDS('Differentiation','Product','Quotient')
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+$showPartialCorrectAnswers = 1;
+$a=random(2,10,1);
+$b=random(2,10,1);
+
+$gen = random(0,1,1);
+
+if ($gen == 0) {
+  $trig1 = "\sin";
+  $ans  =  Compute("$a * e^($a*x*sin($b*x))*(sin($b*x) + $b*x*cos($b*x))");
+  }
+if ($gen == 1) {
+  $trig1 = "\cos";
+  $ans  =  Compute("$a * e^($a*x*cos($b*x))*(cos($b*x) - $b*x*sin($b*x))");
+  }
+
+BEGIN_PGML
+Differentiate [`` y = e^{[$a] x [$trig1]([$b] x)}. ``]
+
+[`` \frac{dy}{dx}= ``][_]{$ans}{60}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Use the chain rule:
+[``\frac{d}{dx}\left(e^{u(x)}\right)=e^{u(x)}\frac{du}{dx} .``]  
+In this case [`u(x)`] is a product so use the product rule to compute [`du/dx`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

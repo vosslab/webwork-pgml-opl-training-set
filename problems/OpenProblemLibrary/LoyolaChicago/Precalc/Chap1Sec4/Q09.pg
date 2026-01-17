@@ -1,0 +1,70 @@
+## DESCRIPTION
+## Problem from Functions Modeling Change, Connally, et al., 3rd ed.
+## WeBWorK problem written by Adam Spiegler <aspiegler@luc.edu>
+
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Equations of lines: slope-intercept form)
+## Institution(Loyola University Chicago)
+## Author(Adam Spiegler)
+## Level(3)
+## MO(1)
+## TitleText1('Functions Modeling Change')
+## TitleText2('Functions Modeling Change')
+## TitleText3('Functions Modeling Change')
+## AuthorText1('Connally')
+## AuthorText2('Connally')
+## AuthorText3('Connally')
+## EditionText1('3')
+## EditionText2('4')
+## EditionText3('5')
+## Section1('1.4')
+## Section2('1.4')
+## Section3('1.4')
+## Problem1('9')
+## Problem2('9')
+## Problem3('24')
+## KEYWORDS('lines','linear functions','slope-intercept','point-slope form')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+Context("Numeric");
+Context()->strings->add(none => {});
+
+$showPartialCorrectAnswers = 1;
+
+$d = non_zero_random(-5, 2) + 7;
+$n = random(2, 9);
+
+$m = 1;
+$k = $d * $n;
+
+BEGIN_PGML
+If possible write the following equation in *slope-intercept* form.
+
+    [``` \frac{y-x}{ [$d] } = [$n] ```]
+
+a) What is the value of [` m`] when written in slope-intercept form?  If the equation cannot be written in slope-intercept form, enter *none* in the box.
+
+    [`m =  `] [_]{Real($m)}
+
+b) What is the value of [`b`] when written in slope-intercept form?  If the equation cannot be written in slope-intercept form, enter *none* in the box.
+
+    [` b = `] [_]{Real($k)}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+
+Rewriting in slope-intercept form:
+[``` \frac{y-x}{ [$d] } = [$n] ```]
+  
+[``` y - x = ([$n])([$d]) ```]
+  
+[``` y = x + [$k] ```]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

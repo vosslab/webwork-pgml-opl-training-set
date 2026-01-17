@@ -1,0 +1,90 @@
+##DESCRIPTION
+##   
+##ENDDESCRIPTION
+
+##KEYWORDS('calculus', '', '')
+
+## DBsubject('Calculus - single variable')
+## DBchapter('')
+## DBsection('')
+## Date('6/15/2019')
+## Author('K. Andrew Parker')
+## Institution('CityTech')
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+   "PGstandard.pl",     # Standard macros for PG language
+   "MathObjects.pl",
+   "PGML.pl",
+   "AppletObjects.pl",
+   "PGgraphmacros.pl"
+);
+
+# Print problem number and point value (weight) for the problem
+TEXT(beginproblem());
+
+# Show which answers are correct and which ones are incorrect
+$showPartialCorrectAnswers = 1;
+
+##############################################################
+#
+#  Setup
+#
+#
+
+Context("Point");
+
+$a = random(2,9,1);
+$fa = non_zero_random(-15,15,1);
+$mfa = -$fa;
+
+##############################################################
+#
+#  Text
+#
+#
+
+BEGIN_PGML
+
+[`f(x)`] is an unspecified function. You know [`f(x)`] has domain [`(-\infty,\infty)`], and you are told that the graph of [`y = f(x)`] passes through the point [`([$a],[$fa])`].
+
+1. If you also know that [`f`] is an even function, then [`y = f(x)`] must also pass through what other point? [_____]{Point(-$a,$fa)}
+
+1. If, instead, you know that [`f`] is an odd function, then [`y = f(x)`] must also pass through what other _two_ points? [_____]{List(Point(-$a,-$fa),Point(0,0))}
+
+* Write your answer in [`(x,y)`] coordinates.
+
+* For multiple points, separate your answer with a comma.
+
+END_PGML
+
+##############################################################
+#
+#  Answers
+#
+#
+
+BEGIN_PGML_HINT
+
+* [`f(x_0)=y_0`] means that [`(x_0,y_0)`] is a point on the graph.
+
+* When [`f`] is an even function, then [`f(-x_0)=f(x_0)=y_0`]. What point does this correspond to on the graph?
+
+* When [`f`] is an odd function, then [`f(-x_0)=-f(x_0)=-y_0`]. What point does this correspond to on the graph?
+
+* When [`f`] is an odd function and [`0`] is in the domain, then [`f(0)=f(-0)=-f(0)`]. So, what number can [`f(0)`] possibly be?
+
+END_PGML_HINT
+
+BEGIN_PGML_SOLUTION
+
+1. When [`f`] is even, then we get [`f(-[$a])=f([$a])=[$fa]`]. Therefore, we have the additional point [`(-[$a],[$fa])`].
+
+1. When [`f`] is odd, then we get [`f(-[$a])=-f([$a])=[$mfa]`]. Therefore, we have the additional point [`(-[$a],[$mfa])`]. Moreover, since [`f(0)=f(-0)=-f(0)`] we get that [`f(0)`] must be [`0`], and we also know that [`(0,0)`] is a point on the graph. (Note that this is only true when [`0`] is in the domain of [`f`].)
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        

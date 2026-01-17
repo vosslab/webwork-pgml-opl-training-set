@@ -1,0 +1,38 @@
+##DESCRIPTION
+##   Evaluation of a simple algebraic expression
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Exponentiation)
+## Date(6/3/2002)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.3')
+## Problem1('1')
+## KEYWORDS('algebra','exponent')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("LimitedNumeric");
+$a = random(2,6,2);
+$answer = Real((-2)**$a);
+
+BEGIN_PGML
+Evaluate the expression [``\ (-2)^{[$a]} ``].
+
+    [``(-2)^{[$a]} ``] = [_]{$answer}{10}
+END_PGML
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

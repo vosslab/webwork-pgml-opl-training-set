@@ -1,0 +1,82 @@
+## DESCRIPTION
+## Linear Algebra
+## ENDDESCRIPTION
+
+## Tagged by tda2d
+
+## DBsubject(Linear algebra)
+## DBchapter(Linear transformations)
+## DBsection(Kernel and image)
+## Date(July 2013)
+## Institution(TCNJ and Hope College)
+## Author(Paul Pearson)
+## Level(4)
+## Static(1)
+## MO(1)
+## TitleText1('Linear Algebra with Applications')
+## AuthorText1('Jeffrey Holt')
+## EditionText1('1')
+## Section1('3.1')
+## Problem1('')
+## KEYWORDS('vector' 'linear transformation' 'image')
+
+DOCUMENT();
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+$showPartialCorrectAnswers = 0;
+
+Context('Vector');
+
+$notImage = Vector(1,0,0)->cmp(
+  showCoordinateHints => 0,
+  checker => sub {
+    my ($c, $s, $ansHash ) = @_;
+    my $u = Vector(1,1,1);
+    if ($s . $u != 0) { return 1; }
+    else { return 0;}
+  }
+);
+
+$isImage = Vector(1,0,-1)->cmp(
+  showCoordinateHints => 0,
+  checker => sub {
+    my ($c, $s, $ansHash ) = @_;
+    my $u = Vector(1,1,1);
+    if ( ! ($s->isZero) && $s . $u == 0 ){ return 1; }
+    else { return 0;}
+  }
+);
+
+BEGIN_PGML
+Let [` T: {\mathbb R}^3 \rightarrow {\mathbb R}^3 `] 
+be the linear transformation defined by
+[``` T(x_1, x_2, x_3 )= (x_1- x_2, x_2- x_3, x_3-x_1). ```] 
+Find a vector  [`\vec{w} \in {\mathbb R}^3 `]
+that is *NOT* in the image of [`T`].
+
+[` \vec{w} = `][_]*{$notImage}
+
+and find a different, nonzero vector [`\vec{v} \in {\mathbb R}^3 `] that *IS* in the image of [`T`].
+
+[` \vec{v} = `][_]*{$isImage}.
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[`(a,b,c)`] is in the image of [`T`] if and only if [`T(x_1,x_2,x_3)=(a,b,c)`], 
+that is, if and only if 
+[``` \begin{aligned} x_1-x_2 &= a \\ x_2-x_3 &= b \\ x_3-x_1 &= c \end{aligned} ```]
+The matrix 
+[``` \begin{bmatrix} 1 & -1 & 0 & a \\ 0 & 1 & -1 & b \\ -1 & 0 & 1 & c \end{bmatrix}```]
+represents this system of equations.  Row reducing, one obtains
+[``` \begin{bmatrix} 1 & -1 & 0 & a \\ 0 & 1 & -1 & b \\ 0 & 0 & 0 & a+b+c \end{bmatrix}```]
+Thus the system has a solution if and only if [`a+b+c = 0`], that is,  [`(a,b,c)`] is in the image of [`T`] if and only if [`a+b+c = 0`].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

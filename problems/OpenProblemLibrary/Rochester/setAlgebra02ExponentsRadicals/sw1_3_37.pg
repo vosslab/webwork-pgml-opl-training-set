@@ -1,0 +1,53 @@
+#DESCRIPTION
+##  Algebra problem: combining powers
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Algebra)
+## DBchapter(Properties of exponents, rational exponents and radicals)
+## DBsection(Properties of rational exponents and radicals)
+## Date(6/3/2002)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.3')
+## Problem1('37')
+## KEYWORDS('algebra', 'powers')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
+);
+
+Context("LimitedFraction");
+Context()->flags->set(showMixedNumbers=>0);
+
+$a = random(2,6,1);
+$b = random(2,6,1);
+$c = random(2,6,1);
+
+$ans1 = Fraction($a,$c);
+$ans2 = Fraction($b,$c);
+
+BEGIN_PGML
+    [`` (c^{[$a]} d^{[$b]})^{-1/[$c]} = 1/(c^rd^s) ``]    
+
+where
+    [`r`], the exponent of [`c`], is: [_]{$ans1}{10}, and  
+    [`s`], the exponent of [`d`], is: [_]{$ans2}{10}.  
+    
+Your answers must be integers or reduced fractions, not other algebraic expressions.
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[`` (c^{[$a]} d^{[$b]})^{-1/[$c]} = c^{-[$a]/[$c]}\; d^{-[$b]/[$c]} = 1/(c^{[$ans1->num]/[$ans1->den]} d^{[$ans2->num]/[$ans2->den]}) ``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

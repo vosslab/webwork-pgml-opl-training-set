@@ -1,0 +1,64 @@
+##DESCRIPTION
+##  Algebra problem: simplifying algebraic expressions
+##ENDDESCRIPTION
+
+## hcao tagged and PAID on 12-12-2003
+
+## DBsubject(Algebra)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Polynomials: add, subtract)
+## Date(6/3/2002)
+## MLT(Poly_minus_poly)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.4')
+## Problem1('3')
+## KEYWORDS('algebra', 'simplifying equation')
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+
+$a = random(2,7,1);
+$b = random(2,7,1);
+$c = random(2,7,1);
+$d = random(2,7,1);
+$e = random(2,7,1);
+$f = random(2,7,1);
+$g = random(2,7,1);
+$h = random(2,7,1);
+
+$ans1 = Real($a*$e);
+$ans2 = Real($a*$b-$f);
+$ans3 = Real(-$a*$c-$g);
+$ans4 = Real($a*$d+$h);
+
+$poly = Formula("$ans1 x^3 + $ans2 x^2 + $ans3 x + $ans4")->reduce;
+BEGIN_PGML
+Subtract
+
+    [``[$a] ([$e] x^3 + [$b] x^2-[$c] x+[$d])-([$f] x^2+[$g] x-[$h])``]  
+    = [_]{$ans1}[``x^3``] + [_]{$ans2}[``x^2``] + [_]{$ans3}[``x``] + [_]{$ans4}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+[``\begin{aligned}
+  &[$a] ([$e] x^3 + [$b] x^2-[$c] x+[$d])-([$f] x^2+[$g] x-[$h])
+  \\
+  &=([@ $a*$e @] x^3 + [@ $a*$b @] x^2-[@ $a*$c @] x+[@ $a*$d @])\\
+  &\qquad-([$f] x^2+[$g] x-[$h])\\
+  &= ([@ $a*$e @] x^3) + ([@ $a*$b @] - [$f])x^2 + (-[@ $a*$c @]-[$g])x + ([@ $a*$d @]+[$h])\\
+  &= [$poly]
+  \end{aligned} ``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

@@ -1,0 +1,93 @@
+##DESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Exponential and logarithmic expressions and functions)
+## DBsection(Applications and models - population growth)
+## Institution(NAU)
+## Author(N.Spencer Sitton)
+## MLT(Population_GivenPercentFindNumber)
+## MLTleader(1)
+## Level(4)
+## KEYWORDS('exponential model', 'growth')
+##ENDDESCRIPTION
+## Edited by C. Tyler Diggans at NAU on 8/2012
+## Changes: got rid of option of 'beginning' or 'end' of year2
+
+# File Created: 06/27/05
+# Location: Northern Arizona University
+# Course:Quantitative Reasoning
+
+## Updated 2025.01 by Peter Staab, switch to PGML and added a solution.
+
+DOCUMENT();
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGcourse.pl');
+
+# population at $year0
+$pop0 = random(1000, 10000);
+$rate = random(3,    10, .1);
+
+do {
+    ($year0, $year1) = (random(1940, 1985, 1), random(1960, 2005, 1));
+} until ($year1 > $year0 + 20);
+
+$n1 = $year1 - $year0;
+# population at year1
+$pop1 = $pop0 * (1 + $rate / 100)**$n1;
+
+# population at year 2
+do {
+    $pop2 = random(1000000, 25000000, 1);
+} until ($pop2 > $pop1);
+
+$n2    = ln($pop2 / $pop1) / ln(1 + $rate / 100);
+$year2 = $year1 + int($n2);
+
+# add commas for thousands separators.
+$pop0str = $pop0;
+$pop2str = $pop2;
+while ($pop0str =~ s/^(~~d+)(~~d{3})/$1,$2/) { }
+while ($pop2str =~ s/^(~~d+)(~~d{3})/$1,$2/) { }
+
+BEGIN_PGML
+
+A city had a population of [$pop0str] at the beginning of [$year0] and has been growing at 
+[$rate]% per year since then.
+
+a) Find the size of the city at the beginning of [$year1].
+
+    Answer:  [__]{$pop1}
+
+b) During what year will the population of the city reach [$pop2str] ?
+
+    Answer:  [__]{$year2}
+
+END_PGML
+
+BEGIN_PGML_HINT
+First, make sure you are using an exponential model with the given parameters. 
+
+Also, if the answer to part b isn't right, make sure that you are rounding your answer down.  For example if [`t=7.75`], then adding to year [$year0] to get year [@ $year0+7.75 @], means that the population would reach in year [@ int($year0+7.75) @]. That is, round down.
+END_PGML_HINT
+
+$q = 1 + $rate / 100;
+BEGIN_PGML_SOLUTION
+The population of this town is exponential and the model is 
+[``` P(t) = P_0 (1+p/100)^t ```]
+where [`r=[$rate/100]`] is the growth rate as a fraction, [`P_0 = [$pop0] `] and [`t`] is the number of years since [$year0]. Thus the model is
+[``` P(t) = [$pop0] ([$q])^t ```]
+
+a) To find the population in [$year1], use [`t=[$year1]-[$year0]= [$n1]`], resulting in [`P([$n1]) = [$pop1]`].  Round this answer to [@Round($pop1)@].
+
+b) For this, we know the population [`P(t)=[$pop2]`] and put this into the model as 
+    [```[$pop2] = [$pop0] ([$q])^t ```]
+    divide by [`[$pop0]`] 
+    [``` [@ $pop2/$pop0 @] = ([$q])^t ```]
+    take the log 
+    [``` \log ([@ $pop2/$pop0 @]) = t \log([$q]) ```]
+    divide by [`\log([$q])`] 
+    [``` \frac{\log ([@ $pop2/$pop0 @])}{\log([$q])} = t ```]
+    using a calculator 
+    [``` t = [$n2] ```]
+    And lastly, turn this into an integer and add to the original year [$year0] to get the year [$year2].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

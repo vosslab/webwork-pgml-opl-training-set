@@ -1,0 +1,165 @@
+# DESCRIPTION
+# Use Gauss-Jordan reduction to solve a system of 3 linear equations in 3 variables.
+# ENDDESCRIPTION
+
+## DBsubject(Linear algebra)
+## DBchapter(Systems of linear equations)
+## DBsection(Systems with 3 variables)
+## Institution(Rochester)
+## MO(1)
+## MLT(3infsol)
+## MLTleader(1)
+## Level(2)
+## Tagged by cmd6a 5/3/06
+
+###########################################################################
+# initialization 
+###########################################################################
+DOCUMENT();        
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl", 
+  "parserMultiAnswer.pl",
+  "PGcourse.pl"
+);
+
+###########################################################################
+# setup contexts and variables 
+###########################################################################
+
+Context("Vector"); 
+
+$sign1 = random(-1,1,2);
+$sign2 = random(-1,1,2);
+$sign3 = random(-1,1,2);
+$sign4 = random(-1,1,2);
+$d = random(3,6,1);
+$m = random(2,3,1)*$sign4;
+
+# R1,R2,R3 are the rows of a 3x4 matrix with rank 2
+
+$R1 = Vector(1,-1,random(2,5,1)*$sign1, random(1,6,1)*$sign2);
+$R2 = Vector($d, $sign3 - $d, random(3,9,1)*$sign1, random(3,9,1)*$sign2);
+$R3 = $m*($sign3-$d)*$R1 + $m*$R2;
+
+# the 3x4 matrix
+
+$M = Matrix([[$R1->value],[$R2->value],[$R3->value]]);
+
+# for latex display
+
+($a11,$a12,$a13,$a14) = ($R1->value);
+($a21,$a22,$a23,$a24) = ($R2->value);
+($a31,$a32,$a33,$a34) = ($R3->value);
+
+$pm13 = ($a13 < 0) ? "-" : "+";
+$pm22 = ($a22 < 0) ? "-" : "+";
+$pm23 = ($a23 < 0) ? "-" : "+";
+$pm33 = ($a33 < 0) ? "-" : "+";
+
+# particular solution xp with xp3=0
+
+$xp2 = $sign3*($a24-$d*$a14);
+$xp1 = $xp2 + $a14;
+
+$xp = ColumnVector($xp1,$xp2,0);
+
+# homogeneous solution xh with xh3 = 1
+
+$xh2 = -$sign3*($a23-$d*$a13); 
+$xh1 = $xh2 - $a13;
+
+$xh = ColumnVector($xh1, $xh2, 1);
+
+$ans = MultiAnswer($xp, $xh)->with(
+  singleResult => 0,
+  checker => sub {
+    my ($correct, $student, $self)=@_;
+    my ($stu_p,$stu_h)= @{$student};
+    if ($stu_h->isZero){ $self->setMessage(2,"Can't be zero; equation has infinitely many solutions.");}
+    # augment student vectors with a fourth component
+    my @stu_p = ($stu_p->extract(1),$stu_p->extract(2),$stu_p->extract(3));
+    my @stu_h = ($stu_h->extract(1),$stu_h->extract(2),$stu_h->extract(3));
+    push @stu_p, -1;
+    push @stu_h, 0;
+    $stu_p = Vector(@stu_p);
+    $stu_h = Vector(@stu_h);
+    my @check = (0,0);
+    if ( ($M*$stu_p)->isZero ){$check[0]=1;}
+    else {$self->setMessage(1,"Doesn't satisfy the given equation.");}
+    if ( ($M*$stu_h)->isZero ){$check[1]=1;}
+    else {$self->setMessage(2,"Must satisfy the corresponding homogeneous equation.");}
+    return @check;
+  });
+
+BEGIN_PGML
+Use Gauss-Jordan reduction to solve the following linear system:
+
+    [`` \left\{\ \  \begin{array}{rcrcrcr} x_1 & - & x_2 & [$pm13] & [@ abs($a13) @] x_3 & = & [$a14] \\ [$a21] x_1 & [$pm22] & [@ abs($a22) @] x_2 & [$pm23] & [@ abs($a23) @] x_3 &=& [$a24] \\ [$a31] x_1 &         &                & [$pm33] & [@ abs($a33) @] x_3 &=& [$a34] \end{array} \right.``]    
+
+    [`` \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} ``] = [_]*{$ans} + s [_]*{$ans} 
+END_PGML
+
+# used in solution
+
+$M1 = Matrix([[$R1->value],[($R2 - $d*$R1)->value], [($R3-$m*$sign3*$R1)->value]]);
+
+$M2 = Matrix([[$R1->value],[($R2 - $d*$R1)->value], [0,0,0,0] ]);
+
+BEGIN_PGML_SOLUTION
+The augmented matrix for this system is
+
+    [`` [$M] ``].     
+
+Add [@ -$d @] times row 1 to row 2, and [@ -$m*$sign3 @] times row 1 to row 3, to obtain    
+
+    [`` [$M1] ``].     
+
+Add [@ -$m @] times row 2 to row 3    
+
+    [`` [$M2] ``].    
+
+Thus the original system is equivalent to 
+
+    [`` \begin{gather} 
+x_1-x_2+[$a13]x_3 = [$a14] \\ 
+([$sign3])x_2 + ([@ $a23-$d*$a13 @])x_3= [@ $a24-$d*$a14 @] 
+\end{gather} ``]    
+
+or equivalently, solving for [`x_2`] first then [`x_1`],
+
+    [`` \begin{align}
+x_2 &= [@ $sign3*($a24-$d*$a14) @] + ([@ ($a23-$d*$a13) @])x_3 \\
+x_1 &= [$a14] +x_2 + ([@ -$a13 @])x_3 = [@ $a14 + $sign3*($a24-$d*$a14) @] + ([@ -$a13 + ($a23-$d*$a13) @])x_3
+\end{align} ``]    
+
+Therefore [`x_3`] is a free variable so there are infinitely many solutions.  One may parametrize them with the parameter [`s`] that is given in the problem by setting [`x_3 = s`], so the parametrized solution becomes    
+
+    [``\begin{align} x_1 & = [@ $a14 + $sign3*($a24-$d*$a14) @] + ([@ -$a13 + ($a23-$d*$a13) @])s \\
+ x_2 &= [@ $sign3*($a24-$d*$a14) @] + ([@ ($a23-$d*$a13) @])s \\
+ x_3 &= s
+\end{align} ``],    
+
+or, equivalently,     
+
+    [``\begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} 
+= [$xp]  + s [$xh] . ``]    
+
+In fact there are infinitely many different solutions.  For given any two real numbers [`a`] and [`b`] with [`a\neq 0`] one could create another parameter [`t = as + b`] and parametrize the solutions by [`t`]:  
+
+    [``\begin{align} 
+\begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} 
+&= [$xp]  + t [$xh] \\
+&= [$xp] + (as + b) [$xh] \\
+&= \left([$xp]+b[$xh]\right) + s \left(a[$xh]\right). \end{align} ``]    
+
+This means that, in the "official" solution given above, one could replace [`[$xp]`] with [`\left([$xp]+b[$xh]\right)`] and replace [`[$xh]`] with [`\left(a[$xh]\right)`], and get another solution that would work equally well.  (The condition [`a\neq 0`] ensures that as [`s`] ranges over all the real numbers [`t`] does also.)   
+   
+END_PGML_SOLUTION
+
+
+COMMENT('Edited and updated in 2012/2013 by Rick Lynch @ Mizzou. Originally taken from NPL.
+$BR
+Desc: Use Gauss-Jordan reduction to solve a system of 3 linear equations in 3 variables.');
+ENDDOCUMENT();

@@ -1,0 +1,66 @@
+##DESCRIPTION
+##   Algebra: Modeling
+##ENDDESCRIPTION
+
+##Tagged by up2p
+
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Applications and models)
+## Date(6/3/2002)
+## MLT(FindingIntersection)
+## Level(3)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('3.2')
+## Problem1('60')
+## KEYWORDS('Algebra', 'Modeling', 'word problem')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "PGcourse.pl"
+);
+
+Context("Numeric");
+
+$slow = random(5,10,1);
+## slow speed
+$mult = random(2,3,1);
+$multp1 = $mult + 1;
+
+## multiplier
+$fast = Real($mult * $slow);
+## fast speed
+$hours = random(2,4,1);
+$distance = $hours * ($slow + $fast);
+
+BEGIN_PGML
+Two cyclists, [$distance] miles apart, start riding toward each other at the same time. One cycles [$mult] times as fast as the other.  If they meet [$hours] hou    rs later, what is the speed (in mi/h) of the faster cyclist?
+
+    Faster cyclist's speed is [_]{$fast}{10} mi/hr
+END_PGML
+
+BEGIN_PGML_SOLUTION
+In mi/hr, let
+
+    [`s`]  be the speed of the slower cyclist.  Then    
+    [`[$mult]s`] is the speed of the faster cyclist.  
+    
+As they ride toward each other the distance between them decreases at a rate of [`s+[$mult]s = [$multp1]s`] mi/hr. That distance decreases from [$distance] to 0 in [$hours] hr., so 
+
+    [`[$distance] = ([$multp1]s)([$hours])`]
+    
+Thus 
+
+    [``s=\frac{[$distance]}{([$multp1])([$hours])}``]
+    
+and
+
+    [``[$mult]s=\frac{([$mult])([$distance])}{([$multp1])([$hours])} = [$fast]``] mi/hr
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

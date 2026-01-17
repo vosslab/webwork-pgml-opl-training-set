@@ -1,0 +1,51 @@
+## DESCRIPTION
+## Algebra: Basic Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Algebra)
+## DBchapter(Operations on polynomial and rational expressions)
+## DBsection(Simplify rational expressions)
+## Date(6/3/2002)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.5')
+## Problem1('53')
+## KEYWORDS('algebra, simplifying rational expression')
+
+DOCUMENT();     
+loadMacros('PGstandard.pl', 'PGML.pl',  'PGcourse.pl');
+
+Context("Numeric");
+Context()->variables->add(y=>"Real");
+
+$a = random(2,6,2);
+$b = random(2,9,2);
+$c = random(2,6,1);
+$d = $c-1;
+## $a y^$c/(xy-$b y)
+
+$f = Formula("$a*y**$d");
+$g = Formula("x-$b");
+BEGIN_PGML
+Simplify the expression [``\ \frac{[$a] y^[$c]}{xy-[$b] y}\ ``].
+
+The answer has the form of [``\ \frac{f(x)}{g(x)}\ ``] where
+    
+    [`f(x)`] = [_]{$f}{10} and    
+  
+    [`g(x)`] = [_]{$g}{10}
+  
+END_PGML
+
+BEGIN_PGML_SOLUTION
+    [``\frac{[$a] y^[$c]}{xy-[$b] y} = \frac{([$a] y^[$d])y}{(x-[$b]) y}``]    
+Cancel the common factor [`y`] from the numerator and denominator to obtain the answer    
+    [``\frac{[$a] y^[$d]}{x-[$b]}``]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

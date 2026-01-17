@@ -1,0 +1,65 @@
+## DESCRIPTION
+## Algebra: Basic Algebra, Exponents and Radicals
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 4/4/06
+
+## DBsubject(Arithmetic)
+## DBchapter(Integers)
+## DBsection(Exponentiation)
+## Date(6/3/2002)
+## MLT(Division_exponents_numbers)
+## MLTleader(1)
+## Level(2)
+## MO(1)
+## TitleText1('College Algebra')
+## AuthorText1('Stewart, Redlin, Watson')
+## EditionText1('3')
+## Section1('1.3')
+## Problem1('2')
+## KEYWORDS('algebra')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "contextFraction.pl",
+  "PGcourse.pl"
+);
+
+$showPartialCorrectAnswers = 1;
+
+Context("LimitedFraction");
+$a = random(2,5,1);
+$b = random(-4,4,1);
+$c = random(-4,4,1);
+
+$ans = ($b-$c < 0) ? Fraction(1,$a**($c-$b)) : Fraction($a**($b-$c),1) ; 
+
+BEGIN_PGML
+Evaluate the expression [``\ \frac{[$a]^{[$b]}}{[$a]^{[$c]}}``].
+
+Your answer must be an integer or a reduced fraction, but not an algebraic expression with exponents, etc. 
+
+    [``\frac{[$a]^{[$b]}}{[$a]^{[$c]}}``] = [_]{$ans}{10}
+END_PGML
+
+if ($b-$c<0){
+BEGIN_PGML_SOLUTION
+[``\frac{[$a]^{[$b]}}{[$a]^{[$c]}} = [$a]^{[$b]} [$a]^{-[$c]}
+ =[$a]^{([$b]-[$c])} = [$a]^{[@ $b-$c @]} 
+ = \frac{1}{[$a]^{[@ $c-$b @]}} = [$ans]``]  
+END_PGML_SOLUTION
+}
+else {
+BEGIN_PGML_SOLUTION
+[``\frac{[$a]^{[$b]}}{[$a]^{[$c]}} = [$a]^{[$b]} [$a]^{-[$c]}
+ =[$a]^{([$b]-[$c])} = [$a]^{[@ $b-$c @]} 
+ = [$ans] ``]
+END_PGML_SOLUTION
+}
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
+

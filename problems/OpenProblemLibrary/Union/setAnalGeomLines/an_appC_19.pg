@@ -1,0 +1,121 @@
+## DESCRIPTION
+## Algebra
+## ENDDESCRIPTION
+
+## Tagged by cmd6a 8/6/06
+
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Finding the slope)
+## Date(8/24/07)
+## Institution(Union College)
+## Author(D. Cervone)
+## Level(2)
+## MO(1)
+## TitleText1('Calculus')
+## AuthorText1('Anton')
+## EditionText1('7')
+## Problem1('19')
+## KEYWORDS('slopes', 'graphs')
+
+DOCUMENT();
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'PGtikz.pl', 'PGcourse.pl');
+
+$showPartialCorrectAnswers = 0;    # Don't show which are correct/incorrect.
+
+Context('Numeric')->strings->are("A" => {}, "B" => {}, "C" => {}, "D" => {});
+# Setup
+
+#  Random slopes, one steep down, one shallow, one steep up
+
+@m = (
+    random(-3,   -2,  .1),
+    random(-1.5, .2,  .1),
+    random(.2,   1.5, .1),
+    random(1.5,  3,   .1)
+);
+
+#  Shuffle the slopes
+
+## add this to PGauxillarymacros.pl
+sub invert {
+    my @out;
+    for my $i (0..$#_) {$out[$_[$i]] = $i}
+    @out;
+}
+
+@shuffle = random_subset(4, 0 .. 3);
+@m       = @m[@shuffle];
+@a       = ('A', 'B', 'C', 'D')[ invert(@shuffle) ];
+
+#  Random intercepts
+
+@b = (
+    random(-5, 5, .1),
+    random(-5, 5, .1),
+    random(-5, 5, .1),
+    random(-5, 5, .1)
+);
+
+# determine the bounds of the lines for nicer plotting
+
+@xmax = map {
+    $m[$_] * 7.5 + $b[$_] > 7.5        ? (7.5 - $b[$_]) / $m[$_]
+        : $m[$_] * 7.5 + $b[$_] < -7.5 ? (-7.5 - $b[$_]) / $m[$_]
+        : 7.5
+} (0 .. 3);
+@xmin = map {
+    $m[$_] * -7.5 + $b[$_] > 7.5        ? (7.5 - $b[$_]) / $m[$_]
+        : $m[$_] * -7.5 + $b[$_] < -7.5 ? (-7.5 - $b[$_]) / $m[$_]
+        : -7.5
+} (0 .. 3);
+
+# define the functions and obtain thair graphs
+@graphs = ();
+for $i (0 .. 3) {
+    $graphs[$i] = createTikZImage();
+    $graphs[$i]->tikzLibraries('arrows.meta');
+    $graphs[$i]->BEGIN_TIKZ
+\tikzset{>={Stealth[scale=1.5]}}
+\filldraw[
+    draw=LightBlue,
+    fill=white,
+    rounded corners=10pt,
+    thick,use as bounding box
+] (-8.5,-8.5) rectangle (8.5,8.5);
+\draw[gray] (-7,-7) grid (7,7);
+\draw[->,thick] (-7.5,0) -- (7.5,0) node[above left,outer sep=3pt] {\(x\)};
+\foreach \x in {-6,-4,-2,2,4,6}
+    \draw(\x,5pt) -- (\x,-5pt) node [below] {\(\x\)};
+\draw[->,thick] (0,-7.5) -- (0,7.5) node[below right,outer sep=3pt] {\(y\)};
+\foreach \y in {-6,-4,-2,2,4,6}
+    \draw (5pt,\y) -- (-5pt,\y) node[left] {\(\y\)};
+\draw[blue,ultra thick,<->] plot[domain=$xmin[$i]:$xmax[$i]] (\x,{$m[$i]*\x+$b[$i]});
+END_TIKZ
+
+}
+
+BEGIN_PGML
+Order the following graphs by _increasing_ slope
+of the line being displayed:
+
+[# [. A) [!!]{$graphs[0]}{300} .] [. B) [!!]{$graphs[1]}{300} .]*
+[. C) [!!]{$graphs[2]}{300} .] [. D) [!!]{$graphs[3]}{300} .]* #]
+
+Enter the *labels* of the graphs (A, B, C, and D) in order of
+  _increasing_ slope:
+
+[_]{$a[0]} [` < `]  [_]{$a[1]} [` < `]  [_]{$a[2]} [` < `]  [_]{$a[3]}
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Recall that negative slopes go from the upper left to the lower right and positive slopes from lower left to upper right. 
+
+Negative slopes that are steeper are more negative and positive slopes that are steeper are more positive.  Examining the slopes above, the answer is
+
+[``` [$a[0]] < [$a[1]] < [$a[2]] < [$a[3]] ```]
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

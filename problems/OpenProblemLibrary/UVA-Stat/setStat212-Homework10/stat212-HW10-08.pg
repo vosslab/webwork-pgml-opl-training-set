@@ -1,0 +1,136 @@
+# DESCRIPTION
+## CMMK tagged this problem
+
+## DBsubject(Statistics)
+## DBchapter(Hypothesis tests)
+## DBsection(One sample mean - t)
+## Date(07/12/2005)
+## Institution(UVa)
+## Author(Cristina Murray-Krezan)
+## MLT(dataGiven)
+## MLTleader(1)
+## Level(4)
+## TitleText1('Statistics for Management and Economics')
+## AuthorText1('Keller, Warrack')
+## EditionText1('6')
+## Section1('.')
+## Problem1('')
+## KEYWORDS('statistics','Inference about a population')
+# ENDDESCRIPTION
+
+DOCUMENT();
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "PGstatisticsmacros.pl",
+  "niceTables.pl",
+  "parserRadioButtons.pl",
+  "PGcourse.pl"
+);
+
+$showPartialCorrectAnswers = 1;
+
+# Perl Numbers
+$mu = random(15,25,1);
+$n = 10;
+@data = ();
+foreach (1..$n){ push(@data, $mu + random(-5,5,1)) ;}
+$tab = DataTable([~~@data]);
+($t,$df,$p)=t_test($mu,@data);
+$mean = stats_mean(@data);
+$sd = stats_sd(@data); # sample standard deviation 
+$siglev = random(1,10,1);
+$alpha = $siglev/100;
+$tcrit = tdistr($df,$alpha/2); # critical value
+
+# Convert Perl numbers to Real objects.  It seems to be 
+# important that the inputs to tdistr not be MathObjects.
+
+Context("Numeric");
+Context()->flags->set(
+  tolerance => 0.1,
+  tolType => "relative",
+);
+$t = Real($t);
+$p = Real($p);
+$sd=Real($sd);
+$alpha = Real($alpha);
+$tcrit = Real($tcrit);
+
+#rejection region
+Context("Interval");
+Context()->flags->set(
+  tolerance => 0.1,
+  tolType => "relative",
+);
+
+$rej_reg = Compute("(-infinity,-$tcrit) U ($tcrit,infinity)");
+
+#$mc = new_multiple_choice();
+
+if ($p < $alpha) {$tag = 0;} else {$tag = 1;}
+$radio = RadioButtons(["Reject \(H_0\).", "Do Not Reject \(H_0\).",
+        "Reject \(H_1\).", "Do Not Reject \(H_1\)."], $tag);
+
+BEGIN_PGML
+A random sample of 10 observations was drawn from a large normally 
+distributed population.  The data are below.    
+
+[@ $tab @]*
+
+Test to determine if, at the [$siglev]% significance level, we can infer that the 
+population mean is not equal to [$mu], filling in the requested 
+information below.   
+
+\A. The value of the standardized test statistic is: [_]{$t}{10}
+
+_Note:_ For the part B, your answer should use interval notation.  [@ helpLink("interval") @]* 
+
+\B. The rejection region for the standardized test statistic is:  [_]{$rej_reg}{15}  
+
+\C. The p-value is [_]{$p}{10}
+
+\D. Your decision for the hypothesis test.  ([`H_0`] is the null hypothesis, [`H_1`] is the alternative).
+
+    [_]{$radio}
+
+END_PGML
+
+BEGIN_PGML_SOLUTION
+The null hypothesis [`H_0`] says 
+
+    population mean = [`\mu`] = [`[$mu]`]  (Null hypothesis)
+
+Our random sample of [`n=[$n]`] values [`x`] has 
+
+    sample mean = [`\bar{x}=\sum x/n`] = [`[$mean]`]  
+
+    sample standard deviation = [``s=\sqrt{\frac{\sum (x-\bar{x})^2}{n-1}}``] = [`[$sd]`]    
+
+    test statistic = [``t=\frac{\bar{x}-\mu}{s/\sqrt{n}}``]=[`[$t]`]
+
+Use a two-sided t-test because the sample is small, and we are testing whether [`\mu`] is different (larger or smaller, hence "two-sided") from the nominal value [$mu].  T-test calculators are available on the internet for computing [`p`] (search for "two-sided t-test calculator").  
+
+On the two-sided t-distribution with [`n-1=[$df]`] degrees of freedom, the p-value for the test statistic is 
+
+    [`p=[$p]`].  
+
+Compare [`p`] with the required significance level 
+[`\alpha=[$alpha]`].  If [`p<\alpha`] then the data support rejecting the null hypothesis. Otherwise the data don't support rejecting the null hypothesis.  
+
+A related way to decide whether or not to reject the null hypothesis is by finding the ``rejection region``.  This is the set of hypothetical values of the test statistic that should cause one to reject the null hypothesis.  It the set of numbers whose *absolute value is larger* than the so-called "critical value", [`t_{\text{crit}}`].  T-test calculators on the internet can produce the critical value.  
+
+In our case, the two-sided t-test calculator says that 
+
+    [`t_{\text{crit}}= [$tcrit]`].
+
+so
+ 
+    rejection region = [``[$rej_reg]``]. 
+
+If the test statistic is in the rejection region then the data support rejecting the null hypothesis. Otherwise the data don't support rejecting the null hypothesis.
+
+END_PGML_SOLUTION
+
+ENDDOCUMENT();
+

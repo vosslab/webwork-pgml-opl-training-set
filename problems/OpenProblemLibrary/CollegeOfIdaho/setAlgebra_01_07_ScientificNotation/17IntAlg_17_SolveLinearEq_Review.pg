@@ -1,0 +1,60 @@
+##DESCRIPTION
+## Solve a linear equation
+
+##ENDDESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Linear equations and functions)
+## DBsection(Linear equations)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(x_both_fractions)
+## Level(2)
+## MO(1)
+## TitleText1('Essentials of Intermediate Algebra')
+## AuthorText1('Blitzer')
+## EditionText1('1')
+## Section1('1.7')
+## Problem1('')
+## KEYWORDS('solve linear equation')
+## Date: 2007/09
+
+## Updated 2025.02 by Peter Staab, switch to PGML and add a solution.
+
+DOCUMENT();    # This should be the first executable line in the problem.
+loadMacros('PGstandard.pl', 'PGML.pl', 'contextFraction.pl', 'PGcourse.pl');
+
+Context('Fraction');
+
+$a = random(3, 5, 2);
+$b = random(2, 3);
+$c = $b - 1;
+$d = random(2, 3);
+$e = $b * $d;
+
+$denom = lcm($a, $b, $e);
+
+$x = Fraction($a * $c * $d, $a - $b * $d);
+
+BEGIN_PGML
+Solve the equation for [` x `]
+[``` \frac{x}{[$a]} + \frac{[$c]}{[$b]} = \frac{x}{[$e]}```]
+[` x = `] [_]{$x}
+END_PGML
+
+$a1  = $denom / $a;
+$b1  = $denom * Fraction($c, $b);
+$c1  = $denom / $e;
+$ac1 = $a1 - $c1;
+BEGIN_PGML_SOLUTION
+Note that a common denominator (lcm) of all of the fractions is [$denom].  Multiply through by this:
+[```
+\begin{aligned}
+ [$denom] \left( \frac{x}{[$a]} + \frac{[$c]}{[$b]} \right) & = [$denom] \cdot \frac{x}{[$e]} \\
+ [$a1] x + [$b1] & = [$c1] x  \\
+ [$ac1] x & = -[$b1] \\
+ x & = - \frac{[$b1]}{[$ac1]} = [$x]
+\end{aligned}
+```]
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

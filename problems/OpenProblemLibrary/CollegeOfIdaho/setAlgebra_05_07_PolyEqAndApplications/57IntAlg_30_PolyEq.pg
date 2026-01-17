@@ -1,0 +1,76 @@
+##DESCRIPTION
+##  Polynomial Equations
+## 
+##ENDDESCRIPTION
+## DBsubject(Algebra)
+## DBchapter(Polynomial equations and functions)
+## DBsection(Applications and models)
+## Institution(The College of Idaho)
+## Author(RA Cruz)
+## MLT(Rectangles)
+## Level(3)
+## TitleText1('Essentials of Intermediate Algebra')
+## AuthorText1('Blitzer')
+## EditionText1('1')
+## Section1('5.7')
+## Problem1('')
+## KEYWORDS('polynomial equations')
+## Date: 2007/11
+
+DOCUMENT(); # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl",
+  "PGML.pl",
+  "parserImplicitEquation.pl",
+  "parserNumberWithUnits.pl",
+  "PGcourse.pl"
+);
+
+TEXT(beginproblem());
+
+######################################
+#  Setup
+
+Context("ImplicitEquation");
+Context()->variables->are(s => "Real");
+Context()->flags->set(ImplicitPoints => 2);
+
+$s = random(4,10,1);
+$n = random(2,4,1);
+$A = ($s + $n)**2;
+
+$eqn = ImplicitEquation("(s+$n)^2=$A", solutions => [[$s],[-$s-2*$n]], limits => [ -$s-2*$n-5, $s+5 ]);
+
+$ans_b = NumberWithUnits($s, 'in');       
+
+######################################
+#  Main text
+
+BEGIN_PGML
+Each side of a square is lengthened by [$n] inches.  The area of the resulting, larger square is [$A] square inches.  Find the length of a side of the original square.
+
+(Note:  The formula for the area of a square is [`\text{Area} = \text{side}^2`].)
+
+a) Write a polynomial equation for the area of the larger square.  Use the variable [`\ s\ `] to represent the length of a side of the original square.
+
+    Answer:  [_]{$eqn}{15}
+
+b)  Solve the equation, and give the length of the side of the original square.
+
+    Length:  [_]{$ans_b}{15} [@ helpLink('units') @]*
+END_PGML
+
+BEGIN_PGML_SOLUTION
+Part a) The lengthened side is [`s + [$n]`] inches long, so the area of the resulting square is area [`(s+[$n])^2 `] square inches.  Thus 
+     [`(s+[$n])^2 = [$A] `]    
+square inches.
+
+Part b) Taking square roots, one obtains    
+    [` s+[$n] = \pm \sqrt{[$A]} = \pm [@ [$s] + [$n] @] `]    
+Subtracting [$n] one obtains [`s = [$s]`] or [`s = [@ -$s-2*$n @] `].  Only the positive value makes sense as a length, so the length of a side of the original square was 
+    length = [$ans_b].
+END_PGML_SOLUTION
+
+ENDDOCUMENT();

@@ -1,0 +1,63 @@
+##DESCRIPTION
+##  Algebra: Quadratic equations
+##ENDDESCRIPTION
+
+## DBsubject(Algebra)
+## DBchapter(Quadratic equations and functions)
+## DBsection(Quadratic formula)
+## Date(11/18/2009)
+## Institution(University of Minnesota)
+## Author(Justin Sukiennik)
+## MLT(QF_find_disc)
+## Level(2)
+## MO(1)
+## TitleText1('Algebra for College Students')
+## AuthorText1('Kaufmann, Schwitters')
+## EditionText1('8')
+## Section1('6.4')
+## Problem1('6')
+## KEYWORDS('algebra', 'quadratic equations', 'quadratic', 'quadratic formula','discriminant')
+
+DOCUMENT();    # This should be the first executable line in the problem.
+
+loadMacros('PGstandard.pl', 'PGML.pl', 'parserPopUp.pl', 'PGcourse.pl');
+
+$showPartialCorrectAnswers = 0;
+
+Context("Numeric");
+
+$a = random(1, 2, 1);
+
+if ($a == 1) {
+    $c      = random(5, 10, 1);
+    $b      = random(2, 4,  1);
+    $numsol = 0;
+    $ineq   = '<';
+}
+
+if ($a == 2) {
+    $c      = random(1, 2, 1);
+    $b      = random(4, 6, 1);
+    $numsol = 2;
+    $ineq   = '>';
+}
+
+$popup = DropDown(
+    [ "0", "1", "2" ], $numsol,
+    placeholder => "Choose one",
+    noindex     => 1
+);
+
+BEGIN_PGML
+Use the discriminant to determine whether the quadratic equation has zero, one, or two distinct real solutions.
+[``` x^2+[$b] x+ [$c] = 0 ```]
+The quadratic equation has  [_]{$popup} real solution(s).
+END_PGML
+
+$disc = $b**2 - 4 * $c;
+
+BEGIN_PGML_SOLUTION
+The discriminant for this equation is [`([$b])^2-4(1)([$c])=[$disc][$ineq]0`], so the equation has [$numsol] real solutions.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
