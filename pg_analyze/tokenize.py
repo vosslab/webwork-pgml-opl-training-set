@@ -85,7 +85,7 @@ def iter_calls(text: str, names: set[str]) -> list[Call]:
 	if not names:
 		return []
 
-	name_rx = re.compile(r"\\b(" + "|".join(re.escape(n) for n in sorted(names)) + r")\\b")
+	name_rx = re.compile(r"\b(" + "|".join(re.escape(n) for n in sorted(names)) + r")\b")
 	calls: list[Call] = []
 	i = 0
 	while True:
@@ -157,4 +157,3 @@ def iter_calls(text: str, names: set[str]) -> list[Call]:
 			i = m.end()
 
 	return calls
-

@@ -10,7 +10,7 @@ MACRO_CALL_NAMES = {
 	"includePGproblem",
 }
 
-FILENAME_RX = re.compile(r"""['"]([^'"]+\\.(?:pl|pg))['"]""")
+FILENAME_RX = re.compile(r"""['"]([^'"]+\.(?:pl|pg))['"]""")
 
 
 #============================================
@@ -40,4 +40,3 @@ def extract(stripped_text: str) -> dict:
 		"loadMacros": load_macros,
 		"includePGproblem": include_pgproblem,
 	}
-

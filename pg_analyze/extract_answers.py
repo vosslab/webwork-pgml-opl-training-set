@@ -13,7 +13,7 @@ CTOR_NAMES = (
 )
 
 ASSIGN_RX = re.compile(
-	r"\\$([A-Za-z_]\\w*)\\s*=\\s*(" + "|".join(CTOR_NAMES) + r")\\s*\\(",
+	r"\$([A-Za-z_]\w*)\s*=\s*(" + "|".join(CTOR_NAMES) + r")\s*\(",
 	re.MULTILINE,
 )
 

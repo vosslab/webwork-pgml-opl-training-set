@@ -2,7 +2,7 @@
 import re
 
 
-NAMED_REF_RX = re.compile(r"\\b(?:named_ans_rule|NAMED_ANS_RULE)\\s*\\(\\s*['\"]([^'\"]+)['\"]")
+NAMED_REF_RX = re.compile(r"\b(?:named_ans_rule|NAMED_ANS_RULE)\s*\(\s*['\"]([^'\"]+)['\"]")
 
 
 #============================================
@@ -76,4 +76,3 @@ def _is_input(widget: dict) -> bool:
 		"matching",
 		"ordering",
 	}
-

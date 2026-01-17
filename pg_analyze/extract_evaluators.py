@@ -9,7 +9,7 @@ EVALUATOR_CALL_NAMES = {
 	"ANS",
 }
 
-VAR_RX = re.compile(r"\\$([A-Za-z_]\\w*)")
+VAR_RX = re.compile(r"\$([A-Za-z_]\w*)")
 
 
 #============================================
@@ -56,15 +56,14 @@ def _extract_vars(expr: str) -> list[str]:
 def _classify(expr: str) -> str:
 	if "->cmp(" in expr or expr.endswith("->cmp()") or "->cmp()" in expr:
 		return "cmp"
-	if re.search(r"\\bnum_cmp\\s*\\(", expr):
+	if re.search(r"\bnum_cmp\s*\(", expr):
 		return "num_cmp"
-	if re.search(r"\\bfun_cmp\\s*\\(", expr):
+	if re.search(r"\bfun_cmp\s*\(", expr):
 		return "fun_cmp"
-	if re.search(r"\\bformula_cmp\\s*\\(", expr):
+	if re.search(r"\bformula_cmp\s*\(", expr):
 		return "formula_cmp"
-	if re.search(r"\\b(str_cmp|string_cmp)\\s*\\(", expr):
+	if re.search(r"\b(str_cmp|string_cmp)\s*\(", expr):
 		return "str_cmp"
-	if re.search(r"\\bchecker\\s*=>\\s*sub\\s*\\{", expr):
+	if re.search(r"\bchecker\s*=>\s*sub\s*\{", expr):
 		return "custom"
 	return "other"
-

@@ -28,9 +28,9 @@ WIDGET_CALL_NAMES = {
 
 NAME_RX = re.compile(r"""['"]([^'"]+)['"]""")
 
-PGML_BEGIN_RX = re.compile(r"^[ \t]*BEGIN_PGML\\b", re.MULTILINE)
-PGML_END_RX = re.compile(r"^[ \t]*END_PGML\\b", re.MULTILINE)
-PGML_BLANK_RX = re.compile(r"\\[[^\\]]*_{1,}[^\\]]*\\]\\s*\\{")
+PGML_BEGIN_RX = re.compile(r"^[ \t]*BEGIN_PGML\b", re.MULTILINE)
+PGML_END_RX = re.compile(r"^[ \t]*END_PGML\b", re.MULTILINE)
+PGML_BLANK_RX = re.compile(r"\[[^\]]*_{1,}[^\]]*\]\s*\{")
 
 
 #============================================
@@ -70,7 +70,7 @@ def _extract_named_rule(call: pg_analyze.tokenize.Call) -> str | None:
 def _extract_assignment_name(text: str, call: pg_analyze.tokenize.Call) -> str | None:
 	line_start = text.rfind("\n", 0, call.start) + 1
 	prefix = text[line_start:call.start]
-	m = re.search(r"\\$([A-Za-z_]\\w*)\\s*=\\s*$", prefix)
+	m = re.search(r"\$([A-Za-z_]\w*)\s*=\s*$", prefix)
 	if not m:
 		return None
 	return m.group(1)
