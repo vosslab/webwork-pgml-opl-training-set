@@ -24,13 +24,15 @@ def main() -> None:
 	pg_files = scan_pg_files(roots)
 
 	os.makedirs(args.out_dir, exist_ok=True)
-	aggregator = pg_analyze.aggregate.Aggregator(needs_review_limit=200)
+	aggregator = pg_analyze.aggregate.Aggregator(needs_review_limit=200, out_dir=args.out_dir)
 
-	for file_path in pg_files:
-		record = analyze_file(file_path)
-		aggregator.add_record(record)
-
-	write_reports(args.out_dir, aggregator)
+	try:
+		for file_path in pg_files:
+			record = analyze_file(file_path)
+			aggregator.add_record(record)
+		write_reports(args.out_dir, aggregator)
+	finally:
+		aggregator.close()
 
 
 #============================================

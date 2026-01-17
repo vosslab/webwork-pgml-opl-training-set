@@ -19,3 +19,4 @@
 - Add cross-tab aggregate reports (type x widget, type x evaluator, widget x evaluator) plus a `coverage.tsv` sanity table.
 - Ensure `coverage.tsv` always includes all four buckets (including zeros) and extend aggregation tests to cover the new cross-tab TSV outputs.
 - Make `needs_review.tsv` actionable by bucketing and stratifying samples, and add `needs_review_*_counts.tsv` summaries (bucket/type/macro).
+- Write curated bucket file lists under the output directory (`type/`, `widget/`, `evaluator/`) with one path per line for sampling/grepping without per-file JSON or TSV.

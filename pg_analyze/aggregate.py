@@ -139,7 +139,7 @@ def _has_strong_widget_macro(load_macros: list[str]) -> bool:
 
 
 class Aggregator:
-	def __init__(self, *, needs_review_limit: int = 200):
+	def __init__(self, *, needs_review_limit: int = 200, out_dir: str | None = None):
 		self.type_counts: dict[str, int] = {}
 		self.confidence_bins: dict[str, int] = {}
 		self.macro_counts: dict[str, int] = {}
@@ -176,6 +176,7 @@ class Aggregator:
 		self._other_low_conf_heap: list[tuple[float, str, float, str, str]] = []
 		self._other_high_blank_heap: list[tuple[int, str, float, str, str]] = []
 		self._other_applet_heap: list[tuple[float, str, float, str, str]] = []
+		self._bucket_writers = BucketWriters(out_dir) if isinstance(out_dir, str) and out_dir else None
 
 	def add_record(self, record: dict) -> None:
 		types = record.get("types", [])
@@ -226,8 +227,15 @@ class Aggregator:
 
 		self._add_cross_tabs(record)
 
+		if self._bucket_writers is not None:
+			self._bucket_writers.write_record(record)
+
 		if needs_review:
 			self._add_needs_review(record)
+
+	def close(self) -> None:
+		if self._bucket_writers is not None:
+			self._bucket_writers.close()
 
 	def _add_cross_tabs(self, record: dict) -> None:
 		types = record.get("types", [])
@@ -571,3 +579,70 @@ def _is_graph_like(load_macros: list[str]) -> bool:
 		if "pggraphmacros" in low or "graph" in low:
 			return True
 	return False
+
+
+#============================================
+
+
+class BucketWriters:
+	"""
+	Write curated, category-level file lists for sampling/grepping.
+
+	Each list is a single text file containing one path per line.
+	"""
+
+	def __init__(self, out_dir: str):
+		self._base = out_dir
+		self._handles: dict[tuple[str, str], object] = {}
+		self._ensure_dirs()
+
+	def _ensure_dirs(self) -> None:
+		import os
+		os.makedirs(os.path.join(self._base, "type"), exist_ok=True)
+		os.makedirs(os.path.join(self._base, "widget"), exist_ok=True)
+		os.makedirs(os.path.join(self._base, "evaluator"), exist_ok=True)
+
+	def _get_handle(self, category: str, name: str):
+		import os
+		key = (category, name)
+		h = self._handles.get(key)
+		if h is not None:
+			return h
+		path = os.path.join(self._base, category, f"{name}_files.txt")
+		h = open(path, "a", encoding="utf-8")
+		self._handles[key] = h
+		return h
+
+	def write_record(self, record: dict) -> None:
+		file_path = record.get("file", "")
+		if not isinstance(file_path, str) or not file_path:
+			return
+
+		types = record.get("types", [])
+		if not isinstance(types, list) or not types:
+			types = ["other"]
+
+		widgets = record.get("widget_kinds", [])
+		if not isinstance(widgets, list) or not widgets:
+			widgets = ["none"]
+
+		evals = record.get("evaluator_kinds", [])
+		if not isinstance(evals, list) or not evals:
+			evals = ["none"]
+
+		for t in sorted({x for x in types if isinstance(x, str) and x}):
+			self._get_handle("type", t).write(file_path + "\n")
+
+		for w in sorted({x for x in widgets if isinstance(x, str) and x}):
+			self._get_handle("widget", w).write(file_path + "\n")
+
+		for e in sorted({x for x in evals if isinstance(x, str) and x}):
+			self._get_handle("evaluator", e).write(file_path + "\n")
+
+	def close(self) -> None:
+		for h in self._handles.values():
+			try:
+				h.close()
+			except Exception:
+				pass
+		self._handles.clear()
