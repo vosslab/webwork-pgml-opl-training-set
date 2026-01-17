@@ -31,3 +31,4 @@
 - Treat PGML blank `*{...}` specs (for example `[____]*{$ans1}`) as grading signals (`source=pgml_star_spec`), add a PGML star-spec evaluator counts report, and cover it with regression tests.
 - Refine `pgml_star_spec` evaluator kinds into indirect and expression forms using a lightweight symbol table, add a `matrix_entry` subtype tag (with counts and bucket lists), and rename the dominant unknown signature to `pgml_blank_star_spec_only` when applicable.
 - Consolidate most aggregate stats outputs into a few long-format summary tables (`summary/counts_all.tsv`, `summary/cross_tabs_all.tsv`, `summary/histograms_all.tsv`, `summary/macro_counts_segmented.tsv`) and clean up obsolete output files on each run.
+- Document the training preference to focus on modern techniques and avoid training AI on legacy techniques (`README.md`, `docs/CORPUS_CURATION.md`).

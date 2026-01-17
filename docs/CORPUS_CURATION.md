@@ -3,6 +3,10 @@
 This fork is curated to support AI training and related research focused on PGML-style WeBWorK problems, not to be a
 complete general-purpose library distribution.
 
+Training preference:
+
+- I want a corpus of pg files based on modern techniques and would prefer to not train any AI on legacy techniques.
+
 ## What we removed
 
 ### Non problem-source files
