@@ -15,6 +15,9 @@ widgets are effectively absent in this fork.
 
 Evidence is captured per run by `pg_analyze` in `summary/corpus_profile.tsv`.
 
+For a human-readable summary of the current `output/` reports, see
+[docs/CORPUS_STATS.md](docs/CORPUS_STATS.md).
+
 As of 2026-01-17 (a run over this fork), the profile reported:
 
 - `parserMatch.pl`: 0 macro loads
