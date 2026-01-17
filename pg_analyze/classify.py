@@ -37,12 +37,50 @@ def classify(report: dict) -> tuple[dict, bool]:
 	def add_reason(kind: str, value: str) -> None:
 		reasons.append({"kind": kind, "value": value})
 
-	if widget_kind_counts.get("radio", 0) > 0 or "parserRadioButtons.pl" in load_macros:
+	if "PGgraphmacros.pl" in load_macros or "PCCgraphMacros.pl" in load_macros:
+		types.append("graph_like")
+		if "PGgraphmacros.pl" in load_macros:
+			add_reason("macro", "PGgraphmacros.pl")
+		if "PCCgraphMacros.pl" in load_macros:
+			add_reason("macro", "PCCgraphMacros.pl")
+
+	if "PGessaymacros.pl" in load_macros:
+		types.append("essay")
+		add_reason("macro", "PGessaymacros.pl")
+
+	if (
+		widget_kind_counts.get("radio", 0) > 0
+		or widget_kind_counts.get("popup", 0) > 0
+		or widget_kind_counts.get("checkbox", 0) > 0
+		or eval_kind_counts.get("radio_cmp", 0) > 0
+		or eval_kind_counts.get("checkbox_cmp", 0) > 0
+		or eval_kind_counts.get("popup_cmp", 0) > 0
+		or "parserRadioButtons.pl" in load_macros
+		or "parserPopUp.pl" in load_macros
+		or "parserCheckboxList.pl" in load_macros
+		or "PGchoicemacros.pl" in load_macros
+	):
 		types.append("multiple_choice")
 		if "parserRadioButtons.pl" in load_macros:
 			add_reason("macro", "parserRadioButtons.pl")
+		if "parserPopUp.pl" in load_macros:
+			add_reason("macro", "parserPopUp.pl")
+		if "parserCheckboxList.pl" in load_macros:
+			add_reason("macro", "parserCheckboxList.pl")
+		if "PGchoicemacros.pl" in load_macros:
+			add_reason("macro", "PGchoicemacros.pl")
 		if widget_kind_counts.get("radio", 0) > 0:
 			add_reason("widget", "radio")
+		if widget_kind_counts.get("popup", 0) > 0:
+			add_reason("widget", "popup")
+		if widget_kind_counts.get("checkbox", 0) > 0:
+			add_reason("widget", "checkbox")
+		if eval_kind_counts.get("radio_cmp", 0) > 0:
+			add_reason("evaluator", "radio_cmp")
+		if eval_kind_counts.get("checkbox_cmp", 0) > 0:
+			add_reason("evaluator", "checkbox_cmp")
+		if eval_kind_counts.get("popup_cmp", 0) > 0:
+			add_reason("evaluator", "popup_cmp")
 
 	if widget_kind_counts.get("matching", 0) > 0:
 		types.append("matching")

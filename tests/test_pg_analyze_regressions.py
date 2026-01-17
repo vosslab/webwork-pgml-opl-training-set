@@ -62,6 +62,30 @@ import pg_analyze.main
 			lambda r: ("ans1" in r.get("named_rule_refs", [])),
 		),
 		(
+			"pgchoice_new_select_list",
+			"loadMacros('PGchoicemacros.pl');\n"
+			"$tf = new_select_list();\n"
+			"ANS($tf->cmp());\n",
+			lambda r: ("multiple_choice" in r["types"] and "popup" in r["widget_kinds"]),
+		),
+		(
+			"pgchoice_radio_cmp",
+			"loadMacros('PGchoicemacros.pl');\n"
+			"$mc = new_multiple_choice();\n"
+			"ANS(radio_cmp($mc->correct_ans()));\n",
+			lambda r: ("multiple_choice" in r["types"] and "radio_cmp" in r["evaluator_kinds"]),
+		),
+		(
+			"pgessay_label",
+			"loadMacros('PGessaymacros.pl');\n",
+			lambda r: ("essay" in r["types"]),
+		),
+		(
+			"graph_like_label",
+			"loadMacros('PGgraphmacros.pl');\n",
+			lambda r: ("graph_like" in r["types"]),
+		),
+		(
 			"pgml_blanks_only",
 			"BEGIN_PGML\n"
 			"[_] [__]\n"

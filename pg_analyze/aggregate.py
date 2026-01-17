@@ -169,6 +169,16 @@ class Aggregator:
 		self.needs_review_type_counts: dict[str, int] = {}
 		self.needs_review_macro_counts: dict[str, int] = {}
 
+		self.evaluator_coverage_reasons: dict[str, int] = {}
+		self.ans_token_hist: dict[str, int] = {}
+
+		self.macro_counts_unknown_pgml_blank: dict[str, int] = {}
+		self.macro_counts_eval_none_numeric_entry: dict[str, int] = {}
+		self.macro_counts_eval_none_multiple_choice: dict[str, int] = {}
+
+		self._samples_unknown_pgml_blank: list[tuple[str, int, int, int, str, float]] = []
+		self._samples_eval_none_numeric_entry: list[tuple[str, int, int, int, str, float]] = []
+
 		self._needs_review_total_limit = needs_review_limit
 		self._needs_review_per_bucket_limit = 40
 		self._needs_review_by_bucket: dict[str, list[tuple[float, str, float, str, str, int, int, int, int, str, str, str, int, str]]] = {}
@@ -188,6 +198,7 @@ class Aggregator:
 		ans_count = record.get("ans_count", 0)
 		needs_review = record.get("needs_review", False)
 		pgml_blank_marker_count = record.get("pgml_blank_marker_count", 0)
+		ans_token_count = int(record.get("ans_token_count", 0) or 0)
 
 		if isinstance(types, list):
 			for t in types:
@@ -220,6 +231,13 @@ class Aggregator:
 
 		if isinstance(pgml_blank_marker_count, int):
 			_inc(self.pgml_blank_hist, count_bucket(pgml_blank_marker_count))
+
+		if isinstance(ans_token_count, int):
+			_inc(self.ans_token_hist, count_bucket(ans_token_count))
+
+		self._add_eval_coverage(record)
+		self._add_subset_macro_counts(record)
+		self._add_subset_samples(record)
 
 		is_other = isinstance(types, list) and ("other" in types)
 		if is_other:
@@ -406,10 +424,17 @@ class Aggregator:
 		out["input_count_hist.tsv"] = _render_counts_tsv(list(self.input_hist.items()), key_name="bucket")
 		out["ans_count_hist.tsv"] = _render_counts_tsv(list(self.ans_hist.items()), key_name="bucket")
 		out["pgml_blank_marker_hist.tsv"] = _render_counts_tsv(list(self.pgml_blank_hist.items()), key_name="bucket")
+		out["ans_token_hist.tsv"] = _render_counts_tsv(list(self.ans_token_hist.items()), key_name="bucket")
+		out["evaluator_coverage_reasons.tsv"] = _render_counts_tsv(list(self.evaluator_coverage_reasons.items()), key_name="reason")
 		out["needs_review.tsv"] = self._render_needs_review_tsv()
 		out["needs_review_bucket_counts.tsv"] = _render_counts_tsv(list(self.needs_review_bucket_counts.items()), key_name="bucket")
 		out["needs_review_type_counts.tsv"] = _render_counts_tsv(list(self.needs_review_type_counts.items()), key_name="type")
 		out["needs_review_macro_counts.tsv"] = _render_counts_tsv(list(self.needs_review_macro_counts.items()), key_name="macro")
+		out["macro_counts_unknown_pgml_blank.tsv"] = _render_counts_tsv(list(self.macro_counts_unknown_pgml_blank.items()), key_name="macro")
+		out["macro_counts_eval_none_numeric_entry.tsv"] = _render_counts_tsv(list(self.macro_counts_eval_none_numeric_entry.items()), key_name="macro")
+		out["macro_counts_eval_none_multiple_choice.tsv"] = _render_counts_tsv(list(self.macro_counts_eval_none_multiple_choice.items()), key_name="macro")
+		out["samples_unknown_pgml_blank.tsv"] = self._render_samples_tsv(self._samples_unknown_pgml_blank)
+		out["samples_eval_none_numeric_entry.tsv"] = self._render_samples_tsv(self._samples_eval_none_numeric_entry)
 		out["other_breakdown.tsv"] = _render_counts_tsv(list(self.other_breakdown.items()), key_name="bucket")
 		out["macro_counts_other.tsv"] = _render_counts_tsv(list(self.macro_counts_other.items()), key_name="macro")
 		out["widget_counts_other.tsv"] = _render_counts_tsv(list(self.widget_counts_other.items()), key_name="widget_kind")
@@ -421,6 +446,102 @@ class Aggregator:
 		out["widget_by_evaluator.tsv"] = self._render_pair_counts_tsv(self.widget_by_evaluator, left="widget_kind", right="evaluator_kind")
 		out["coverage.tsv"] = _render_counts_tsv(list(self.coverage.items()), key_name="bucket")
 		return out
+
+	def _add_eval_coverage(self, record: dict) -> None:
+		evaluator_kinds = record.get("evaluator_kinds", [])
+		if isinstance(evaluator_kinds, list) and evaluator_kinds:
+			return
+
+		pgml_blank_markers = int(record.get("pgml_blank_marker_count", 0) or 0)
+		has_ans_token = int(record.get("has_ans_token", 0) or 0)
+		has_cmp_token = int(record.get("has_cmp_token", 0) or 0)
+		has_answer_ctor = int(record.get("has_answer_ctor", 0) or 0)
+		has_named_ans_rule_token = int(record.get("has_named_ans_rule_token", 0) or 0)
+		has_named_ans_token = int(record.get("has_named_ans_token", 0) or 0)
+		has_ans_num_to_name = int(record.get("has_ans_num_to_name", 0) or 0)
+		has_install_problem_grader = int(record.get("has_install_problem_grader", 0) or 0)
+
+		if pgml_blank_markers > 0:
+			_inc(self.evaluator_coverage_reasons, "none_pgml_blank_only")
+			return
+		if has_cmp_token:
+			_inc(self.evaluator_coverage_reasons, "none_but_cmp_present")
+			return
+		if has_ans_token:
+			_inc(self.evaluator_coverage_reasons, "none_but_ans_present_unparsed")
+			return
+		if has_named_ans_rule_token or has_named_ans_token:
+			_inc(self.evaluator_coverage_reasons, "none_but_named_ans_present")
+			return
+		if has_ans_num_to_name:
+			_inc(self.evaluator_coverage_reasons, "none_but_ans_num_to_name_present")
+			return
+		if has_install_problem_grader:
+			_inc(self.evaluator_coverage_reasons, "none_but_custom_grader_present")
+			return
+		if has_answer_ctor:
+			_inc(self.evaluator_coverage_reasons, "none_but_answer_ctor_present")
+			return
+		_inc(self.evaluator_coverage_reasons, "none_true_no_signals")
+
+	def _add_subset_macro_counts(self, record: dict) -> None:
+		file_types = record.get("types", [])
+		load_macros = record.get("loadMacros", [])
+		evaluator_kinds = record.get("evaluator_kinds", [])
+
+		if not isinstance(file_types, list):
+			return
+		if not isinstance(load_macros, list):
+			return
+
+		has_evaluators = bool(isinstance(evaluator_kinds, list) and evaluator_kinds)
+
+		if "unknown_pgml_blank" in file_types:
+			for macro in load_macros:
+				if isinstance(macro, str) and macro:
+					_inc(self.macro_counts_unknown_pgml_blank, macro)
+
+		if (not has_evaluators) and ("numeric_entry" in file_types):
+			for macro in load_macros:
+				if isinstance(macro, str) and macro:
+					_inc(self.macro_counts_eval_none_numeric_entry, macro)
+
+		if (not has_evaluators) and ("multiple_choice" in file_types):
+			for macro in load_macros:
+				if isinstance(macro, str) and macro:
+					_inc(self.macro_counts_eval_none_multiple_choice, macro)
+
+	def _add_subset_samples(self, record: dict) -> None:
+		file_path = record.get("file", "")
+		if not isinstance(file_path, str) or not file_path:
+			return
+
+		file_types = record.get("types", [])
+		if not isinstance(file_types, list):
+			return
+
+		evaluator_kinds = record.get("evaluator_kinds", [])
+		has_evaluators = bool(isinstance(evaluator_kinds, list) and evaluator_kinds)
+
+		pgml_blank_markers = int(record.get("pgml_blank_marker_count", 0) or 0)
+		has_ans_token = int(record.get("has_ans_token", 0) or 0)
+		has_cmp_token = int(record.get("has_cmp_token", 0) or 0)
+		macros_top3 = ",".join(_macros_top3(record.get("loadMacros", [])))
+		confidence = float(record.get("confidence", 0.0))
+
+		row = (file_path, pgml_blank_markers, has_ans_token, has_cmp_token, macros_top3, confidence)
+
+		if ("unknown_pgml_blank" in file_types) and (len(self._samples_unknown_pgml_blank) < 50):
+			self._samples_unknown_pgml_blank.append(row)
+
+		if (not has_evaluators) and ("numeric_entry" in file_types) and (len(self._samples_eval_none_numeric_entry) < 50):
+			self._samples_eval_none_numeric_entry.append(row)
+
+	def _render_samples_tsv(self, rows: list[tuple[str, int, int, int, str, float]]) -> str:
+		lines: list[str] = ["file\tpgml_blank_markers\thas_ans_call\thas_cmp_token\ttop_macros\tconfidence"]
+		for file_path, pgml_blank_markers, has_ans_token, has_cmp_token, macros_top3, confidence in rows:
+			lines.append(f"{file_path}\t{pgml_blank_markers}\t{has_ans_token}\t{has_cmp_token}\t{macros_top3}\t{confidence:.2f}")
+		return "\n".join(lines) + "\n"
 
 	def _render_needs_review_tsv(self) -> str:
 		lines: list[str] = [
@@ -609,7 +730,7 @@ class BucketWriters:
 		if h is not None:
 			return h
 		path = os.path.join(self._base, category, f"{name}_files.txt")
-		h = open(path, "a", encoding="utf-8")
+		h = open(path, "w", encoding="utf-8")
 		self._handles[key] = h
 		return h
 

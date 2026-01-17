@@ -91,6 +91,14 @@ def _extract_vars(expr: str) -> list[str]:
 def _classify(expr: str) -> str:
 	if "->cmp(" in expr or expr.endswith("->cmp()") or "->cmp()" in expr:
 		return "cmp"
+	if re.search(r"\bnamed_ans_rule\s*\(", expr):
+		return "named_rule"
+	if re.search(r"\bradio_cmp\s*\(", expr):
+		return "radio_cmp"
+	if re.search(r"\bcheckbox_cmp\s*\(", expr):
+		return "checkbox_cmp"
+	if re.search(r"\bpopup_cmp\s*\(", expr):
+		return "popup_cmp"
 	if re.search(r"\bnum_cmp\s*\(", expr):
 		return "num_cmp"
 	if re.search(r"\bfun_cmp\s*\(", expr):

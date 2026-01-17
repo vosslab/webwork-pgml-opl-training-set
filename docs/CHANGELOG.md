@@ -20,3 +20,5 @@
 - Ensure `coverage.tsv` always includes all four buckets (including zeros) and extend aggregation tests to cover the new cross-tab TSV outputs.
 - Make `needs_review.tsv` actionable by bucketing and stratifying samples, and add `needs_review_*_counts.tsv` summaries (bucket/type/macro).
 - Write curated bucket file lists under the output directory (`type/`, `widget/`, `evaluator/`) with one path per line for sampling/grepping without per-file JSON or TSV.
+- Improve detection of common PGchoicemacros-based widgets/evaluators and add explicit `graph_like` and `essay` labels to reduce the "other" bucket.
+- Add evaluator coverage instrumentation reports (`ans_token_hist.tsv`, `evaluator_coverage_reasons.tsv`) plus restricted macro counts and bounded samples to target missing evaluator detection in PGML-heavy files.

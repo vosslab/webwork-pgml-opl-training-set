@@ -12,6 +12,10 @@ WIDGET_CALL_NAMES = {
 	"parserPopUp",
 	"CheckboxList",
 	"parserCheckboxList",
+	"new_multiple_choice",
+	"new_checkbox_multiple_choice",
+	"new_select_list",
+	"new_match_list",
 	"Match",
 	"match_list",
 	"matching",
@@ -43,6 +47,14 @@ def _normalize_kind(call_name: str) -> str:
 		return "popup"
 	if call_name in ("CheckboxList", "parserCheckboxList"):
 		return "checkbox"
+	if call_name == "new_multiple_choice":
+		return "radio"
+	if call_name == "new_checkbox_multiple_choice":
+		return "checkbox"
+	if call_name == "new_select_list":
+		return "popup"
+	if call_name == "new_match_list":
+		return "matching"
 	if call_name in ("Match", "match_list", "matching"):
 		return "matching"
 	if call_name in ("Sort", "sortable", "draggableProof", "parserAssignment"):
