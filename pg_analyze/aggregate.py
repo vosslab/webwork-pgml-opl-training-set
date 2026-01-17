@@ -115,13 +115,14 @@ OUTPUT_PATHS: dict[str, str] = {
 
 	# other/
 	"other_breakdown.tsv": "other/other_breakdown.tsv",
-	"other_samples.tsv": "other/other_samples.tsv",
 	"widget_counts_other.tsv": "other/widget_counts_other.tsv",
 	"evaluator_counts_other.tsv": "other/evaluator_counts_other.tsv",
 
 	# samples/
-	"samples_unknown_pgml_blank.tsv": "samples/samples_unknown_pgml_blank.tsv",
-	"samples_eval_none_numeric_entry.tsv": "samples/samples_eval_none_numeric_entry.tsv",
+	"unknown_pgml_blank_signature_counts.tsv": "samples/unknown_pgml_blank_signature_counts.tsv",
+	"unknown_pgml_blank_signature_samples.tsv": "samples/unknown_pgml_blank_signature_samples.tsv",
+	"other_signature_counts.tsv": "samples/other_signature_counts.tsv",
+	"other_signature_samples.tsv": "samples/other_signature_samples.tsv",
 }
 
 _STRONG_WIDGET_MACRO_SUBSTRINGS = (
@@ -234,8 +235,12 @@ class Aggregator:
 		self.macro_counts_eval_none_numeric_entry: dict[str, int] = {}
 		self.macro_counts_eval_none_multiple_choice: dict[str, int] = {}
 
-		self._samples_unknown_pgml_blank: list[tuple[str, int, int, int, str, float]] = []
-		self._samples_eval_none_numeric_entry: list[tuple[str, int, int, int, str, float]] = []
+		self.unknown_signature_counts: dict[str, int] = {}
+		self.other_signature_counts: dict[str, int] = {}
+		self._unknown_signature_files: dict[str, list[str]] = {}
+		self._other_signature_files: dict[str, list[str]] = {}
+		self._unknown_file_info: dict[str, dict] = {}
+		self._other_file_info: dict[str, dict] = {}
 
 		self._needs_review_total_limit = needs_review_limit
 		self._needs_review_per_bucket_limit = 40
@@ -245,7 +250,6 @@ class Aggregator:
 		self._other_high_blank_heap: list[tuple[int, str, float, str, str]] = []
 		self._other_applet_heap: list[tuple[float, str, float, str, str]] = []
 		self._bucket_writers = BucketWriters(out_dir) if isinstance(out_dir, str) and out_dir else None
-		self._pgml_block_sampler = PgmlBlockSampler(out_dir) if isinstance(out_dir, str) and out_dir else None
 
 	def add_record(self, record: dict) -> None:
 		types = record.get("types", [])
@@ -297,7 +301,7 @@ class Aggregator:
 		self._add_evaluator_sources(record)
 		self._add_eval_coverage(record)
 		self._add_subset_macro_counts(record)
-		self._add_subset_samples(record)
+		self._add_signatures(record)
 
 		is_other = isinstance(types, list) and ("other" in types)
 		if is_other:
@@ -311,15 +315,9 @@ class Aggregator:
 		if needs_review:
 			self._add_needs_review(record)
 
-	def add_pgml_blocks(self, *, record: dict, text: str) -> None:
-		if self._pgml_block_sampler is not None:
-			self._pgml_block_sampler.add(record=record, text=text)
-
 	def close(self) -> None:
 		if self._bucket_writers is not None:
 			self._bucket_writers.close()
-		if self._pgml_block_sampler is not None:
-			self._pgml_block_sampler.close()
 
 	def _add_cross_tabs(self, record: dict) -> None:
 		types = record.get("types", [])
@@ -543,19 +541,81 @@ class Aggregator:
 		out["macro_counts_unknown_pgml_blank.tsv"] = _render_counts_tsv(list(self.macro_counts_unknown_pgml_blank.items()), key_name="macro")
 		out["macro_counts_eval_none_numeric_entry.tsv"] = _render_counts_tsv(list(self.macro_counts_eval_none_numeric_entry.items()), key_name="macro")
 		out["macro_counts_eval_none_multiple_choice.tsv"] = _render_counts_tsv(list(self.macro_counts_eval_none_multiple_choice.items()), key_name="macro")
-		out["samples_unknown_pgml_blank.tsv"] = self._render_samples_tsv(self._samples_unknown_pgml_blank)
-		out["samples_eval_none_numeric_entry.tsv"] = self._render_samples_tsv(self._samples_eval_none_numeric_entry)
 		out["other_breakdown.tsv"] = _render_counts_tsv(list(self.other_breakdown.items()), key_name="bucket")
 		out["macro_counts_other.tsv"] = _render_counts_tsv(list(self.macro_counts_other.items()), key_name="macro")
 		out["widget_counts_other.tsv"] = _render_counts_tsv(list(self.widget_counts_other.items()), key_name="widget_kind")
 		out["evaluator_counts_other.tsv"] = _render_counts_tsv(list(self.evaluator_counts_other.items()), key_name="evaluator_kind")
 		out["other_pgml_blank_hist.tsv"] = _render_counts_tsv(list(self.other_pgml_blank_hist.items()), key_name="bucket")
-		out["other_samples.tsv"] = self._render_other_samples_tsv()
 		out["type_by_widget.tsv"] = self._render_pair_counts_tsv(self.type_by_widget, left="type", right="widget_kind")
 		out["type_by_evaluator.tsv"] = self._render_pair_counts_tsv(self.type_by_evaluator, left="type", right="evaluator_kind")
 		out["widget_by_evaluator.tsv"] = self._render_pair_counts_tsv(self.widget_by_evaluator, left="widget_kind", right="evaluator_kind")
 		out["coverage.tsv"] = _render_counts_tsv(list(self.coverage.items()), key_name="bucket")
+		out["unknown_pgml_blank_signature_counts.tsv"] = self._render_signature_counts_tsv(self.unknown_signature_counts, category="unknown_pgml_blank", top_n=25)
+		out["unknown_pgml_blank_signature_samples.tsv"] = self._render_signature_samples_tsv(
+			self.unknown_signature_counts,
+			self._unknown_signature_files,
+			self._unknown_file_info,
+			category="unknown_pgml_blank",
+			total_cap=2000,
+		)
+		out["other_signature_counts.tsv"] = self._render_signature_counts_tsv(self.other_signature_counts, category="other", top_n=25)
+		out["other_signature_samples.tsv"] = self._render_signature_samples_tsv(
+			self.other_signature_counts,
+			self._other_signature_files,
+			self._other_file_info,
+			category="other",
+			total_cap=500,
+		)
 		return out
+
+	def _render_signature_counts_tsv(self, counts: dict[str, int], *, category: str, top_n: int) -> str:
+		total = sum(counts.values())
+		items = sorted(counts.items(), key=lambda x: (-x[1], x[0]))[:top_n]
+		lines: list[str] = ["signature\tcount\tpct_of_category"]
+		for sig, count in items:
+			pct = (count / total * 100.0) if total else 0.0
+			lines.append(f"{sig}\t{count}\t{pct:.2f}")
+		return "\n".join(lines) + "\n"
+
+	def _render_signature_samples_tsv(
+		self,
+		counts: dict[str, int],
+		sig_to_files: dict[str, list[str]],
+		file_info: dict[str, dict],
+		*,
+		category: str,
+		total_cap: int,
+	) -> str:
+		lines: list[str] = [
+			"signature\tfile\ttop_macros\tpgml_blank_marker_count\thas_payload\tevaluator_sources\tevaluator_kinds\tconfidence"
+		]
+
+		signatures = [s for s, _ in sorted(counts.items(), key=lambda x: (-x[1], x[0]))[:25]]
+		total_written = 0
+
+		for sig in signatures:
+			if total_written >= total_cap:
+				break
+			files = sorted(sig_to_files.get(sig, []))
+			if not files:
+				continue
+			picks = _even_spaced_picks(files, limit=50)
+			for file_path in picks:
+				if total_written >= total_cap:
+					break
+				info = file_info.get(file_path, {})
+				top_macros = info.get("top_macros", "")
+				pgml_blank_marker_count = int(info.get("pgml_blank_marker_count", 0) or 0)
+				has_payload = int(info.get("has_payload", 0) or 0)
+				evaluator_sources = info.get("evaluator_sources", "none")
+				evaluator_kinds = info.get("evaluator_kinds", "none")
+				confidence = float(info.get("confidence", 0.0))
+				lines.append(
+					f"{sig}\t{file_path}\t{top_macros}\t{pgml_blank_marker_count}\t{has_payload}\t{evaluator_sources}\t{evaluator_kinds}\t{confidence:.2f}"
+				)
+				total_written += 1
+
+		return "\n".join(lines) + "\n"
 
 	def _add_eval_coverage(self, record: dict) -> None:
 		evaluator_kinds = record.get("evaluator_kinds", [])
@@ -621,37 +681,68 @@ class Aggregator:
 				if isinstance(macro, str) and macro:
 					_inc(self.macro_counts_eval_none_multiple_choice, macro)
 
-	def _add_subset_samples(self, record: dict) -> None:
+	def _add_signatures(self, record: dict) -> None:
 		file_path = record.get("file", "")
 		if not isinstance(file_path, str) or not file_path:
 			return
 
-		file_types = record.get("types", [])
-		if not isinstance(file_types, list):
+		types = record.get("types", [])
+		if not isinstance(types, list):
 			return
 
-		evaluator_kinds = record.get("evaluator_kinds", [])
-		has_evaluators = bool(isinstance(evaluator_kinds, list) and evaluator_kinds)
-
+		load_macros = record.get("loadMacros", [])
+		macros_top3 = ",".join(_macros_top3(load_macros if isinstance(load_macros, list) else []))
 		pgml_blank_markers = int(record.get("pgml_blank_marker_count", 0) or 0)
-		has_ans_token = int(record.get("has_ans_token", 0) or 0)
-		has_cmp_token = int(record.get("has_cmp_token", 0) or 0)
-		macros_top3 = ",".join(_macros_top3(record.get("loadMacros", [])))
+		has_payload = 1 if int(record.get("pgml_payload_evaluator_count", 0) or 0) > 0 else 0
 		confidence = float(record.get("confidence", 0.0))
 
-		row = (file_path, pgml_blank_markers, has_ans_token, has_cmp_token, macros_top3, confidence)
+		evaluator_sources = record.get("evaluator_sources", [])
+		if isinstance(evaluator_sources, list) and evaluator_sources:
+			src_set = sorted({s for s in evaluator_sources if isinstance(s, str) and s})
+			evaluator_sources_text = ",".join(src_set)
+		else:
+			evaluator_sources_text = "none"
 
-		if ("unknown_pgml_blank" in file_types) and (len(self._samples_unknown_pgml_blank) < 50):
-			self._samples_unknown_pgml_blank.append(row)
+		evaluator_kinds = record.get("evaluator_kinds", [])
+		if isinstance(evaluator_kinds, list) and evaluator_kinds:
+			kind_set = sorted({k for k in evaluator_kinds if isinstance(k, str) and k})
+			evaluator_kinds_text = ",".join(kind_set)
+		else:
+			evaluator_kinds_text = "none"
 
-		if (not has_evaluators) and ("numeric_entry" in file_types) and (len(self._samples_eval_none_numeric_entry) < 50):
-			self._samples_eval_none_numeric_entry.append(row)
+		info = {
+			"file": file_path,
+			"top_macros": macros_top3,
+			"pgml_blank_marker_count": pgml_blank_markers,
+			"has_payload": has_payload,
+			"evaluator_sources": evaluator_sources_text,
+			"evaluator_kinds": evaluator_kinds_text,
+			"confidence": confidence,
+		}
 
-	def _render_samples_tsv(self, rows: list[tuple[str, int, int, int, str, float]]) -> str:
-		lines: list[str] = ["file\tpgml_blank_markers\thas_ans_call\thas_cmp_token\ttop_macros\tconfidence"]
-		for file_path, pgml_blank_markers, has_ans_token, has_cmp_token, macros_top3, confidence in rows:
-			lines.append(f"{file_path}\t{pgml_blank_markers}\t{has_ans_token}\t{has_cmp_token}\t{macros_top3}\t{confidence:.2f}")
-		return "\n".join(lines) + "\n"
+		if "unknown_pgml_blank" in types:
+			sig = unknown_pgml_blank_signature(record)
+			_inc(self.unknown_signature_counts, sig)
+			self._unknown_signature_files.setdefault(sig, []).append(file_path)
+			self._unknown_file_info[file_path] = info
+
+		if "other" in types:
+			sig = other_signature(record)
+			_inc(self.other_signature_counts, sig)
+			self._other_signature_files.setdefault(sig, []).append(file_path)
+			self._other_file_info[file_path] = info
+
+	def top_unknown_signatures(self, *, limit: int = 10) -> list[str]:
+		items = sorted(self.unknown_signature_counts.items(), key=lambda x: (-x[1], x[0]))
+		return [s for s, _ in items[:limit]]
+
+	def files_for_unknown_signatures(self, signatures: list[str]) -> list[tuple[str, str]]:
+		rows: list[tuple[str, str]] = []
+		for sig in signatures:
+			files = sorted(self._unknown_signature_files.get(sig, []))
+			for f in files:
+				rows.append((sig, f))
+		return rows
 
 	def _render_needs_review_tsv(self) -> str:
 		lines: list[str] = [
@@ -815,6 +906,85 @@ def _is_graph_like(load_macros: list[str]) -> bool:
 #============================================
 
 
+def unknown_pgml_blank_signature(record: dict) -> str:
+	pgml_blank_markers = int(record.get("pgml_blank_marker_count", 0) or 0)
+	has_payload = int(record.get("pgml_payload_evaluator_count", 0) or 0) > 0
+	has_named_ans_rule = int(record.get("has_named_ans_rule_token", 0) or 0) > 0
+	has_ans_rule = int(record.get("has_ans_rule_token", 0) or 0) > 0
+	has_named_popup = int(record.get("has_named_popup_list_token", 0) or 0) > 0
+	has_cmp = int(record.get("has_cmp_token", 0) or 0) > 0
+	has_ctor = int(record.get("has_answer_ctor", 0) or 0) > 0
+	has_ans_call = int(record.get("has_ans_token", 0) or 0) > 0
+
+	if pgml_blank_markers <= 0:
+		return "no_pgml_blank_markers"
+
+	if (not has_payload) and has_named_ans_rule:
+		return "pgml_blank_no_payload_named_ans_rule"
+	if (not has_payload) and has_ans_rule:
+		return "pgml_blank_no_payload_ans_rule"
+	if (not has_payload) and has_named_popup:
+		return "pgml_blank_no_payload_named_popup"
+	if has_payload and has_ctor and (not has_cmp):
+		return "pgml_blank_payload_has_ctor_no_cmp"
+	if has_payload and has_cmp:
+		return "pgml_blank_payload_has_cmp"
+	if has_ans_call:
+		return "pgml_blank_ans_call_present_but_untyped"
+	return "pgml_blank_no_grading_signals"
+
+
+def other_signature(record: dict) -> str:
+	load_macros = record.get("loadMacros", [])
+	if not isinstance(load_macros, list):
+		load_macros = []
+	macros = {m for m in load_macros if isinstance(m, str)}
+
+	evaluator_kinds = record.get("evaluator_kinds", [])
+	has_evals = bool(isinstance(evaluator_kinds, list) and evaluator_kinds)
+	widget_kinds = record.get("widget_kinds", [])
+	has_widgets = bool(isinstance(widget_kinds, list) and widget_kinds)
+	custom = (isinstance(evaluator_kinds, list) and ("custom" in evaluator_kinds)) or (int(record.get("has_install_problem_grader", 0) or 0) > 0)
+
+	if "PGgraphmacros.pl" in macros or "PCCgraphMacros.pl" in macros:
+		return "graph_like_pggraphmacros"
+	if "PGessaymacros.pl" in macros:
+		return "essay_like_pgessaymacros"
+	if "PGchoicemacros.pl" in macros:
+		return "choice_like_pgchoicemacros"
+	if custom:
+		return "custom_grader"
+	if (not has_widgets) and has_evals:
+		return "no_widgets_has_evaluator"
+	if (not has_widgets) and (not has_evals):
+		return "no_signals"
+	return "misc_other"
+
+
+#============================================
+
+
+def _even_spaced_picks(items: list[str], *, limit: int) -> list[str]:
+	if limit <= 0 or not items:
+		return []
+	if len(items) <= limit:
+		return items
+
+	step = len(items) / float(limit)
+	out: list[str] = []
+	seen: set[int] = set()
+	for i in range(limit):
+		idx = int(i * step)
+		if idx in seen:
+			continue
+		seen.add(idx)
+		out.append(items[idx])
+	return out
+
+
+#============================================
+
+
 class BucketWriters:
 	"""
 	Write curated, category-level file lists for sampling/grepping.
@@ -879,83 +1049,3 @@ class BucketWriters:
 			except Exception:
 				pass
 		self._handles.clear()
-
-
-#============================================
-
-
-class PgmlBlockSampler:
-	def __init__(self, out_dir: str, *, limit: int = 500, max_chars: int = 20000):
-		import os
-
-		self._limit = limit
-		self._max_chars = max_chars
-		self._count = 0
-
-		path = os.path.join(out_dir, "diagnostics", "pgml_blocks_samples_unknown_or_eval_missing.txt")
-		os.makedirs(os.path.dirname(path), exist_ok=True)
-		self._fp = open(path, "w", encoding="utf-8")
-
-	def add(self, *, record: dict, text: str) -> None:
-		if self._count >= self._limit:
-			return
-
-		file_path = record.get("file", "")
-		if not isinstance(file_path, str) or not file_path:
-			return
-
-		types = record.get("types", [])
-		if not isinstance(types, list):
-			return
-
-		evaluator_kinds = record.get("evaluator_kinds", [])
-		has_evaluators = bool(isinstance(evaluator_kinds, list) and evaluator_kinds)
-
-		include = False
-		if "unknown_pgml_blank" in types:
-			include = True
-		if (not has_evaluators) and ("numeric_entry" in types):
-			include = True
-		if not include:
-			return
-
-		import pg_analyze.extract_evaluators
-		import pg_analyze.tokenize
-
-		newlines = pg_analyze.tokenize.build_newline_index(text)
-		blocks = pg_analyze.extract_evaluators.extract_pgml_blocks(text, newlines=newlines)
-		for b in blocks:
-			if self._count >= self._limit:
-				break
-			self._write_block(file_path=file_path, block=b)
-			self._count += 1
-
-	def _write_block(self, *, file_path: str, block: dict) -> None:
-		kind = block.get("kind", "")
-		start_line = int(block.get("start_line", 0) or 0)
-		blank_markers = int(block.get("blank_marker_count", 0) or 0)
-		has_payload = int(block.get("has_payload", 0) or 0)
-		block_text = block.get("text", "")
-		if not isinstance(kind, str):
-			kind = ""
-		if not isinstance(block_text, str):
-			block_text = ""
-
-		header = f"=== file={file_path} kind={kind} start_line={start_line} blank_markers={blank_markers} has_payload={has_payload} ===\n"
-		self._fp.write(header)
-
-		if len(block_text) > self._max_chars:
-			self._fp.write(block_text[: self._max_chars])
-			self._fp.write("\n[TRUNCATED]\n")
-		else:
-			self._fp.write(block_text)
-			if not block_text.endswith("\n"):
-				self._fp.write("\n")
-
-		self._fp.write("=== END ===\n\n")
-
-	def close(self) -> None:
-		try:
-			self._fp.close()
-		except Exception:
-			pass

@@ -52,6 +52,9 @@ def test_evaluator_coverage_reports_and_restricted_macro_counts() -> None:
 	m_num = reports["macro_counts_eval_none_numeric_entry.tsv"]
 	assert "MathObjects.pl\t1" in m_num
 
-	samples = reports["samples_unknown_pgml_blank.tsv"].splitlines()
-	assert samples[0].startswith("file\tpgml_blank_markers\t")
-	assert any(l.startswith("a.pg\t2\t0\t0\t") for l in samples[1:])
+	sig_counts = reports["unknown_pgml_blank_signature_counts.tsv"]
+	assert "pgml_blank_no_grading_signals\t1\t" in sig_counts
+
+	sig_samples = reports["unknown_pgml_blank_signature_samples.tsv"].splitlines()
+	assert sig_samples[0].startswith("signature\tfile\t")
+	assert any(l.startswith("pgml_blank_no_grading_signals\ta.pg\t") for l in sig_samples[1:])

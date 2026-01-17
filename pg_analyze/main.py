@@ -40,10 +40,11 @@ def main() -> None:
 			text = _read_text_latin1(file_path)
 			record = analyze_text(text=text, file_path=file_path)
 			aggregator.add_record(record)
-			aggregator.add_pgml_blocks(record=record, text=text)
 			last_progress = _maybe_log_progress(last_progress, done=i, total=len(pg_files))
 		_log("pg_analyze: writing outputs...")
 		write_reports(args.out_dir, aggregator)
+		_log("pg_analyze: writing PGML diagnostic dump...")
+		_write_pgml_blocks_unknown_top_signatures(args.out_dir, aggregator)
 	finally:
 		aggregator.close()
 
@@ -64,6 +65,99 @@ def _maybe_log_progress(last_progress: float, *, done: int, total: int) -> float
 		return last_progress
 	_log(f"pg_analyze: processed {done}/{total} files...")
 	return now
+
+
+#============================================
+
+def _write_pgml_blocks_unknown_top_signatures(out_dir: str, aggregator: pg_analyze.aggregate.Aggregator) -> None:
+	import pg_analyze.extract_evaluators
+	import pg_analyze.tokenize
+
+	out_path = os.path.join(out_dir, "diagnostics", "pgml_blocks_unknown_pgml_blank_top_signatures.txt")
+	os.makedirs(os.path.dirname(out_path), exist_ok=True)
+
+	top_signatures = aggregator.top_unknown_signatures(limit=10)
+	sig_to_files: dict[str, list[str]] = {}
+	for sig in top_signatures:
+		files = sorted(aggregator._unknown_signature_files.get(sig, []))  # intentional: diagnostic-only
+		sig_to_files[sig] = files
+
+	max_blocks = 500
+	max_chars_per_block = 20000
+	max_total_bytes = 50 * 1024 * 1024
+
+	blocks_written = 0
+	bytes_written = 0
+
+	with open(out_path, "w", encoding="utf-8") as f:
+		f.write("# PGML block dump for unknown_pgml_blank: top signatures\n")
+		f.write("# Signatures:\n")
+		for sig in top_signatures:
+			f.write(f"# - {sig}\n")
+		f.write("# Notes: excludes BEGIN_PGML_HINT and BEGIN_PGML_SOLUTION blocks\n\n")
+
+		i = 0
+		while True:
+			any_left = False
+			for signature in top_signatures:
+				files = sig_to_files.get(signature, [])
+				if i >= len(files):
+					continue
+				any_left = True
+				file_path = files[i]
+
+				if blocks_written >= max_blocks or bytes_written >= max_total_bytes:
+					return
+
+				try:
+					text = _read_text_latin1(file_path)
+				except OSError:
+					continue
+
+				newlines = pg_analyze.tokenize.build_newline_index(text)
+				blocks = pg_analyze.extract_evaluators.extract_pgml_blocks(text, newlines=newlines)
+
+				for b in blocks:
+					if blocks_written >= max_blocks or bytes_written >= max_total_bytes:
+						return
+
+					kind = b.get("kind", "")
+					if kind in {"BEGIN_PGML_HINT", "BEGIN_PGML_SOLUTION"}:
+						continue
+
+					start_line = int(b.get("start_line", 0) or 0)
+					blank_markers = int(b.get("blank_marker_count", 0) or 0)
+					has_payload = int(b.get("has_payload", 0) or 0)
+					block_text = b.get("text", "")
+					if not isinstance(block_text, str):
+						block_text = ""
+
+					header = (
+						f"=== file={file_path} signature={signature} kind={kind} start_line={start_line} "
+						f"blank_markers={blank_markers} has_payload={has_payload} ===\n"
+					)
+
+					f.write(header)
+					bytes_written += len(header.encode("utf-8"))
+
+					if len(block_text) > max_chars_per_block:
+						body = block_text[:max_chars_per_block] + "\n[TRUNCATED]\n"
+					else:
+						body = block_text
+						if not body.endswith("\n"):
+							body += "\n"
+
+					f.write(body)
+					bytes_written += len(body.encode("utf-8"))
+
+					f.write("=== END ===\n\n")
+					bytes_written += len("=== END ===\n\n".encode("utf-8"))
+
+					blocks_written += 1
+
+			if not any_left:
+				break
+			i += 1
 
 
 #============================================
@@ -182,6 +276,8 @@ def analyze_text(*, text: str, file_path: str) -> dict:
 	has_named_ans_token = 1 if bool(_NAMED_ANS_TOKEN_RX.search(clean)) else 0
 	has_ans_num_to_name = 1 if bool(_ANS_NUM_TO_NAME_RX.search(clean)) else 0
 	has_install_problem_grader = 1 if bool(_INSTALL_PROBLEM_GRADER_RX.search(clean)) else 0
+	has_ans_rule_token = 1 if bool(_ANS_RULE_TOKEN_RX.search(clean)) else 0
+	has_named_popup_list_token = 1 if bool(_NAMED_POPUP_LIST_TOKEN_RX.search(clean)) else 0
 
 	pgml_blank_count = int(_pgml_info.get("blank_count", 0) or 0)
 	pgml_block_count = int(_pgml_info.get("block_count", 0) or 0)
@@ -226,6 +322,8 @@ def analyze_text(*, text: str, file_path: str) -> dict:
 		"has_named_ans_token": has_named_ans_token,
 		"has_ans_num_to_name": has_ans_num_to_name,
 		"has_install_problem_grader": has_install_problem_grader,
+		"has_ans_rule_token": has_ans_rule_token,
+		"has_named_popup_list_token": has_named_popup_list_token,
 	}
 
 	bucket = pg_analyze.aggregate.needs_review_bucket(record)
@@ -273,6 +371,11 @@ def _write_index(out_dir: str) -> None:
 		"- summary/type_counts_all_files.tsv",
 		"- needs_review/needs_review_bucket_counts.tsv",
 		"",
+		"Unknown/other categorization:",
+		"- samples/unknown_pgml_blank_signature_counts.tsv",
+		"- samples/other_signature_counts.tsv",
+		"- diagnostics/pgml_blocks_unknown_pgml_blank_top_signatures.txt",
+		"",
 		"Then:",
 		"- summary/evaluator_source_counts_all_files.tsv",
 		"- counts/evaluator_kind_counts_pgml_payload_only.tsv",
@@ -286,7 +389,7 @@ def _write_index(out_dir: str) -> None:
 		"- needs_review/evaluator_missing_reasons_counts.tsv",
 		"",
 		"For examples:",
-		"- diagnostics/pgml_blocks_samples_unknown_or_eval_missing.txt",
+		"- diagnostics/pgml_blocks_unknown_pgml_blank_top_signatures.txt",
 		"- samples/*.tsv",
 		"",
 	]
@@ -437,12 +540,6 @@ def _tsv_meta(name: str) -> dict[str, str]:
 			"unit": "each file contributes to exactly one other bucket",
 			"notes": "bucketed by extracted signals to separate missing detection vs true other",
 		},
-		"other_samples.tsv": {
-			"population": "a bounded sample of other-labeled files",
-			"unit": "one sampled file per row",
-			"notes": "up to 50 rows combined across a few selection strategies",
-			"sorted": "mixed (multiple selection strategies), then stable within each",
-		},
 		"widget_counts_other.tsv": {
 			"population": "files labeled other",
 			"unit": "each detected widget occurrence contributes 1",
@@ -453,17 +550,27 @@ def _tsv_meta(name: str) -> dict[str, str]:
 			"unit": "each detected evaluator occurrence contributes 1",
 			"notes": "evaluator counts restricted to other-labeled files",
 		},
-		"samples_unknown_pgml_blank.tsv": {
-			"population": "a bounded sample of unknown_pgml_blank files",
-			"unit": "one sampled file per row (first N in traversal order)",
-			"notes": "intended for quick spot checks without per-file outputs",
-			"sorted": "traversal order",
+		"unknown_pgml_blank_signature_counts.tsv": {
+			"population": "files labeled unknown_pgml_blank",
+			"unit": "each file contributes to exactly one signature",
+			"notes": "top signatures by count; pct is percent of unknown_pgml_blank files",
 		},
-		"samples_eval_none_numeric_entry.tsv": {
-			"population": "a bounded sample of numeric_entry files with evaluator none",
-			"unit": "one sampled file per row (first N in traversal order)",
-			"notes": "intended for quick spot checks without per-file outputs",
-			"sorted": "traversal order",
+		"unknown_pgml_blank_signature_samples.tsv": {
+			"population": "a stratified sample of unknown_pgml_blank files",
+			"unit": "one sampled file per row",
+			"notes": "up to 50 files per signature across top signatures, capped overall; deterministic evenly spaced picks",
+			"sorted": "signature count desc, then traversal-spread within signature",
+		},
+		"other_signature_counts.tsv": {
+			"population": "files labeled other",
+			"unit": "each file contributes to exactly one signature",
+			"notes": "top signatures by count; pct is percent of other-labeled files",
+		},
+		"other_signature_samples.tsv": {
+			"population": "a stratified sample of other-labeled files",
+			"unit": "one sampled file per row",
+			"notes": "up to 50 files per signature across top signatures, capped overall; deterministic evenly spaced picks",
+			"sorted": "signature count desc, then traversal-spread within signature",
 		},
 	}
 
@@ -488,6 +595,8 @@ _NAMED_ANS_TOKEN_RX = re.compile(r"\bNAMED_ANS\s*\(")
 _ANS_NUM_TO_NAME_RX = re.compile(r"\bANS_NUM_TO_NAME\s*\(")
 _INSTALL_PROBLEM_GRADER_RX = re.compile(r"\binstall_problem_grader\b")
 _CTOR_TOKEN_RX = re.compile(r"\b(Real|Formula|Compute|String|List|Vector|Point)\s*\(")
+_ANS_RULE_TOKEN_RX = re.compile(r"\b(ans_rule|answerRule|ans_box)\s*\(")
+_NAMED_POPUP_LIST_TOKEN_RX = re.compile(r"\bNAMED_POP_UP_LIST\s*\(")
 
 
 def _extract_named_rule_refs(evaluators: list[dict]) -> list[str]:
