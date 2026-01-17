@@ -15,3 +15,5 @@
 - Remove per-file output options from `pg_analyze` (no per-file TSV/JSONL) to keep default behavior corpus-scale.
 - Add regression tests for common PG/PGML patterns (heredocs, multiline ANS, MultiAnswer, PGML blanks) and count PGML blanks as inputs.
 - Pre-strip heredoc bodies before running extractors and record `named_ans_rule(...)` references from evaluator expressions.
+- Add aggregate-only "other" analysis reports (breakdown, restricted macro/widget/evaluator counts, PGML blank marker histograms, and small bounded samples) and label `unknown_pgml_blank` when PGML blanks exist but no evaluators/widgets are detected.
+- Add cross-tab aggregate reports (type x widget, type x evaluator, widget x evaluator) plus a `coverage.tsv` sanity table.

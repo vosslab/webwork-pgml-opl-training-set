@@ -136,6 +136,7 @@ def analyze_text(*, text: str, file_path: str) -> dict:
 	reasons = labels.get("reasons", [])
 
 	pgml_blank_count = int(_pgml_info.get("blank_count", 0) or 0)
+	pgml_block_count = int(_pgml_info.get("block_count", 0) or 0)
 	if pgml_blank_count > 0:
 		widget_kinds.extend(["pgml_blank"] * pgml_blank_count)
 		input_count += pgml_blank_count
@@ -156,6 +157,8 @@ def analyze_text(*, text: str, file_path: str) -> dict:
 		"wiring_empty": wiring_empty,
 		"has_multianswer": has_multianswer,
 		"named_rule_refs": named_rule_refs,
+		"pgml_block_count": pgml_block_count,
+		"pgml_blank_marker_count": pgml_blank_count,
 	}
 
 

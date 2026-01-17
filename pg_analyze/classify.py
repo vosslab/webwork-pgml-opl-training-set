@@ -79,8 +79,13 @@ def classify(report: dict) -> tuple[dict, bool]:
 		add_reason("evaluator_or_ctor", "numeric")
 
 	if not types:
-		types = ["other"]
-		add_reason("other", "no_signals")
+		pgml_blank_count = int(pgml.get("blank_count", 0) or 0)
+		if (len(widgets) == 0) and (len(evaluators) == 0) and (pgml_blank_count > 0):
+			types = ["unknown_pgml_blank"]
+			add_reason("pgml", "blank_markers")
+		else:
+			types = ["other"]
+			add_reason("other", "no_signals")
 
 	confidence = _confidence(types=types, reasons=reasons, widgets=widgets, evaluators=evaluators, wiring=wiring, pgml=pgml)
 	needs_review = (confidence < 0.55) or ((not wiring) and (ans_count >= 2))

@@ -84,9 +84,24 @@ class Aggregator:
 		self.evaluator_counts: dict[str, int] = {}
 		self.input_hist: dict[str, int] = {}
 		self.ans_hist: dict[str, int] = {}
+		self.pgml_blank_hist: dict[str, int] = {}
+		self.other_pgml_blank_hist: dict[str, int] = {}
+
+		self.other_breakdown: dict[str, int] = {}
+		self.macro_counts_other: dict[str, int] = {}
+		self.widget_counts_other: dict[str, int] = {}
+		self.evaluator_counts_other: dict[str, int] = {}
+
+		self.type_by_widget: dict[tuple[str, str], int] = {}
+		self.type_by_evaluator: dict[tuple[str, str], int] = {}
+		self.widget_by_evaluator: dict[tuple[str, str], int] = {}
+		self.coverage: dict[str, int] = {}
 
 		self._needs_review_limit = needs_review_limit
 		self._needs_review_heap: list[tuple[float, str, float, str, str]] = []
+		self._other_low_conf_heap: list[tuple[float, str, float, str, str]] = []
+		self._other_high_blank_heap: list[tuple[int, str, float, str, str]] = []
+		self._other_applet_heap: list[tuple[float, str, float, str, str]] = []
 
 	def add_record(self, record: dict) -> None:
 		types = record.get("types", [])
@@ -97,6 +112,7 @@ class Aggregator:
 		input_count = record.get("input_count", 0)
 		ans_count = record.get("ans_count", 0)
 		needs_review = record.get("needs_review", False)
+		pgml_blank_marker_count = record.get("pgml_blank_marker_count", 0)
 
 		if isinstance(types, list):
 			for t in types:
@@ -127,8 +143,112 @@ class Aggregator:
 		if isinstance(ans_count, int):
 			_inc(self.ans_hist, count_bucket(ans_count))
 
-		if needs_review:
-			self._add_needs_review(record)
+		if isinstance(pgml_blank_marker_count, int):
+			_inc(self.pgml_blank_hist, count_bucket(pgml_blank_marker_count))
+
+			is_other = isinstance(types, list) and ("other" in types)
+			if is_other:
+				self._add_other(record)
+
+			self._add_cross_tabs(record)
+
+			if needs_review:
+				self._add_needs_review(record)
+
+		def _add_cross_tabs(self, record: dict) -> None:
+			types = record.get("types", [])
+			widgets = record.get("widget_kinds", [])
+			evals = record.get("evaluator_kinds", [])
+
+			if not isinstance(types, list) or not types:
+				types = ["other"]
+			if not isinstance(widgets, list) or not widgets:
+				widgets = ["none"]
+			if not isinstance(evals, list) or not evals:
+				evals = ["none"]
+
+			type_set = sorted({t for t in types if isinstance(t, str) and t})
+			widget_set = sorted({w for w in widgets if isinstance(w, str) and w})
+			eval_set = sorted({e for e in evals if isinstance(e, str) and e})
+
+			if not type_set:
+				type_set = ["other"]
+			if not widget_set:
+				widget_set = ["none"]
+			if not eval_set:
+				eval_set = ["none"]
+
+			has_widgets = not (len(widget_set) == 1 and widget_set[0] == "none")
+			has_evals = not (len(eval_set) == 1 and eval_set[0] == "none")
+
+			for t in type_set:
+				for w in widget_set:
+					self.type_by_widget[(t, w)] = self.type_by_widget.get((t, w), 0) + 1
+				for e in eval_set:
+					self.type_by_evaluator[(t, e)] = self.type_by_evaluator.get((t, e), 0) + 1
+
+			for w in widget_set:
+				for e in eval_set:
+					self.widget_by_evaluator[(w, e)] = self.widget_by_evaluator.get((w, e), 0) + 1
+
+			if has_widgets and has_evals:
+				_inc(self.coverage, "widgets=some,evaluators=some")
+			elif has_widgets and (not has_evals):
+				_inc(self.coverage, "widgets=some,evaluators=none")
+			elif (not has_widgets) and has_evals:
+				_inc(self.coverage, "widgets=none,evaluators=some")
+			else:
+				_inc(self.coverage, "widgets=none,evaluators=none")
+
+	def _add_other(self, record: dict) -> None:
+		bucket = other_bucket(record)
+		_inc(self.other_breakdown, bucket)
+
+		load_macros = record.get("loadMacros", [])
+		if isinstance(load_macros, list):
+			for macro in load_macros:
+				if isinstance(macro, str):
+					_inc(self.macro_counts_other, macro)
+
+		widget_kinds = record.get("widget_kinds", [])
+		if isinstance(widget_kinds, list):
+			for kind in widget_kinds:
+				if isinstance(kind, str):
+					_inc(self.widget_counts_other, kind)
+
+		evaluator_kinds = record.get("evaluator_kinds", [])
+		if isinstance(evaluator_kinds, list):
+			for kind in evaluator_kinds:
+				if isinstance(kind, str):
+					_inc(self.evaluator_counts_other, kind)
+
+		pgml_blank_marker_count = record.get("pgml_blank_marker_count", 0)
+		if isinstance(pgml_blank_marker_count, int):
+			_inc(self.other_pgml_blank_hist, count_bucket(pgml_blank_marker_count))
+
+		self._sample_other(record, bucket)
+
+	def _sample_other(self, record: dict, bucket: str) -> None:
+		file_path = record.get("file", "")
+		confidence = float(record.get("confidence", 0.0))
+		macros_top3 = ",".join(_macros_top3(record.get("loadMacros", [])))
+
+		if not isinstance(file_path, str):
+			return
+
+		heapq.heappush(self._other_low_conf_heap, (-confidence, file_path, confidence, bucket, macros_top3))
+		if len(self._other_low_conf_heap) > 20:
+			heapq.heappop(self._other_low_conf_heap)
+
+		blank_count = int(record.get("pgml_blank_marker_count", 0) or 0)
+		heapq.heappush(self._other_high_blank_heap, (blank_count, file_path, confidence, bucket, macros_top3))
+		if len(self._other_high_blank_heap) > 20:
+			heapq.heappop(self._other_high_blank_heap)
+
+		if bucket == "other_applet_like":
+			heapq.heappush(self._other_applet_heap, (-confidence, file_path, confidence, bucket, macros_top3))
+			if len(self._other_applet_heap) > 20:
+				heapq.heappop(self._other_applet_heap)
 
 	def _add_needs_review(self, record: dict) -> None:
 		file_path = record.get("file", "")
@@ -155,7 +275,18 @@ class Aggregator:
 		out["evaluator_counts.tsv"] = _render_counts_tsv(list(self.evaluator_counts.items()), key_name="evaluator_kind")
 		out["input_count_hist.tsv"] = _render_counts_tsv(list(self.input_hist.items()), key_name="bucket")
 		out["ans_count_hist.tsv"] = _render_counts_tsv(list(self.ans_hist.items()), key_name="bucket")
+		out["pgml_blank_marker_hist.tsv"] = _render_counts_tsv(list(self.pgml_blank_hist.items()), key_name="bucket")
 		out["needs_review.tsv"] = self._render_needs_review_tsv()
+		out["other_breakdown.tsv"] = _render_counts_tsv(list(self.other_breakdown.items()), key_name="bucket")
+		out["macro_counts_other.tsv"] = _render_counts_tsv(list(self.macro_counts_other.items()), key_name="macro")
+		out["widget_counts_other.tsv"] = _render_counts_tsv(list(self.widget_counts_other.items()), key_name="widget_kind")
+		out["evaluator_counts_other.tsv"] = _render_counts_tsv(list(self.evaluator_counts_other.items()), key_name="evaluator_kind")
+		out["other_pgml_blank_hist.tsv"] = _render_counts_tsv(list(self.other_pgml_blank_hist.items()), key_name="bucket")
+		out["other_samples.tsv"] = self._render_other_samples_tsv()
+		out["type_by_widget.tsv"] = self._render_pair_counts_tsv(self.type_by_widget, left="type", right="widget_kind")
+		out["type_by_evaluator.tsv"] = self._render_pair_counts_tsv(self.type_by_evaluator, left="type", right="evaluator_kind")
+		out["widget_by_evaluator.tsv"] = self._render_pair_counts_tsv(self.widget_by_evaluator, left="widget_kind", right="evaluator_kind")
+		out["coverage.tsv"] = _render_counts_tsv(list(self.coverage.items()), key_name="bucket")
 		return out
 
 	def _render_needs_review_tsv(self) -> str:
@@ -166,3 +297,127 @@ class Aggregator:
 			lines.append(f"{file_path}\t{conf:.2f}\t{types_text}\t{reasons_text}")
 		return "\n".join(lines) + "\n"
 
+	def _render_other_samples_tsv(self) -> str:
+		seen: set[str] = set()
+		rows: list[tuple[float, str, str, str]] = []
+
+		low_conf = sorted([(-neg, file_path, bucket, macros) for neg, file_path, _, bucket, macros in self._other_low_conf_heap], key=lambda x: (x[0], x[1]))
+		high_blank = sorted([(blank, file_path, bucket, macros, conf) for blank, file_path, conf, bucket, macros in self._other_high_blank_heap], key=lambda x: (-x[0], x[1]))
+		applet = sorted([(-neg, file_path, bucket, macros) for neg, file_path, _, bucket, macros in self._other_applet_heap], key=lambda x: (x[0], x[1]))
+
+		for conf, file_path, bucket, macros in low_conf:
+			if file_path in seen:
+				continue
+			seen.add(file_path)
+			rows.append((conf, file_path, bucket, macros))
+			if len(rows) >= 50:
+				break
+
+		if len(rows) < 50:
+			for blank, file_path, bucket, macros, conf in high_blank:
+				if file_path in seen:
+					continue
+				seen.add(file_path)
+				rows.append((conf, file_path, bucket, macros))
+				if len(rows) >= 50:
+					break
+
+		if len(rows) < 50:
+			for conf, file_path, bucket, macros in applet:
+				if file_path in seen:
+					continue
+				seen.add(file_path)
+				rows.append((conf, file_path, bucket, macros))
+				if len(rows) >= 50:
+					break
+
+		lines: list[str] = ["file\tconfidence\tmacros_top3\tother_bucket"]
+		for conf, file_path, bucket, macros in rows:
+			lines.append(f"{file_path}\t{conf:.2f}\t{macros}\t{bucket}")
+		return "\n".join(lines) + "\n"
+
+	def _render_pair_counts_tsv(self, counter: dict[tuple[str, str], int], *, left: str, right: str) -> str:
+		lines: list[str] = [f"{left}\t{right}\tcount"]
+		rows = [((a, b), c) for (a, b), c in counter.items()]
+		rows_sorted = sorted(rows, key=lambda x: (-x[1], x[0][0], x[0][1]))
+		for (a, b), c in rows_sorted:
+			lines.append(f"{a}\t{b}\t{c}")
+		return "\n".join(lines) + "\n"
+
+
+#============================================
+
+
+def _macros_top3(load_macros: list[str]) -> list[str]:
+	top: list[str] = []
+	for m in load_macros:
+		if not isinstance(m, str):
+			continue
+		if m in top:
+			continue
+		top.append(m)
+		if len(top) >= 3:
+			break
+	return top
+
+
+#============================================
+
+
+def other_bucket(record: dict) -> str:
+	"""
+	Return a single bucket label for a record already labeled "other".
+	"""
+	load_macros = record.get("loadMacros", [])
+	widget_kinds = record.get("widget_kinds", [])
+	evaluator_kinds = record.get("evaluator_kinds", [])
+	input_count = int(record.get("input_count", 0) or 0)
+	ans_count = int(record.get("ans_count", 0) or 0)
+	pgml_block_count = int(record.get("pgml_block_count", 0) or 0)
+	pgml_blank_marker_count = int(record.get("pgml_blank_marker_count", 0) or 0)
+
+	if _is_applet_like(load_macros):
+		return "other_applet_like"
+	if _is_graph_like(load_macros):
+		return "other_graph_like"
+	if isinstance(evaluator_kinds, list) and ("custom" in evaluator_kinds):
+		return "other_custom_evaluator"
+	if ans_count > 0 and input_count == 0:
+		return "other_widgetless_ans"
+	if isinstance(evaluator_kinds, list) and ("cmp" in evaluator_kinds) and input_count == 0:
+		return "other_cmp_only"
+	if pgml_block_count > 0 and pgml_blank_marker_count == 0:
+		return "other_pgml_present_no_detected_blanks"
+	if ans_count == 0 and input_count == 0 and (not widget_kinds) and (not evaluator_kinds):
+		return "other_no_signals"
+	return "other_uncategorized"
+
+
+#============================================
+
+
+def _is_applet_like(load_macros: list[str]) -> bool:
+	if not isinstance(load_macros, list):
+		return False
+	for m in load_macros:
+		if not isinstance(m, str):
+			continue
+		low = m.lower()
+		if "applet" in low or "geogebra" in low or "wwapplet" in low:
+			return True
+	return False
+
+
+#============================================
+
+
+def _is_graph_like(load_macros: list[str]) -> bool:
+	if not isinstance(load_macros, list):
+		return False
+	for m in load_macros:
+		if not isinstance(m, str):
+			continue
+		low = m.lower()
+		if "pggraphmacros" in low or "graph" in low:
+			return True
+	return False
