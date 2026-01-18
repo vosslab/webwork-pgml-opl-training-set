@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-01-18
+
+- Expand `tools/webwork_pgml_simple_lint.py` with PGML-aware lint checks (blocks, heredocs, blanks, inline markers),
+  improved macro/assignment parsing, line-numbered output, and optional JSON summaries.
+- Add the `pgml_lint/` plugin framework with built-in PGML lint modules and tests, and refactor the lint CLI to use
+  the new plugin registry, enable/disable controls, and JSON summaries.
+
 ## 2026-01-17
 
 - Update `README.md` to describe this repo as an AI-training-focused fork and refresh documentation links.

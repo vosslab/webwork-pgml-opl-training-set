@@ -1,95 +1,41 @@
 #!/usr/bin/env python3
 
+# Standard Library
 import argparse
 import json
 import os
-import re
+import subprocess
 import sys
 
+# Determine repo root and add to path for local imports
+REPO_ROOT = subprocess.run(
+	["git", "rev-parse", "--show-toplevel"],
+	capture_output=True,
+	text=True,
+	check=True,
+).stdout.strip()
+if REPO_ROOT not in sys.path:
+	sys.path.insert(0, REPO_ROOT)
 
-DEFAULT_BLOCK_RULES: list[dict[str, str]] = [
-	{
-		"label": "BEGIN_PGML/END_PGML",
-		"start_pattern": r"\bBEGIN_PGML\b",
-		"end_pattern": r"\bEND_PGML\b",
-	},
-	{
-		"label": "BEGIN_TEXT/END_TEXT",
-		"start_pattern": r"\bBEGIN_TEXT\b",
-		"end_pattern": r"\bEND_TEXT\b",
-	},
-	{
-		"label": "BEGIN_SOLUTION/END_SOLUTION",
-		"start_pattern": r"\bBEGIN_SOLUTION\b",
-		"end_pattern": r"\bEND_SOLUTION\b",
-	},
-	{
-		"label": "BEGIN_HINT/END_HINT",
-		"start_pattern": r"\bBEGIN_HINT\b",
-		"end_pattern": r"\bEND_HINT\b",
-	},
-	{
-		"label": "DOCUMENT()/ENDDOCUMENT()",
-		"start_pattern": r"\bDOCUMENT\s*\(\s*\)",
-		"end_pattern": r"\bENDDOCUMENT\s*\(\s*\)",
-	},
-]
+# Local modules
+import pgml_lint.core
+import pgml_lint.engine
+import pgml_lint.registry
+import pgml_lint.rules
 
-DEFAULT_MACRO_RULES: list[dict[str, object]] = [
-	{
-		"label": "MathObjects functions",
-		"pattern": r"\b(?:Context|Compute|Formula|Real)\s*\(",
-		"required_macros": ["MathObjects.pl"],
-	},
-	{
-		"label": "RadioButtons",
-		"pattern": r"\bRadioButtons\s*\(",
-		"required_macros": ["parserRadioButtons.pl", "PGchoicemacros.pl"],
-	},
-	{
-		"label": "CheckboxList",
-		"pattern": r"\bCheckboxList\s*\(",
-		"required_macros": ["parserCheckboxList.pl", "PGchoicemacros.pl"],
-	},
-	{
-		"label": "PopUp",
-		"pattern": r"\bPopUp\s*\(",
-		"required_macros": ["parserPopUp.pl", "PGchoicemacros.pl"],
-	},
-	{
-		"label": "DataTable",
-		"pattern": r"\bDataTable\s*\(",
-		"required_macros": ["niceTables.pl"],
-	},
-	{
-		"label": "LayoutTable",
-		"pattern": r"\bLayoutTable\s*\(",
-		"required_macros": ["niceTables.pl"],
-	},
-	{
-		"label": "NumberWithUnits",
-		"pattern": r"\bNumberWithUnits\s*\(",
-		"required_macros": ["parserNumberWithUnits.pl", "contextUnits.pl"],
-	},
-	{
-		"label": "Context('Fraction')",
-		"pattern": r"\bContext\s*\(\s*['\"]Fraction['\"]\s*\)",
-		"required_macros": ["contextFraction.pl"],
-	},
-	{
-		"label": "DraggableSubsets",
-		"pattern": r"\bDraggableSubsets\s*\(",
-		"required_macros": ["draggableSubsets.pl"],
-	},
-]
+
+#============================================
 
 
 def parse_args() -> argparse.Namespace:
 	"""
 	Parse command-line arguments.
+
+	Returns:
+		argparse.Namespace: Parsed arguments.
 	"""
 	parser = argparse.ArgumentParser(
-		description="Run a simple static lint pass on WeBWorK .pg files.",
+		description="Run a static lint pass on WeBWorK .pg files with PGML checks.",
 	)
 	parser.add_argument(
 		"-i",
@@ -118,29 +64,82 @@ def parse_args() -> argparse.Namespace:
 		help="Optional JSON file defining block and macro rules.",
 	)
 	parser.add_argument(
+		"--plugin",
+		dest="plugin_paths",
+		action="append",
+		default=[],
+		help="Path to a plugin module file (repeatable).",
+	)
+	parser.add_argument(
+		"--enable",
+		dest="enable_plugins",
+		action="append",
+		default=[],
+		help="Comma-separated plugin ids to enable.",
+	)
+	parser.add_argument(
+		"--disable",
+		dest="disable_plugins",
+		action="append",
+		default=[],
+		help="Comma-separated plugin ids to disable.",
+	)
+	parser.add_argument(
+		"--only",
+		dest="only_plugins",
+		action="append",
+		default=[],
+		help="Comma-separated plugin ids to run exclusively.",
+	)
+	parser.add_argument(
+		"--list-plugins",
+		dest="list_plugins",
+		action="store_true",
+		help="List available plugins and exit.",
+	)
+	parser.add_argument(
+		"--show-plugin",
+		dest="show_plugin",
+		action="store_true",
+		help="Include plugin id in line output.",
+	)
+	parser.add_argument(
+		"--json",
+		dest="json_output",
+		action="store_true",
+		help="Emit issues and summaries as JSON.",
+	)
+	parser.add_argument(
 		"--fail-on-warn",
 		dest="fail_on_warn",
 		action="store_true",
 		help="Exit non-zero if warnings are found.",
 	)
-	parser.set_defaults(fail_on_warn=False)
-	return parser.parse_args()
+	parser.set_defaults(fail_on_warn=False, json_output=False, list_plugins=False)
+	args = parser.parse_args()
+	return args
 
 
 #============================================
 
 
-def load_rules(rules_file: str | None) -> tuple[list[dict[str, str]], list[dict[str, object]]]:
+def _split_csv(values: list[str]) -> set[str]:
 	"""
-	Load block and macro rules from JSON or fall back to defaults.
+	Split comma-separated lists into a set.
+
+	Args:
+		values: List of CSV strings.
+
+	Returns:
+		set[str]: Normalized ids.
 	"""
-	if rules_file is None:
-		return DEFAULT_BLOCK_RULES, DEFAULT_MACRO_RULES
-	with open(rules_file, "r", encoding="utf-8") as handle:
-		data = json.load(handle)
-	block_rules = data.get("block_rules", DEFAULT_BLOCK_RULES)
-	macro_rules = data.get("macro_rules", DEFAULT_MACRO_RULES)
-	return block_rules, macro_rules
+	items: set[str] = set()
+	for value in values:
+		for raw in value.split(","):
+			item = raw.strip()
+			if item:
+				items.add(item)
+	return items
 
 
 #============================================
@@ -149,10 +148,16 @@ def load_rules(rules_file: str | None) -> tuple[list[dict[str, str]], list[dict[
 def normalize_extensions(extensions: str) -> list[str]:
 	"""
 	Normalize comma-separated extensions into a list.
+
+	Args:
+		extensions: Raw comma-separated string.
+
+	Returns:
+		list[str]: Normalized extensions.
 	"""
-	exts = [ext.strip() for ext in extensions.split(",") if ext.strip()]
+	extensions_list = [ext.strip() for ext in extensions.split(",") if ext.strip()]
 	normalized: list[str] = []
-	for ext in exts:
+	for ext in extensions_list:
 		if ext.startswith("."):
 			normalized.append(ext.lower())
 		else:
@@ -166,6 +171,13 @@ def normalize_extensions(extensions: str) -> list[str]:
 def find_files(input_dir: str, extensions: list[str]) -> list[str]:
 	"""
 	Find files under input_dir matching extensions.
+
+	Args:
+		input_dir: Root directory to scan.
+		extensions: File extensions to include.
+
+	Returns:
+		list[str]: Sorted file paths.
 	"""
 	matches: list[str] = []
 	for root, dirs, files in os.walk(input_dir):
@@ -175,165 +187,25 @@ def find_files(input_dir: str, extensions: list[str]) -> list[str]:
 			ext = os.path.splitext(filename)[1].lower()
 			if ext in extensions:
 				matches.append(os.path.join(root, filename))
-	return sorted(matches)
+	paths = sorted(matches)
+	return paths
 
 
 #============================================
 
 
-def extract_loaded_macros(text: str) -> set[str]:
+def list_plugins(registry: pgml_lint.registry.Registry) -> None:
 	"""
-	Extract macro filenames mentioned in the block.
+	Print available plugins.
+
+	Args:
+		registry: Plugin registry.
 	"""
-	macro_pattern = re.compile(r"['\"]([A-Za-z0-9_]+\.pl)['\"]")
-	macros = {macro.lower() for macro in macro_pattern.findall(text)}
-	return macros
-
-
-#============================================
-
-
-def has_loadmacros(text: str) -> bool:
-	"""
-	Check whether the block includes a loadMacros call.
-	"""
-	return re.search(r"\bloadMacros\s*\(", text) is not None
-
-
-#============================================
-
-
-def check_block_pairs(text: str, block_rules: list[dict[str, str]]) -> list[dict[str, str]]:
-	"""
-	Check for balanced begin/end markers within a block.
-	"""
-	issues: list[dict[str, str]] = []
-	for rule in block_rules:
-		label = rule["label"]
-		start_pattern = rule["start_pattern"]
-		end_pattern = rule["end_pattern"]
-		start_count = len(re.findall(start_pattern, text))
-		end_count = len(re.findall(end_pattern, text))
-		if start_count == end_count:
-			continue
-		if start_count == 0 or end_count == 0:
-			issues.append(
-				{
-					"severity": "WARNING",
-					"message": f"{label} appears only on one side (start={start_count}, end={end_count})",
-				},
-			)
-			continue
-		issues.append(
-			{
-				"severity": "ERROR",
-				"message": f"{label} counts do not match (start={start_count}, end={end_count})",
-			},
-		)
-	return issues
-
-
-#============================================
-
-
-def check_macro_rules(
-	text: str,
-	macros_loaded: set[str],
-	macro_rules: list[dict[str, object]],
-) -> list[dict[str, str]]:
-	"""
-	Check macro rules when macro coverage is expected.
-	"""
-	issues: list[dict[str, str]] = []
-	for rule in macro_rules:
-		label = str(rule["label"])
-		pattern = str(rule["pattern"])
-		required_macros = [macro.lower() for macro in rule["required_macros"]]
-		if re.search(pattern, text) is None:
-			continue
-		if any(macro in macros_loaded for macro in required_macros):
-			continue
-		joined_macros = ", ".join(required_macros)
-		issues.append(
-			{
-				"severity": "WARNING",
-				"message": f"{label} used without required macros: {joined_macros}",
-			},
-		)
-	return issues
-
-
-#============================================
-
-
-def extract_blank_variables(text: str) -> list[str]:
-	"""
-	Extract variable names referenced in PGML blanks.
-	"""
-	blank_pattern = re.compile(r"\[[^\]]*\]\s*\{\s*\$([A-Za-z_][A-Za-z0-9_]*)\s*\}")
-	return blank_pattern.findall(text)
-
-
-#============================================
-
-
-def check_blank_assignments(text: str) -> list[dict[str, str]]:
-	"""
-	Warn when PGML blanks reference variables that are not assigned in the file.
-	"""
-	issues: list[dict[str, str]] = []
-	variables = sorted(set(extract_blank_variables(text)))
-	if not variables:
-		return issues
-	for name in variables:
-		assign_pattern = re.compile(rf"\b(?:my|our)?\s*\${name}\b\s*=")
-		if assign_pattern.search(text):
-			continue
-		issues.append(
-			{
-				"severity": "WARNING",
-				"message": f"PGML blank references ${name} without assignment in file",
-			},
-		)
-	return issues
-
-
-#============================================
-
-
-def validate_text(
-	text: str,
-	block_rules: list[dict[str, str]],
-	macro_rules: list[dict[str, object]],
-) -> list[dict[str, str]]:
-	"""
-	Validate text and return a list of issue dicts.
-	"""
-	issues: list[dict[str, str]] = []
-	issues.extend(check_block_pairs(text, block_rules))
-
-	macros_loaded = extract_loaded_macros(text)
-	should_check_macros = has_loadmacros(text) or re.search(r"\bDOCUMENT\s*\(\s*\)", text)
-	if should_check_macros is True:
-		issues.extend(check_macro_rules(text, macros_loaded, macro_rules))
-	issues.extend(check_blank_assignments(text))
-	return issues
-
-
-#============================================
-
-
-def validate_file(
-	file_path: str,
-	block_rules: list[dict[str, str]],
-	macro_rules: list[dict[str, object]],
-) -> list[dict[str, str]]:
-	"""
-	Validate a single file and return a list of issue dicts.
-	"""
-	with open(file_path, "r", encoding="utf-8") as handle:
-		text = handle.read()
-	return validate_text(text, block_rules, macro_rules)
+	for plugin in registry.list_plugins():
+		plugin_id = str(plugin.get("id"))
+		plugin_name = str(plugin.get("name"))
+		default_flag = "default" if plugin.get("default_enabled") is True else "optional"
+		print(f"{plugin_id}: {plugin_name} ({default_flag})")
 
 
 #============================================
@@ -344,31 +216,72 @@ def main() -> None:
 	Run the lint checker.
 	"""
 	args = parse_args()
-	block_rules, macro_rules = load_rules(args.rules_file)
+	block_rules, macro_rules = pgml_lint.rules.load_rules(args.rules_file)
+	registry = pgml_lint.registry.build_registry()
 
-	issues: list[dict[str, str]] = []
+	for plugin_path in args.plugin_paths:
+		registry.load_plugin_path(plugin_path)
+
+	if args.list_plugins:
+		list_plugins(registry)
+		return
+
+	only_ids = _split_csv(args.only_plugins)
+	enable_ids = _split_csv(args.enable_plugins)
+	disable_ids = _split_csv(args.disable_plugins)
+	plugins = registry.resolve_plugins(only_ids, enable_ids, disable_ids)
+
+	issues: list[dict[str, object]] = []
+	files_checked: list[str] = []
+
 	if args.input_file:
-		issues = validate_file(args.input_file, block_rules, macro_rules)
-		for issue in issues:
-			print(f"{args.input_file}: {issue['severity']}: {issue['message']}")
+		files_checked.append(args.input_file)
+		file_issues = pgml_lint.engine.lint_file(
+			args.input_file,
+			block_rules,
+			macro_rules,
+			plugins,
+		)
+		issues.extend(file_issues)
+		if not args.json_output:
+			for issue in file_issues:
+				print(pgml_lint.core.format_issue(args.input_file, issue, args.show_plugin))
 	else:
 		extensions = normalize_extensions(args.extensions)
 		files_to_check = find_files(args.input_dir, extensions)
+		files_checked.extend(files_to_check)
 		for file_path in files_to_check:
-			file_issues = validate_file(file_path, block_rules, macro_rules)
-			for issue in file_issues:
-				print(f"{file_path}: {issue['severity']}: {issue['message']}")
+			file_issues = pgml_lint.engine.lint_file(
+				file_path,
+				block_rules,
+				macro_rules,
+				plugins,
+			)
 			issues.extend(file_issues)
+			if not args.json_output:
+				for issue in file_issues:
+					print(pgml_lint.core.format_issue(file_path, issue, args.show_plugin))
 
-	error_count = len([issue for issue in issues if issue["severity"] == "ERROR"])
-	warn_count = len([issue for issue in issues if issue["severity"] != "ERROR"])
-	if issues:
-		print(f"Found {error_count} errors and {warn_count} warnings.")
+	error_count, warn_count = pgml_lint.core.summarize_issues(issues)
+
+	if args.json_output:
+		plugin_ids = [str(plugin.get("id")) for plugin in plugins]
+		summary = {
+			"files_checked": len(files_checked),
+			"errors": error_count,
+			"warnings": warn_count,
+			"plugins": plugin_ids,
+			"issues": issues,
+		}
+		print(json.dumps(summary, indent=2))
+	else:
+		if issues:
+			print(f"Found {error_count} errors and {warn_count} warnings.")
 
 	if error_count > 0:
-		sys.exit(1)
+		raise SystemExit(1)
 	if args.fail_on_warn and warn_count > 0:
-		sys.exit(1)
+		raise SystemExit(1)
 
 
 if __name__ == "__main__":
