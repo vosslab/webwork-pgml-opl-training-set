@@ -196,7 +196,7 @@ Click on those two points, you can see they are [`(0,[$b])`] and [`([$xInt],0)`]
 
 You should see a graph similar to this:
 
->>[@ image( insertGraph($gr), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$alt' title = '$alt'"  )@]*<<
+>>[@ image( insertGraph($gr), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$alt' title = '$alt'"  )@]*<<
 
 END_PGML_SOLUTION
 

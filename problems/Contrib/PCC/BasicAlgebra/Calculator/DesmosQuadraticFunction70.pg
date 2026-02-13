@@ -157,7 +157,7 @@ Step 2: In the first textbox, enter [` f(x)=[$func] `].
 
 Step 3: It's hard to see the function's critical points (intercepts and vertex) unless zooming out multiple times. Alternatively, click on the Graph Settings icon (looking like a wrench) on the top right and define the ranges of [`x`]-axis and [`y`]-axis. Only use the following recommended settings if you are stuck: xmin=[`[$min[0]]`], xmax=[`[$max[0]]`], ymin=[`[$min[1]]`], ymax=[`[$max[1]]`].
 
->>[@ image( insertGraph($gr), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$alt' title = '$alt'"  )@]*<<
+>>[@ image( insertGraph($gr), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$alt' title = '$alt'"  )@]*<<
 
 ###Question 1
 

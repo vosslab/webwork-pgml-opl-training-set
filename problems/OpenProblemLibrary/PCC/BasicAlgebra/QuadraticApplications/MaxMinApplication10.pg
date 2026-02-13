@@ -163,7 +163,7 @@ So these two numbers are [`[$xVertex]`] and [`[$secondNum]`]. The minimum produc
 
 The following graph of [`f`] illustrates our findings.
 
->>[@ image( insertGraph($gr), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>'alt = "$alt" title = "$alt"'  )@]*<<
+>>[@ image( insertGraph($gr), width=>400, height=>400, tex_size=>300, extra_html_tags=>'alt = "$alt" title = "$alt"'  )@]*<<
 END_PGML_SOLUTION
 
 ENDDOCUMENT();

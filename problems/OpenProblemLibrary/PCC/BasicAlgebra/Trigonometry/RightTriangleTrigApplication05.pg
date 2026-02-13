@@ -203,7 +203,7 @@ BEGIN_PGML_SOLUTION
 Assume the difference of those two towns' elevation is [`x`] km. The following graph can represent this situation:
 
 
->>[@image(insertGraph($picture), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$text' title = '$text'") @]*<<
+>>[@image(insertGraph($picture), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$text' title = '$text'") @]*<<
 
 This has become a right triangle trigonometry problem.
 

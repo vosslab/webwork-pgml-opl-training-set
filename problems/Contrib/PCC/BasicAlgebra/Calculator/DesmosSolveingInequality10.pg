@@ -163,7 +163,7 @@ Step 4: Zoom out on the window until you can see the intersections of those two 
 
 You should see a screen similar to the following, with [`f(x)=[$func1]`] and [`g(x)=[$func2]`]:
 
->>[@image(insertGraph($gr[0]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT0' title = '$ALT0'") @]*<<
+>>[@image(insertGraph($gr[0]), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$ALT0' title = '$ALT0'") @]*<<
 
 
 We need to find those two intersections.

@@ -9,6 +9,8 @@ batch_renderer_lint.py by removing non-essential display helper calls:
   - KeyboardInstructions(...)     -- keyboard input tips
   - EnlargeImageStatementPGML()   -- "click to enlarge" text
   - numberWord(expr)              -- replaced with just expr (numeric value)
+  - xScreen()/yScreen()           -- replaced with 400 (default pixel size)
+  - TeXscalar()                   -- replaced with 300 (default TeX size)
 
 Also removes the "AnswerFormatHelp.pl" macro load line when present.
 
@@ -42,6 +44,10 @@ ENLARGE_IMAGE_RE = re.compile(
 NUMBER_WORD_RE = re.compile(
 	r"numberWord\(([^,)]+)(?:,[^)]*?)?\)"
 )
+# xScreen(), yScreen(), TeXscalar() -- PCCgraphMacros.pl screen-size helpers
+XSCREEN_RE = re.compile(r"xScreen\(\)")
+YSCREEN_RE = re.compile(r"yScreen\(\)")
+TEXSCALAR_RE = re.compile(r"TeXscalar\(\)")
 # Macro load line: "AnswerFormatHelp.pl" with optional trailing comma
 MACRO_LOAD_RE = re.compile(
 	r'^\s*"AnswerFormatHelp\.pl"\s*,?\s*$'
@@ -139,6 +145,7 @@ def fix_file(path: str) -> dict:
 		"keyboard_instructions_call": 0,
 		"enlarge_image_call": 0,
 		"number_word_call": 0,
+		"screen_size_call": 0,
 		"answer_format_help_macro": 0,
 	}
 	for line in lines:
@@ -171,6 +178,14 @@ def fix_file(path: str) -> dict:
 			new_line = NUMBER_WORD_RE.sub(r"\1", modified_line)
 			if new_line != modified_line:
 				counts["number_word_call"] += 1
+				modified_line = new_line
+		# Replace xScreen()/yScreen()/TeXscalar() with fixed pixel values
+		if "xScreen" in modified_line or "yScreen" in modified_line or "TeXscalar" in modified_line:
+			new_line = XSCREEN_RE.sub("400", modified_line)
+			new_line = YSCREEN_RE.sub("400", new_line)
+			new_line = TEXSCALAR_RE.sub("300", new_line)
+			if new_line != modified_line:
+				counts["screen_size_call"] += 1
 				modified_line = new_line
 		# Strip trailing whitespace from modified lines
 		if modified_line != line:
@@ -213,6 +228,7 @@ def main() -> None:
 		"keyboard_instructions_call": 0,
 		"enlarge_image_call": 0,
 		"number_word_call": 0,
+		"screen_size_call": 0,
 		"answer_format_help_macro": 0,
 	}
 	for path in pg_files:

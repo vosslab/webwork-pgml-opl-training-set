@@ -210,7 +210,7 @@ if ($b2 == 0) {
 BEGIN_PGML_SOLUTION
 
 
->>[@image(insertGraph($gr[0]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT' title = '$ALT'") @]*<<
+>>[@image(insertGraph($gr[0]), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$ALT' title = '$ALT'") @]*<<
 
 ###Question 1
 

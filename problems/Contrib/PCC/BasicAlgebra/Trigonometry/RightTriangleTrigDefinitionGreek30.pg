@@ -117,7 +117,7 @@ TEXT(beginproblem());
 BEGIN_PGML
 
 
->>[@image(insertGraph($picture), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$text' title = '$text'") @]*<<
+>>[@image(insertGraph($picture), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$text' title = '$text'") @]*<<
 
 
 Based on the given figure, find the following values of trigonometric functions. Note that in the graph, "alpha" stands for [`\alpha`], and "beta" stands for [`\beta`].

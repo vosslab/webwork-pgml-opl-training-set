@@ -140,7 +140,7 @@ If you cannot see where those two functions intersect, adjust the Zoom setting:
 
 You should see a screen similar to the following, with [`y1=[$func1]`] and [`y2=[$func2]`]:
 
->>[@image(insertGraph($gr[0]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT0' title = '$ALT0'") @]*<<
+>>[@image(insertGraph($gr[0]), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$ALT0' title = '$ALT0'") @]*<<
 
 
 We need to find those two intersections.

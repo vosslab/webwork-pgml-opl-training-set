@@ -210,7 +210,7 @@ Continue to zoom out until you can see the parabola's two [`x`]-intercepts, [`y`
 
 In case you are stuck, you could click on the wrench icon on the top right (Graph Settings) and set the range for [`x`] to [`[$min[0]],[$max[0]]`] and the range for [`y`] to [`[$min[1]],[$max[1]]`]. You should see a graph similar to this:
 
->>[@ image( insertGraph($gr), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$alt' title = '$alt'"  )@]*<<
+>>[@ image( insertGraph($gr), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$alt' title = '$alt'"  )@]*<<
 
 END_PGML_SOLUTION
 

@@ -135,7 +135,7 @@ The graphs of two functions, [`f`] and [`g`] are shown below.
 
 
 
->>[@image(insertGraph($gr[0]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT0' title = '$ALT0'") @]*<<
+>>[@image(insertGraph($gr[0]), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$ALT0' title = '$ALT0'") @]*<<
 
 Use interval notation in your answers. Use *inf* to represent infinity.
 
@@ -159,7 +159,7 @@ The question [` f(x) \ge g(x) `] is asking: For what [`x`] values, are function 
 
 In this graph, only the part(s) satisfying [` f(x) \ge g(x) `] are graphed:
 
->>[@image(insertGraph($gr[1]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT1' title = '$ALT1'") @]*<<
+>>[@image(insertGraph($gr[1]), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$ALT1' title = '$ALT1'") @]*<<
 
 The corresponding [`x`] values of the graphed part(s) are in [`[$ans1]`]. In other words, to satisfy [` f(x) \ge g(x) `], the [`x`] values need to be in [`[$ans1]`].
 

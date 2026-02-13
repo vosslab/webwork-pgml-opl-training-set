@@ -184,7 +184,7 @@ The graph of function [`f(x)`] is shown below.
 
 
 
->>[@image(insertGraph($gr[0]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT0' title = '$ALT0'") @]*<<
+>>[@image(insertGraph($gr[0]), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$ALT0' title = '$ALT0'") @]*<<
 
 Based on the given graph of [`f(x)`], fill in the blanks.
 

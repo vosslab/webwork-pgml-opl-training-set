@@ -106,7 +106,7 @@ BEGIN_PGML
 A function's graph is shown below. A few points are highlighted for your reference.
 
 
->>[@image(insertGraph($gr[0]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT' title = '$ALT'") @]*<<
+>>[@image(insertGraph($gr[0]), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$ALT' title = '$ALT'") @]*<<
 
 
 The function is increasing in the interval [_____________________]{$ansInc}.

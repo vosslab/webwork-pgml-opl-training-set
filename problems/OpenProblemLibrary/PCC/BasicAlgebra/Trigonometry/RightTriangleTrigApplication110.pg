@@ -209,7 +209,7 @@ BEGIN_PGML_SOLUTION
 Assume the horizontal distance between the airplane and the airport is [`x`] km. The following graph can represent this situation:
 
 
->>[@image(insertGraph($picture), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$text' title = '$text'") @]*<<
+>>[@image(insertGraph($picture), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$text' title = '$text'") @]*<<
 
 Note that the horizontal line must be drawn, because the angle of depression is defined as the degree between a direction and the horizontal line. By the property of parallel lines, the acute angle at the airport end of the right triangle has the same measure as the angle of depression.
 

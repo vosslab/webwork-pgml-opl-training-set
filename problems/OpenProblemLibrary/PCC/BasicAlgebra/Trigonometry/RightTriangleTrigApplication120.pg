@@ -229,7 +229,7 @@ BEGIN_PGML_SOLUTION
 Assume the storey is [`x`] feet. The following graph can represent this situation:
 
 
->>[@image(insertGraph($picture), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$text' title = '$text'") @]*<<
+>>[@image(insertGraph($picture), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$text' title = '$text'") @]*<<
 
 We need to find AC's length, and then BC's length. Then, we can do [`x=AC-BC`] to find the value of [`x`].
 

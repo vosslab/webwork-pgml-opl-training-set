@@ -234,7 +234,7 @@ and the higher price is [`[$ans2C]`] dollars per painting.
 
 The following graph shows the points representing the solutions above:
 
->>[@ image( insertGraph($gr), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$alt' title = '$alt'"  )@]*<<
+>>[@ image( insertGraph($gr), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$alt' title = '$alt'"  )@]*<<
 
 END_PGML_SOLUTION
 

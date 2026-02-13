@@ -132,7 +132,7 @@ BEGIN_PGML
 A function's graph is shown below.
 
 
->>[@image(insertGraph($gr[0]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT' title = '$ALT'") @]*<<
+>>[@image(insertGraph($gr[0]), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$ALT' title = '$ALT'") @]*<<
 
 Use interval notation or set notation to answer the following questions.
 

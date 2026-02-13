@@ -258,7 +258,7 @@ This result shows that the object was [`[$h2U]`] high twice during its flight: o
 
 It's important to understand the role of each part of this question in the graph of [`f`].
 
->>[@ image( insertGraph($gr), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$alt' title = '$alt'"  )@]*<<
+>>[@ image( insertGraph($gr), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$alt' title = '$alt'"  )@]*<<
 
 END_PGML_SOLUTION
 

@@ -120,7 +120,7 @@ Locate each point in the graph:
 
 [@EnlargeImageStatementPGML@]**
 
-    [@ image( insertGraph($gr), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$alt' title = '$alt'"  ) @]*
+    [@ image( insertGraph($gr), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$alt' title = '$alt'"  ) @]*
 
 Write each point's position as an ordered pair, like [`(1,2)`].
 

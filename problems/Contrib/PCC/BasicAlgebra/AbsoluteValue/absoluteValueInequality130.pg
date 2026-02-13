@@ -154,7 +154,7 @@ For Casio ClassPad 300, as you look at the graph, tap Zoom, Quick Standard. This
 
 You should see a graph similar to this one:
 
->>[@image(insertGraph($gr[0]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT' title = '$ALT' ") @]*<<
+>>[@image(insertGraph($gr[0]), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$ALT' title = '$ALT' ") @]*<<
 
 To find the interval(s) where [`[$func1]`] is [$symbolWord] [`[$func2]`], we need to locate the intersections of these two functions.
 

@@ -119,7 +119,7 @@ The graph of a function [`f`] is shown below.
 
 
 
->>[@image(insertGraph($gr[0]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT0' title = '$ALT0'") @]*<<
+>>[@image(insertGraph($gr[0]), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$ALT0' title = '$ALT0'") @]*<<
 
 Use interval notation in your answers. Use *inf* to represent infinity.
 
@@ -143,7 +143,7 @@ The question [` f(x) \gt [$p1y] `] is asking: For what [`x`] values, are functio
 
 In this function's graph, the [$color2] part(s)'s [`y`] values are greater than [`[$p1y]`]:
 
->>[@image(insertGraph($gr[1]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT1' title = '$ALT1'") @]*<<
+>>[@image(insertGraph($gr[1]), width=>400, height=>400, tex_size=>300, extra_html_tags=>"alt = '$ALT1' title = '$ALT1'") @]*<<
 
 The corresponding [`x`] values of the [$color2] part(s) are in [`[$ans1]`]. In other words, to satisfy [` f(x) \gt [$p1y] `], function [`f`]'s [`x`] values need to be in [`[$ans1]`].
 
