@@ -18,7 +18,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl"
 );
@@ -36,7 +35,7 @@ BEGIN_PGML
 
 Evaluate the following definite integral. Enter an exact value.
 
-[``\displaystyle  \int_{\pi/3}^{\pi/4}([$a] \cot(x) - [$b]) \, dx =``][_______________________________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+[``\displaystyle  \int_{\pi/3}^{\pi/4}([$a] \cot(x) - [$b]) \, dx =``][_______________________________]{$ans}
 
 
 END_PGML

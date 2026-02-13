@@ -45,7 +45,7 @@ $answer = Formula("{$ans1,$ans2}");
 
 BEGIN_PGML
 
-Solve the equation [`\left\lvert [$a] x ? {[$b]}\right\rvert =[$c] `]. [@KeyboardInstructions('If there is more than one solution, enter the solutions as a comma-separated list.')@]**
+Solve the equation [`\left\lvert [$a] x ? {[$b]}\right\rvert =[$c] `].
 
 [__]{$answer}{width=>20}
 END_PGML

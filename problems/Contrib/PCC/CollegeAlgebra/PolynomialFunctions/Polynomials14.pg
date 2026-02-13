@@ -69,7 +69,6 @@ BEGIN_PGML
 
 The curve below is the graph of a degree four polynomial.  It passes through the point [`(5, [$val])`]. You should assume that any coordinates on the graph that appear to be integers actually are integers.
 
-[@EnlargeImageStatementPGML()@]**
 
 >> [@image(insertGraph($graph), width=>400, height=>400) @]* <<
 

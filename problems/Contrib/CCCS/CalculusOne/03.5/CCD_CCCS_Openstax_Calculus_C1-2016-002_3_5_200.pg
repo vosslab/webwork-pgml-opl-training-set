@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -71,7 +70,7 @@ A mass on a spring bounces up and down in simple harmonic motion, modeled by the
 
 Find the rate at which the spring is oscillating at [` t = [$b] `] seconds.  
 
-`v([$b])=`[_______________]{$sp_b} in/s. [@ AnswerFormatHelp("numbers") @]*
+`v([$b])=`[_______________]{$sp_b} in/s.
 
 END_PGML
 

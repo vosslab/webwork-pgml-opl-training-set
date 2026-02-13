@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -47,7 +46,7 @@ Use the definition of logarithms to completely simplify.
 
 [`\log_{[$b]}\left(\sqrt{[$b]}\right)`] 
 
-[_______________]{"1/2"} [@ AnswerFormatHelp("numbers") @]*
+[_______________]{"1/2"}
 
 END_PGML
 

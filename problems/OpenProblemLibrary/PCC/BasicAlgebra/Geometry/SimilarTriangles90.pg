@@ -321,7 +321,6 @@ The following two triangles are similar to each other. Find the length of the mi
 
 >>[@ image(insertGraph( $picture  ), tex_size=>400, height=>$pixelsy, width=>$pixelsx, extra_html_tags => "alt = '$text' title = '$text' ") @]*<<
 
-[@KeyboardInstructions(q!Use [|ft|]* for feet.!)@]**
 
 The first missing side's length is [`x=`][__________]{$ans0U}.
 

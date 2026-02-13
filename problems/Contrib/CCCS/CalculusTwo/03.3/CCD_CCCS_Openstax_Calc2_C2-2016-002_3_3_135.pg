@@ -22,7 +22,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
   "answerHints.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserFormulaUpToConstant.pl",
@@ -67,12 +66,12 @@ BEGIN_PGML
 Integrate the following using the method of trigonometric substitution. 
 Express the final answer in terms of the original variable.
 
-a. [``\int [$f] dx=``][________________________________]{$ans1}[@ AnswerFormatHelp("formulas") @]*
+a. [``\int [$f] dx=``][________________________________]{$ans1}
 
 b. [``\int [$fa] dx=``][________________________________]{$ans2->cmp( checker => sub {
     my ( $correct, $student, $self ) = @_;
     return ($correct == $student || $ans3 == $student);
-}), }(for [`a`] being any real number) [@ AnswerFormatHelp("formulas") @]*
+}), }(for [`a`] being any real number)
 
 Use a capital C for any needed constant in your answer
 

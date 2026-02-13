@@ -49,7 +49,6 @@ $answer = Union("(-infinity,$e2]U[$e1,infinity)");
 BEGIN_PGML
 Solve the inequality. 
 
-[@KeyboardInstructions('Enter the answer in interval notation. If you need to use the [`\infty`] symbol, type [|INF|]*. If you need to use the union symbol [`\cup`], type [|U|]*.')@]**
 
 >>[`` [$d] - \left\lvert[$a]x + [$b]\right\rvert \leq [$c]  ``]<<
 

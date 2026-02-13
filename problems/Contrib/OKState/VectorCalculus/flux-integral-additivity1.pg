@@ -19,7 +19,6 @@ DOCUMENT();
 loadMacros(
  "PGstandard.pl",
  "MathObjects.pl",
- "AnswerFormatHelp.pl",
  "PGML.pl",
  "PGcourse.pl",
 );
@@ -41,7 +40,6 @@ and
 Then
 
 [``\iint_S \vec{F} \cdot \hat{n} \, dS = ``][_________________]{"$a+$b"}
-[@ AnswerFormatHelp("numbers") @]*
 END_PGML
 
 ###########################

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -55,9 +54,9 @@ BEGIN_PGML
 Find the center and radius of the following circle. Enter the center as an ordered pair. 
 >>[`` [$f]=[$r2] ``]<<
 
-+ center:  [______]{$cen} [@ AnswerFormatHelp("points") @]*
++ center:  [______]{$cen}
 
-+ radius:   [___]{$r} [@ AnswerFormatHelp("numbers") @]*
++ radius:   [___]{$r}
 
 END_PGML
 

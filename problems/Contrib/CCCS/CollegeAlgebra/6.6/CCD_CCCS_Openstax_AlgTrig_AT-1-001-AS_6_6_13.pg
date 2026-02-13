@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -58,7 +57,7 @@ If you find more than one solution, enter the answers as a comma-separated list.
 
 [` e^{r + {[$u]}} - {[$v]} = - {[$w]} `]  
 
-[_______________]{$x1} [@ AnswerFormatHelp("numbers") @]*
+[_______________]{$x1}
 
 END_PGML
 

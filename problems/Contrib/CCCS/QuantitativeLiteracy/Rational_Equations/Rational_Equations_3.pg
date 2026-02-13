@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -58,7 +57,7 @@ Solve the rational equation.  Enter the answer as a reduced fraction. If there i
 [`\dfrac{[$a]}{x^2} + \dfrac{[$c]}{[$b]x} + \dfrac{[$d]}{[$e]x} = 0`]
 
 
-[`x`] = [_________________]{$ans2} [@ AnswerFormatHelp("numbers") @]*
+[`x`] = [_________________]{$ans2}
 
 
 END_PGML

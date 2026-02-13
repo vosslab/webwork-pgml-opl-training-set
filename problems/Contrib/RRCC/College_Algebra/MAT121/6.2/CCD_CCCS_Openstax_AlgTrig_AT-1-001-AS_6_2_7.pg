@@ -25,7 +25,6 @@ loadMacros(
 "PGchoicemacros.pl",
 "contextLimitedPoint.pl",
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
   "contextInequalitySetBuilder.pl",
 "PGML.pl",
 "niceTables.pl",
@@ -67,13 +66,13 @@ BEGIN_PGML
 
 The graph of [`f(x)=[$fun]`] is reflected across the [`x`]-axis, shifted downward [$a] units, and then shifted left [$b] units.  
 
-Let [`g(x)`] represent the new function.  What is an equation for this function?  [`g(x)`] = [_________________]{$ans1} [@ AnswerFormatHelp("formula") @]*
+Let [`g(x)`] represent the new function.  What is an equation for this function?  [`g(x)`] = [_________________]{$ans1}
 
-What is the y-intercept of [`g(x)`]?  Enter the answer as an ordered pair. [_________________]{$ans2} [@ AnswerFormatHelp("points") @]*
+What is the y-intercept of [`g(x)`]?  Enter the answer as an ordered pair. [_________________]{$ans2}
 
-What is the domain of [`g(x)`]? Enter the answer as an interval. [_________________]{$ans3} [@ AnswerFormatHelp("intervals") @]*
+What is the domain of [`g(x)`]? Enter the answer as an interval. [_________________]{$ans3}
 
-What is the range of [`g(x)`]? Enter the answer as an interval. [_________________]{$ans4} [@ AnswerFormatHelp("intervals") @]*
+What is the range of [`g(x)`]? Enter the answer as an interval. [_________________]{$ans4}
 
 END_PGML
 

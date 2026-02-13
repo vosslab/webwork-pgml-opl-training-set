@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -59,12 +58,12 @@ BEGIN_PGML
 (a) Find the average value, [`f_{ave}`], of [`f(x)=[$f]`] between [$a] and [$b].
 
 
-[``f_{ave}=``][____________________]{$ans1 } [@ AnswerFormatHelp("numbers") @]*
+[``f_{ave}=``][____________________]{$ans1 }
 
 
 (b) Find the point(s), [`c`], where [`f(c)=f_{ave}`].
 
-[``c=``][____________________]{$ans2 } [@ AnswerFormatHelp("numbers") @]*
+[``c=``][____________________]{$ans2 }
 
 
 END_PGML

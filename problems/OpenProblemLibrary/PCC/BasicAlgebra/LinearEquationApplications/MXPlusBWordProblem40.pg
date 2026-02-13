@@ -92,7 +92,7 @@ Next, we solve for [`x`]:
 \end{aligned}
 `]
 
-So [@numberWord($ans)@]* people used the face-painter's service.
+So [@$ans@]* people used the face-painter's service.
 
 END_PGML_SOLUTION
 

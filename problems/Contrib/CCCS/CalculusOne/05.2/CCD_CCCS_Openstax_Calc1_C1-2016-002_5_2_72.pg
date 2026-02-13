@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGchoicemacros.pl",,
@@ -83,7 +82,7 @@ and circles, and subtracting the areas below the x-axis.
 
 
 
-[`` \int_{0}^{[$c]} f(x) dx=``][_______________]{$ans }[@ AnswerFormatHelp("numbers") @]*
+[`` \int_{0}^{[$c]} f(x) dx=``][_______________]{$ans }
 
 
 END_PGML

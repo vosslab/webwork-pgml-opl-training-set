@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -55,9 +54,9 @@ BEGIN_PGML
 
 Determine the domain and range of  [` f(x)=[$f] `]. Enter the solution in interval notation.
 
-+ Domain: [_______________]{$ans1} [@ AnswerFormatHelp("intervals") @]*
++ Domain: [_______________]{$ans1}
 
-+ Range: [_______________]{$ans2} [@ AnswerFormatHelp("intervals") @]*
++ Range: [_______________]{$ans2}
 
 END_PGML
 

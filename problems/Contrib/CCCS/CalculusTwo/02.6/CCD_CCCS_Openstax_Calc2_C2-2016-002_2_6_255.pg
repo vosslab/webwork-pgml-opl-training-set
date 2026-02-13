@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "PGcourse.pl"
@@ -58,7 +57,7 @@ BEGIN_PGML
 Calculate the center of mass, or balancing point, for the collection of single point masses [`m_1 = [$m1]`] at [`x_1 = [$x1]`] and [`m_2 = [$m2]`] at [`x_2 = [$x2]`]. 
 
 
-Center of mass: [_______________]{$ans}  [@ AnswerFormatHelp("numbers") @]*
+Center of mass: [_______________]{$ans}
 
 
 END_PGML

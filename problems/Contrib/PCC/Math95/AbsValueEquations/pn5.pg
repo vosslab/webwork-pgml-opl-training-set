@@ -43,7 +43,6 @@ $ans2=$b/$a-1/($a*$c);
 BEGIN_PGML
 Solve the following equation. 
 
-[@KeyboardInstructions('If there is more than one solution, write them separated by commas.')@]**
 
 >>[`` \frac{1}{\left\lvert[$b]-[$a] x\right\rvert} = [$c] ``]<<
 

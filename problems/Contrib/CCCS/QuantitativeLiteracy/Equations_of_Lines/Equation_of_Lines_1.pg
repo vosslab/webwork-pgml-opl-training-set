@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -66,7 +65,7 @@ Find a linear equation satisfying the following conditions:
 Passes through the points [`([$x1],[$y1])`] and [`([$x2],[$y2])`]
 
 
-[`y = `][____]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`y = `][____]{$ans}
 
   
 END_PGML

@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "AppletObjects.pl",
 "contextFraction.pl",
 "unionTables.pl",
@@ -69,7 +68,7 @@ BEGIN_PGML
 
 Use Gaussian elimination to solve the above system. 
 
-Solution: [_______________]{$ans} [@ AnswerFormatHelp("points") @]*  
+Solution: [_______________]{$ans}
 
 Enter the solution as an ordered pair, [` (a,b) `],
 including the parentheses.

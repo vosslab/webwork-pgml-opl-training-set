@@ -23,7 +23,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "contextFraction.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -62,7 +61,7 @@ Solve the rational equation.  If there is more than one correct answer, enter a 
 
 [`\dfrac{[$a]}{[$b]}+\dfrac{1}{[$a]}=\dfrac{[$c]}{v}`] 
 
-[`v=`] [_________________]{$ans2} [@ AnswerFormatHelp("numbers") @]*
+[`v=`] [_________________]{$ans2}
 
 
 END_PGML

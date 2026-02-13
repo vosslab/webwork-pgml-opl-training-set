@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -58,7 +57,7 @@ BEGIN_PGML
 
 Use the shell method to find the volume generated when the region bounded by the curves [`y=[$f1]`],  [`x=0`], and [`y=[$b]`] and rotated around the [`y`]-axis.
 
-Volume: [_______________]{$ans} units cubed [@ AnswerFormatHelp("numbers") @]*
+Volume: [_______________]{$ans} units cubed
 
 
 END_PGML

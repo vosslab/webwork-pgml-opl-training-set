@@ -201,7 +201,6 @@ BEGIN_PGML_SOLUTION
 
 We will draw a diagram for the garden.
 
-[@EnlargeImageStatementPGML()@]**
 
 >>[@image(insertGraph($picture), width=>240, tex_size=>400, extra_html_tags=>"alt = '$text' title = '$text'") @]*<<
 

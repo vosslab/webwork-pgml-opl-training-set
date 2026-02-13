@@ -44,7 +44,7 @@ $ans->{trueDomain} = Compute("$var[0] != 0 and $var[0] != -$b");
 
 BEGIN_PGML
 
-Simplify this expression, and if applicable, write the restricted domain.  [@KeyboardInstructions("The problem accepts many ways to format the answers here, but one way is like typing [|$var[0]^2 for $var[0]!=1 and $var[0]!=2|]* where [|!=|]* is how to type the [`\\neq`] symbol.")@]**
+Simplify this expression, and if applicable, write the restricted domain.
 
 [``\frac{[$num]}{[$den]}=``] [__]{$ans}{width=>40}
 

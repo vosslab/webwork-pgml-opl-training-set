@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "PGcourse.pl"
@@ -60,7 +59,7 @@ BEGIN_PGML
 A force of [`F=[$f1] N`] stretches a nonlinear spring by [`x`] meters.  What work is required to stretch the spring from [`x=0`] to [`x=[$b] m`]?
 
 
-Work: [_______________]{$ans} Joules  [@ AnswerFormatHelp("numbers") @]*
+Work: [_______________]{$ans} Joules
 
 
 END_PGML

@@ -67,7 +67,7 @@ BEGIN_PGML
 
 Translate the following sentence into a math equation. Use [`x`] to represent the unknown number.
 
-    The quotient of [@numberWord($a)@] and a number is [@numberWord($bperl,denominator=>$bdenom)@].
+    The quotient of [@$a@] and a number is [@$bperl@].
 
     [_______________]{$ans->cmp(cmp_class=>'an equation')} 
 
@@ -81,7 +81,7 @@ BEGIN_PGML_SOLUTION
 
 The word 'is' implies equality. So we have 
 
-    The quotient of [@numberWord($a)@] and a number [`=`] [@numberWord($bperl,denominator=>$bdenom)@].
+    The quotient of [@$a@] and a number [`=`] [@$bperl@].
 
 The word 'quotient' implies division, and also that the division be the first number divided by the second. So the equation we want is
 

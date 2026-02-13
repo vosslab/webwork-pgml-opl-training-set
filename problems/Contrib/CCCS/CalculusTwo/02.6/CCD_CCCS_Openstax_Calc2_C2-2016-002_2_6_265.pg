@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "PGcourse.pl"
@@ -62,9 +61,9 @@ BEGIN_PGML
 
 Evaluate the mass and then set up an integral that would find the center of mass, [`\overline{x}`],  of a thin wire that lies on the [`x`] axis for [`x \in (0, [$b])`] when the density function is [`\rho(x) = [$rho]`].
 
-Mass [`=`][________________]{$m}  [@ AnswerFormatHelp("numbers") @]*
+Mass [`=`][________________]{$m}
 
-[`\overline{x}= \displaystyle  \int_0^{[$b]}`] [_______________]{$integrand} [`dx`]  [@ AnswerFormatHelp("formulas") @]*
+[`\overline{x}= \displaystyle  \int_0^{[$b]}`] [_______________]{$integrand} [`dx`]
 
 
 END_PGML

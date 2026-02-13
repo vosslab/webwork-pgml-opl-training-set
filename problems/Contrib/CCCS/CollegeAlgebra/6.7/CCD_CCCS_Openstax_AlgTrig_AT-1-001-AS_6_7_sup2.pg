@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "scaffold.pl",
@@ -70,7 +69,7 @@ BEGIN_PGML
 
 Write the exponential function representing this scenario modeled as a continuous growth model.
 
- [`P(t) = `][_______________]{$f}  [@ AnswerFormatHelp("formulas") @]*
+ [`P(t) = `][_______________]{$f}
 
 END_PGML
 ############################
@@ -110,7 +109,7 @@ BEGIN_PGML
 
 How long will it take for the city to reach a population of [`[$c]`]? Round to the nearest whole year.
 
- [_______________]{$time} years.  [@ AnswerFormatHelp("numbers") @]*
+ [_______________]{$time} years.
 
 END_PGML
 

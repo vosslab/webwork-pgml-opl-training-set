@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -42,7 +41,7 @@ Context()->variables->add(a => 'Real', b => 'Real', c=> 'Real');
 BEGIN_PGML
 Condense the left-hand side into a single logarithm.  
 
->>[`\log(a)-\log(b)-\log(c)`] = [`\log(`][_______________]{"a/(bc)"}[`)`]  [@ AnswerFormatHelp("formulas") @]*<<
+>>[`\log(a)-\log(b)-\log(c)`] = [`\log(`][_______________]{"a/(bc)"}[`)`]  <<
 
 
 END_PGML

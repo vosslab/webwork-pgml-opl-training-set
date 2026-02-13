@@ -87,7 +87,6 @@ BEGIN_PGML
 
 Below is the graph of [`f`] where [`f(x)=[$A](b)^x`].  What is the slope of the straight line segment connecting [`P`] to [`Q`]?  Your answer will be in terms of [`b`].
 
-[@EnlargeImageStatementPGML()@]**
 
 >> [@ image( insertGraph($gr), width=>400, 
     height=>400, tex_size=>800 ) @]* <<

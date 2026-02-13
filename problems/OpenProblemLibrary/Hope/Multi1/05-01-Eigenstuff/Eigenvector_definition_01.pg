@@ -20,7 +20,6 @@ loadMacros(
   "PGgraphmacros.pl",
   "contextLimitedVector.pl",
   "MatrixUnits.pl",
-  "AnswerFormatHelp.pl",
   "PGchoicemacros.pl",
   "parserPopUp.pl",
   "PGML.pl",

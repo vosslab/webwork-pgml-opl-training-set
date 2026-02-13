@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGauxiliaryFunctions.pl",
@@ -63,7 +62,7 @@ Find the Maclaurin series of [` \displaystyle f(x)=[$f] `].
 Hint:  Power reducing identity `\ \sin^2x = \frac{1}{2}-\frac{1}{2}\cos(2x) \`
 
 
-The Maclaurin series of `f(x)` is `-\sum_{n=1}^{infty}\`[_______________________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+The Maclaurin series of `f(x)` is `-\sum_{n=1}^{infty}\`[_______________________________]{$ans}
 END_PGML
 
 } else {
@@ -86,7 +85,7 @@ Find the Maclaurin series of [` \displaystyle f(x)=[$f] `].
 Hint: Power reducing identity `\ \cos^2x = \frac{1}{2}+\frac{1}{2}\cos(2x) \`
 
 
-The Maclaurin series of `f(x)` is `1+\sum_{n=1}^{infty}\` [_______________________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+The Maclaurin series of `f(x)` is `1+\sum_{n=1}^{infty}\` [_______________________________]{$ans}
 END_PGML
 }
 

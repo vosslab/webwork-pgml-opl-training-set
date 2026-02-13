@@ -21,7 +21,6 @@ loadMacros(
   "MathObjects.pl",
   "PGML.pl",
   "PGcourse.pl",
-  "AnswerFormatHelp.pl",
   "PGessaymacros.pl",
 );
 
@@ -79,11 +78,11 @@ TEXT(beginproblem());
 BEGIN_PGML
 Compute the results of each matrix multiplication shown below.
 
-[`[$L3][$R3]=`][_____]*{$L3*$R3} [@ AnswerFormatHelp("matrices") @]*
+[`[$L3][$R3]=`][_____]*{$L3*$R3}
 
-[`[$L4][$R4]=`][_____]*{$L4*$R4} [@ AnswerFormatHelp("matrices") @]*
+[`[$L4][$R4]=`][_____]*{$L4*$R4}
 
-[`[$Lv][$Rv]=`][_____]*{$Lv*$Rv} [@ AnswerFormatHelp("matrices") @]*
+[`[$Lv][$Rv]=`][_____]*{$Lv*$Rv}
 END_PGML
 
 BEGIN_PGML_SOLUTION

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -72,9 +71,9 @@ Find the zeros and give the multiplicity of each for  [`f(x)=[$f]`].
 
 Note: to get the problem correct, you must get all answers correct.
 
-+ One zero is [`x=`][____]{$multians} and its multiplicity is: [____]{$multians} [@ AnswerFormatHelp("numbers") @]*
++ One zero is [`x=`][____]{$multians} and its multiplicity is: [____]{$multians}
 
-+ The other zero is [`x=`][____]{$multians} and its multiplicity is: [____]{$multians} [@ AnswerFormatHelp("numbers") @]*
++ The other zero is [`x=`][____]{$multians} and its multiplicity is: [____]{$multians}
 
 END_PGML
 

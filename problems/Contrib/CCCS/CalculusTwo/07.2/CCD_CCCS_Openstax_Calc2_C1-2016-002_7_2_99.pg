@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -110,7 +109,7 @@ BEGIN_PGML
 
 Determine [`\frac{d^{2}y}{dx^{2}}`] as a function of [`t`].
 
-[`\frac{d^{2}y}{dx^{2}}=`] [_______________]{$d2y_dx2}   [@ AnswerFormatHelp("formulas") @]*
+[`\frac{d^{2}y}{dx^{2}}=`] [_______________]{$d2y_dx2}
 
 END_PGML
 

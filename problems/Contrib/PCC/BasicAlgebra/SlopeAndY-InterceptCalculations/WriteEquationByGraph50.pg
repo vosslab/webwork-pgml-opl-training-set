@@ -124,7 +124,6 @@ BEGIN_PGML
 
 A line's graph is shown. Write an equation for the line. 
 
-[@EnlargeImageStatementPGML()@]*
 
 >>[@image( insertGraph($gr), width=>240, extra_html_tags=>'title="$ALTtext" alt="$ALTtext"'  )@]*<<
 

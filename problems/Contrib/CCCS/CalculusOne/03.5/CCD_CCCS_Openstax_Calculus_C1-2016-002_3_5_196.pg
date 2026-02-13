@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGauxiliaryFunctions.pl",
@@ -52,7 +51,7 @@ BEGIN_PGML
 Given [` \displaystyle f=[$f] `], find `\frac{d^2f}{dx^2}`.
 
 
-`\frac{d^2f}{dx^2}=`[__________________________]{$fpp}  [@ AnswerFormatHelp("formulas") @]*
+`\frac{d^2f}{dx^2}=`[__________________________]{$fpp}
 
 
 END_PGML

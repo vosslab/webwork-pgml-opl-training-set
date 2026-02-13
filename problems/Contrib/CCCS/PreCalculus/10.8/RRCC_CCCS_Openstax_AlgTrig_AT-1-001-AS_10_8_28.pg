@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -47,9 +46,9 @@ if($d>0){$ans2 = Compute("pi/2");}
 BEGIN_PGML
 Find the magnitude and direction of [`\mathbf{u}=[$u]`] where [`0 \leq \theta < 2\pi`].
 
-[` |\mathbf{u}| = `] [_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
+[` |\mathbf{u}| = `] [_______________]{$ans1}
 
-[` \theta = `] [_______________]{$ans2} [@ AnswerFormatHelp("angles") @]*
+[` \theta = `] [_______________]{$ans2}
 
 END_PGML
 ############################

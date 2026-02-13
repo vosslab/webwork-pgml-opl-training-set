@@ -49,9 +49,9 @@ do {
 
 BEGIN_PGML
 
-A [`[$totalYd]`]-yard string will be cut into [@numberWord($eachIn)@]-inch strings. How many [@numberWord($eachIn)@]-inch strings can be made?
+A [`[$totalYd]`]-yard string will be cut into [@$eachIn@]-inch strings. How many [@$eachIn@]-inch strings can be made?
 
-*Solution:* [_________]{$numShort} [@numberWord($eachIn)@]-inch strings can be made.
+*Solution:* [_________]{$numShort} [@$eachIn@]-inch strings can be made.
 
 END_PGML
 
@@ -84,7 +84,7 @@ Now we can do division:
 
     [`` [$totalIn] \text{ in} \div [$eachIn] \text{ in} = [$numShort] \text{ strings} ``]
 
-*Solution:* [`[$numShort]`] [@numberWord($eachIn)@]-inch strings can be made.
+*Solution:* [`[$numShort]`] [@$eachIn@]-inch strings can be made.
 
 END_PGML_SOLUTION
 

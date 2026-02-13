@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextTrigDegrees.pl",
@@ -52,9 +51,9 @@ BEGIN_PGML
 Find the magnitude of the horizontal and vertical components of the vector with magnitude [`[$lb]`] pounds pointed in a direction of [`[$theta]^\circ`]. Round to the nearest hundredth. 
 
 
-a) Horizontal component magnitude:  [_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
+a) Horizontal component magnitude:  [_______________]{$ans1}
 
-b) Vertical component magnitude: [_______________]{$ans2} [@ AnswerFormatHelp("numbers") @]*
+b) Vertical component magnitude: [_______________]{$ans2}
 END_PGML
 ############################
 #  Solution

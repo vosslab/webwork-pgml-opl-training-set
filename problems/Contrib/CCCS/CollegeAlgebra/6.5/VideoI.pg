@@ -25,7 +25,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -56,7 +55,7 @@ BEGIN_PGML
 
 #Video Quiz:
 
-Evaluate [` \log_{2}(64)=`] [_______________]{6} [@ AnswerFormatHelp("formulas") @]*
+Evaluate [` \log_{2}(64)=`] [_______________]{6}
 
 
 

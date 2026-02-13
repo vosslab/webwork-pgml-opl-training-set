@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -61,11 +60,11 @@ if ($n == 1){
       @]*<<
 
 
-     [` \sin(2\theta) = `] [_______________]{$ans_s} [@ AnswerFormatHelp("numbers") @]*
+     [` \sin(2\theta) = `] [_______________]{$ans_s}
 
-     [` \cos(2\theta) = `] [_______________]{$ans_c} [@ AnswerFormatHelp("numbers") @]*   
+     [` \cos(2\theta) = `] [_______________]{$ans_c}
 
-     [` \tan(2\theta) = `] [_______________]{$ans_t} [@ AnswerFormatHelp("numbers") @]*
+     [` \tan(2\theta) = `] [_______________]{$ans_t}
 
     END_PGML
 }
@@ -87,11 +86,11 @@ if ($n == 2){
       @]*<<
 
 
-     [` \sin(2\alpha) = `] [_______________]{$ans_s} [@ AnswerFormatHelp("numbers") @]*
+     [` \sin(2\alpha) = `] [_______________]{$ans_s}
 
-     [` \cos(2\alpha) = `] [_______________]{$ans_c} [@ AnswerFormatHelp("numbers") @]*   
+     [` \cos(2\alpha) = `] [_______________]{$ans_c}
 
-     [` \tan(2\alpha) = `] [_______________]{$ans_t} [@ AnswerFormatHelp("numbers") @]*
+     [` \tan(2\alpha) = `] [_______________]{$ans_t}
 
     END_PGML
 }

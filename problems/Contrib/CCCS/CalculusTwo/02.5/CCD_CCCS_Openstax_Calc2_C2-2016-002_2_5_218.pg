@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "PGcourse.pl"
@@ -60,7 +59,7 @@ BEGIN_PGML
 
 Find the work done when a constant force [`F=[$c]`] pounds (lb) moves a chair from [`x=[$a]`], to [`x=[$b]`] feet (ft). 
 
-Work: [_______________]{$ans} ft-lb  [@ AnswerFormatHelp("numbers") @]*
+Work: [_______________]{$ans} ft-lb
 
 
 END_PGML

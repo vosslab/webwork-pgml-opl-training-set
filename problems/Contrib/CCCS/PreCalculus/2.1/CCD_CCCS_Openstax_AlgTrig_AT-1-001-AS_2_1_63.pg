@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGgraphmacros.pl",
 "PGstandard.pl",
-"AnswerFormatHelp.pl",
 "MathObjects.pl",
 "contextLimitedPoint.pl",
 "PGML.pl",
@@ -58,7 +57,7 @@ A man on top of a building wants to have a wire extended to a point  [`a= [$a] `
 >>[@ image("2_1_63.png", width=>500, height=>500) 
   @]*<<
 
-[_______________]{$ans} ft     [@ AnswerFormatHelp("numbers") @]*
+[_______________]{$ans} ft
 
 
 

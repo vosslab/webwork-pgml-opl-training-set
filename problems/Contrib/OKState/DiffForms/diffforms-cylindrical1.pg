@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
  "PGstandard.pl",
  "MathObjects.pl",
- "AnswerFormatHelp.pl",
  "PGML.pl",
  "PGcourse.pl",
 );
@@ -57,7 +56,6 @@ the variables [`r`], [`\theta`], and [`z`].
 [`\phantom{\omega ={}}`][____________]{"-$a r^3 cos(theta) (sin(theta))^2 + $b r z cos(theta)"}{30}[`d\theta + {}`]  
 [`\phantom{\omega ={}}`][____________]{"$c r sin(theta)"}{30}[`dz`]
 
-[@ AnswerFormatHelp("formulas") @]*
 END_PGML
 
 ENDDOCUMENT();

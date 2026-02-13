@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -82,7 +81,7 @@ Estimate the area below the shown curve on the interval [`[0,12]`] (the shaded r
 
 
 
-[`` L_{[$n]} =``][_______________]{$ans }[@ AnswerFormatHelp("numbers") @]*
+[`` L_{[$n]} =``][_______________]{$ans }
 
 
 END_PGML

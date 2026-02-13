@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -51,7 +50,7 @@ $ans1 = $f->eval(s=>$s1);
 BEGIN_PGML
 The distance [`s`] that an object falls varies directly with the square of the time, [`t`], of the fall. If an object falls [`[$s0]`] feet in one second, how long will it take for it to fall [`[$s1]`] feet? 
 
-[`t=`] [_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
+[`t=`] [_______________]{$ans1}
 
 
 

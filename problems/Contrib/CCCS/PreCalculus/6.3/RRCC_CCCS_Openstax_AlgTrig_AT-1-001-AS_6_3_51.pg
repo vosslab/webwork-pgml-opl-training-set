@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -43,15 +42,15 @@ BEGIN_PGML
 Evaluate the following without using a calculator. Simplify completely.
 
 
-[`\ln(1)=`] [_______________]{"0"} [@ AnswerFormatHelp("numbers") @]*
+[`\ln(1)=`] [_______________]{"0"}
 
-[`\log(1)=`] [_______________]{"0"} [@ AnswerFormatHelp("numbers") @]*
+[`\log(1)=`] [_______________]{"0"}
 
-[`\log_b(1)=`] [_______________]{"0"} [@ AnswerFormatHelp("numbers") @]*
+[`\log_b(1)=`] [_______________]{"0"}
 
-[`\log(10)=`] [_______________]{"1"} [@ AnswerFormatHelp("numbers") @]*
+[`\log(10)=`] [_______________]{"1"}
 
-[`\ln(e)=`] [_______________]{"1"} [@ AnswerFormatHelp("numbers") @]*
+[`\ln(e)=`] [_______________]{"1"}
 
  
 END_PGML

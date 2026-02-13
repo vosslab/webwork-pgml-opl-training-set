@@ -214,7 +214,6 @@ Find the perimeter and area of this shape.
 
     Its perimeter is [_____________]{$perimeterU} and its area is [_____________]{$areaU}. 
 
-[@KeyboardInstructions(q!(Use [|m|]* for meters and [|m^2|]* for square meters.)!)@]**
 
 END_PGML
 

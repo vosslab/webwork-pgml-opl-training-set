@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -57,7 +56,7 @@ Solve the following equation for [`x`]:
 
 [``- \dfrac{[$a]}{[$b]} - \dfrac{[$c]}{[$d]}x = \dfrac{[$e]}{[$d]}``]
 
-[` x = `] [_______________]{$solution} [@ AnswerFormatHelp("numbers") @]*
+[` x = `] [_______________]{$solution}
 
 
 END_PGML
@@ -72,7 +71,7 @@ Solve the following equation for [`x`]:
 
 [``- \dfrac{[$a]}{[$b]} - \dfrac{[$c]}{[$d]}x = -\dfrac{[$e]}{[$d]}``]
 
-[`x=`][_______________]{$solution} [@ AnswerFormatHelp("numbers") @]*
+[`x=`][_______________]{$solution}
 
 
 END_PGML

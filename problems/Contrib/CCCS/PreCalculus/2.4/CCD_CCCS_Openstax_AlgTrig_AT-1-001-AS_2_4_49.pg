@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -50,7 +49,7 @@ $i=Complex(0,1);
 BEGIN_PGML
 Evaluate [`  i^{[$a]} ( 1 + i^{[$b]} ) `] and express the answer as a simplified complex number [`a+bi`]. 
 
- [_______________]{$i**$a * (1 + $i**$b)} [@ AnswerFormatHelp("numbers") @]*
+ [_______________]{$i**$a * (1 + $i**$b)}
 
 END_PGML
 

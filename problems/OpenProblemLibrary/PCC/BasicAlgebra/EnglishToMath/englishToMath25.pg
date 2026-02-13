@@ -54,7 +54,7 @@ BEGIN_PGML
 
 Translate the following phrase into a math expression or equation (whichever is appropriate). Use [`x`] to represent the unknown number.
 
-    the [$operation] [@numberWord($a)@] and a number
+    the [$operation] [@$a@] and a number
 
     [_______]{$ans} 
 

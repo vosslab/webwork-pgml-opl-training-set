@@ -53,7 +53,6 @@ A set is written using set-builder notation. Write it using interval notation.
 
     [`` \{ x \mid{[$left]} [$comp] [$right] \} ``]
 
-[@KeyboardInstructions(q!Please use [|INF|]* to represent [`\infty`].!)@]**
 
     [_____________]{$ans}
 

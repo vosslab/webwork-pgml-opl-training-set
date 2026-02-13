@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -52,7 +51,6 @@ Round your answer to 4 decimal places if necessary.
 
 [`L=`] [_______________]{$l} [`ft`]
 
-[@ AnswerFormatHelp("numbers") @]*
 
 END_PGML
 

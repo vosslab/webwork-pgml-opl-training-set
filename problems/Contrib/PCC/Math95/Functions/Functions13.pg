@@ -107,7 +107,6 @@ $ALT = "a graph of a wave moving up and down as we read it left to right; there 
 BEGIN_PGML
 Use the graph of [`[$fname]`] below to evaluate the given expressions. (Estimates are OK.)
 
-[@EnlargeImageStatementPGML()@]**
 
 >>[@image(insertGraph($gr), width=>240, height=>240, tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT' title = '$ALT'")@]*<<
 

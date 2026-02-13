@@ -22,7 +22,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -64,7 +63,7 @@ Find the slope of the graphed line.
 
 >> [@ image(insertGraph($gr), tex_size=>16000, width=>400, height=>400), @]* <<
 
-The slope is [______]{$slope}  [@ AnswerFormatHelp("numbers") @]*
+The slope is [______]{$slope}
 
 
 END_PGML

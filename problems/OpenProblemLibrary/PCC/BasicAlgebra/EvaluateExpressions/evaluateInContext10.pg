@@ -67,9 +67,9 @@ A formula for converting [$b] into [$a] is
 
     [``[$l] = [$r][$rv]``]
 
-where [`[$rv]`] is a number of [$b], and [`[$l]`] is the corresponding number of [$a]. Use the formula to find the number of [$a] that corresponds to [@numberWord($n)@] [$b].
+where [`[$rv]`] is a number of [$b], and [`[$l]`] is the corresponding number of [$a]. Use the formula to find the number of [$a] that corresponds to [@$n@] [$b].
 
-    [______________]{$ans} [$a] corresponds to [@numberWord($n)@] [$b].
+    [______________]{$ans} [$a] corresponds to [@$n@] [$b].
 
 END_PGML
 
@@ -78,7 +78,7 @@ END_PGML
           
 BEGIN_PGML_SOLUTION
 
-Since we are working with [@numberWord($n)@] [$b], we have that [`[$rv]=[$n]`]. We can substitute this into the formula:
+Since we are working with [@$n@] [$b], we have that [`[$rv]=[$n]`]. We can substitute this into the formula:
 
     [`\begin{aligned}
        [$l] &= [$r][$rv]\\
@@ -86,7 +86,7 @@ Since we are working with [@numberWord($n)@] [$b], we have that [`[$rv]=[$n]`]. 
             &= [$ans]
      \end{aligned}`]
 
-So there are [$ans] [$a] in [@numberWord($n)@] [$b].
+So there are [$ans] [$a] in [@$n@] [$b].
 
 
 END_PGML_SOLUTION

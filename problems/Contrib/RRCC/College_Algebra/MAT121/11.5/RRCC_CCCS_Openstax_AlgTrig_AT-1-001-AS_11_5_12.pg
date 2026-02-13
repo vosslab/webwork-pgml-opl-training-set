@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -53,7 +52,7 @@ Suppose
 
 Perform the scalar multiplication [` [$k]A`].
 
-[` [$k]A = `][_____]*{$answer} [@ AnswerFormatHelp("matrices") @]*
+[` [$k]A = `][_____]*{$answer}
 
 END_PGML
 

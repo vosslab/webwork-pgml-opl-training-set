@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -82,7 +81,7 @@ Rewrite the following equation in logarithmic form.
 
 [`10^{[$var1]}=[$var2] `] 
  
- [____]{$multians} [`=`] [____]{$multians} [@ AnswerFormatHelp("logarithms") @]*
+ [____]{$multians} [`=`] [____]{$multians}
   
 END_PGML
  

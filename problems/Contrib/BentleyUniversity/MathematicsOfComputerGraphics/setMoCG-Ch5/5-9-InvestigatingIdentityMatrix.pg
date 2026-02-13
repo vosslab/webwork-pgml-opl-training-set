@@ -21,7 +21,6 @@ loadMacros(
   "MathObjects.pl",
   "PGML.pl",
   "PGcourse.pl",
-  "AnswerFormatHelp.pl",
   "PGessaymacros.pl",
 );
 
@@ -50,23 +49,23 @@ Let [`I`], [`M`], and [`L`] be the matrices shown below.
 
 Compute [`IM`].
 
-Answer: [_____]*{$M} [@ AnswerFormatHelp("matrices") @]*
+Answer: [_____]*{$M}
 
 Compute [`MI`].
 
-Answer: [_____]*{$M} [@ AnswerFormatHelp("matrices") @]*
+Answer: [_____]*{$M}
 
 Without computing [`IL`] or [`LI`], what do you think they would be?
 
 Answer:
 
-[`IL=`][_____]*{$L} [@ AnswerFormatHelp("matrices") @]*
+[`IL=`][_____]*{$L}
 
-[`LI=`][_____]*{$L} [@ AnswerFormatHelp("matrices") @]*
+[`LI=`][_____]*{$L}
 
 What [`4\times 4`] matrix has the same special behavior as [`I`]?
 
-Answer: [_____]*{$I4} [@ AnswerFormatHelp("matrices") @]*
+Answer: [_____]*{$I4}
 END_PGML
 
 BEGIN_PGML_SOLUTION

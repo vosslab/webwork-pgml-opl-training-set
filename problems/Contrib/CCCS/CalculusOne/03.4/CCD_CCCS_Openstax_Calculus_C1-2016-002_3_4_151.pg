@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl",
   "parserAssignment.pl",
@@ -92,9 +91,9 @@ BEGIN_PGML
 
 Find the velocity and acceleration functions associated with [`s(t)=[$s]`].
 
-`v(t)=`[_______________]{$sp}  [@ AnswerFormatHelp("formulas") @]*
+`v(t)=`[_______________]{$sp}
 
-`a(t)=`[_______________]{$spp} [@ AnswerFormatHelp("formulas") @]*
+`a(t)=`[_______________]{$spp}
 
 END_PGML
 
@@ -116,9 +115,9 @@ BEGIN_PGML
 
 Determine the time intervals when the object is:
 
-speeding up [_______________]{$speedingup} [@ AnswerFormatHelp("intervals") @]*
+speeding up [_______________]{$speedingup}
 
-slowing down [_______________]{$slowingdown} [@ AnswerFormatHelp("intervals") @]*
+slowing down [_______________]{$slowingdown}
 
 Use interval notation to enter answers.
 

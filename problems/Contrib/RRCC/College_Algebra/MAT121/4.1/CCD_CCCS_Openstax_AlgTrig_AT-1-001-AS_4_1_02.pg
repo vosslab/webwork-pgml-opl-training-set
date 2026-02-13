@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -61,7 +60,7 @@ from home.
 
 What is his rate in *miles per hour* (mph)?
 
-[_____]{$speed} mph.  [@ AnswerFormatHelp("numbers") @]*
+[_____]{$speed} mph.
 
 
 

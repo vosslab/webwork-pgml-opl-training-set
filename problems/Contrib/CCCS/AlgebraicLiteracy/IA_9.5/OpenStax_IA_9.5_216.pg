@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -62,7 +61,6 @@ When will the arrow hit the ground? Round to the nearest hundredth of a second.
 
 [_______________]{$t}seconds
 
-[@ AnswerFormatHelp("numbers") @]*
 
 END_PGML
 

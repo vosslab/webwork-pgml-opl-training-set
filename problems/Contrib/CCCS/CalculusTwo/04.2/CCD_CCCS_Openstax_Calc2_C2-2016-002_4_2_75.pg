@@ -25,7 +25,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserPopUp.pl",
@@ -202,7 +201,7 @@ Consider the differential equation [``y'=e^t``].
 
 (b) Find a general solution to the differential equation
 
-[``y=``][_____]{$ans }[@ AnswerFormatHelp("formulas") @]*
+[``y=``][_____]{$ans }
 
 (c) Draw a solution on top of the direction field. [______]{$popup2} 
 

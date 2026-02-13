@@ -49,7 +49,7 @@ TEXT(beginproblem());
 
 BEGIN_PGML
 
-A hockey team played a total of [`[$total]`] games last season. The number of games they won was [`[$dif]`] more than [@numberWord($factor)@] times of the number of games they lost. 
+A hockey team played a total of [`[$total]`] games last season. The number of games they won was [`[$dif]`] more than [@$factor@] times of the number of games they lost.
 
 Write and solve an equation to answer the following questions.
 

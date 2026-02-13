@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -53,7 +52,7 @@ BEGIN_PGML
 
 Find `f^\prime(x)` for [`f(x)=[$f]`].
 
-`f^\prime(x)=`[_______________________________]{$ans3} [@ AnswerFormatHelp("formulas") @]*
+`f^\prime(x)=`[_______________________________]{$ans3}
 
 
 

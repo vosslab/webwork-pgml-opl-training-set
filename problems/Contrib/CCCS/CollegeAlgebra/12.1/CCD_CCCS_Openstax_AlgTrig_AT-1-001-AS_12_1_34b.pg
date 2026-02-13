@@ -23,7 +23,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
@@ -197,9 +196,9 @@ Identify the foci and the vertices of the ellipse.  Also, select the correct gra
 
 >>[`` [$f]=[$d] ``]<<
 
-Foci:[___________________________]{$foci} [@ AnswerFormatHelp("points") @]*
+Foci:[___________________________]{$foci}
 
-Vertices: [_____________________]{$vertices} [@ AnswerFormatHelp("points") @]*
+Vertices: [_____________________]{$vertices}
 
 Which of the following graphs represents the graph of [`` [$f]=[$d] ``]? [_________________]{$popup1} 
 

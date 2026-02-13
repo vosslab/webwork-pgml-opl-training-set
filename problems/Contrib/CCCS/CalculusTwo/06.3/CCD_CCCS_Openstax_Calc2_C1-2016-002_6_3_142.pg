@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGauxiliaryFunctions.pl",
@@ -59,7 +58,7 @@ BEGIN_PGML
 Find the Taylor series of [` \displaystyle f(x)=[$f] `] centered at [`a=[$a]`].
 
 
-[``\sum_{n=0}^{\infty}``][_______________________________]{$ans}[@ AnswerFormatHelp("formulas") @]*
+[``\sum_{n=0}^{\infty}``][_______________________________]{$ans}
 END_PGML
 
 } else {
@@ -76,7 +75,7 @@ BEGIN_PGML
 Find the Taylor series of [` \displaystyle f(x)=[$f] `] centered at [`a=\pi`].
 
 
-[``\sum_{n=0}^{\infty}``] [_______________________________]{$ans}[@ AnswerFormatHelp("formulas") @]*
+[``\sum_{n=0}^{\infty}``] [_______________________________]{$ans}
 END_PGML
 }
 

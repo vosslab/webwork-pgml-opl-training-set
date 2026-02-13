@@ -25,7 +25,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserPopUp.pl",
@@ -119,7 +118,7 @@ BEGIN_PGML
 
 [``\frac{dy}{dt}=[$f0], \qquad y(0)=[$p]``]
 
-[``y=``][_____]{$f1}[@ AnswerFormatHelp("formulas") @]*
+[``y=``][_____]{$f1}
 
 
 
@@ -127,7 +126,7 @@ BEGIN_PGML
 
 [``\frac{dy}{dt}=[$f0], \qquad y(0)=[$q]``]
 
-[``y=``][_____]{$f2}[@ AnswerFormatHelp("formulas") @]*
+[``y=``][_____]{$f2}
 
 (c) Graph the two solutions found in (a) and (b). [______]{$popup} 
 

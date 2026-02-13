@@ -21,7 +21,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -62,7 +61,7 @@ BEGIN_PGML
 Determine the area of the common interior of [`r=2\sin(\theta)`] and [`r=2+2\cos(\theta)`].
 
 
-Area [`=`][__________________________________]{$ans}[@ AnswerFormatHelp("numbers") @]*
+Area [`=`][__________________________________]{$ans}
 
 END_PGML
 
@@ -80,7 +79,7 @@ BEGIN_PGML
 Determine the area of the common interior of [`r=3\sin(\theta)`] and [`r=3-3\cos(\theta)`].
 
 
-Area [`=`][__________________________________]{$ans}[@ AnswerFormatHelp("numbers") @]*
+Area [`=`][__________________________________]{$ans}
 
 END_PGML
 

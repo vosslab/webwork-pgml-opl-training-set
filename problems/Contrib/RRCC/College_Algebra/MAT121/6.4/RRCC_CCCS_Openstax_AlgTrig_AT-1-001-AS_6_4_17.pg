@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "parserPopUp.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -54,9 +53,9 @@ BEGIN_PGML
 
 Find the domain and vertical asymptote of [`` f(x)=[$f] ``]. Enter your solutions in interval notation.
 
-Domain: [_______________]{$ans1} [@ AnswerFormatHelp("intervals") @]*
+Domain: [_______________]{$ans1}
 
-Vertical asymptote [_________________]{$popup}  [________]{$ans2} [@ AnswerFormatHelp("numbers") @]*
+Vertical asymptote [_________________]{$popup}  [________]{$ans2}
 
 END_PGML
 

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -69,15 +68,15 @@ $ans5=Formula("$b*(a+$k)**2+$c")->reduce;
 BEGIN_PGML
 Evaluate [`f(x)=[$f]`] at the following values:
 
-+ [`f([$d])=`] [_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
++ [`f([$d])=`] [_______________]{$ans1}
 
-+ [`f([$e])=`] [_______________]{$ans2} [@ AnswerFormatHelp("numbers") @]*
++ [`f([$e])=`] [_______________]{$ans2}
 
-+ [`f(a)=`] [_______________]{$ans3} [@ AnswerFormatHelp("formulas") @]*
++ [`f(a)=`] [_______________]{$ans3}
 
-+ [`f([$k]a)=`] [_______________]{$ans4} [@ AnswerFormatHelp("formulas") @]*
++ [`f([$k]a)=`] [_______________]{$ans4}
 
-+ [`f(a + [$k])=`] [_______________]{$ans5} [@ AnswerFormatHelp("formulas") @]*
++ [`f(a + [$k])=`] [_______________]{$ans5}
 
 END_PGML
 

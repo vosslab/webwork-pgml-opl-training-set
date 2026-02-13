@@ -59,7 +59,7 @@ $ans->{trueDomain} = Compute("x != -$a and x != -$b and x != -$c and x != $a and
 #  Main text
 
 BEGIN_PGML
-Simplify this expression, and if applicable, write the restricted domain.  [@KeyboardInstructions("The problem accepts many ways to format the answers here, but one way is like typing [|x^2 for x!=1 and x!=2|]* where [|!=|]* is how to type the [`\\neq`] symbol.")@]**
+Simplify this expression, and if applicable, write the restricted domain.
 
 
     [``[$f1] \div [$f2]={}``][__________________________________]{$ans}

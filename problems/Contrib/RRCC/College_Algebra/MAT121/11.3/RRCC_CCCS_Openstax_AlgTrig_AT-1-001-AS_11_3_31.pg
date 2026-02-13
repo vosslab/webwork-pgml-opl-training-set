@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -48,7 +47,7 @@ What is the solution (are the solutions) to the following system of nonlinear eq
 >>[` x^2+y^2 = [$r2]  `]<<  
 >>[` y^2 = x^2 `]<<
   
-Solution(s): [___________________________]{"($a,$a),($a,-$a),(-$a,-$a),(-$a,$a)"} [@ AnswerFormatHelp("points") @]*  
+Solution(s): [___________________________]{"($a,$a),($a,-$a),(-$a,-$a),(-$a,$a)"}
 
 Enter the solution as an ordered pair, [` (a,b) `], or solutions as a comma separated list of ordered pairs, [` (a,b), (c,d), (m,n), (p,q) `], including the parentheses.
 

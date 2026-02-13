@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -61,7 +60,7 @@ Find a linear equation satisfying the following conditions:
 x-Intercept at [`(\displaystyle[$xint], 0)`] and y-intercept at [`(0,[$yint])`]
 
 
-[`f(x) = `][____]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`f(x) = `][____]{$ans}
 
   
 END_PGML

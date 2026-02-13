@@ -44,7 +44,6 @@ BEGIN_PGML
 
 Solve the compound inequality algebraically.
 
-[@KeyboardInstructions('Write the solution set in interval notation. If you need to use the [`\infty`] symbol, type [|INF|]*. If you need to use the union symbol [`\cup`], type [|U|]*.')@]**
 
 >>[`` [$a] \le \frac{5}{9}(F-32) \le [$b] ``]<<
 

@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "parserImplicitEquation.pl",
 "PGML.pl",
@@ -66,8 +65,8 @@ including the parentheses.  If there is more
 than one correct answer, enter a comma 
 separated list of points.
 
-x-intercept(s):  [_______________]{$xint} [@ AnswerFormatHelp("points") @]*  
-y-intercept(s):  [_______________]{$yint} [@ AnswerFormatHelp("points") @]*
+x-intercept(s):  [_______________]{$xint}
+y-intercept(s):  [_______________]{$yint}
 
 
 

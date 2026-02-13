@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -54,7 +53,7 @@ BEGIN_PGML
 
 Find the indefinite integral  [`\displaystyle \int [$f] \arctan(x) dx`].
 
-[`\displaystyle \int [$f] \arctan(x) dx=`]  [___________________________]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`\displaystyle \int [$f] \arctan(x) dx=`]  [___________________________]{$ans}
 
 Use a capital "C" for any needed constant in your answer.
 

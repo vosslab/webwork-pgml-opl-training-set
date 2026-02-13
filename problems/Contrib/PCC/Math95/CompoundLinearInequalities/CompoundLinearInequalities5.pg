@@ -45,7 +45,6 @@ $answer=Union("(-inf,$a)U[$b,inf)");
 BEGIN_PGML
 Solve the compound inequality. Write the solution set in interval notation.
 
-[@KeyboardInstructions('If you need to use the [`\infty`] symbol, type [|INF|]*. If you need to use the union symbol [`\cup`], type [|U|]*.')@]**
 
 >>[``[$a] > x\text{ or } x \geq [$b]``]<<
 

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
  "contextFraction.pl", 
 "PGML.pl",
@@ -62,8 +61,8 @@ of [` y = [$f] `].
 Enter a point as [` (a,b) `],
 including the parentheses.  
 
-x-intercept: [__________________]{$xint} [@ AnswerFormatHelp("points") @]*  
-y-intercept:  [__________________]{$yint} [@ AnswerFormatHelp("points") @]*
+x-intercept: [__________________]{$xint}
+y-intercept:  [__________________]{$yint}
 
 
 

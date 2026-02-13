@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl",
   "contextFraction.pl",
@@ -62,7 +61,7 @@ Draw the region bounded by the curves [`y=[$f1]`], [`y=[$f2]`], [`x=0`], and [`x
 
 
 
-Volume: [_______________]{$ans} units cubed [@ AnswerFormatHelp("numbers") @]*
+Volume: [_______________]{$ans} units cubed
 
 
 

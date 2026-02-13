@@ -83,7 +83,7 @@ $evaluator = $ans->cmp(
 
 BEGIN_PGML
 
-Simplify the expression, answering with rational exponents and not radicals. [@KeyboardInstructions('To enter [`x^{m/n}`], type [|x^(m/n)|]*.')@]**
+Simplify the expression, answering with rational exponents and not radicals.
 
 [``\sqrt{[$var]}\sqrt[[$n]]{[$var]}=``]    [_________________]{$evaluator}
 

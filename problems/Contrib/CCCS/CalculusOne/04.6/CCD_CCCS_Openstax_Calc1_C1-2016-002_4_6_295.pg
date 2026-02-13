@@ -24,7 +24,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "parserRadioButtons.pl",
 "parserPopUp.pl",
 "PGML.pl",
@@ -132,21 +131,21 @@ BEGIN_PGML
 For the function [`f(x) = [$fun]`], identify extrema, intervals of increasing and decreasing, intervals of concavity, inflection points, and asymptotes. Then sketch a graph of the function [`f(x)`].
 
 
-a. Local maximum is at the point(s) [________________]{$max}  (enter ordered pair(s) or 'NONE') [@ AnswerFormatHelp("points") @]* 
+a. Local maximum is at the point(s) [________________]{$max}  (enter ordered pair(s) or 'NONE')
 
-b. Local minimum is at the point(s) [________________]{$min}  (enter ordered pair(s) or 'NONE') [@ AnswerFormatHelp("points") @]* 
+b. Local minimum is at the point(s) [________________]{$min}  (enter ordered pair(s) or 'NONE')
 
-c. Interval(s) of increasing [________________]{$inc}  (enter interval(s) or 'NONE') [@ AnswerFormatHelp("intervals") @]* 
+c. Interval(s) of increasing [________________]{$inc}  (enter interval(s) or 'NONE')
 
-d. Interval(s) of decreasing [________________]{$dec}  (enter interval(s) or 'NONE') [@ AnswerFormatHelp("intervals") @]* 
+d. Interval(s) of decreasing [________________]{$dec}  (enter interval(s) or 'NONE')
 
-e. Interval(s) of concave up [________________]{$conup}  (enter interval(s) or 'NONE') [@ AnswerFormatHelp("intervals") @]* 
+e. Interval(s) of concave up [________________]{$conup}  (enter interval(s) or 'NONE')
 
-f. Interval(s) of concave down [________________]{$condown}  (enter interval(s) or 'NONE') [@ AnswerFormatHelp("intervals") @]* 
+f. Interval(s) of concave down [________________]{$condown}  (enter interval(s) or 'NONE')
 
-g. Horizontal asymptote(s) are [`y=`] [________________]{$asymp}  (enter a comma separated list or 'NONE') [@ AnswerFormatHelp("numbers") @]* 
+g. Horizontal asymptote(s) are [`y=`] [________________]{$asymp}  (enter a comma separated list or 'NONE')
 
-h. Vertical asymptote(s) are [`x=`] [________________]{$asymp}  (enter a comma separated list or 'NONE') [@ AnswerFormatHelp("numbers") @]* 
+h. Vertical asymptote(s) are [`x=`] [________________]{$asymp}  (enter a comma separated list or 'NONE')
 
 i. Which of the following is a graph of [`f(x)`]? [_________________]{$popup1} 
 

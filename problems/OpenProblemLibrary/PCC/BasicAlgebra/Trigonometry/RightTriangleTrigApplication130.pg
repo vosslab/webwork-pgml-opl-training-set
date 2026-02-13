@@ -239,7 +239,6 @@ BEGIN_PGML_SOLUTION
 
 Assume the distance between those two cities is [`x`] km. The following graph can represent this situation:
 
-[@EnlargeImageStatementPGML()@]**
 
 >>[@image(insertGraph($picture), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$text' title = '$text'") @]*<<
 

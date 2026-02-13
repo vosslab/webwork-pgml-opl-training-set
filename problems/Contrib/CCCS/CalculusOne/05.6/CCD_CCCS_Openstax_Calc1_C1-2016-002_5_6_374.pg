@@ -18,7 +18,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -49,7 +48,7 @@ Find the area under the graph of [`f(x) = [$func]  `] and above the graph of [`f
 
 Answers should be exact.  You do not need to simplify your final answer.
 
-Area = [__________________________________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+Area = [__________________________________]{$ans}
 
 
 END_PGML

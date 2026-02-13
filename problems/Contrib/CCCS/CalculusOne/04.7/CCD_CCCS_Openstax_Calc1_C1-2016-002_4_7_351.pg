@@ -19,7 +19,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "imageChoice.pl",
@@ -55,11 +54,11 @@ A window is composed of a semicircle placed on top of a rectangle. If you have [
   @]*<<
  
 
-a. The radius of the semicircle portion of the maximum size window is `r=` [____________]{$radius} feet.  [@ AnswerFormatHelp("numbers") @]*
+a. The radius of the semicircle portion of the maximum size window is `r=` [____________]{$radius} feet.
 
-b. The dimensions of the rectangular portion of the maximum size window are [_________________________]{$dimensions} feet. (enter a comma separated list)  [@ AnswerFormatHelp("numbers") @]*
+b. The dimensions of the rectangular portion of the maximum size window are [_________________________]{$dimensions} feet. (enter a comma separated list)
 
-c. The area of the maximum size window is `A=` [_________________________]{$area} square feet.  [@ AnswerFormatHelp("numbers") @]*
+c. The area of the maximum size window is `A=` [_________________________]{$area} square feet.
 
 
 END_PGML

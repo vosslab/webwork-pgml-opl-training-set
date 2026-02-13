@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -59,7 +58,7 @@ Solve the system
 >>[` [$f]  = [$c]  `]<<  
 >>[` [$g] = [$multc] `]<<
 
-Solution: [_______________]{"NONE"} [@ AnswerFormatHelp("points") @]*  
+Solution: [_______________]{"NONE"}
 
 If there is one solution, enter the solution as an ordered pair, [` (a,b) `],
 including the parentheses. If there are no solutions, enter NONE. If there are infinitely many solutions, enter solutions as [`(x,f(x))`] where [`y=f(x)`].

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -49,7 +48,6 @@ BEGIN_PGML
 A falling object travels a distance given by the formula [` d=[$d]`], where [`d`] is measured in feet and [`t`] is measured in seconds. How many seconds will it take for the object to travel [`[$c]`] feet?  Round the answer to 4 decimal places.
 
  [_______________]{$ans} seconds
-[@ AnswerFormatHelp("numbers") @]*
 
 END_PGML
 

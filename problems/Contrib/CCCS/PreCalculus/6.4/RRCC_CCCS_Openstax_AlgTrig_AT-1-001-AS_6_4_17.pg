@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "parserPopUp.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -55,16 +54,16 @@ BEGIN_PGML
 
 Find the domain and vertical asymptote of [`` f(x)=[$f] ``]. Enter the domain in interval notation.
 
-Domain: [_______________]{$ans1} [@ AnswerFormatHelp("intervals") @]*
+Domain: [_______________]{$ans1}
 
-Vertical asymptote [_________________]{$popup}  [________]{$ans2} [@ AnswerFormatHelp("numbers") @]*
+Vertical asymptote [_________________]{$popup}  [________]{$ans2}
 
 
 Describe the end behaviour of the function [`` f(x)=[$f] ``].
 
-+ As [`x \to [$ans2]^+`], [`f(x) \to`] [_______________]{$ans3} [@ AnswerFormatHelp("numbers") @]*
++ As [`x \to [$ans2]^+`], [`f(x) \to`] [_______________]{$ans3}
 
-+ As [`x \to \infty`], [`f(x) \to`] [_______________]{$ans4} [@ AnswerFormatHelp("numbers") @]*
++ As [`x \to \infty`], [`f(x) \to`] [_______________]{$ans4}
 
 END_PGML
 

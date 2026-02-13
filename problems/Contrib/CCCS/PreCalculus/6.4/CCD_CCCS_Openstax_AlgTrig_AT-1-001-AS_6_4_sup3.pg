@@ -24,7 +24,6 @@ loadMacros(
 "PGchoicemacros.pl",
 "contextLimitedPoint.pl",
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
   "contextInequalitySetBuilder.pl",
 "PGML.pl",
 "niceTables.pl",

@@ -110,7 +110,6 @@ BEGIN_PGML
 
 A truck that hauls water is capable of carrying a maximum of [`[$max]`] lb. Water weighs [`8.3454 \frac{\text{lb}}{\text{gal}}`], and the plastic tank on the truck that holds water weighs [`[$tank]`] lb. Assume the truck can carry a maximum of [`g`] gallons of water. Write an _inequality_ to model this scenario. There is no need to solve it.
 
-[@KeyboardInstructions('If you need to enter the inequality signs [`\leq`] or [`\geq`], type [|<=|]* or [|>=|]*.')@]**
 
     [_________________________]{$evaluator}
 

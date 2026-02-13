@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -64,9 +63,9 @@ else{$ans="No";}
 BEGIN_PGML
 Use synthetic division to determine whether or not [`(x-[$fac])`] is a factor of [` ([$f]) `].  
 
-+ Quotient: [_______________]{$quot} [@ AnswerFormatHelp("formulas") @]*
++ Quotient: [_______________]{$quot}
 
-+ Remainder: [_______________]{$remain} [@ AnswerFormatHelp("numbers") @]*
++ Remainder: [_______________]{$remain}
 
 + Is it a factor? [_______________]{$ans} (enter Yes or No)
 

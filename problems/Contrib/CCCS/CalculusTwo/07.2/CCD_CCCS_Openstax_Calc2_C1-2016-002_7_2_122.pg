@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -76,7 +75,7 @@ Given the parametric curve
 
 Find the surface area [`S`] obtained by rotating the curve about the y-axis. 
 
-[`S =`] [_______________]{$SAy}  [@ AnswerFormatHelp("numbers") @]*
+[`S =`] [_______________]{$SAy}
 
 END_PGML
 

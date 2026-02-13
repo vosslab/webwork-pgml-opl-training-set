@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -48,12 +47,12 @@ Use a calculator to graph the function [`f`] and estimate the value of the limit
 
 
 
-[``\lim_{x\to 0}[$f]\approx``][_______________]{$ans } [@ AnswerFormatHelp("numbers") @]*
+[``\lim_{x\to 0}[$f]\approx``][_______________]{$ans }
 
 
 Then use l'Hopital's rule to find the previous limit directly
 
-[``\lim_{x\to 0}[$f]=``][_______________]{$ans } [@ AnswerFormatHelp("numbers") @]*
+[``\lim_{x\to 0}[$f]=``][_______________]{$ans }
 
 
 END_PGML

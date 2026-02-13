@@ -21,7 +21,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "niceTables.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -53,9 +52,9 @@ $ans2= $c+$d*($b+$a*$d);
 BEGIN_PGML
 Use long division to divide [`([$f])\div(x-[$d])`]. Find the quotient and remainder. 
 
-+ Quotient: [_______________]{$ans1} [@ AnswerFormatHelp("formulas") @]*
++ Quotient: [_______________]{$ans1}
 
-+ Remainder: [_______________]{$ans2} [@ AnswerFormatHelp("formulas") @]*
++ Remainder: [_______________]{$ans2}
 
 
 END_PGML

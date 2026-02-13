@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "niceTables.pl",
@@ -53,11 +52,11 @@ BEGIN_PGML
 
 For [`\displaystyle y=[$f]`] find `frac{dy}{dx}` at `x=[$c]`,  the inverse function `x=f^(-1)(y)`, and `frac{df^(-1)}{dy}` at `y=f([$c])`.
 
-`frac{dy}{dx}` at `x=[$c]` is [_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
+`frac{dy}{dx}` at `x=[$c]` is [_______________]{$ans1}
 
-`x=f^(-1)(y)=` [_______________]{$ans2} [@ AnswerFormatHelp("formulas") @]*
+`x=f^(-1)(y)=` [_______________]{$ans2}
 
-`frac{df^(-1)}{dy}` at `y=f([$c])` is [_______________]{$ans3} [@ AnswerFormatHelp("numbers") @]*
+`frac{df^(-1)}{dy}` at `y=f([$c])` is [_______________]{$ans3}
 
 END_PGML
 

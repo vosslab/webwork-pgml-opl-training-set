@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -67,7 +66,7 @@ Solve the rational equation.  Enter the answer as a reduced fraction.  If there 
 [`\dfrac{[$a]}{z-[$c]}-\dfrac{[$b]}{z+[$c]}=\dfrac{5}{z^2-[$d]}`]
 
 
-[`z`] = [_________________]{$ans2} [@ AnswerFormatHelp("numbers") @]*
+[`z`] = [_________________]{$ans2}
 
 
 END_PGML

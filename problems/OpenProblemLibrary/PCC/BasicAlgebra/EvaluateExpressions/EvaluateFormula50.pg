@@ -95,7 +95,7 @@ A rectangle's area can be calculated by the formula [`A=LW`], where [`A`] stands
 
 A rectangle's perimeter can be calculated by the formula [`P=2(L+W)`], where [`P`] stands for perimeter, [`L`] for length and [`W`] for width.
 
-Use the formulas to calculate the rectangle's area and perimeter if its length is [`[$lengthU]`] and its width is [`[$widthU]`].  [@KeyboardInstructions(q!(Use [|m|]* for meters and [|m^2|]* for square meters.)!)@]**
+Use the formulas to calculate the rectangle's area and perimeter if its length is [`[$lengthU]`] and its width is [`[$widthU]`].
 
     Area = [____________]{$areaU}
 

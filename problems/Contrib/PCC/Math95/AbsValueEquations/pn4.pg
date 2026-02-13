@@ -46,7 +46,7 @@ $ans1 = "$d/$a";
 $ans2= "$e/$a";
 
 BEGIN_PGML
-Solve the following equation. [@KeyboardInstructions('If there is more than one solution, write them separated by commas.')@]** 
+Solve the following equation.
 
 >>[`` \left\lvert [$pol]  \right\rvert = [$c]  ``]<<
 

@@ -70,7 +70,6 @@ Solve the equation.
   
      [____________________]{$ans}
 
-[@KeyboardInstructions("If you need to use the square root symbol, as in [`x=\\sqrt{17}`], type it as [|x=sqrt(17)|]*. If there are no real solutions, enter [|no real solutions|]*.")@]**
 END_PGML
 
 Context("Numeric");

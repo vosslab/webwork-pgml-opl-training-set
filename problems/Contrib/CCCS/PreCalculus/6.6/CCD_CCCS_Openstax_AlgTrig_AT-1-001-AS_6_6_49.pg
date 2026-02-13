@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -73,7 +72,7 @@ If there is more than one solution, enter the answers as a comma-separated list.
 [`` \ln \left( {[$t]} \right) - \ln \left( {[$u]} - {[$v]} x \right) = \ln \left( {[$w]} \right) ``]
 
 
-[____________________]{$x1} [@ AnswerFormatHelp("numbers") @]*
+[____________________]{$x1}
 
 END_PGML
 

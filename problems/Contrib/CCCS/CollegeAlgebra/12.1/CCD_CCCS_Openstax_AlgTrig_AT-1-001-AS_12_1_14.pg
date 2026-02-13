@@ -23,7 +23,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "unorderedAnswer.pl",
 "PGML.pl",
@@ -77,11 +76,11 @@ For the given equation of an ellipse, identify the foci, the vertices, and the c
 
 >>[`` [$f]=[$d] ``]<<
 
-Foci:[___________________________]{$foci} [@ AnswerFormatHelp("points") @]*
+Foci:[___________________________]{$foci}
 
-Vertices: [_____________________]{$major} [@ AnswerFormatHelp("points") @]*
+Vertices: [_____________________]{$major}
 
-Co-vertices: [_____________________]{$minor} [@ AnswerFormatHelp("points") @]*
+Co-vertices: [_____________________]{$minor}
 
 
 END_PGML

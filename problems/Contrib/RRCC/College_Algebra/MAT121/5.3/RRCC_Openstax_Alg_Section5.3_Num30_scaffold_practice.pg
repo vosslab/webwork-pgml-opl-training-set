@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "parserOneOf.pl",
 "scaffold.pl",
@@ -56,7 +55,7 @@ Section::Begin("Part 1: The first part");
 BEGIN_PGML
 Find the zeros and give the multiplicity of each for  [`f(x)=[$f]`]. Enter zeros from greatest to least. 
 
-+ One zero is `x=`[____]{$x=OneOf($a,$b)} and its multiplicity is: [____]{$m} [@ AnswerFormatHelp("numbers") @]*
++ One zero is `x=`[____]{$x=OneOf($a,$b)} and its multiplicity is: [____]{$m}
 
 END_PGML
 Section::End();
@@ -68,7 +67,7 @@ BEGIN_PGML
 
 [$studentsa] is a number 
 
-+ The other zero is `x=`[____]{$b} and its multiplicity is: [____]{$n} [@ AnswerFormatHelp("numbers") @]*
++ The other zero is `x=`[____]{$b} and its multiplicity is: [____]{$n}
 
 END_PGML
 Section::End();

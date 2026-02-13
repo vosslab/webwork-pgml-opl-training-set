@@ -82,7 +82,6 @@ BEGIN_PGML
 
 Convert the expression to radical notation.  
 
-[@KeyboardInstructions('To enter something like [`\sqrt[3]{x+1}`], type [|root(3,x+1)|]*.')@]**
 
 [``[$display]``] = [__]{$evaluator}{7}
 

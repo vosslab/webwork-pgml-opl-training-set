@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -56,7 +55,7 @@ BEGIN_PGML
 
 If a horizontal line has the equation [`f(x) = [$var]`] and a vertical line has the equation [`x = [$var]`], what is the point of their intersection?  
 
-[____]{$answer}  [@ AnswerFormatHelp("points") @]*
+[____]{$answer}
   
 END_PGML
  

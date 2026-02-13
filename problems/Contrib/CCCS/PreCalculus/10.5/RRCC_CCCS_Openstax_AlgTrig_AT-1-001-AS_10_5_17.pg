@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -70,7 +69,7 @@ BEGIN_PGML
 Convert the complex number `z=[$r](\cos([$thetadisp])+i\sin([$thetadisp]))` from polar to rectangular form. Make sure to evaluate the trigonometric functions.
 
 
-[`z = `] [______]{$ansx} [`+`] [______]{$ansy}[`i`]    [`  \ \ \ \   `]    [@ AnswerFormatHelp("numbers") @]*
+[`z = `] [______]{$ansx} [`+`] [______]{$ansy}[`i`]    [`  \ \ \ \   `]
 
 END_PGML
 

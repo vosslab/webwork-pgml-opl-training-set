@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "PGcourse.pl"
@@ -61,7 +60,7 @@ BEGIN_PGML
 
 Find the work done for a force [`F=[$f1]`] N from [`x=[$a]`], to [`x=[$b]`] m. 
 
-Work: [_______________]{$ans} Joules  [@ AnswerFormatHelp("numbers") @]*
+Work: [_______________]{$ans} Joules
 
 
 END_PGML

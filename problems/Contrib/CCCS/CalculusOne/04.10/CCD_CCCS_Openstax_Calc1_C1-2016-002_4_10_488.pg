@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -51,7 +50,7 @@ Find the family of antiderivatives of the function
 
 
 
-[`` F(x) =``][___________________________________]{$ans }[@ AnswerFormatHelp("formulas") @]*
+[`` F(x) =``][___________________________________]{$ans }
 
 
 END_PGML

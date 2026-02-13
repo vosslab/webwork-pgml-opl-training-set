@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -68,7 +67,7 @@ Find the equation of the graphed line.
 
 >> [@ image(insertGraph($gr), tex_size=>16000, width=>400, height=>400), @]* <<
 
-[`f(x) = `] [______]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`f(x) = `] [______]{$ans}
 
 END_PGML
  

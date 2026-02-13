@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -55,7 +54,7 @@ Convert the given Cartesian coordinate to polar coordinates with [` r>0, 0 \leq 
 [` ([$x],[$y]) `]
 
 
-[_______________]{$ans} [@ AnswerFormatHelp("points") @]*
+[_______________]{$ans}
 
 END_PGML
 

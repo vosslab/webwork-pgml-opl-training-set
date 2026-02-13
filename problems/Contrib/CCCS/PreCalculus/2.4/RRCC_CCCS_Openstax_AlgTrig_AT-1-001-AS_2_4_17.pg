@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -52,7 +51,7 @@ $w=Complex($c,$d);
 BEGIN_PGML
 Evaluate [` ([$z]) - ([$w]) `] and express as a simplified complex number [`a+bi`]. 
 
- [_______________]{$z-$w} [@ AnswerFormatHelp("numbers") @]*
+ [_______________]{$z-$w}
 
 END_PGML
 

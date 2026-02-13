@@ -48,7 +48,7 @@ $h = $w*$r+$a;
 $t = $h+$r;
 
 if ($w==2) {$word="twice";}
-else {$word=numberWord($w).' times';}
+else {$word=$w.' times';}
 
 $ca = Currency($a);
 $ct = Currency($t);

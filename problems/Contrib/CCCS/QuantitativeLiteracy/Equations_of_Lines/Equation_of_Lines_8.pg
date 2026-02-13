@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -67,7 +66,7 @@ $n = $slope*$xCord;
 BEGIN_PGML
 Write an equation of the line with a slope of [`m = [$slope]`] that passes through the point [`([$xCord], [$yCord])`]. Put your answer in slope-intercept form using fractions and/or integers.
  
-[`y = `] [______]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`y = `] [______]{$ans}
 
 
 END_PGML

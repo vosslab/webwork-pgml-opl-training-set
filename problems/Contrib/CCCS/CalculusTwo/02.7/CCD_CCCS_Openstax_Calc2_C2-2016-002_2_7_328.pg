@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "PGcourse.pl"
@@ -54,7 +53,7 @@ Find the derivative, [`\frac{dy}{dx}`], for [`y=x^{-1/\ln(x)}`] by differentiati
 
 
 
-[`\frac{dy}{dx}=`] [_______________]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`\frac{dy}{dx}=`] [_______________]{$ans}
 
 
 END_PGML

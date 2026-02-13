@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "PGcourse.pl"
@@ -57,7 +56,7 @@ BEGIN_PGML
 Calculate the center of mass, [`\overline{x}`], of a thin wire that lies on the [`x`] axis for [`x \in (0,L)`] where [`L`] is a positive real number and the density function is [`\rho(x) = [$rho]`]. 
 
 
-[`\overline{x}=`] [_______________]{$ans}   [@ AnswerFormatHelp("formulas") @]*
+[`\overline{x}=`] [_______________]{$ans}
 
 
 END_PGML

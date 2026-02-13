@@ -97,7 +97,6 @@ Find the perimeter and area of the square.
 a. The perimeter is [_]{$ansP}{5}.
 a. The area is [_]{$ansA}{5}. 
 
-[@KeyboardInstructions(q!(Use [|cm|]* for centimeters and [|cm^2|]* for square centimeters.)!)@]**
 
 END_PGML
 

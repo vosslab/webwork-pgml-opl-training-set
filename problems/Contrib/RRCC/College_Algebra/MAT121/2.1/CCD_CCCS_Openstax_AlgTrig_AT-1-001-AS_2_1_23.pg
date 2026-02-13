@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -55,7 +54,7 @@ Find the coordinates of the midpoint of the line segment that joins the two poin
 Enter a point as [` (a,b) `],
 including the parentheses.  
 
-midpoint:  [_______________]{$midpt} [@ AnswerFormatHelp("points") @]*
+midpoint:  [_______________]{$midpt}
 
 
 END_PGML

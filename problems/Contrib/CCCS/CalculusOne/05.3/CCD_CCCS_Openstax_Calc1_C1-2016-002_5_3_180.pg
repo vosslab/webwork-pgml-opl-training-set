@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -62,7 +61,7 @@ Evaluate [``\int_{[$a]}^{[$b]}[$f] dt``] using the Fundamental Theorem of Calcul
 
 
 
-[``\int_{[$a]}^{[$b]}[$f] dt=``][_________________]{$ans }[@ AnswerFormatHelp("numbers") @]*
+[``\int_{[$a]}^{[$b]}[$f] dt=``][_________________]{$ans }
 
 
 END_PGML

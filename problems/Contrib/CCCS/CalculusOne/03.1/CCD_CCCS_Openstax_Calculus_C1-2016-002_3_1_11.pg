@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -46,9 +45,9 @@ The slope of the tangent line to `f(x)` at `x=a` can be found by evaluating the 
 
 Given [`f(x)=3-4x`], find the slope of the tangent line to `f(x)` at `x=[$a]` using the above definition. Then find the equation of the tangent line to `f(x)` at `x=[$a]`.
 
-a. `m_(tan)=`[_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
+a. `m_(tan)=`[_______________]{$ans1}
 
-b. The tangent line to `f(x)` at `x=[$a]` in slope intercept form is `y=`[________________]{$ans2} [@ AnswerFormatHelp("formulas") @]*
+b. The tangent line to `f(x)` at `x=[$a]` in slope intercept form is `y=`[________________]{$ans2}
 
 
 END_PGML

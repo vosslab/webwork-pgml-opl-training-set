@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGauxiliaryFunctions.pl",
@@ -66,7 +65,7 @@ Find the Taylor series of [` \displaystyle f(x)=[$f] `] centered at \`a =0`\.
 is `\sum_{n=0}^{infty} x^n\`, differentiate `g(x)`.)
 
 
-[``\sum_{n=0}^{\infty}``][_______________________________]{$ans}[@ AnswerFormatHelp("formulas") @]*
+[``\sum_{n=0}^{\infty}``][_______________________________]{$ans}
 END_PGML
 
 } else {
@@ -87,7 +86,7 @@ is `\sum_{n=0}^{infty} x^n\`, differentiate `g(x)`.)
 
 
 
-[``\sum_{n=0}^{\infty}``][_______________________________]{$ans}[@ AnswerFormatHelp("formulas") @]*
+[``\sum_{n=0}^{\infty}``][_______________________________]{$ans}
 END_PGML
 }
 

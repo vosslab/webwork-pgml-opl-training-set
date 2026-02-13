@@ -150,7 +150,6 @@ Use graphing technology to find the value of [`x`] and [`h`] such that the box h
 
     The box has a minimum surface area of [_____________]{$areaU} when its base's side length is [____________]{$baseU} and the box's height is [____________]{$heightU}.
 
-[@KeyboardInstructions(q!(Use [|in^2|]* for square inches.)!)@]**
 
 END_PGML
 

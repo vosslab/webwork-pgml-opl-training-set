@@ -21,7 +21,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -62,7 +61,7 @@ BEGIN_PGML
 Determine the length of the polar curve [`r=e^{3\theta}`] on the interval [`0\leq\theta\leq2`].
 
 
-Length [`=`][__________________________________]{$ans}[@ AnswerFormatHelp("numbers") @]*
+Length [`=`][__________________________________]{$ans}
 
 END_PGML
 
@@ -80,7 +79,7 @@ BEGIN_PGML
 Determine the length of the polar curve [`r=e^{2\theta}`] on the interval [`0\leq\theta\leq1`].
 
 
-Length [`=`][__________________________________]{$ans}[@ AnswerFormatHelp("numbers") @]*
+Length [`=`][__________________________________]{$ans}
 
 END_PGML
 

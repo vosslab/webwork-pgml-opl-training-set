@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -68,7 +67,7 @@ Give the exact value for the expression. Use radians for any angles.
 `cos(sin^{-1}([$a]))`
 
 
-[_______________]{$ans}[@ AnswerFormatHelp("numbers") @]*
+[_______________]{$ans}
 
 END_PGML
 

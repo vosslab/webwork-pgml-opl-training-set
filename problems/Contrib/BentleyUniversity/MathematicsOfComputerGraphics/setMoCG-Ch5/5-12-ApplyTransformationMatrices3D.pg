@@ -21,7 +21,6 @@ loadMacros(
   "MathObjects.pl",
   "PGML.pl",
   "PGcourse.pl",
-  "AnswerFormatHelp.pl",
 );
 
 Context("Matrix");
@@ -57,9 +56,9 @@ TEXT(beginproblem());
 BEGIN_PGML
 Perform the following applications of an affine transformation matrix to a column vector.
 
-[`[$M1][$CV1]=`][_____]*{$M1*$CV1} [@ AnswerFormatHelp("matrices") @]*
+[`[$M1][$CV1]=`][_____]*{$M1*$CV1}
 
-[`[$M2][$CV2]=`][_____]*{$M2*$CV2} [@ AnswerFormatHelp("matrices") @]*
+[`[$M2][$CV2]=`][_____]*{$M2*$CV2}
 END_PGML
 
 BEGIN_PGML_SOLUTION

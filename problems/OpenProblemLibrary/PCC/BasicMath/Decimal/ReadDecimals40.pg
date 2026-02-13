@@ -39,12 +39,12 @@ loadMacros(
 Context("LimitedNumeric");
 
 $int=random(2,9,1);
-$intWord = numberWord($int);
+$intWord = $int;
 
 $dec10 = random(2,9,1);
 $dec100 = $dec10*10;
-$dec10Word = numberWord($dec10);
-$dec100Word = numberWord($dec100);
+$dec10Word = $dec10;
+$dec100Word = $dec100;
 
 $ans = $int+$dec10/10;
 

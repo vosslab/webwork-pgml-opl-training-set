@@ -19,7 +19,6 @@ loadMacros(
   "MathObjects.pl",
   "PGgraphmacros.pl",
   "contextLimitedVector.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "unionTables.pl",
   "scaffold.pl",
@@ -123,24 +122,24 @@ EndTable()
 
 a. Find the coordinate vector representations for the discrete time signals [`f(t)`] and [`g(t)`].
 
-    + [`\vec{f}=`] [_______________________________________]{$F} [@ AnswerFormatHelp("vectors") @]*
-    + [`\vec{g}=`] [_______________________________________]{$G} [@ AnswerFormatHelp("vectors") @]*
+    + [`\vec{f}=`] [_______________________________________]{$F}
+    + [`\vec{g}=`] [_______________________________________]{$G}
 
 b. Draw the vector sum [` \vec{f} + \vec{f} `] as a discrete time signal.  Then, verify your answer using vector addition operations.
 
-    + [` \vec{f} + \vec{g} = `] [_______________________________________]{$FplusG} [@ AnswerFormatHelp("vectors") @]*
+    + [` \vec{f} + \vec{g} = `] [_______________________________________]{$FplusG}
 
 c. Draw the scaled vector [` [$k] \vec{f} `] as a discrete time signal.  Then, verify your answer using vector addition operations.
 
-    + [` [$k] \vec{f} = `] [_______________________________________]{$kF} [@ AnswerFormatHelp("vectors") @]*
+    + [` [$k] \vec{f} = `] [_______________________________________]{$kF}
 
 d. Find the vector sum [` k_1 \vec{f} + k_2 \vec{g} `] when [`k_1 = [$k1] `] and [`k_2 = [$k2] `].
 
-    + [` k_1 \vec{f} + k_2\vec{g} = `] [_______________________________________]{$k1Fplusk2G} [@ AnswerFormatHelp("vectors") @]*
+    + [` k_1 \vec{f} + k_2\vec{g} = `] [_______________________________________]{$k1Fplusk2G}
 
 e. Find the additive inverse of [`\vec{g}`].
 
-    + [`\vec{g} + `] [_______________________________________]{$negG} [` = \mathbf{0}. `] [@ AnswerFormatHelp("vectors") @]*
+    + [`\vec{g} + `] [_______________________________________]{$negG} [` = \mathbf{0}. `]
 END_PGML
 
 ENDDOCUMENT();

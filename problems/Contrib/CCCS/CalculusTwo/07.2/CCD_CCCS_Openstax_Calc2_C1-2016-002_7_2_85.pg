@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -109,7 +108,7 @@ BEGIN_PGML
 
 Determine the slope of the tangent line at [`t=\frac{\pi}{[$a]}`].
 
- [`slope=`] [_______________]{$m}   [@ AnswerFormatHelp("numbers") @]*
+ [`slope=`] [_______________]{$m}
 
 
 END_PGML
@@ -124,7 +123,7 @@ BEGIN_PGML
 
 Determine the value of [`\frac{d^{2}y}{dx^{2}}`] at [`t=\frac{\pi}{[$a]}`].
 
-[`{ \frac{d^{2}y}{dx^{2}} }\Bigr\rvert_{t=\frac{\pi}{[$a]}} =`] [_______________]{$c}   [@ AnswerFormatHelp("numbers") @]*
+[`{ \frac{d^{2}y}{dx^{2}} }\Bigr\rvert_{t=\frac{\pi}{[$a]}} =`] [_______________]{$c}
 
 END_PGML
 
@@ -207,7 +206,7 @@ BEGIN_PGML
 
 Determine the slope of the tangent line at [`t=\frac{\pi}{[$a]}`].
 
- [`slope=`] [_______________]{$m}   [@ AnswerFormatHelp("numbers") @]*
+ [`slope=`] [_______________]{$m}
 
 
 END_PGML
@@ -222,7 +221,7 @@ BEGIN_PGML
 
 Determine the value of [`\frac{d^{2}y}{dx^{2}}`] at [`t=\frac{\pi}{[$a]}`].
 
-[`{ \frac{d^{2}y}{dx^{2}} }\Bigr\rvert_{t=\frac{\pi}{[$a]}} =`] [_______________]{$c}   [@ AnswerFormatHelp("numbers") @]*
+[`{ \frac{d^{2}y}{dx^{2}} }\Bigr\rvert_{t=\frac{\pi}{[$a]}} =`] [_______________]{$c}
 
 END_PGML
 Section::End();

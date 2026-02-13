@@ -57,7 +57,7 @@ $areaU = NumberWithUnits("$area in^2");
 
 ##############################################
 
-$word = numberWord($times);
+$word = $times;
 $multiple = $times==2 ? "twice" : "$word times";
 
 BEGIN_PGML

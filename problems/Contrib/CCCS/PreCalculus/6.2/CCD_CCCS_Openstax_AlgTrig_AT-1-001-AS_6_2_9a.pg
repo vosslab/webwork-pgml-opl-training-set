@@ -24,7 +24,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -140,7 +139,7 @@ Let [`g(x)`] be the transformation of [`f(x)`] up `[$c]` units and left `[$d]` u
 
 >>C. [@ image(insertGraph($gr4), width=>200, height=>200), @]*  D. [@ image(insertGraph($gr3), width=>200, height=>200), @]*   <<
 
-What is the equation for [`g(x)`]?  [`g(x)`]= [_________________]{$ans1} [@ AnswerFormatHelp("formulas") @]*
+What is the equation for [`g(x)`]?  [`g(x)`]= [_________________]{$ans1}
 
 What is the horizontal asymptote of [`g(x)`]?  Enter the equation of a line.  [_________________]{$popup2} = [_________________]{$ans2}
 

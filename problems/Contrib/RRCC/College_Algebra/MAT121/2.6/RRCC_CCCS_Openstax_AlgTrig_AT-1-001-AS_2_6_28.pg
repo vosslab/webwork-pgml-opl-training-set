@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -43,7 +42,7 @@ If you find more than one solution, give your answer as a comma-separated list.
 
 [` \sqrt{3x+7}+\sqrt{x+2}=1 `].
 
-[`x = `] [_______________]{-2} [@ AnswerFormatHelp("numbers") @]*
+[`x = `] [_______________]{-2}
 
 
 END_PGML

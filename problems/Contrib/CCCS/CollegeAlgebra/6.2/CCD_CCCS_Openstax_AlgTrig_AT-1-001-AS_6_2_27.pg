@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -127,21 +126,21 @@ Which of the following shows the related graph [`h(x)=[$transfun]`]?  [_________
 >>C. [@ image(insertGraph($grC), width=>300, height=>300), @]* D. [@ image(insertGraph($grD), width=>300, height=>300), @]*<<
 
 
-What is the horizontal asymptote of [`f(x)`]? [_____________]{$popup2}=[_____________]{$ans1} [@ AnswerFormatHelp("equations") @]*
+What is the horizontal asymptote of [`f(x)`]? [_____________]{$popup2}=[_____________]{$ans1}
 
-What is the domain of [`f(x)`]? [_____________]{$ans2} [@ AnswerFormatHelp("intervals") @]*
+What is the domain of [`f(x)`]? [_____________]{$ans2}
 
-What is the range of [`f(x)`]? [_____________]{$ans3} [@ AnswerFormatHelp("intervals") @]*
+What is the range of [`f(x)`]? [_____________]{$ans3}
 
-What is the `y`-intercept of [`f(x)`]? [_____________]{$ans4} [@ AnswerFormatHelp("points") @]*
+What is the `y`-intercept of [`f(x)`]? [_____________]{$ans4}
  
-What is the horizontal asymptote of [`h(x)`]? [_____________]{$popup2}=[_____________]{$ans5} [@ AnswerFormatHelp("equations") @]*
+What is the horizontal asymptote of [`h(x)`]? [_____________]{$popup2}=[_____________]{$ans5}
 
-What is the domain of [`h(x)`]? [_____________]{$ans6} [@ AnswerFormatHelp("intervals") @]*
+What is the domain of [`h(x)`]? [_____________]{$ans6}
 
-What is the range of [`h(x)`]? [_____________]{$ans7} [@ AnswerFormatHelp("intervals") @]*
+What is the range of [`h(x)`]? [_____________]{$ans7}
 
-What is the `y`-intercept of [`h(x)`]? [_____________]{$ans8} [@ AnswerFormatHelp("points") @]*
+What is the `y`-intercept of [`h(x)`]? [_____________]{$ans8}
 
 END_PGML
 

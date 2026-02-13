@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -56,7 +55,7 @@ Solve the following equation for [`x`]:
 
 [`[$f]=[$g]`]
 
-[` x = `][_______________]{$answer1} [@ AnswerFormatHelp("numbers") @]*
+[` x = `][_______________]{$answer1}
 
 
 END_PGML

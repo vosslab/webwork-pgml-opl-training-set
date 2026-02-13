@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -83,7 +82,7 @@ Evaluate the integral of the function graphed using the formula for areas of tri
 
 
 
-[`` \int_{0}^{[$c]} f(x) dx=``][_______________]{$ans }[@ AnswerFormatHelp("numbers") @]*
+[`` \int_{0}^{[$c]} f(x) dx=``][_______________]{$ans }
 
 
 END_PGML

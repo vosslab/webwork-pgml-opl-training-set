@@ -66,7 +66,6 @@ BEGIN_PGML
 
 Solve the following equations for [`x`], where [`[$fname](x)=[$func]`].
 
-[@KeyboardInstructions('If there is more than one solution, use commas to separate your answers. If there is no real solution, type [|no real solution|]*.')@]**
 
 a. If [`[$fname](x)=[$y1]`], then [`x=`][____________]{$ans1}.
 b. If [`[$fname](x)=[$y2]`], then [`x=`][____________]{$ans2}. 

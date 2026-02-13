@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl",
   "parserAssignment.pl",
@@ -159,10 +158,10 @@ BEGIN_PGML
 
 Determine the time intervals when the train is slowing down or speeding up.
 
-The train is speeding up on the interval(s): [_______________]{$speedingup} [@ AnswerFormatHelp("intervals") @]*
+The train is speeding up on the interval(s): [_______________]{$speedingup}
 
 
-The train is slowing down on the interval(s):  [_______________]{$slowingdown} [@ AnswerFormatHelp("intervals") @]*
+The train is slowing down on the interval(s):  [_______________]{$slowingdown}
 
 END_PGML
 

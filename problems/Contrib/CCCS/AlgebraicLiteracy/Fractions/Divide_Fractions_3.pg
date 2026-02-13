@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -53,7 +52,7 @@ Divide. Make sure your answer is reduced to lowest terms.
 
  [`` \frac{[$c]}{\frac{[$a]}{[$b]}}= ``]
 
- Answer: [_______________]{$ans} [@ AnswerFormatHelp("numeric") @]*
+ Answer: [_______________]{$ans}
 
 
 END_PGML

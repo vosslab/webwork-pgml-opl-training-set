@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -72,7 +71,7 @@ The derivative [`\frac{dy}{dx}`], which will measure the slope of the tangent li
 
 Find the slope of the tangent line to the polar curve [`r=3\cos(\theta)`] at [`\theta=\frac{\pi}{[$a]}`].
 
-[`\displaystyle{\frac{dy}{dx}}\Bigr\rvert_{\theta=\frac{\pi}{[$a]}}=`] [_____________________________]{$ans}[@ AnswerFormatHelp("numbers") @]*   
+[`\displaystyle{\frac{dy}{dx}}\Bigr\rvert_{\theta=\frac{\pi}{[$a]}}=`] [_____________________________]{$ans}
 
 END_PGML
 #################################

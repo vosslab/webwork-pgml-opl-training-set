@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -84,7 +83,7 @@ Enter your solution as a comma separated list of ordered pairs [`(a,b)`] or if t
 
 (Hint: The [`arctan`] function in your calculator is useful, make sure the calculator's mode is in radian.)
 
- [_______________________________]{$L}  [@ AnswerFormatHelp("points") @]*
+ [_______________________________]{$L}
 
 
 END_PGML

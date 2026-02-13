@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -59,7 +58,7 @@ BEGIN_PGML
 
 Evaluate  [`\displaystyle \int \sin^{[$a]}(x) \cos^2(x)\; dx`].  
 
-[`\displaystyle\int \sin^{[$a]}(x) \cos^2(x)\; dx=`]  [_________________________________]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`\displaystyle\int \sin^{[$a]}(x) \cos^2(x)\; dx=`]  [_________________________________]{$ans}
 
 Use a capital "C" for any needed constant in your answer.
 

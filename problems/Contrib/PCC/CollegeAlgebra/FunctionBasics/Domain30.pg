@@ -41,7 +41,6 @@ BEGIN_PGML
 
 Find the domain of [`[$f]`] where [``[$f](x)= \frac{\sqrt{[$a] + x}}{[$b] - x}``].
 
-[@KeyboardInstructions('Answer using interval notation. If you need to enter [`\infty`], you can type  [|inf|]* or  [|infinity|]*.  If you need to union two (or more) intervals, use the letter [|U|]*.  For example, to enter [`(\infty,5)\cup(5,10]`] you can type [|(-inf,5) U (5,10]|]*.')@]**
 
     [_______________________]{$ans}
 

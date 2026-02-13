@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -48,7 +47,7 @@ BEGIN_PGML
 
 A rectangle has a length of [$a] units and a width of [$b] units. Squares of x by x units are cut out of each corner, and then the sides are folded up to create an open box. Express the volume of the box as a polynomial function in terms of x.
 
- [`  f(x) = `] [_______________]{$ans1} [@ AnswerFormatHelp("formulas") @]*
+ [`  f(x) = `] [_______________]{$ans1}
 
 
  

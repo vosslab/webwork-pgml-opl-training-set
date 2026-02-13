@@ -21,7 +21,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -66,9 +65,9 @@ Determine a definite integral that represents the area of the region enclosed by
 
 [` \hspace{3cm }\displaystyle \int_{\alpha}^{\beta} f(\theta) d\theta`] 
 
-[`\alpha=`][_____________]{$alpha},[@ AnswerFormatHelp("numbers") @]*
-[`\beta=`][_____________]{$beta},[@ AnswerFormatHelp("numbers") @]*
-[`f(\theta)=`][_____________]{$integrand}.[@ AnswerFormatHelp("formulas") @]* (Type in theta for [`\theta`])
+[`\alpha=`][_____________]{$alpha},
+[`\beta=`][_____________]{$beta},
+[`f(\theta)=`][_____________]{$integrand}. (Type in theta for [`\theta`])
 END_PGML
 
 } else {
@@ -88,9 +87,9 @@ Determine a definite integral that represents the area of the region enclosed by
 
 [` \hspace{3cm }\displaystyle \int_{\alpha}^{\beta} f(\theta) d\theta`] 
 
-[`\alpha=`][_____________]{$alpha},[@ AnswerFormatHelp("numbers") @]*
-[`\beta=`][_____________]{$beta},[@ AnswerFormatHelp("numbers") @]*
-[`f(\theta)=`][_____________]{$integrand}.[@ AnswerFormatHelp("formulas") @]*(Type in theta for [`\theta`])
+[`\alpha=`][_____________]{$alpha},
+[`\beta=`][_____________]{$beta},
+[`f(\theta)=`][_____________]{$integrand}.(Type in theta for [`\theta`])
 END_PGML
 
 }

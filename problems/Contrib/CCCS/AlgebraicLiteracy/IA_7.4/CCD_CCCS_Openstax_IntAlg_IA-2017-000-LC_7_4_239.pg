@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
  "contextFraction.pl",
 "PGcourse.pl",
@@ -99,7 +98,7 @@ Solve the following equation for [`w`].
 
 
 
-[`w`] = [_________________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+[`w`] = [_________________]{$ans}
 
 
 END_PGML

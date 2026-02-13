@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -61,7 +60,7 @@ Solve the following proportion.
 
  [`` \frac{[$f]}{[$e]}= \frac{[$g]}{x}``]
 
- `x=` [_______________]{$ans} [@ AnswerFormatHelp("numeric") @]*
+ `x=` [_______________]{$ans}
 
 
 END_PGML

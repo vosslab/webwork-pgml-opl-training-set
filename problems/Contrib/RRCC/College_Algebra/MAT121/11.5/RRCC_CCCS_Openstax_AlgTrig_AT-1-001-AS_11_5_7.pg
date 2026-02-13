@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -56,7 +55,7 @@ Suppose
 
 Find the sum [`A+B`].
 
-[` A + B = `][_____]*{$answer} [@ AnswerFormatHelp("matrices") @]*
+[` A + B = `][_____]*{$answer}
 
 END_PGML
 

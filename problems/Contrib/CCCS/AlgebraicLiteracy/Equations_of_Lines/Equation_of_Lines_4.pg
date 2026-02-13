@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -72,7 +71,7 @@ $ans = Formula("$slope(x)+$ansYint")-> reduce;
 BEGIN_PGML
 Write an equation for the line parallel to [`y = [$line]`] and passing through the point [`([$xCord], [$yCord])`]. Put your answer in slope-intercept form using fractions and/or integers.
  
-[`y = `] [______]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`y = `] [______]{$ans}
 
 
 END_PGML

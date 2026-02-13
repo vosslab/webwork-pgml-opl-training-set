@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGauxiliaryFunctions.pl",
@@ -54,16 +53,16 @@ BEGIN_PGML
 
 The position of an object after t seconds is given by `s(t)=t^2-[$a0]t` were `s` is in feet.
 
-a. The simplified expression for the average velocity from `t=2` to `t=2+h` is [_______________]{ $ave}  [@ AnswerFormatHelp("formulas") @]*
+a. The simplified expression for the average velocity from `t=2` to `t=2+h` is [_______________]{ $ave}
 
 
-b. If [`h=[$a1]`], the average velocity between `t=2` and `t=2+h` is [_______________]{$avea1} ft/s. [@ AnswerFormatHelp("numbers") @]*
+b. If [`h=[$a1]`], the average velocity between `t=2` and `t=2+h` is [_______________]{$avea1} ft/s.
 
 
-c. If [`h=[$a2]`], the average velocity between `t=2` and `t=2+h` is [_______________]{$avea2} ft/s.[@ AnswerFormatHelp("numbers") @]*
+c. If [`h=[$a2]`], the average velocity between `t=2` and `t=2+h` is [_______________]{$avea2} ft/s.
 
 
-d. Based on the previous parts, the instantaneous velocity at `t=2` is [_______________]{4-$a0} ft/s. [@ AnswerFormatHelp("numbers") @]*
+d. Based on the previous parts, the instantaneous velocity at `t=2` is [_______________]{4-$a0} ft/s.
 
 
 END_PGML

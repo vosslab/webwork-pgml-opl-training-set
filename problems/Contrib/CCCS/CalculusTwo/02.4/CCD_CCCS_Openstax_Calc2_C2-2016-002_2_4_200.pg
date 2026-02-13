@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "PGcourse.pl"
@@ -62,7 +61,7 @@ BEGIN_PGML
 Find the surface area of the solid generated when the curve [`y=[$f1]`],  from [`x=0`] to [`x=[$x]`], revolves around the [`y`]-axis.  Enter exact answers only. 
 
 
-Surface Area: [_______________]{$ans} units squared.  [@ AnswerFormatHelp("numbers") @]*
+Surface Area: [_______________]{$ans} units squared.
 
 
 END_PGML

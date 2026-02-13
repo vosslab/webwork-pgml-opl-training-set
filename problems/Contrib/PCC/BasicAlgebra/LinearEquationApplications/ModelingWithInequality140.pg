@@ -113,7 +113,6 @@ BEGIN_PGML
 
 An engineer is designing a cylindrical springform pan (the kind of pan a cheesecake is baked in). The pan needs to be able to hold a volume at least [`[$volume]`] cubic inches and have a diameter of [`[$diameter]`] inches. Write an _inequality_ modeling possible height of the pan. There is no need to solve it.
 
-[@KeyboardInstructions('Use [|m|]* for the variable. If you need to enter the inequality signs [`\leq`] or [`\geq`], type [|<=|]* or [|>=|]*. Use *pi* to represent [`\pi`].?)@]**
 
     [_________________________]{$evaluator}
 

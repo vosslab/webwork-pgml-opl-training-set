@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -56,7 +55,7 @@ if ($n ==1){
     [`` \cos^2(\theta)=\frac{3}{4} ``]
 
 
-    [` \theta = `] [_________________________]{$ans} [@ AnswerFormatHelp("angles") @]*
+    [` \theta = `] [_________________________]{$ans}
 
     END_PGML
 }
@@ -72,7 +71,7 @@ if ($n ==2){
     [`` \cos^2(\theta)=\frac{1}{2} ``]
 
 
-    [` \theta = `] [_________________________]{$ans} [@ AnswerFormatHelp("angles") @]*
+    [` \theta = `] [_________________________]{$ans}
 
     END_PGML
 }
@@ -88,7 +87,7 @@ if ($n ==3){
     [`` \cos^2(\theta)=\frac{1}{4} ``]
 
 
-    [` \theta = `] [_________________________]{$ans} [@ AnswerFormatHelp("angles") @]*
+    [` \theta = `] [_________________________]{$ans}
 
     END_PGML
 }

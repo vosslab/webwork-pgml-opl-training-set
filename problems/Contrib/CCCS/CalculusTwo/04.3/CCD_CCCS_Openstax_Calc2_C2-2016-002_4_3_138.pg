@@ -25,7 +25,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserPopUp.pl",
@@ -63,7 +62,7 @@ Find the solution to the initial-value problem
 [``\frac{dy}{dx}=[$f],\quad y(0)=[$k]``]
 
 
-[``y=``][___________________________________]{$ans } [@ AnswerFormatHelp("formulas") @]*
+[``y=``][___________________________________]{$ans }
 
 
 

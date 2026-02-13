@@ -72,7 +72,6 @@ BEGIN_PGML
 
 Write the mixed number as a decimal number.
 
-[@KeyboardInstructions('Do not round your answers.')@]**
 
 a.    [`[$frac1]`] = [___________]{$dec1}
 

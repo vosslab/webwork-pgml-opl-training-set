@@ -24,7 +24,6 @@ loadMacros(
   "MathObjects.pl",
   "contextPolynomialFactors.pl",
   "contextLimitedPowers.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -63,7 +62,7 @@ Write the quadratic expression [` [$poly] `]
 in factored form
 [` k(ax+b)(cx+d) `].
 
-[____________________]{$factored} [@ AnswerFormatHelp("formulas") @]*
+[____________________]{$factored}
 END_PGML
 
 

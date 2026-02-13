@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -60,7 +59,7 @@ Use the given magnitude and direction to find the vector [`\mathbf{v}`] in stand
 
 [`|\mathbf{v}|=[$lv]`], [`\theta =`] `[$thetadisp]`
 
-[` \mathbf{v} = `] [________________________]{$ans} [@ AnswerFormatHelp("vectors") @]*
+[` \mathbf{v} = `] [________________________]{$ans}
 
 END_PGML
 ############################

@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -55,7 +54,7 @@ terms of this sequence, including [` s_1 `] and
 [` s_2 `].  Enter your answer as a comma separated
 list of numbers.
 
-Sequence = [___________________]{$answer_cmp} [@ AnswerFormatHelp("numbers") @]*
+Sequence = [___________________]{$answer_cmp}
 END_PGML
 
 

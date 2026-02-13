@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -61,7 +60,7 @@ Complete the following sentence describing Terry's starting elevation and how it
  
 
  
- He is starting from a height of [____]{$start} feet and is skiing downhill at a speed of [____]{$speed} [_____]{$popupDist} per [_____]{$popupTime} [@ AnswerFormatHelp("numbers") @]*
+ He is starting from a height of [____]{$start} feet and is skiing downhill at a speed of [____]{$speed} [_____]{$popupDist} per [_____]{$popupTime}
 
 Note: to get the problem correct, you must provide the correct answer to every part
   

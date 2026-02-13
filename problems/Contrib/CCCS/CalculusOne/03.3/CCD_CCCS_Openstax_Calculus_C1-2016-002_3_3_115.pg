@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGauxiliaryFunctions.pl",
@@ -55,7 +54,7 @@ BEGIN_PGML
 Given  [`\displaystyle h(x)=[$f]`], find `h^\prime (x)`.
 
 
-`h^\prime (x)=`[_______________]{$fp}    [@ AnswerFormatHelp("formulas") @]*
+`h^\prime (x)=`[_______________]{$fp}
 
 
 END_PGML

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextTrigDegrees.pl"
@@ -64,11 +63,11 @@ Find the following:
 
 
 
-The linear speed in inches per second `= `[_______________]{$ans1}   ::     [@ AnswerFormatHelp("numbers") @]*
+The linear speed in inches per second `= `[_______________]{$ans1}   ::
 
-The angular speed in RPMs (Revolutions per minute) `=` [_______________]{$ans2}   ::     [@ AnswerFormatHelp("numbers") @]*
+The angular speed in RPMs (Revolutions per minute) `=` [_______________]{$ans2}   ::
 
-The angular speed in radians per second `=` [_______________]{$ans3}  ::     [@ AnswerFormatHelp("numbers") @]*
+The angular speed in radians per second `=` [_______________]{$ans3}  ::
 
 
 

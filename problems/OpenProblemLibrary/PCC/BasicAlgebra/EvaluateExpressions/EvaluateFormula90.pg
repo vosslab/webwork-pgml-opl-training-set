@@ -103,7 +103,7 @@ The volume of a rectangular prism can be calculated by the formula [`V=LWH`], wh
 >>[@ image(insertGraph( $picture  ), tex_size=>400, height=>(240*$ymax/$xmax), width=>240, extra_html_tags => "alt = '$alt' title = '$alt' ") @]*<<
 
 
-Use the formula to calculate a rectangular prism's volume, if its base's length is [`[$base1U]`], its base's width is [`[$base2U]`], and its height is [`[$heightU]`]. [@KeyboardInstructions(q!(Use [|in^3|]* for cubic inches.)!)@]**
+Use the formula to calculate a rectangular prism's volume, if its base's length is [`[$base1U]`], its base's width is [`[$base2U]`], and its height is [`[$heightU]`].
 
     Its volume is [_____________]{$ans}. 
 

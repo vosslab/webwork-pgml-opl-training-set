@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGauxiliaryFunctions.pl",
@@ -51,7 +50,7 @@ BEGIN_PGML
 Use the definition of the derivative, `f^\prime(x) = \lim_{h \to 0} (f(x+h)-f(x))/h`, to find the derivative of  [`\displaystyle f(x)=[$f]`].
 
 
-`f^\prime(x)=`[_______________]{$fp}  [@ AnswerFormatHelp("formulas") @]*
+`f^\prime(x)=`[_______________]{$fp}
 
 
 END_PGML

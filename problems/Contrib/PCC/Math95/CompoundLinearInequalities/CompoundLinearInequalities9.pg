@@ -50,7 +50,6 @@ else
 BEGIN_PGML
 Solve the following inequality. Write the answer in interval notation.
 
-[@KeyboardInstructions('If you need to use the [`\infty`] symbol, type [|INF|]*. If you need to use the union symbol [`\cup`], type [|U|]*.')@]**
 
 >>[``\frac{x-[$a]}{x-[$b]} \le [$c]  ``]<<
 

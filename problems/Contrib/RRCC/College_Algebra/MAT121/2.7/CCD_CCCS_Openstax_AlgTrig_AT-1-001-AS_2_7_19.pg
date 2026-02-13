@@ -21,7 +21,6 @@ loadMacros(
   "MathObjects.pl",
   "PGML.pl",
   "contextFraction.pl",
-"AnswerFormatHelp.pl",
   "contextInequalitySetBuilder.pl",
   "parserOneOf.pl",
   "PGcourse.pl",
@@ -54,7 +53,7 @@ Solve the following inequality involving absolute value.  Enter your answer in i
 
 [` [$f] + [$c] > [$d] `]
      
-[_______________]{$intans}[@ AnswerFormatHelp("intervals") @]*
+[_______________]{$intans}
 
 
 

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -64,15 +63,15 @@ BEGIN_PGML
 
 Let [`` f(x)=[$f] ``]. Find the domain, vertical asymptote, behavior of the vertical asymptote, and horizontal asymptote. 
 
-+ Domain: [_______________]{$ans1} [@ AnswerFormatHelp("intervals") @]*
++ Domain: [_______________]{$ans1}
 
-+ Vertical Asymptote: [`x=`] [_______________]{$ans2} [@ AnswerFormatHelp("numbers") @]*
++ Vertical Asymptote: [`x=`] [_______________]{$ans2}
 
-+ As [`x \to [$asymp]^-`], [`f(x) \to`] [_______________]{$ans3} [@ AnswerFormatHelp("numbers") @]* (enter infinity or -infinity)
++ As [`x \to [$asymp]^-`], [`f(x) \to`] [_______________]{$ans3}  (enter infinity or -infinity)
 
-+ As [`x \to [$asymp]^+`], [`f(x) \to`] [_______________]{$ans4} [@ AnswerFormatHelp("numbers") @]* (enter infinity or -infinity)
++ As [`x \to [$asymp]^+`], [`f(x) \to`] [_______________]{$ans4}  (enter infinity or -infinity)
 
-+ Horizontal Asymptote: [`y=`] [_______________]{$ans5} [@ AnswerFormatHelp("numbers") @]*
++ Horizontal Asymptote: [`y=`] [_______________]{$ans5}
 
 END_PGML
 

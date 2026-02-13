@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "PGcourse.pl",
@@ -61,7 +60,7 @@ Use the guidelines in this section to choose [`u`] that should be used in integr
 [`\displaystyle \int [$f] dx`]
 
 
-[`u=`] [_______________]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`u=`] [_______________]{$ans}
 
 
 END_PGML

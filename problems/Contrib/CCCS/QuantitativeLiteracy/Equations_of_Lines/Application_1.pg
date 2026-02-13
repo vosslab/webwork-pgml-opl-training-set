@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -62,7 +61,7 @@ $LHS = Formula("$slope*x + $slope*$bikes1");
 BEGIN_PGML
 It cost a bicycle company [`$[$cost1]`] to make [`[$bikes1]`] bikes in its first month of operation and [`$[$cost2]`] to make [`[$bikes2]`] bikes during its second month.  Find a linear equation to express the company's monthly production cost, [`y`], in terms of the number, [`x`] of bikes it makes.
 
-[`y = `][____]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`y = `][____]{$ans}
 
 
   

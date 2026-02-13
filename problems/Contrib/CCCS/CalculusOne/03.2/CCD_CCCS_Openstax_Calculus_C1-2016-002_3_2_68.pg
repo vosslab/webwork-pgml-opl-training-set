@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedRadical.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -55,9 +54,9 @@ BEGIN_PGML
 The limit `\lim_{h \to 0} (([$a]+h)^(2/3)-[$a]^(2/3))/h` is the derivative of  some function `f(x)` evaluated at `x=a`. Find the function `f(x)` and the value of `a`. 
  
 
-a.  `f(x)=`[_______________]{$f}   [@ AnswerFormatHelp("formulas") @]* 
+a.  `f(x)=`[_______________]{$f}
 
-b.  `a=`[_______________]{$a}   [@ AnswerFormatHelp("numbers") @]* 
+b.  `a=`[_______________]{$a}
 
 
 

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "parserMultiAnswer.pl",
 "PGML.pl",
@@ -74,11 +73,11 @@ Note: to be counted as correct, you must get all answers correct.
 
 
 
-+ One zero is [`x=`][____]{$multians} and has a multiplicity of [____]{$multians} [@ AnswerFormatHelp("numbers") @]*
++ One zero is [`x=`][____]{$multians} and has a multiplicity of [____]{$multians}
 
-+ Another zero is [`x=`][____]{$multians} and has a multiplicity of: [____]{$multians} [@ AnswerFormatHelp("numbers") @]*
++ Another zero is [`x=`][____]{$multians} and has a multiplicity of: [____]{$multians}
 
-+ The last zero is [`x=`][____]{$multians} and has a multiplicity of: [____]{$multians} [@ AnswerFormatHelp("numbers") @]*
++ The last zero is [`x=`][____]{$multians} and has a multiplicity of: [____]{$multians}
 
 
 END_PGML

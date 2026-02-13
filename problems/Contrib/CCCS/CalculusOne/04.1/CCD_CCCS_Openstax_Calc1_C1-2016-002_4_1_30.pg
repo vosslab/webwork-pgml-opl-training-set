@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -61,7 +60,7 @@ A trough has ends shaped like isosceles triangles, with width of `w=[$a]` meters
             extra_html_tags=>'alt="a picture of a triangular trough"') 
   @]*<<
 
-``[_______________________________]{$ans} m/min. [@ AnswerFormatHelp("numbers") @]*
+``[_______________________________]{$ans} m/min.
 
 
 

@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -48,7 +47,7 @@ Find all solutions to the system of nonlinear equations.
 >>[` x^2+y^2 = [$r2]  `]<<  
 >>[` y^2 = x^2 `]<<
   
-Solution(s): [___________________________]{"($a,$a),($a,-$a),(-$a,-$a),(-$a,$a)"} [@ AnswerFormatHelp("points") @]*  
+Solution(s): [___________________________]{"($a,$a),($a,-$a),(-$a,-$a),(-$a,$a)"}
 
 Enter the solution as an ordered pair,  [` (a,b) `], or a list of ordered pairs,  [` (a,b), (c,d) `].
 

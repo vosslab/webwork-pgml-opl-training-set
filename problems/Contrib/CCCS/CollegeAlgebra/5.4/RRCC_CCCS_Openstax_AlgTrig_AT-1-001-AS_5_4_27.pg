@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -53,7 +52,7 @@ $ans1 = Formula("$a*x^2+$a*$m*x+($a*($m)^2+$c)")->reduce;
 BEGIN_PGML
 Use synthetic division to find the quotient of [`([$f])\div(x-[$m])`].  
 
-+ Quotient: [_______________]{$ans1} [@ AnswerFormatHelp("formulas") @]*
++ Quotient: [_______________]{$ans1}
 
 
 END_PGML

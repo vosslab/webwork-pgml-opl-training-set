@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -66,7 +65,7 @@ Solve the rational inequality.  Enter the answer in interval notation.
 
 [`` \dfrac{1}{{[$w]}} - \dfrac{ {[$a*$b*$w]} }{x^2} \le \dfrac{ {[$a - $b]} }{x} ``]
 
- [_______________________________]{$x1} [@ AnswerFormatHelp("intervals") @]*
+ [_______________________________]{$x1}
 
 END_PGML
 }
@@ -78,7 +77,7 @@ Solve the rational inequality.  Enter the answer in interval notation.
 
 [`` \dfrac{1}{{[$w]}} - \dfrac{ {[$a*$b*$w]} }{x^2} \le -\dfrac{ {[$b - $a]} }{x} ``]
 
- [_______________________________]{$x1} [@ AnswerFormatHelp("intervals") @]*
+ [_______________________________]{$x1}
 
 END_PGML
 }

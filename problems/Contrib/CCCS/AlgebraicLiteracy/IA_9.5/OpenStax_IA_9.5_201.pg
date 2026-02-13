@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -57,7 +56,6 @@ Base =  [_______________]{$base}inches
 
 Height = [_______________]{$height}inches
 
-[@ AnswerFormatHelp("numbers") @]*
 
 END_PGML
 

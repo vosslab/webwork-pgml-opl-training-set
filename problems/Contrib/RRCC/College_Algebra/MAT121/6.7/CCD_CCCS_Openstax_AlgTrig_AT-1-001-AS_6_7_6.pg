@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -64,7 +63,6 @@ where [`t`] is time in minutes.  What is the temperature of the metal after [`1`
 
 [_______________]{$x1} [` {}^{\text{O}}F `] 
 
-[@ AnswerFormatHelp("numbers") @]*
 
 END_PGML
 

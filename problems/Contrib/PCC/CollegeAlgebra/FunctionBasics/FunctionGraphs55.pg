@@ -105,11 +105,9 @@ BEGIN_PGML
 
 A function's graph is shown below. A few points are highlighted for your reference.
 
-[@EnlargeImageStatementPGML()@]**
 
 >>[@image(insertGraph($gr[0]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT' title = '$ALT'") @]*<<
 
-[@KeyboardInstructions('If the answer includes more than one interval write the intervals separated by the union symbol, which you can type as [|U|]*. If the answer uses [`\infty`], you may type it as [|inf|]*.')@]**
 
 The function is increasing in the interval [_____________________]{$ansInc}.
 

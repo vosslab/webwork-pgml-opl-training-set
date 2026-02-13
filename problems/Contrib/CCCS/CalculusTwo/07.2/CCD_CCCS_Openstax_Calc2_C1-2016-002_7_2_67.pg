@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -98,7 +97,7 @@ BEGIN_PGML
 
 Determine the slope of the tangent line at [`t=\frac{\pi}{[$a]}`].
 
- [`slope=`] [_______________]{$m}   [@ AnswerFormatHelp("numbers") @]*
+ [`slope=`] [_______________]{$m}
 
 
 END_PGML
@@ -112,7 +111,7 @@ Section::Begin("Part 2 - 1 point");
 BEGIN_PGML
 Find the equation of the tangent line at [`t=\frac{\pi}{[$a]}`].
 
-[`y=`] [_______________]{$tanline}   [@ AnswerFormatHelp("formulas") @]*
+[`y=`] [_______________]{$tanline}
 
 END_PGML
 
@@ -172,7 +171,7 @@ BEGIN_PGML
 
 Determine the slope of the tangent line at [`t=\frac{\pi}{[$a]}`].
 
- [`slope=`] [_______________]{$m}   [@ AnswerFormatHelp("numbers") @]*
+ [`slope=`] [_______________]{$m}
 
 
 END_PGML
@@ -186,7 +185,7 @@ Section::Begin("Part 2 - 1 point");
 BEGIN_PGML
 Find the equation of the tangent line at [`t=\frac{\pi}{[$a]}`].
 
-[`y=`] [_______________]{$tanline}   [@ AnswerFormatHelp("formulas") @]*
+[`y=`] [_______________]{$tanline}
 
 END_PGML
 

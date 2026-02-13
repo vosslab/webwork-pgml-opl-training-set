@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -51,7 +50,7 @@ Rewrite the given radical expression with a positive exponent.
 
 [`\sqrt[[$root]]{x^{[$power]}}`] 
 
- Rewritten expression with exponent: [_______________]{$ans->cmp(mathQuillOpts => "rootsAreExponents: false")} [@ AnswerFormatHelp("formulas") @]*
+ Rewritten expression with exponent: [_______________]{$ans->cmp(mathQuillOpts => "rootsAreExponents: false")}
 
 
 END_PGML

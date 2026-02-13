@@ -69,10 +69,8 @@ Solve this inequality.
 
     [`` [$left] [$comp] [$right] ``]
 
-[@KeyboardInstructions(q!Please type: [|inf|]* for [`\infty`], [|>=|]* for [`\geq`], and [|<=|]* for [`\leq`].!)@]**
 
     In set-builder notation, the solution set is [______________]{$ans}.  
-    [@KeyboardInstructions(q!The [| | |]* symbol is above the [|Enter|]* key.!)@]**
 
     In interval notation, the solution set is [______________]{$intans}.  
 

@@ -22,7 +22,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "contextLimitedPowers.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -64,7 +63,7 @@ Simplify the given expression and enter your answer with positive exponents.
 
  [`` [$f] ``]
 
- Simplified answer: [_______________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+ Simplified answer: [_______________]{$ans}
 
 
 END_PGML

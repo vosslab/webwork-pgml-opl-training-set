@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -52,7 +51,7 @@ Find a function `f(x)` satisfying the conditions
 
 
 
-[`` f(x) =``][___________________________]{$ans }[@ AnswerFormatHelp("formulas") @]*
+[`` f(x) =``][___________________________]{$ans }
 
 
 

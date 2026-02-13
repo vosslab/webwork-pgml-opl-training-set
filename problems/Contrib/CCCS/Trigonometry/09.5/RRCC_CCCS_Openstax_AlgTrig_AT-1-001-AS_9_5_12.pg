@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -56,7 +55,7 @@ if ($n ==1){
     [` \csc^2(x)-4=0`]
 
 
-    [` x = `] [_____________________________]{$ans} [@ AnswerFormatHelp("angles") @]*
+    [` x = `] [_____________________________]{$ans}
 
     END_PGML
 }
@@ -74,7 +73,7 @@ if ($n ==2){
     [` \csc^2(x)-2=0`]
 
 
-    [` x = `] [_____________________________]{$ans} [@ AnswerFormatHelp("angles") @]*
+    [` x = `] [_____________________________]{$ans}
 
     END_PGML
 }
@@ -90,7 +89,7 @@ if ($n ==3){
     [` 3\csc^2(x)-4=0`]
 
 
-    [` x = `] [_____________________________]{$ans} [@ AnswerFormatHelp("angles") @]*
+    [` x = `] [_____________________________]{$ans}
 
     END_PGML
 }

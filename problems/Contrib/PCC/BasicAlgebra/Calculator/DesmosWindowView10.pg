@@ -28,7 +28,6 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "PGML.pl",
-  "AnswerFormatHelp.pl",
   "PCCmacros.pl",
   "parserMultiAnswer.pl",
   "PGgraphmacros.pl",
@@ -175,7 +174,6 @@ $multians = MultiAnswer($x, $y)->with(
 BEGIN_PGML
 Let [`f(x)=[$func]\text{.}`] Choose an appropriate window for graphing [`f`] that shows its key features.
 
-[@KeyboardInstructions(q?Use interval notation. Many answers are possible.?)@]**
 
 The [`x`]-interval could be [__]{$multians}{width => 20} and the [`y`]-interval could be [__]{$multians}{width => 20}.
 

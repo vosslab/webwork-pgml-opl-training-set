@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "AnswerFormatHelp.pl",
   "contextFraction.pl",
   "PGML.pl",
   "PGcourse.pl"
@@ -64,9 +63,9 @@ $answer2 = Compute("sqrt(3)/2");
 BEGIN_PGML
 Enter your answers as simplified fractions.
 
-+ [` [$f1] = `] [_____________]{$answer1} [@ AnswerFormatHelp("fractions") @]*
++ [` [$f1] = `] [_____________]{$answer1}
 
-+ [` [$f2] = `] [_____________]{$answer2} [@ AnswerFormatHelp("fractions") @]*
++ [` [$f2] = `] [_____________]{$answer2}
 END_PGML
 
 

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -59,7 +58,7 @@ $z=Complex(0,$Impart);
 BEGIN_PGML
 Evaluate [` -\sqrt{[$a]} - [$b]\sqrt{[$c]}`] and express as a simplified complex number [`a+bi`]. 
 
- [_______________]{$z} [@ AnswerFormatHelp("numbers") @]*
+ [_______________]{$z}
 
 END_PGML
 

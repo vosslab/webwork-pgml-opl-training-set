@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -80,7 +79,7 @@ If there is more than one solution, enter the answers as a comma-separated list.
 
 [` \ln \left( - {[$u]} x \right) = \ln \left( x^2 - {[$v]} x \right) `]  
 
-[`x =`] [_______________]{$x1} [@ AnswerFormatHelp("numbers") @]*
+[`x =`] [_______________]{$x1}
 
 END_PGML
 }
@@ -93,7 +92,7 @@ If there is more than one solution, enter the answers as a comma-separated list.
 
 [` \ln \left( {[$u]} x \right) = \ln \left( x^2 - {[$v]} x \right) `]  
 
-[`x =`] [_______________]{$x1} [@ AnswerFormatHelp("numbers") @]*
+[`x =`] [_______________]{$x1}
 
 END_PGML
 }
@@ -106,7 +105,7 @@ If there is more than one solution, enter the answers as a comma-separated list.
 
 [` \ln \left( {[$u]} x + {[$w]} \right) = \ln \left( x^2 - {[$v]} x + {[$w]} \right) `]  
 
-[`x =`] [_______________]{$x1} [@ AnswerFormatHelp("numbers") @]*
+[`x =`] [_______________]{$x1}
 
 END_PGML
 }

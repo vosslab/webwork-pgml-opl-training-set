@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -61,7 +60,7 @@ if ($b == 0) {
 BEGIN_PGML
 Solve [`  {[$a]} \left( t - {[$u]} \right)^2 = {[$neg_c]} `].  Begin by using a substitution to simplify the equation.
 
- [_______________]{List($x1,$x2)} [@ AnswerFormatHelp("numbers") @]*
+ [_______________]{List($x1,$x2)}
 
 
 For more questions like this, go to section 2.6 numbers 37-41.
@@ -71,7 +70,7 @@ END_PGML
 BEGIN_PGML
 Solve [`  {[$a]} \left( t - {[$u]} \right)^2 + {[$b]} \left( t - {[$u]} \right) = {[$neg_c]} `].  Begin by using a substitution to simplify the equation.
 
- [_______________]{List(-1,1,-3,3)} [@ AnswerFormatHelp("numbers") @]*
+ [_______________]{List(-1,1,-3,3)}
 
 
 For more questions like this, go to section 2.6 numbers 37-41.
@@ -83,7 +82,7 @@ $b = -$b;
 BEGIN_PGML
 Solve [`  {[$a]} \left( t - {[$u]} \right)^2 - {[$b]} \left( t - {[$u]} \right) = {[$neg_c]} `].  Begin by using a substitution to simplify the equation.
 
- [_______________]{List(1/2,-1/2)} [@ AnswerFormatHelp("numbers") @]*
+ [_______________]{List(1/2,-1/2)}
 
 
 For more questions like this, go to section 2.6 numbers 37-41.

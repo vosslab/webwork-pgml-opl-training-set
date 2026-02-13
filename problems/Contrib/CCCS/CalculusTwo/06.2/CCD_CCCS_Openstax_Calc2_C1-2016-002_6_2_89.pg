@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGauxiliaryFunctions.pl",
@@ -67,7 +66,7 @@ Given the following function,
 integrate it term by term to obtain a power series for the indefinite integral.
 
 
-[``\int f(x) dx = [$int_f] =\sum_{n=0}^{\infty}``] [__________________________]{$ans}[@ AnswerFormatHelp("formulas") @]*
+[``\int f(x) dx = [$int_f] =\sum_{n=0}^{\infty}``] [__________________________]{$ans}
 
 
 END_PGML

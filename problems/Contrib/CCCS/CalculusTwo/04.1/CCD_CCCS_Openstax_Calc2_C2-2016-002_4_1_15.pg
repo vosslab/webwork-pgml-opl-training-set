@@ -24,7 +24,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -62,7 +61,7 @@ BEGIN_PGML
 Verify that the function [``y=[$f]``] is a solution to the differential equation  [``y'=[$g]``].
 
 
-[``y'=``][_____________]{$ans}[@ AnswerFormatHelp("formulas") @]*
+[``y'=``][_____________]{$ans}
 
 
 END_PGML

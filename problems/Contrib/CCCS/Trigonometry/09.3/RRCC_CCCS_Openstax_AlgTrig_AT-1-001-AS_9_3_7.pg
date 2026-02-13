@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -55,11 +54,11 @@ BEGIN_PGML
 If [``\cos(x)=-\frac{1}{[$a]}``] and [`x`] is in quadrant III, find the exact values of the following without solving for [`x`]:
 
 
-[` \sin(2x) = `] [_______________]{$ans_s} [@ AnswerFormatHelp("numbers") @]*
+[` \sin(2x) = `] [_______________]{$ans_s}
 
-[` \cos(2x) = `] [_______________]{$ans_c} [@ AnswerFormatHelp("numbers") @]*
+[` \cos(2x) = `] [_______________]{$ans_c}
 
-[` \tan(2x) = `] [_______________]{$ans_t} [@ AnswerFormatHelp("numbers") @]*
+[` \tan(2x) = `] [_______________]{$ans_t}
 
 END_PGML
 

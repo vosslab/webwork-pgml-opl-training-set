@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -58,7 +57,7 @@ BEGIN_PGML
 Find the surface area of the solid generated when the curve [`y=[$f1]`],  from [`x=0`] to [`x=[$b]`], revolves around the [`x`]-axis.  If you cannot evaluate the integral exactly, use technology to approximate it.
 
 
-Surface Area: [_______________]{$ans} units squared.  [@ AnswerFormatHelp("numbers") @]*
+Surface Area: [_______________]{$ans} units squared.
 
 
 END_PGML

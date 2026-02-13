@@ -21,7 +21,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -62,7 +61,7 @@ BEGIN_PGML
 Determine the area enclosed by [`r=2+4\cos(\theta)`] and outside the inner loop.
 
 
-Area [`=`][__________________________________]{$ans}[@ AnswerFormatHelp("numbers") @]*
+Area [`=`][__________________________________]{$ans}
 
 END_PGML
 
@@ -80,7 +79,7 @@ BEGIN_PGML
 Determine the area enclosed by [`r=\sqrt{2}-2\cos(\theta)`] and outside the inner loop.
 
 
-Area [`=`][__________________________________]{$ans}[@ AnswerFormatHelp("numbers") @]*
+Area [`=`][__________________________________]{$ans}
 
 END_PGML
 

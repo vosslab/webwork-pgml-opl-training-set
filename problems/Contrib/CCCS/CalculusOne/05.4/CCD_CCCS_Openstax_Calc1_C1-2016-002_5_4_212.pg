@@ -19,7 +19,6 @@ DOCUMENT();
 loadMacros(
 "PGbasicmacros.pl",
 "PGanswermacros.pl",
-"AnswerFormatHelp.pl",
 "PGauxiliaryFunctions.pl",
 "MathObjects.pl",
 "PGcourse.pl",
@@ -50,7 +49,7 @@ $ans = $f->eval(x=>$a,y=>$b);
 BEGIN_PGML
 Evaluate the following definite integral.
 
-[``   \int_{ 0 } ^ { \pi/2 } [$a] x - [$b] \sin(x)  dx = ``][_____________________]{$ans } [@ AnswerFormatHelp("numbers") @]*
+[``   \int_{ 0 } ^ { \pi/2 } [$a] x - [$b] \sin(x)  dx = ``][_____________________]{$ans }
 
 
 

@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl",
   "parserAssignment.pl",
@@ -93,7 +92,7 @@ BEGIN_PGML
 
 Determine the velocity of the car when `s(t)=0`.
 
-[_______________]{$ans1} ft/sec. [@ AnswerFormatHelp("numbers") @]*
+[_______________]{$ans1} ft/sec.
 
 END_PGML
 
@@ -107,7 +106,7 @@ BEGIN_PGML
 
 Determine the velocity of the car when `s(t)=14`.
 
-[_______________]{$ans2} ft/sec. [@ AnswerFormatHelp("numbers") @]*
+[_______________]{$ans2} ft/sec.
 
 END_PGML
 

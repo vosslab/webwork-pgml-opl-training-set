@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -82,7 +81,7 @@ Rewrite the following equation in exponential form.
 
 [``\log_[$a]\left(\frac{1}{[$d]}\right)=[$b] ``] 
  
- [____]{$multians} [`=`] [____]{$multians} [@ AnswerFormatHelp("numbers") @]*
+ [____]{$multians} [`=`] [____]{$multians}
 
 
 END_PGML

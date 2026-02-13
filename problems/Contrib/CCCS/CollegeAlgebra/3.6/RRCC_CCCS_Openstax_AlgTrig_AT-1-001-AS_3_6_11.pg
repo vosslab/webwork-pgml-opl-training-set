@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -57,8 +56,8 @@ including the parentheses.  If there is more
 than one correct answer, enter a comma 
 separated list of points.
 
-`x`-intercept(s): [_______________]{"($b+$c/$a,0),($b-$c/$a,0)"} [@ AnswerFormatHelp("points") @]*  
-`y`-intercept(s):  [_______________]{$yint} [@ AnswerFormatHelp("points") @]*
+`x`-intercept(s): [_______________]{"($b+$c/$a,0),($b-$c/$a,0)"}
+`y`-intercept(s):  [_______________]{$yint}
 
 END_PGML
 

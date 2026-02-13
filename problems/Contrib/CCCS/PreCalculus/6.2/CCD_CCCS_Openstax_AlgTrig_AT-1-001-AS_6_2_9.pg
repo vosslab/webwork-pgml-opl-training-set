@@ -24,7 +24,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -125,9 +124,9 @@ Let [`g(x)`] be the reflection of [`f(x)`] across the [`x`]-axis.  Which of the 
 
 >>C. [@ image(insertGraph($gr4), width=>200, height=>200), @]*  D. [@ image(insertGraph($gr3), width=>200, height=>200), @]*   <<
 
-What is the equation for [`g(x)`]?  [`g(x)`]= [_________________]{$ans1} [@ AnswerFormatHelp("formulas") @]*
+What is the equation for [`g(x)`]?  [`g(x)`]= [_________________]{$ans1}
 
-What is the [`y`]-intercept of [`g(x)`]?  Enter an ordered pair for the intercept. [_________________]{$ans2} [@ AnswerFormatHelp("points") @]*
+What is the [`y`]-intercept of [`g(x)`]?  Enter an ordered pair for the intercept. [_________________]{$ans2}
 
 
 END_PGML

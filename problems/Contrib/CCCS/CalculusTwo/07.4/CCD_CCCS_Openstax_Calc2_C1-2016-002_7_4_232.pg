@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -113,7 +112,7 @@ BEGIN_PGML
 
 Use the fact that for a circle [`Circumference=2\pi r`] to evaluate the definite integral that represents the arc length of [`r =[$f]`] on the interval [`0\leq\theta\leq\pi`].
 
-[`\displaystyle \hspace{3cm }\displaystyle \int_{0}^{\pi} \sqrt{ r^{2} +\left(\frac{dr}{d\theta}\right)^{2} }d\theta =`] [______________________]{$ans}[@ AnswerFormatHelp("numbers") @]*  
+[`\displaystyle \hspace{3cm }\displaystyle \int_{0}^{\pi} \sqrt{ r^{2} +\left(\frac{dr}{d\theta}\right)^{2} }d\theta =`] [______________________]{$ans}
 
 END_PGML
 

@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -91,7 +90,7 @@ Factor the following polynomial expression.
  [`` [$polynomial] ``]
 
 
-Factored Form: [_______________]{$answer} [@ AnswerFormatHelp("formulas") @]*
+Factored Form: [_______________]{$answer}
 
 END_PGML
 

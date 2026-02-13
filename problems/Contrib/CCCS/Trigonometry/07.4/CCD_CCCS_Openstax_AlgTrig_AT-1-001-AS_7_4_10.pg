@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -70,7 +69,7 @@ Find the exact value of the trigonometric function.
 `tan([$a])`
 
 
-[_______________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+[_______________]{$ans}
 
 END_PGML
 

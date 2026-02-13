@@ -220,7 +220,6 @@ BEGIN_PGML_SOLUTION
 
 Assume the vertical distance from the person's eyes to the kite is [`x`] feet. The following graph can represent this situation:
 
-[@EnlargeImageStatementPGML()@]**
 
 >>[@image(insertGraph($picture), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$text' title = '$text'") @]*<<
 

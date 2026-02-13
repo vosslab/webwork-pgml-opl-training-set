@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -79,7 +78,7 @@ Given the parametric curve and value of t
 Find [`\frac{dy}{dx}`] at [`t=[$a]`]
 
  
-[`{ \frac{dy}{dx} }\Bigr\rvert_{t=[$a]} =`] [_______________]{$m}   [@ AnswerFormatHelp("numbers") @]*
+[`{ \frac{dy}{dx} }\Bigr\rvert_{t=[$a]} =`] [_______________]{$m}
 
 END_PGML
 
@@ -115,7 +114,7 @@ Given the parametric curve and value of t
 Find [`\frac{dy}{dx}`] at [`t=[$a]`]
 
  
-[`{ \frac{dy}{dx} }\Bigr\rvert_{t=[$a]} =`] [_______________]{$m}   [@ AnswerFormatHelp("numbers") @]*
+[`{ \frac{dy}{dx} }\Bigr\rvert_{t=[$a]} =`] [_______________]{$m}
 
 END_PGML
 

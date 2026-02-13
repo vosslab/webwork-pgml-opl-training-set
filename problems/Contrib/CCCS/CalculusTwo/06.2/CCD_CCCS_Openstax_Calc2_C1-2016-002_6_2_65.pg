@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGauxiliaryFunctions.pl",
@@ -59,7 +58,7 @@ Use partial fraction decomposition to find the power series representation of
 [`\displaystyle f(x)=[$f] `].
 
 
-The power series representation for [`f(x)`] is [`` \sum_{n=0}^{\infty}``][__________________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+The power series representation for [`f(x)`] is [`` \sum_{n=0}^{\infty}``][__________________________]{$ans}
 
 
 END_PGML

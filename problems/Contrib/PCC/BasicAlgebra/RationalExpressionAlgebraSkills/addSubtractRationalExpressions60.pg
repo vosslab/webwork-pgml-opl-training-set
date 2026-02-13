@@ -80,7 +80,7 @@ TEXT(beginproblem());
 
 BEGIN_PGML
 
-Add or subtract the rational expressions to a single rational expression and then simplify. [@KeyboardInstructions('Do not try to write the restricted domain.')@]**
+Add or subtract the rational expressions to a single rational expression and then simplify.
 
     [``[$question] =``] [___________________]{$ans}
 

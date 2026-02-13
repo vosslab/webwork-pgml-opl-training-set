@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -51,11 +50,11 @@ $ans2=List(-$b/2);
 BEGIN_PGML
 Let [` f(x) = [$f] `].
 
-Evaluate [`f([$c])=`] [_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
+Evaluate [`f([$c])=`] [_______________]{$ans1}
 
 Solve [`f(x)=[$d]`].  
 
-+ `x=`[_______________]{$ans2} [@ AnswerFormatHelp("numbers") @]*
++ `x=`[_______________]{$ans2}
 
 END_PGML
 

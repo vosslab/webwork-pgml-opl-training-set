@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "niceTables.pl",
@@ -61,7 +60,7 @@ Consider the function [`f(x)=[$f]`] for [`-\frac{\pi}{2}\leq x\leq \frac{\pi}{2}
 
 Find `(f^{-1})^\prime([$b])`.
 
-`(f^{-1})^\prime([$b])=` [_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
+`(f^{-1})^\prime([$b])=` [_______________]{$ans1}
 
 
 END_PGML

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -44,7 +43,7 @@ The slope of the tangent line to `f(x)` at `x=a` can be found by evaluating the 
  Use this limit to find `f^\prime([$a])` given [`f(x)=5x+4`].  
 
 
- `f^\prime([$a])=`[_______________]{$ans1}[@ AnswerFormatHelp("numbers") @]*
+ `f^\prime([$a])=`[_______________]{$ans1}
 
 
 

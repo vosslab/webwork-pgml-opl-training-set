@@ -29,7 +29,6 @@ loadMacros(
   "MathObjects.pl",
   "PGML.pl",
   "niceTables.pl",
-  "AnswerFormatHelp.pl",
   "PCCmacros.pl",
   "parserMultiAnswer.pl",
   "PGcourse.pl",

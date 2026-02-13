@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -61,7 +60,7 @@ Multiply the following rational expressions and express the product in simplest 
 
  [`\displaystyle[$first] \cdot [$second]`]
 
- [_______________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+ [_______________]{$ans}
 
 
 END_PGML

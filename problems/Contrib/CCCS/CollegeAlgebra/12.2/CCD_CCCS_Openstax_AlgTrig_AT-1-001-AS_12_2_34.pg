@@ -24,7 +24,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "parserImplicitPlane.pl",
 "PGML.pl",
@@ -95,11 +94,11 @@ Identify the foci, the vertices, and the equations of the asymptotes for the hyp
 
 >>[`` [$f]=[$d] ``]<<
 
-Foci:[___________________________]{$foci} [@ AnswerFormatHelp("points") @]*
+Foci:[___________________________]{$foci}
 
-Vertices: [_____________________]{$vertices} [@ AnswerFormatHelp("points") @]*
+Vertices: [_____________________]{$vertices}
 
-Equations of Asymptotes:  [_____________________]{$asymptote} [@ AnswerFormatHelp("equations") @]*
+Equations of Asymptotes:  [_____________________]{$asymptote}
 
 Equation of the hyperbola in standard form:   [___________________________]{$hyperbola}`=1`
 

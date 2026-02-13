@@ -46,7 +46,7 @@ $factor=gcd($int,100);
 
 $dec = $int/100;
 
-$decWord = numberWord($int).' hundredth';
+$decWord = $int.' hundredth';
 
 $frac = Fraction($int,100);
 

@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -62,7 +61,7 @@ BEGIN_PGML
 
 Draw the region bounded by the curves [`x^2-y^2=[$b]`],  [`x+y=[$b]`],  [`y=0`] and [`x=0`]  . Use the disk method to find the volume when the region is rotated around the [`x`]-axis. 
 
-Volume: [_______________]{$ans} units cubed. [@ AnswerFormatHelp("numbers") @]*
+Volume: [_______________]{$ans} units cubed.
 
 
 END_PGML

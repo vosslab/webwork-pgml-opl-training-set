@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "scaffold.pl",
@@ -71,7 +70,7 @@ BEGIN_PGML
 
 Write an exponential model for the [`A(t)`], the amount of the drug in the patient's system after [`t`] hours have passed.  
 
-[`A(t)=`]  [_______________]{$f} [@ AnswerFormatHelp("formula") @]*
+[`A(t)=`]  [_______________]{$f}
 
 END_PGML
 
@@ -87,7 +86,6 @@ Use your formula to find the amount of the drug remaining after [`{[$w]}`] hours
 
  [_______________]{$x1} mg
 
-[@ AnswerFormatHelp("numbers") @]*
 
 END_PGML
 

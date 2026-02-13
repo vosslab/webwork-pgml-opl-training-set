@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -54,7 +53,7 @@ BEGIN_PGML
 
 Evaluate [`\displaystyle \int \tan^2([$f]) \sec([$f])  \;dx`].
 
- [`\displaystyle \int \tan^2([$f]) \sec([$f])  \;dx=`] [________________________________]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+ [`\displaystyle \int \tan^2([$f]) \sec([$f])  \;dx=`] [________________________________]{$ans}
 
 Use a capital "C" for any needed constant in your answer.
 

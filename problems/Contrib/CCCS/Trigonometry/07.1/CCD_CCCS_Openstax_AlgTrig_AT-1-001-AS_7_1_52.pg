@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextTrigDegrees.pl"
@@ -54,7 +53,7 @@ Find the angle between [`0^{\circ} `] and [`360^{\circ} `] that is coterminal to
  [`[$a]^{\circ} `]
 
 
-[_______________]{$ans}degrees  ::     [@ AnswerFormatHelp("numbers") @]*
+[_______________]{$ans}degrees  ::
 
 END_PGML
 

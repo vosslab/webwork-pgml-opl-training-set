@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "AppletObjects.pl",
 "unionTables.pl",
 "parserNumberWithUnits.pl",
@@ -69,7 +68,7 @@ BEGIN_PGML
 
 Use Gaussian elimination to solve the above system. 
 
-Solution: [_______________]{$ans} [@ AnswerFormatHelp("points") @]*  
+Solution: [_______________]{$ans}
 
 Enter the solution as an ordered triple, [` (a,b,c) `],
 including the parentheses.

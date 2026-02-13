@@ -69,7 +69,6 @@ $formula = Formula("f(x)=$m x");
 BEGIN_PGML
 
 Find a formula for the function [`f`] that gives the number of [$a] in [`x`] [$b].  
-[@KeyboardInstructions(qw!Include the function's name and an equals sign in the formula.!)@]**
 
 [_____________]{$formula}
 

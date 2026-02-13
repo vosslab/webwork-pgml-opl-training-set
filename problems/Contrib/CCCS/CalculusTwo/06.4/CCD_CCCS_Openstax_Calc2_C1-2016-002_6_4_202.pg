@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGauxiliaryFunctions.pl",
@@ -63,7 +62,7 @@ Hint: The Maclaurin series of [` \displaystyle g(x)=[$g] `]
 is `\sum_{n=0}^{infty} \frac{x^n}{n!}\`
 
 
-The Maclaurin series of `f(x)` is ` \sum_{n=0}^{infty}\` [_______________________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+The Maclaurin series of `f(x)` is ` \sum_{n=0}^{infty}\` [_______________________________]{$ans}
 END_PGML
 
 

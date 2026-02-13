@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -66,7 +65,7 @@ Use the properties of logarithms to expand the following logarithm as much as po
 
 [`\log{\left( x^[$expX]y^[$expY]\sqrt[[$root]]{x^[$expX2]y^[$expY2]}\right)}`]
 
- [____________________________________________]{$ans}[@ AnswerFormatHelp("formulas") @]*
+ [____________________________________________]{$ans}
 
 END_PGML
  

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "scaffold.pl",
@@ -63,7 +62,6 @@ A certain radioactive isotope has a half-life of [`{[$hl]}`] minutes.  If we ini
 
  [_______________]{$ans1} 
 
-[@ AnswerFormatHelp("numbers") @]*
 
 END_PGML
 
@@ -91,7 +89,6 @@ What length of time is needed for this decay process to occur? Round your answer
 
  [_______________]{$ans2} minutes
 
-[@ AnswerFormatHelp("numbers") @]*
 
 END_PGML
 

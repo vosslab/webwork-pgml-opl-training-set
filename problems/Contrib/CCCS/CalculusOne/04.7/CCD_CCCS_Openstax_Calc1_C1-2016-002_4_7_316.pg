@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGstandard.pl",
@@ -53,7 +52,7 @@ BEGIN_PGML
 
 You are constructing a box from a piece of cardboard with dimensions [$a] by [$a+2] meters. You cut equal-size squares from each corner of the cardboard so you may fold the edges to construct the open top box. What are the dimensions of the box with the largest volume?
 
-The dimensions of the box with the largest volume are [______________]{$ans} meters. (Enter the answer as a list separated by commas.) [@ AnswerFormatHelp("numbers") @]* 
+The dimensions of the box with the largest volume are [______________]{$ans} meters. (Enter the answer as a list separated by commas.)
 
 
 END_PGML

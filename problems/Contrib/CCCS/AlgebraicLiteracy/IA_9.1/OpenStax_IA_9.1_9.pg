@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl"
@@ -56,7 +55,7 @@ than one correct answer, enter a comma separated list. If the solution is not re
 
 [`\frac{[$n]}{[$d]}{x}^{2}=[$c] `]
 
-[`x=`] [_________________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+[`x=`] [_________________]{$ans}
 
 
 

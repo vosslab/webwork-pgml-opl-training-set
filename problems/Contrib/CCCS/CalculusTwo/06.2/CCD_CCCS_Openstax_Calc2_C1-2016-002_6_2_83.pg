@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGauxiliaryFunctions.pl",
@@ -58,7 +57,7 @@ Find the power series representation of the product [`f(x)g(x)`] if
 
 
 
-[``f(x)g(x) =\sum_{n=0}^{\infty}``][______________]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[``f(x)g(x) =\sum_{n=0}^{\infty}``][______________]{$ans}
 
 
 END_PGML

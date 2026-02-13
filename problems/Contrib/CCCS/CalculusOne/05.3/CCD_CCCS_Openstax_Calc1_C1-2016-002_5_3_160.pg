@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -128,32 +127,32 @@ The graph of [``y=\int_{0}^{x}f(t) dt``], where [`f`] is a piecewise constant fu
 
 (a) Over which interval is [`f`] positive?
 
-[``f>0``] over [_____________]{$ans1}  [@ AnswerFormatHelp("intervals") @]*
+[``f>0``] over [_____________]{$ans1}
 
 
 (b) Over which interval is [`f`] negative?
 
-[``f<0``] over [_____________]{$ans2}  [@ AnswerFormatHelp("intervals") @]*
+[``f<0``] over [_____________]{$ans2}
 
 
 (c) Over which interval is [`f`] equal to zero?
 
-[``f=0``]  over [_____________]{$ans3 }  [@ AnswerFormatHelp("intervals") @]*
+[``f=0``]  over [_____________]{$ans3 }
 
 
 (d) What is the maximum value of [`f`]?
 
-The maximum value is [__________]{$max }[@ AnswerFormatHelp("numbers") @]*
+The maximum value is [__________]{$max }
 
 
 (e) What is the minimum value of [`f`]?
 
-The minimum value is [__________]{$min }[@ AnswerFormatHelp("numbers") @]*
+The minimum value is [__________]{$min }
 
 
 (f) What is the average value of [`f`] over the interval [`[0, 6]`]?
 
-The average value is [__________]{$ans4 }[@ AnswerFormatHelp("numbers") @]*
+The average value is [__________]{$ans4 }
 
 END_PGML
 

@@ -84,7 +84,6 @@ Factor the given polynomial.
 
     [`[$question]=`] [___________________]{$ans}
 
-[@KeyboardInstructions("If the expression cannot be factored then answer with [|prime|]*.")@]**
 END_PGML
 
 ##############################################

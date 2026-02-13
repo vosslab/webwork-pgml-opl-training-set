@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "parserPopUp.pl",
 "contextFraction.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -64,7 +63,7 @@ Solve the rational equation.  Enter the answer as a reduced fraction.  If there 
 
 [`\dfrac{1}{a}+\dfrac{[$a]}{[$b]}=\dfrac{1}{[$a]}`]
 
-[`a`] = [_________________]{$ans2} [@ AnswerFormatHelp("numbers") @]*
+[`a`] = [_________________]{$ans2}
 
 
 END_PGML

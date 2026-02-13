@@ -22,7 +22,6 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "contextFraction.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -51,7 +50,6 @@ Answer = [_______________]{$answer->cmp(
   reduceFractions=>1,
   allowMixedNumbers=>0, 
   )}
-[@ AnswerFormatHelp("fractions") @]*
 END_PGML
 
 

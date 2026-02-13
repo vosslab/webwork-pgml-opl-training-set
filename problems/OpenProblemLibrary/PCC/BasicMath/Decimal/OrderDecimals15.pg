@@ -90,7 +90,7 @@ The number [`[$ans0]`] is like [`[$int]`] dollars and [`[$dec]`] dimes, because 
 
 The number [`[$ans1]`] is like [`[$int]`] dollars and [`[$dec]`] cents, because the digit [`[$dec]`] is in the hundredth place.
 
-The number [`[$ans2]`] is like [`[$int]`] dollars and [@numberWord($dec)@] tenths of a cent, because the digit [`[$dec]`] is in the thousandth place.
+The number [`[$ans2]`] is like [`[$int]`] dollars and [@$dec@] tenths of a cent, because the digit [`[$dec]`] is in the thousandth place.
 
 However, all these number are negative. For negative numbers, the smaller its absolute value, the bigger the number. For example, [`-1>-2`].
 

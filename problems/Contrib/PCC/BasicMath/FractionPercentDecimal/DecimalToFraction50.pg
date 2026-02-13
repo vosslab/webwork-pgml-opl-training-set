@@ -46,7 +46,7 @@ $factor = gcd($int,1000);
 
 $dec = $int/1000;
 
-$decWord = numberWord($int).' thousandths';
+$decWord = $int.' thousandths';
 
 $frac = Fraction($int,1000);
 

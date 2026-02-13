@@ -132,7 +132,6 @@ Solve the equation.
 
      [_____________________________]{$ans}
 
-[@KeyboardInstructions("Enter solutions like [`\\frac{1+\\sqrt{3}}{2}`] using [|(1+sqrt(3))/2|]* and note the grouping parentheses. If there are no real solutions, enter [|no real solutions|]*.")@]**
 
 END_PGML
 

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -59,7 +58,7 @@ A `[$a]` foot ladder is leaning against a wall. If the top of the ladder slides 
             extra_html_tags=>'alt="a picture of a ladder against a wall"') 
   @]*<<
 
-``[_______________________________]{$ans} ft/sec [@ AnswerFormatHelp("numbers") @]*
+``[_______________________________]{$ans} ft/sec
 
 
 

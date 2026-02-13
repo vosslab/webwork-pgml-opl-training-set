@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -48,7 +47,7 @@ $ans1 = Compute("(1)/(x-$b)-$a")->reduce();
 BEGIN_PGML
 Let [``f(x) = \frac{1}{x}``]. Find [`g(x)`], the function that is [`f(x)`] shifted down [`[$a]`] units and right [`[$b]`] units. 
 
- [` g(x) = `] [_______________]{$ans1} [@ AnswerFormatHelp("formulas") @]*
+ [` g(x) = `] [_______________]{$ans1}
 
 END_PGML
 

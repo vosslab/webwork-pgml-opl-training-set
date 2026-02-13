@@ -24,7 +24,6 @@ loadMacros(
 "MathObjects.pl",
 "parserAssignment.pl",
 "contextFraction.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -68,7 +67,7 @@ BEGIN_PGML
 
 Find the equation of the line that contains has a slope of [` [$m] `] and passes through the point [`([$c], [$d])`].  Write the answer in slope-intercept form.
 
-[__________________]{$ans} [@ AnswerFormatHelp("equation") @]*
+[__________________]{$ans}
 
 END_PGML
 

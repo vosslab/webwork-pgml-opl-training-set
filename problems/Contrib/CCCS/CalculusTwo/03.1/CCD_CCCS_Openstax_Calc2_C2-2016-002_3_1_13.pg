@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -54,7 +53,7 @@ BEGIN_PGML
 
 Find the indefinite integral  [`\displaystyle \int x e^{[$f]} dx`].
 
-[`\displaystyle \int x e^{[$f]} dx=`] [_______________________]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`\displaystyle \int x e^{[$f]} dx=`] [_______________________]{$ans}
 
 Use a capital "C" for any needed constant in your answer.
 

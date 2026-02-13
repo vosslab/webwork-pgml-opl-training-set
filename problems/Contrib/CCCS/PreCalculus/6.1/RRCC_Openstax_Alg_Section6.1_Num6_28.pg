@@ -22,7 +22,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "contextFraction.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -50,7 +49,6 @@ How much money is in an investment account at time [`t = [$t]`] if the account i
 [``A(t) = 10,250\left(1+\frac{[$r]}{12}\right)^{12t}   ``]  
 
 [_______________]{$answer}
-[@ AnswerFormatHelp("numbers") @]*  
 You must perform all the algebra and enter the single number that is the value in the account.  
 
 For more questions like this, go to section 6.1 numbers 28-38.

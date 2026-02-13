@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -55,7 +54,7 @@ BEGIN_PGML
 
 Find the indefinite integral  [`\displaystyle \int [$f] dx`].
 
-[`\displaystyle \int [$f] dx=`] [____________________]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`\displaystyle \int [$f] dx=`] [____________________]{$ans}
 
 Use a capital "C" for any needed constant in your answer.
 

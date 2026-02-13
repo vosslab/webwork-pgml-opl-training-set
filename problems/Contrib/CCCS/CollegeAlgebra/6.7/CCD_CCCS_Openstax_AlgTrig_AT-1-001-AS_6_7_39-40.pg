@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "scaffold.pl",
@@ -67,7 +66,7 @@ BEGIN_PGML
 
 To the nearest whole number, what was the initial population in the culture?
 
-[`P(0)=`]  [_______________]{$P0} [@ AnswerFormatHelp("numbers") @]*
+[`P(0)=`]  [_______________]{$P0}
 
 END_PGML
 
@@ -81,7 +80,7 @@ BEGIN_PGML
 
 Write the exponential equation representing this scenario modeled as a continuous growth model.
 
- [`P(t) = `][_______________]{$f}  [@ AnswerFormatHelp("formulas") @]*
+ [`P(t) = `][_______________]{$f}
 
 END_PGML
 
@@ -93,7 +92,7 @@ BEGIN_PGML
 
 To the nearest minute, how long did it take the bacteria to double its initial population?
 
- [_______________]{$t2} minutes [@ AnswerFormatHelp("numbers") @]*
+ [_______________]{$t2} minutes
 
 END_PGML
 

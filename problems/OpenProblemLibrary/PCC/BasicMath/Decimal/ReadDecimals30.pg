@@ -39,12 +39,12 @@ loadMacros(
 Context("LimitedNumeric");
 
 $int=random(10,99,1);
-$intWord = numberWord($int);
+$intWord = $int;
 
 $hundred = random(1,9,1);
-$hundredWord = numberWord($hundred)." hundred";
+$hundredWord = $hundred." hundred";
 $unit = random(1,9,1);
-$unitWord = numberWord($unit);
+$unitWord = $unit;
 
 $dec=$hundred*100+$unit;
 $decWord = $hundredWord.' '.$unitWord;

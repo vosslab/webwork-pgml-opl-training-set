@@ -25,7 +25,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "parserImplicitPlane.pl",
 "PGML.pl",
@@ -140,11 +139,11 @@ Identify the foci, the vertices, and the equations of the asymptotes for the hyp
 
 >>[`` [$f]=1 ``]<<
 
-Foci:[___________________________]{$foci} [@ AnswerFormatHelp("points") @]*
+Foci:[___________________________]{$foci}
 
-Vertices: [_____________________]{$vertices} [@ AnswerFormatHelp("points") @]*
+Vertices: [_____________________]{$vertices}
 
-Equations of Asymptotes:  [_____________________]{$asymptote} [@ AnswerFormatHelp("equations") @]*
+Equations of Asymptotes:  [_____________________]{$asymptote}
 
 Which of the following graphs represents the graph of [`` [$f]=1 ``]? [_________________]{$popup1} 
 

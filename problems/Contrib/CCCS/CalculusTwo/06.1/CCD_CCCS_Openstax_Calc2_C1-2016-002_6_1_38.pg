@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-"AnswerFormatHelp.pl",
 "parserRadioButtons.pl",
   "PGML.pl",
   "PGcourse.pl",
@@ -57,9 +56,9 @@ BEGIN_PGML
 
 Given that [` \displaystyle \frac{1}{1-x} = \sum_{n=0}^{\infty}x^n`], which converges for [`x`] in [`(-1,1)`], find the power series representation for the function [`f(x) =\frac{1}{[$a]-x}`] centered at [`a=[$am1]`] and find its interval of convergence.
 
-The power series for the function is [`\displaystyle f(x) =\frac{1}{[$a]-x}=\sum_{n=0}^{\infty} `][____]{$f} [@ AnswerFormatHelp("formulas") @]*
+The power series for the function is [`\displaystyle f(x) =\frac{1}{[$a]-x}=\sum_{n=0}^{\infty} `][____]{$f}
 
-Interval of convergence is [____________]{$int} [@ AnswerFormatHelp("Intervals") @]*
+Interval of convergence is [____________]{$int}
 
 
 

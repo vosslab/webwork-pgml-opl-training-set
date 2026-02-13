@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -54,7 +53,7 @@ Use the definition of common and natural logarithms to simplify.
 
 [`e^{\ln([$var1])} + [$var2] `] 
 
-[____]{$ans} [@ AnswerFormatHelp("numbers") @]*
+[____]{$ans}
   
 END_PGML
  

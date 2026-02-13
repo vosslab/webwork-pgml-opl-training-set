@@ -24,7 +24,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserFormulaUpToConstant.pl",
@@ -57,7 +56,7 @@ BEGIN_PGML
 Find the general solution to the differential equation [``x'=[$f]``] .
 
 
-[``x=``][_______________________________]{$ans }[@ AnswerFormatHelp("formulas") @]*
+[``x=``][_______________________________]{$ans }
 
 
 END_PGML

@@ -19,7 +19,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -44,7 +43,6 @@ Given [`f(x)=\dfrac{4}{3x-1}`], find the slope of the secant line to `f(x)` betw
 
 
 `m_(sec)=`[_______________]{$ans } 
-[@ AnswerFormatHelp("numbers") @]*
 
 
 END_PGML

@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -52,7 +51,7 @@ $RHS = Compute("$sum + $n");
 BEGIN_PGML
 The sum of two numbers is [`[$sum]`]. One number is [`[$n]`] less than the other number. Enter the numbers as a comma separated list. 
 
-Numbers: [_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
+Numbers: [_______________]{$ans1}
 
 
 

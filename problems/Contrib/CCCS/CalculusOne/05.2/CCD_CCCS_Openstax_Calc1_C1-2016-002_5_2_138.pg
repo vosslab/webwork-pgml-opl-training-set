@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -76,7 +75,7 @@ BEGIN_PGML
 If  [``\int_{[$a]}^{[$b]}[$ft] dt=[$ans]``],  what is [``\int_{[$a]}^{[$b]}[$fu] du``]?
 
  
-[``\int_{[$a]}^{[$b]}[$fu] du=``][____________]{$ans } [@ AnswerFormatHelp("numbers") @]*
+[``\int_{[$a]}^{[$b]}[$fu] du=``][____________]{$ans }
 
 END_PGML
 

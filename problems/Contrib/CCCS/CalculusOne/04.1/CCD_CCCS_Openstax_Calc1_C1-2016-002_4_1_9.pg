@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -55,7 +54,7 @@ Two buses are driving in opposite directions along parallel freeways that are [`
             extra_html_tags=>'alt="a picture showing the movement of the buses"') 
   @]*<<
 
-``[_______________________________]{$ans} mph [@ AnswerFormatHelp("numbers") @]* 
+``[_______________________________]{$ans} mph
 
 
 

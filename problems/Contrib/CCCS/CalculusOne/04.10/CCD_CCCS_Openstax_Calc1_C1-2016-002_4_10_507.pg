@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -55,7 +54,7 @@ BEGIN_PGML
 
 
 
-[`` f(x) =``][_______________________]{$ans1 }[@ AnswerFormatHelp("formulas") @]*
+[`` f(x) =``][_______________________]{$ans1 }
 
 
 (b) Find a function `f(x)` satisfying the conditions
@@ -64,7 +63,7 @@ BEGIN_PGML
 
 
 
-[`` f(x) =``][_______________________]{$ans2 }[@ AnswerFormatHelp("formulas") @]*
+[`` f(x) =``][_______________________]{$ans2 }
 
 
 END_PGML

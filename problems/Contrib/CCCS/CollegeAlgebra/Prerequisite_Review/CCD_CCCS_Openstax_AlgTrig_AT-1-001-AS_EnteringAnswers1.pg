@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -53,7 +52,7 @@ Enter the given algebraic expression in the answer box.
 
 [``2x^2 + y^\frac{3}{2} - \frac{1}{5}z^3``]
 
-[___________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+[___________________]{$ans}
 
 
 END_PGML

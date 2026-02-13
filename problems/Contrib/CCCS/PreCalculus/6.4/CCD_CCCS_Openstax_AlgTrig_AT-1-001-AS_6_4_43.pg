@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -93,7 +92,7 @@ BEGIN_PGML
 
 >>What is the y-intercept of the graph of [`f(x)=\ln(-x)`]? If the y-intercept does not exist, enter NONE.<<
 
->> [_____________]{$ans}[@ AnswerFormatHelp("points") @]* <<
+>> [_____________]{$ans} <<
 
 END_PGML
  

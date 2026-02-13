@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "AnswerFormatHelp.pl",
   "parserFunction.pl",
   "PGML.pl",
   "PGcourse.pl"
@@ -75,11 +74,11 @@ u(t) =
 
 a. Evaluate the function [` [$f] `] when [` t `] is [` 2 `], [` 3 `], and [` 4 `] and enter your answers as a comma separated list.
 
-    + [________________]{ $answer1->cmp(ordered=>1) } [@ AnswerFormatHelp("numbers") @]*
+    + [________________]{ $answer1->cmp(ordered=>1) }
 
 b. Suppose the answer is the function [` [$f] `].
 
-    + [________________]{ $answer2 } [@ AnswerFormatHelp("formulas") @]*
+    + [________________]{ $answer2 }
 END_PGML
 
 

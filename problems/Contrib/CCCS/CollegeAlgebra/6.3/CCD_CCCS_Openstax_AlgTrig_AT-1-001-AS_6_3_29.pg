@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -65,7 +64,7 @@ Solve for [`x`] by converting the logarithmic equation to exponential form
 
 [`\log_{[$base]}(x) = [$exponent] `] 
  
- [`x =`] [____]{$ans} [@ AnswerFormatHelp("numbers") @]*
+ [`x =`] [____]{$ans}
   
 END_PGML
 

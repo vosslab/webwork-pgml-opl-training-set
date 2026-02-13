@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -50,7 +49,7 @@ BEGIN_PGML
 
 Use logarithmic differentiation to find `\frac{dy}{dx}` for [``y=[$f]``].
 
-`\frac{dy}{dx}=`[________________________________________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+`\frac{dy}{dx}=`[________________________________________________]{$ans}
 
 
 END_PGML

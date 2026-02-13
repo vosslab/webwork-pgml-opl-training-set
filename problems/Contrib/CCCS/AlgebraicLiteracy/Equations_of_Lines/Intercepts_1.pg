@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -59,9 +58,9 @@ Give the coordinates of the x and y intercepts of the following equation
 
 [`[$f]=[$C]`]
 
-x intercept is [______]{$xintP}  [@ AnswerFormatHelp("points") @]*
+x intercept is [______]{$xintP}
 
-y intercept is [______]{$yintP}  [@ AnswerFormatHelp("points") @]*
+y intercept is [______]{$yintP}
 
   
 END_PGML

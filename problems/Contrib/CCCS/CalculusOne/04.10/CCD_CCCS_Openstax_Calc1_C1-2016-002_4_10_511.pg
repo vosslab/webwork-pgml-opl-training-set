@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -47,7 +46,7 @@ A car is merging onto a freeway (beginning at rest), accelerating at a constant 
 How long does it take to reach merging speed at `[$v]   \text{mph }`?  
 
 
- [`` \text{Time in seconds} =``][_______________]{$ans } [@ AnswerFormatHelp("numbers") @]*
+ [`` \text{Time in seconds} =``][_______________]{$ans }
 
 
 END_PGML

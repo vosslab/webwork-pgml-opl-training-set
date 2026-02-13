@@ -65,7 +65,6 @@ A set is written using set-builder notation. Write it using interval notation.
 
     [`` \left\{ x \mid {[$left]} [$comp] [$right] \right\} ``]
 
-[@KeyboardInstructions(q!Please use [|INF|]* to represent [`\infty`].!)@]**
 
     [_____________]{$ans->cmp(correct_ans=>$ans_string, correct_ans_latex_string=>$ans_latex_string)}
 

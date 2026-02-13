@@ -89,7 +89,7 @@ BEGIN_PGML_SOLUTION
 
 The number [`[$ans0]`] is like [`[$int2]`] dollars and [`[$int1]`] dimes.
 
-The number [`[$ans1]`] is like [`[$int0]`] dollars, [`[$int2]`] dimes and [@numberWord($int1)@] tenths of a cent.
+The number [`[$ans1]`] is like [`[$int0]`] dollars, [`[$int2]`] dimes and [@$int1@] tenths of a cent.
 
 The number [`[$ans2]`] is like [`[$int0]`] dollars, [`[$int1]`] dimes and [`[$int2]`] cents.
 

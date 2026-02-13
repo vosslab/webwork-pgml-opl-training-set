@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -57,7 +56,7 @@ BEGIN_PGML
 
 Find the surface area of the surface generated when the curve [`y=[$f1]`] revolves around the [`y`]-axis from [`(1, 1)`] to [`([$x], [$y])`].
 
-Surface Area: [_______________]{$ans} square units  [@ AnswerFormatHelp("numbers") @]*
+Surface Area: [_______________]{$ans} square units
 
 
 END_PGML

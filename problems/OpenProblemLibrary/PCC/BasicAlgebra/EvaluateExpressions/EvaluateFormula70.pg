@@ -107,7 +107,7 @@ A trapezoid's area can be calculated by the formula [`A=\frac{1}{2}(b_1+b_2)h`],
 >>[@ image(insertGraph( $picture  ), width=>240, extra_html_tags => "alt = '$alt' title = '$alt' ") @]*<<
 
 
-Use the formulas to calculate the trapezoid's area if its first base's length is [`[$baseDownU]`], its second base's length is [`[$baseUpU]`] and its height is [`[$heightU]`]. [@KeyboardInstructions(q!(Use [|m|]* for meters and [|m^2|]* for square meters.)!)@]**
+Use the formulas to calculate the trapezoid's area if its first base's length is [`[$baseDownU]`], its second base's length is [`[$baseUpU]`] and its height is [`[$heightU]`].
 
     Area = [____________]{$areaU}
 

@@ -94,11 +94,9 @@ $gr->arrowTo($stop,$f->eval(x=>$stop),'blue',1);
 BEGIN_PGML
 A function is graphed.
 
-[@EnlargeImageStatementPGML()@]**
 
 >>[@image(insertGraph($gr), width=>240, tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT' title = '$ALT'")@]*<<
 
-[@KeyboardInstructions('If you need to enter [`\infty`], you can type [|inf|]* or [|infinity|]*.  If you need to union two (or more) intervals, use the capital letter [|U|]*. For example, to enter [`(-\infty,5)\cup(5,10]`] you can type [|(-inf,5)U(5,10]|]*.')@]**
 
 
     This function has domain [______________]{$domain} and range [______________]{$range}.

@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
  "PGstandard.pl",
  "MathObjects.pl",
- "AnswerFormatHelp.pl",
  "PGML.pl",
  "PGcourse.pl",
 );
@@ -53,7 +52,6 @@ Let [`\omega = [$a] x \, dx + y \, dz`] be a 1-form.  Let
 Evaluate:
 
 [`\int_C \omega ={}`] [____________]{"($c*$d+$a*($b)^2)/2"}{25}
-[@ AnswerFormatHelp("numbers") @]*
 END_PGML
 
 ENDDOCUMENT();

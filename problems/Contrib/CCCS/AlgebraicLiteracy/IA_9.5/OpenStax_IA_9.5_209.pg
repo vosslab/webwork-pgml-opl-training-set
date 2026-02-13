@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -74,7 +73,6 @@ The hypotenuse of a right triangle is [$number[$i]] times the length of one of i
 
 [_______________]{$ans}feet
 
-[@ AnswerFormatHelp("numbers") @]*
 
 END_PGML
 

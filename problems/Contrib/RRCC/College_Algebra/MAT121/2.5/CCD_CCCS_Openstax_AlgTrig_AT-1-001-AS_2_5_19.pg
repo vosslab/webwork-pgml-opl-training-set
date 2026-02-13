@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -51,7 +50,7 @@ Solve [`[$f]=[$a2] `] by using the square root property. If there is more
 than one correct answer, enter a comma 
 separated list.
 
-[`x=`] [_________________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+[`x=`] [_________________]{$ans}
 
 
 

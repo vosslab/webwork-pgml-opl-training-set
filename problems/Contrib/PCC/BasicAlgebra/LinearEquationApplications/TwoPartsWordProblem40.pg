@@ -44,7 +44,7 @@ $n = $w*$t-$a;
 $tot = $t+$n;
 
 if ($w==2) {$word="twice";}
-else {$word=numberWord($w).' times';}
+else {$word=$w.' times';}
 
 $sex = list_random('male','female');
 $name1 = RandomName(sex=>$sex);

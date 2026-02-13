@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "scaffold.pl",
@@ -84,7 +83,6 @@ What is the size of the initial population?
 
  [_______________]{$initial_population} fish
 
-[@ AnswerFormatHelp("numbers") @]*
 
 END_PGML
 

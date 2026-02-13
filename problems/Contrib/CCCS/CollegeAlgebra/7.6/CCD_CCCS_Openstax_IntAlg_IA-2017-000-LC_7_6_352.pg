@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -72,7 +71,7 @@ Solve the rational inequality.  Enter the answer in interval notation.
 
 [`` \dfrac{{[$t]}x - {[$u]}}{x - {[$v]}} \le {[$w]} ``]
 
- [_______________________________]{$x1} [@ AnswerFormatHelp("intervals") @]*
+ [_______________________________]{$x1}
 
 END_PGML
 }
@@ -84,7 +83,7 @@ Solve the rational inequality.  Enter the answer in interval notation.
 
 [`` \dfrac{{[$t]}x - {[$u]}}{x - {[$v]}} \le -{[$w]} ``]
 
- [_______________________________]{$x1} [@ AnswerFormatHelp("intervals") @]*
+ [_______________________________]{$x1}
 
 END_PGML
 }

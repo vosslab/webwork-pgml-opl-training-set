@@ -18,7 +18,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -43,7 +42,7 @@ Evaluate the following definite integral.
 
 Your answer must be exact.  
 
-[`` \displaystyle \int_{[$a]}^{[$b]} \frac{1}{[$c]+[$c] x^2}  \, dx =``][______________________________________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+[`` \displaystyle \int_{[$a]}^{[$b]} \frac{1}{[$c]+[$c] x^2}  \, dx =``][______________________________________]{$ans}
 
 
 END_PGML

@@ -21,7 +21,6 @@ loadMacros(
   "MathObjects.pl",
   "PGML.pl",
   "PGcourse.pl",
-  "AnswerFormatHelp.pl",
   "PGessaymacros.pl",
 );
 
@@ -68,7 +67,7 @@ Then as a single matrix times the column vector, with the final answer:
 [_____]*{$T*$F}
 [_____]*{$p1}
 =
-[_____]*{$T*$F*$p1} [@ AnswerFormatHelp("matrices") @]*
+[_____]*{$T*$F*$p1}
 
 -----
 
@@ -85,7 +84,7 @@ Then as a single matrix times the column vector, with the final answer:
 [_____]*{$S*$R}
 [_____]*{$p2}
 =
-[_____]*{$S*$R*$p2} [@ AnswerFormatHelp("matrices") @]*
+[_____]*{$S*$R*$p2}
 
 -----
 
@@ -103,7 +102,7 @@ Then as a single matrix times the column vector, with the final answer:
 [_____]*{$F*$R*$F}
 [_____]*{$p3}
 =
-[_____]*{$FRF*$p3} [@ AnswerFormatHelp("matrices") @]*
+[_____]*{$FRF*$p3}
 END_PGML
 
 BEGIN_PGML_SOLUTION

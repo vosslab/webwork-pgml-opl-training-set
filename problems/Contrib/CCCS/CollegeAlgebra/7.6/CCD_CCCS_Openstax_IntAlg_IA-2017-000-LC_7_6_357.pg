@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -71,7 +70,7 @@ Solve the rational inequality.  Enter the answer in interval notation.
 
 [`` \dfrac{{[$u]}} {x^2 - {[$v+$w]} x + {[$v*$w]}} < 0 ``]
 
- [_______________________________]{$x1} [@ AnswerFormatHelp("intervals") @]*
+ [_______________________________]{$x1}
 
 END_PGML
 }
@@ -83,7 +82,7 @@ Solve the rational inequality.  Enter the answer in interval notation.
 
 [`` \dfrac{{[$u]}} {x^2 + {[$v+$w]} x + {[$v*$w]}} < 0 ``]
 
- [_______________________________]{$x1} [@ AnswerFormatHelp("intervals") @]*
+ [_______________________________]{$x1}
 
 END_PGML
 }

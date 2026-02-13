@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -55,7 +54,7 @@ Evaluate [``\int_{[$c]}^{[$d]}\left([$a]t^{[$p]/2}-[$b]t^{[$q]/2}\right) dt``] u
 
 
 
-[``\int_{[$c]}^{[$d]}\left([$a]t^{[$p]/2}-[$b]t^{[$q]/2}\right) dt=``][_________________]{$ans }[@ AnswerFormatHelp("numbers") @]*
+[``\int_{[$c]}^{[$d]}\left([$a]t^{[$p]/2}-[$b]t^{[$q]/2}\right) dt=``][_________________]{$ans }
 
 
 END_PGML

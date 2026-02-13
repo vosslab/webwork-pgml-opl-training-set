@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -54,7 +53,7 @@ Solve the following proportion.
 
  [`` \frac{w}{[$c]}= \frac{[$b]}{\frac{[$a]}{[$d]}}``]
 
- `w=` [_______________]{$ans} [@ AnswerFormatHelp("numeric") @]*
+ `w=` [_______________]{$ans}
 
 
 END_PGML

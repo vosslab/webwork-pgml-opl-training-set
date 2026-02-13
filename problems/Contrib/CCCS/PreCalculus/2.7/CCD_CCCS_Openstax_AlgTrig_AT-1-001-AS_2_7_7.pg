@@ -19,7 +19,6 @@ loadMacros(
   "MathObjects.pl",
   "PGML.pl",
   "contextFraction.pl",
-  "AnswerFormatHelp.pl",
   "contextInequalitySetBuilder.pl",
   "parserOneOf.pl",
   "PGcourse.pl",
@@ -57,7 +56,7 @@ Solve the following inequality for [`x`].  Enter the answer in interval notation
 [` [$a]x+[$b] \geq [$c]x-[$d]`]
 
 
-[_______________]{$intans} [@ AnswerFormatHelp("intervals") @]*
+[_______________]{$intans}
 
 
 END_PGML

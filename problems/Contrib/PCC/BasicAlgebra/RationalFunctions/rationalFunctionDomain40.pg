@@ -114,7 +114,6 @@ BEGIN_PGML
 
 A function is graphed.
 
-[@EnlargeImageStatementPGML()@]**
 
 
 >>[@image(insertGraph($gr[0]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT' title = '$ALT'") @]*<<
@@ -124,7 +123,6 @@ What is its domain?
 [___________]{$ans}
 
 
-[@KeyboardInstructions('You may use interval notation. If the answer is a union of intervals, use [|U|]* for the union symbol. If you need to enter [`\infty`], type [|inf|]*. You may also use an inequality to express the domain, as in [`x\neq1\text{ and }x\neq2`]. To type the [`\neq`] symbol, use [|!=|]*.')@]**
 
 END_PGML
 ##############################################

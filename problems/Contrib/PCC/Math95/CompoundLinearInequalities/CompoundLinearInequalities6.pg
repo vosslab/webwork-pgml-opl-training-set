@@ -45,7 +45,6 @@ $answer=Union("(-inf,$b]");
 BEGIN_PGML
 Express the following inequality using interval notation.
 
-[@KeyboardInstructions('If you need to use the [`\infty`] symbol, type [|INF|]*. If you need to use the union symbol [`\cup`], type [|U|]*.')@]**
 
 >>[``x < [$a] \text{ or } x \leq [$b]``]<<
 

@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "scaffold.pl",
@@ -82,7 +81,7 @@ BEGIN_PGML
 Find the Maclaurin series of [` \displaystyle f(x)=[$f] `].
 
 
-The Maclaurin series of `f(x)` is `\frac{-1}{[$b]}\sum_{n=0}^{infty}\` [_______________________________]{$ans1} [@ AnswerFormatHelp("formulas") @]*
+The Maclaurin series of `f(x)` is `\frac{-1}{[$b]}\sum_{n=0}^{infty}\` [_______________________________]{$ans1}
 
 END_PGML
 
@@ -96,7 +95,7 @@ BEGIN_PGML
 
 Find the radius of convergence, R, of the Maclaurin series you found in the first part.
 
-`R=`[_______________]{$ans2} [@ AnswerFormatHelp("numbers") @]*
+`R=`[_______________]{$ans2}
 
 END_PGML
 

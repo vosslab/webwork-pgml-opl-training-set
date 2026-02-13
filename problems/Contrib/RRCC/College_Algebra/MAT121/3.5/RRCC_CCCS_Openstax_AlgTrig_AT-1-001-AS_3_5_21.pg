@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -53,9 +52,9 @@ $ansdecr = Compute("(-infinity,$bound)");
 BEGIN_PGML
 Determine the interval(s) on which [`f(x) = [$g][$f]`] is increasing and decreasing.
 
-+ Increasing: [_______________]{$ansincr} [@ AnswerFormatHelp("intervals") @]*
++ Increasing: [_______________]{$ansincr}
 
-+ Decreasing: [_______________]{$ansdecr} [@ AnswerFormatHelp("intervals") @]*
++ Decreasing: [_______________]{$ansdecr}
 
 
 END_PGML

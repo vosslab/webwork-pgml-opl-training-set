@@ -26,7 +26,6 @@ loadMacros(
   "PGgraphmacros.pl",
   "PGessaymacros.pl",
   "parserRadioButtons.pl",
- "AnswerFormatHelp.pl",
 );
 
 TEXT(beginproblem());
@@ -56,13 +55,13 @@ Use radians for [`\theta, \hspace{.25cm} 0< \theta \leq 2\pi`].
 >>[@ image("Question_2_Polar_Points.png", width=>500, height=>500) 
   @]*<<
 
-[`A=`][____________________]{$a}[@ AnswerFormatHelp("points") @]*
+[`A=`][____________________]{$a}
 
-[`B=`][____________________]{$b}[@ AnswerFormatHelp("points") @]*
+[`B=`][____________________]{$b}
 
-[`C=`][____________________]{$c}[@ AnswerFormatHelp("points") @]*
+[`C=`][____________________]{$c}
 
-[`D=`][____________________]{$d}[@ AnswerFormatHelp("points") @]*
+[`D=`][____________________]{$d}
 
 END_PGML
 

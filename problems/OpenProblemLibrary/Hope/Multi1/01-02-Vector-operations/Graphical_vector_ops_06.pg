@@ -19,7 +19,6 @@ loadMacros(
   "MathObjects.pl",
   "PGgraphmacros.pl",
   "contextLimitedVector.pl",
-  "AnswerFormatHelp.pl",
   "parserMultiAnswer.pl",
   "PGML.pl",
   "scaffold.pl",

@@ -82,7 +82,6 @@ BEGIN_PGML
 
 A parabola's vertex form looks like [` f(x) = a(x-h)^2+k `]. The following is the graph of a parabola.
 
-[@EnlargeImageStatementPGML()@]**
 
 >>[@image(insertGraph($gr[0]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT' title = '$ALT'") @]*<<
 

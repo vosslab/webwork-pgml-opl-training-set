@@ -138,7 +138,7 @@ TEXT(beginproblem());
 
 BEGIN_PGML
 
-Does the following set of ordered pairs make for a function of [`x`]? [@KeyboardInstructions('Since domains and ranges are _sets_ of numbers, you should be using [`\{`] and [`\}`] in your answers.')@]**
+Does the following set of ordered pairs make for a function of [`x`]?
 
     [`\Big\{[$points3]\Big\}`]  
 

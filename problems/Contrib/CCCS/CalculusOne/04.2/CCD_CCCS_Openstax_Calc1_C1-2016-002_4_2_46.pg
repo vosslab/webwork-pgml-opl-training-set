@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserAssignment.pl",
@@ -47,7 +46,7 @@ BEGIN_PGML
 
 What is the linear approximation for any generic linear function `y=mx+b`? 
 
-[`L(x)=`][_______________________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+[`L(x)=`][_______________________________]{$ans}
 
 
 

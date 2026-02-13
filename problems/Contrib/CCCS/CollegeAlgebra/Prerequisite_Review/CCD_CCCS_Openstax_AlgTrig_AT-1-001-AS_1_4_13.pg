@@ -22,7 +22,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "contextLimitedPolynomial.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -65,7 +64,7 @@ Find the difference of the two given polynomials.
 
 [`([$g]) - ([$h])`]
 
-[___________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+[___________________]{$ans}
 
 
 END_PGML

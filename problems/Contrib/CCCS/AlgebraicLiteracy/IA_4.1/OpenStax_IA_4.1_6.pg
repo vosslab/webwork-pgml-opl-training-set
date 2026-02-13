@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -130,7 +129,7 @@ Select the image that best matches your graph the system.
 
 The image that matches my graphs is: [_____]{$popup}
 
-The solution to the system is: [_______________]{$ans} [@ AnswerFormatHelp("points") @]*  
+The solution to the system is: [_______________]{$ans}
 
 
 

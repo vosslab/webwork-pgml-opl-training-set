@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "contextFraction.pl",
 "PGcourse.pl",
@@ -55,7 +54,7 @@ BEGIN_PGML
 If [`\sin(t)=[$sin]`] and [`t`] is in Quadrant II, find the value of [`\cos(t)`].  Enter the answer as a fraction.
 
 
-[`\cos(t)=`][_____________]{$ans}[@ AnswerFormatHelp("numbers") @]*
+[`\cos(t)=`][_____________]{$ans}
 
 
 END_PGML

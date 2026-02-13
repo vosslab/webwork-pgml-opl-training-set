@@ -49,7 +49,6 @@ $ans = Compute("no solutions");
 BEGIN_PGML
 Solve the equation: [` \left\lvert [$var] \right\rvert = [$a] `]
 
-[@KeyboardInstructions("If there are no solutions, you may type [|no solutions|]*.")@]**
 
 [__]{$ans}{width=>20}
 

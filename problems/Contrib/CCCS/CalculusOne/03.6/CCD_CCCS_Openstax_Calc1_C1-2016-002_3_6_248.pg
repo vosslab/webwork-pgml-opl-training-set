@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "niceTables.pl",
@@ -115,11 +114,11 @@ midrules => 1,
 align => '|c|c|c|c|c|',
 )@]*
  
-[`h'([$a])=`][_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
+[`h'([$a])=`][_______________]{$ans1}
  
-[`k'([$a])=`][_______________]{$ans2} [@ AnswerFormatHelp("numbers") @]*
+[`k'([$a])=`][_______________]{$ans2}
  
-[`r'(1)=`][_______________]{$ans3} [@ AnswerFormatHelp("numbers") @]*
+[`r'(1)=`][_______________]{$ans3}
  
  
  

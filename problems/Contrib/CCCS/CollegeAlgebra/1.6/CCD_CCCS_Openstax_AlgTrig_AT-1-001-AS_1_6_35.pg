@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -62,7 +61,7 @@ Add the following rational expressions and simplify.
 
  [`\displaystyle[$first] +  [$second]`]
 
- [_______________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+ [_______________]{$ans}
 
 END_PGML
 

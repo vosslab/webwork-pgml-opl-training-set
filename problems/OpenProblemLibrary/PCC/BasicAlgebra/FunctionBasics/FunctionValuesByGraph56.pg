@@ -117,7 +117,6 @@ BEGIN_PGML
 
 The graph of a function [`f`] is shown below.
 
-[@EnlargeImageStatementPGML()@]**
 
 
 >>[@image(insertGraph($gr[0]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT0' title = '$ALT0'") @]*<<

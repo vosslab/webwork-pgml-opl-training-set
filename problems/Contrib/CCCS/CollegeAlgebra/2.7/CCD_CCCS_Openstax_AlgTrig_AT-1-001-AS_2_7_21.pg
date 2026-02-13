@@ -19,7 +19,6 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-"AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "contextInequalitySetBuilder.pl",
@@ -53,7 +52,7 @@ Solve the following inequality involving absolute value.  Enter the answer in in
 
 [` [$f] \geq [$d] `]
 
-[_______________]{$intans} [@ AnswerFormatHelp("intervals") @]*
+[_______________]{$intans}
 
 
 END_PGML

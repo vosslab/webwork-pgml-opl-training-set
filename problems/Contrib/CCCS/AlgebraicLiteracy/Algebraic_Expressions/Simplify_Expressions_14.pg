@@ -20,7 +20,6 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "PGML.pl",
-"AnswerFormatHelp.pl",
   "PCCmacros.pl",
   "contextFraction.pl",
 "contextLimitedPolynomial.pl",
@@ -59,7 +58,7 @@ BEGIN_PGML
 
 Simplify the expression, [`` [$f] ``].
 
-[_______________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+[_______________]{$ans}
 
 
 END_PGML

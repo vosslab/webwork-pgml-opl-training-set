@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -173,7 +172,7 @@ BEGIN_PGML
 
 >>What is the y-intercept of the graph of [`f(x)=\log_{2}(x+[$constant])`]? <<
 
->> [_____________]{$ans} [@ AnswerFormatHelp("points") @]* <<
+>> [_____________]{$ans}  <<
 END_PGML
  
 ############################

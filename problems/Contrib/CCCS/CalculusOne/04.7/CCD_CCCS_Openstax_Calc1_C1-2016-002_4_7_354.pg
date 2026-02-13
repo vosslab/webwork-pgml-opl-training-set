@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "imageChoice.pl",
@@ -55,7 +54,7 @@ You are building five identical pens adjacent to each other with a total area of
  
 
 
-The dimensions that will minimize the amount of fencing are `x=`[____________]{$x} meters and `y=`[____________]{$y} meters.  [@ AnswerFormatHelp("numbers") @]*
+The dimensions that will minimize the amount of fencing are `x=`[____________]{$x} meters and `y=`[____________]{$y} meters.
 
 
 

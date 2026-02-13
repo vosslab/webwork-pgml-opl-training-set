@@ -117,7 +117,6 @@ BEGIN_PGML
 
 One car started at Town A, and traveled due north at [`[$car1Speed]`] miles per hour. [`[$headStart]`] hours later, another car started at the same spot and traveled due east at [`[$car2Speed]`] miles per hour. Assume both cars don't stop, after how many hours since the second car starts would the distance between them be [`[$distance]`] miles? Round your answer to two decimal places if needed.
 
-[@EnlargeImageStatementPGML()@]**
 
 >>[@image(insertGraph($picture), width=>400, height=>400, tex_size=>400, extra_html_tags=>"alt = '$alt' title = '$alt'") @]*<<
 

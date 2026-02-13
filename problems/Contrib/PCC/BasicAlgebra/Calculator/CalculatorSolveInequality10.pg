@@ -146,7 +146,6 @@ You should see a screen similar to the following, with [`y1=[$func1]`] and [`y2=
 
 >>[@image(insertGraph($gr[0]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT0' title = '$ALT0'") @]*<<
 
-[@EnlargeImageStatementPGML()@]**
 
 We need to find those two intersections.
 

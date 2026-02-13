@@ -126,7 +126,6 @@ Find the perimeter and area of this polygon.
 
     Its perimeter is [_____________]{$perimeterU} and its area is [_____________]{$areaU}. 
 
-[@KeyboardInstructions(q!(Use [|ft|]* for feet and [|ft^2|]* for square feet.)!)@]**
 
 END_PGML
 

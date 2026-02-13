@@ -62,7 +62,7 @@ $moves[3] = log($product3/$product0)/log(10);
 for my $i (1..3) {
    if (Real($moves[$i])==1) {$movesToWords[$i]="once";}
    elsif (Real($moves[$i])==2) {$movesToWords[$i]="twice";}
-   else {$movesToWords[$i]= numberWord($moves[$i]).' times';}
+   else {$movesToWords[$i]= $moves[$i].' times';}
 }
 
 $num10 = $nums[0];

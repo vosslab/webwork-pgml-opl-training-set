@@ -341,7 +341,6 @@ $refreshCachedImages = 1;
 
 BEGIN_PGML
 
-[@EnlargeImageStatementPGML()@]**
 
 >>[@image(insertGraph($picture), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$text' title = '$text'") @]*<<
 

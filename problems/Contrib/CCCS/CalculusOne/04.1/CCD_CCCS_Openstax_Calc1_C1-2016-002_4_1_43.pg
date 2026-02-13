@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -60,7 +59,7 @@ A batter hits a ball toward second base at [$a] ft/sec and runs toward first bas
             extra_html_tags=>'alt="a picture of baseball diamond"') 
   @]*<<
 
-``[_______________________________]{$ans} ft/sec [@ AnswerFormatHelp("numbers") @]*
+``[_______________________________]{$ans} ft/sec
 
 
 

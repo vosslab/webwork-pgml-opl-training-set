@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -56,7 +55,7 @@ Runners start at first and second base, which are 90ft apart. When the ball is h
             extra_html_tags=>'alt="a picture of baseball diamond"') 
   @]*<<
 
-``[_______________________________]{$ans} ft/sec [@ AnswerFormatHelp("formulas") @]*
+``[_______________________________]{$ans} ft/sec
 
 
 

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -58,7 +57,7 @@ Solve the rational inequality.  Write your answer in interval notation.
 
 [`` \dfrac{x - {[$u]}}{x + {[$v]}} \ge 0 ``]
 
- [_______________]{$x1} [@ AnswerFormatHelp("intervals") @]*
+ [_______________]{$x1}
 
 END_PGML
 }
@@ -71,7 +70,7 @@ Solve the rational inequality.  Write your answer in interval notation.
 
 [`` \dfrac{x + {[$u]}}{x - {[$v]}} \ge 0 ``]
 
- [_______________]{$x1} [@ AnswerFormatHelp("intervals") @]*
+ [_______________]{$x1}
 
 END_PGML
 }

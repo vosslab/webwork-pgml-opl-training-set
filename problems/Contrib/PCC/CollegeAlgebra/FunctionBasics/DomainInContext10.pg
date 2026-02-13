@@ -48,7 +48,6 @@ You will build a rectangular pen with [`[$p]`] yards of fence. If the pen's heig
 
 Using interval notation, the domain of the function [`b(h)`] is [__________________________________]{$ans}
 
-[@KeyboardInstructions('If the answer includes more than one interval write the intervals separated by the union symbol, which you can type as [|U|]*. If the answer uses [`\infty`], you may type it as [|inf|]*.')@]** 
 END_PGML
 
 ##############################################

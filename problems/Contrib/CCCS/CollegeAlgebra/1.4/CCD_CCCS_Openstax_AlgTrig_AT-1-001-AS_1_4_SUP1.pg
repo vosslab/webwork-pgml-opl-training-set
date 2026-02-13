@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -59,7 +58,7 @@ Find the product.
 
  [`` [$f] ``]
 
-[___________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+[___________________]{$ans}
 
 
 END_PGML

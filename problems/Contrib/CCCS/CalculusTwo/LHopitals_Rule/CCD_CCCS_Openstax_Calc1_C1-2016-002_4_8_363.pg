@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -78,7 +77,7 @@ Indicate if there is some way to alter the limit so that l'Hopital's rule can be
 
 Evaluate the limit
 
-[``\lim_{x\to [$b]}[$f]=``][_______________]{$ans } [@ AnswerFormatHelp("formulas") @]*
+[``\lim_{x\to [$b]}[$f]=``][_______________]{$ans }
 
 END_PGML
 ############################

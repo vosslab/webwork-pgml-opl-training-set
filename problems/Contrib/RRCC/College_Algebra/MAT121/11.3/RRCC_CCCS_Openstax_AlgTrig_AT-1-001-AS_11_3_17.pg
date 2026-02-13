@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -57,7 +56,7 @@ What is the solution (are the solutions) to the following system of nonlinear eq
 >>[` [$f] = [$d]  `]<<  
 >>[` [$m] x + y = [$n] `]<<
   
-Solution(s): [_______________]{$ans} [@ AnswerFormatHelp("points") @]*  
+Solution(s): [_______________]{$ans}
 
 Enter the solution as an ordered pair, [` (a,b) `], or solutions as a comma separated list of ordered pairs, [` (a,b), (c,d) `], including the parentheses.
 

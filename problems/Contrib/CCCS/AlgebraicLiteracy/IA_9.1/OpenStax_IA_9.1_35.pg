@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -58,7 +57,7 @@ than one correct answer, enter a comma separated list. If the solution is not re
 
 [``[$f] = -[$a2]``]
 
-[`[$var] =`] [_________________]{$answer} [@ AnswerFormatHelp("numbers") @]*
+[`[$var] =`] [_________________]{$answer}
 
 
 

@@ -24,7 +24,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -139,9 +138,9 @@ The graph of [`f'(x)`] is given below. Use this graph to determine the intervals
 
 
 
-a. Interval(s) where [`f(x)`] is increasing: [_________________]{$inc}[@ AnswerFormatHelp("intervals") @]*
+a. Interval(s) where [`f(x)`] is increasing: [_________________]{$inc}
 
-b. Interval(s) where [`f(x)`] is decreasing: [_________________]{$dec} [@ AnswerFormatHelp("intervals") @]*
+b. Interval(s) where [`f(x)`] is decreasing: [_________________]{$dec}
 
 
 END_PGML

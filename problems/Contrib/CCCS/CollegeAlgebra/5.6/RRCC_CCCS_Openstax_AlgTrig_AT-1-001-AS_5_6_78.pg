@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -51,7 +50,7 @@ BEGIN_PGML
 Let [`` f(x)=[$f] ``]. Identify the removable discontinuity. 
 
 
-+ Removable Discontinuity: [`x=`] [_______________]{$ans} [@ AnswerFormatHelp("numbers") @]*
++ Removable Discontinuity: [`x=`] [_______________]{$ans}
 
 
 END_PGML

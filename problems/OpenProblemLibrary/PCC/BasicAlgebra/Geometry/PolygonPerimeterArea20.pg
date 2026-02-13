@@ -133,7 +133,6 @@ Find the perimeter and area of this shape, which is a semicircle on top of a rec
 
     Its perimeter is [_____________]{$perimeterU} and its area is [_____________]{$areaU}. 
 
-[@KeyboardInstructions(q!(Use [|cm|]* for centimeters and [|cm^2|]* for square centimeters.)!)@]**
 
 END_PGML
 

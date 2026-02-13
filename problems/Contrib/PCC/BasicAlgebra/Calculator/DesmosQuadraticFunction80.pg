@@ -28,7 +28,6 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "PGML.pl",
-  "AnswerFormatHelp.pl",
   "PCCmacros.pl",
   "PGgraphmacros.pl",
   "PCCgraphMacros.pl",
@@ -118,13 +117,11 @@ use technology to determine the following. Use *inf* to represent infinity.
 
 3.  The domain.
 
-    [@KeyboardInstructions(q?Use interval notation.?)@]**
 
     [__]{$domain}{width => 30}
 
 4.  The range.
 
-    [@KeyboardInstructions(q?Use interval notation.?)@]**
 
     [__]{$range}{width => 30}
 

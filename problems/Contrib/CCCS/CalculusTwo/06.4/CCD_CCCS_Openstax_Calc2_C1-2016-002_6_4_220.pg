@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "scaffold.pl",
@@ -57,7 +56,7 @@ BEGIN_PGML
 
 Find the first three nonzero terms of the Maclaurin series for [`f(x) = [$f]`].
 
- [_________________________________________]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+ [_________________________________________]{$ans}
 
 
 END_PGML

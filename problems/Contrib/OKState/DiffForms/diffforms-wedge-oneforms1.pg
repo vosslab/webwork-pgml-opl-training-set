@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
  "PGstandard.pl",
  "MathObjects.pl",
- "AnswerFormatHelp.pl",
  "PGML.pl",
  "PGcourse.pl",
 );
@@ -58,7 +57,6 @@ Compute
 [____________]{"$d*$a*y"}{10} [`dz \wedge dx + {}`]
 [____________]{"$b*x^2-($c*$a*z)"}{10} [`dx \wedge dy`]
 
-[@ AnswerFormatHelp("formulas") @]*
 END_PGML
 
 ENDDOCUMENT();

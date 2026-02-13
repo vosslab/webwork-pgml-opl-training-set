@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGauxiliaryFunctions.pl",
@@ -74,7 +73,7 @@ Evaluate [`\displaystyle \sum_{n=2}^{\infty}  [$summ1]`] using [`f^{\prime\prime
 Hint: [`\displaystyle f^{\prime\prime}(x) = \frac{2}{(1-x)^3}= \sum_{n=2}^{\infty}  [$summ3]`].
 
 
-[`\displaystyle \sum_{n=2}^{\infty}  [$summ1]`] = [________________]{$ans}[@ AnswerFormatHelp("numbers") @]*
+[`\displaystyle \sum_{n=2}^{\infty}  [$summ1]`] = [________________]{$ans}
 
 
 END_PGML

@@ -78,7 +78,6 @@ $answer = ($conj eq 'and') ? $sol[0]->intersect($sol[1])->reduce : Union($sol[0]
 BEGIN_PGML
 Solve the compound inequality algebraically.
 
-[@KeyboardInstructions('Write the solution set in interval notation. If you need to use the [`\infty`] symbol, type [|INF|]*. If you need to use the union symbol [`\cup`], type [|U|]*.')@]**
 
 >>[``[$ineq[0]] \quad \text{[$conj]} \quad [$ineq[1]]``]<<
 

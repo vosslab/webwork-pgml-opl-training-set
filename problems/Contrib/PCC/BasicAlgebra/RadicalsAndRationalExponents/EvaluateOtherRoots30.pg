@@ -55,7 +55,6 @@ BEGIN_PGML
 
 Use a calculator to evaluate the expression as a decimal to four significant digits.
 
-[@KeyboardInstructions('If a value is not defined as a real number, type [|DNE|]* for "does not exist".')@]**
 
     [``\sqrt[[$c]]{[$a]^{[$b]}}=``][________]{$ans}
 

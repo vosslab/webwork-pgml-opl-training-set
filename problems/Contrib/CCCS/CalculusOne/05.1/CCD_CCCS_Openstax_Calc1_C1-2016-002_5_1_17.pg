@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -62,7 +61,7 @@ BEGIN_PGML
 Given the function [`f(x)=[$f]`], compute the left-endpoint (Riemann) sum using [`n=[$n]`] on the interval
 [`[$I]`].
 
-[`` L_{[$n]} =``][_______________]{$ans }[@ AnswerFormatHelp("numbers") @]*
+[`` L_{[$n]} =``][_______________]{$ans }
 
 
 END_PGML

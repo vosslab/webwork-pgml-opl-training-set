@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "contextFraction.pl",
 "PGcourse.pl",
@@ -71,7 +70,7 @@ BEGIN_PGML
 Evaluate the following.  Enter the answer as a simplified fraction. 
 
 
-`sin([$b])cos([$a])=`[__________________]{$ans}[@ AnswerFormatHelp("numbers") @]*
+`sin([$b])cos([$a])=`[__________________]{$ans}
 
 END_PGML
 

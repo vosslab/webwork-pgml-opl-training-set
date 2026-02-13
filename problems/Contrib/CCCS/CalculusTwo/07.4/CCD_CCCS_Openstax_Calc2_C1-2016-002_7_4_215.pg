@@ -21,7 +21,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -67,11 +66,11 @@ Determine a definite integral that represents the arc length of the polar curve 
 
 [` \hspace{3cm }\displaystyle \int_{\alpha}^{\beta} f(\theta) d\theta`] 
 
-[`\alpha=`][_____________]{$alpha}[@ AnswerFormatHelp("numbers") @]*,
-[`\beta=`][_____________]{$beta}[@ AnswerFormatHelp("numbers") @]*,
+[`\alpha=`][_____________]{$alpha},
+[`\beta=`][_____________]{$beta},
 
 
-[`f(\theta)=`][___________________________]{$integrand}[@ AnswerFormatHelp("formulas") @]*.
+[`f(\theta)=`][___________________________]{$integrand}.
 END_PGML
 
 } else {
@@ -91,11 +90,11 @@ Determine a definite integral that represents the arc length of the polar curve 
 
 [` \hspace{3cm }\displaystyle \int_{\alpha}^{\beta} f(\theta) d\theta`] 
 
-[`\alpha=`][_____________]{$alpha}[@ AnswerFormatHelp("numbers") @]*,
-[`\beta=`][_____________]{$beta}[@ AnswerFormatHelp("numbers") @]*,
+[`\alpha=`][_____________]{$alpha},
+[`\beta=`][_____________]{$beta},
 
 
-[`f(\theta)=`][_______________________________]{$integrand}[@ AnswerFormatHelp("formulas") @]*.
+[`f(\theta)=`][_______________________________]{$integrand}.
 END_PGML
 
 

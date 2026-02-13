@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -50,7 +49,7 @@ BEGIN_PGML
 Find the dimensions of a rectangular corral split into 2 pens of the same size producing the greatest possible enclosed area given [`[$a]`] feet of fencing. Enter the dimensions as a comma separated list.
 
 
->>[_______________]{$ans} [@ AnswerFormatHelp("numbers") @]*<<
+>>[_______________]{$ans} <<
 
 END_PGML
 

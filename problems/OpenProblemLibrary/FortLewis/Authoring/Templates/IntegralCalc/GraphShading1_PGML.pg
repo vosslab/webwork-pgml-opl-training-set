@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "AnswerFormatHelp.pl",
   "PGgraphmacros.pl",
   "unionTables.pl",
   "PGML.pl",
@@ -98,7 +97,6 @@ Use the graph to find the area of the shaded
 region under [`` f(x) = $ftex ``].
 
 Area = [______________]{$answer}
-[@ AnswerFormatHelp("numbers") @]*
 END_PGML
 
 $column2 = image( insertGraph($gr),height=>300,width=>300,tex_size=>800 ).

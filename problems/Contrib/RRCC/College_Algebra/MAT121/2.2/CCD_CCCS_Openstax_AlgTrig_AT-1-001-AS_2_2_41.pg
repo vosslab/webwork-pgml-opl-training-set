@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -54,7 +53,7 @@ BEGIN_PGML
 Find the slope of the line between the points  [` \left( {[$x1]}, {[$y1]} \right) `] and
 [` \left( {[$x2]}, {[$y2]} \right) `].  
 
- [_______________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+ [_______________]{$ans}
 
 END_PGML
 

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -45,7 +44,7 @@ $ans=Complex(0,-1);
 BEGIN_PGML
 Simplify [`` i^{[$a]} ``]. 
 
- [_______________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+ [_______________]{$ans}
 
 END_PGML
 

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -79,7 +78,7 @@ Solve the following equation for [`r`]. (Variables are case-sensitive).
 
 
 
-[`r=`] [_________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+[`r=`] [_________________]{$ans}
 
 
 END_PGML

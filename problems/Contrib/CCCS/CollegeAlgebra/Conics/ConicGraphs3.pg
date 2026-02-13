@@ -19,14 +19,12 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
 "parserPopUp.pl",
 "PGstandard.pl",
 "PGgraphmacros.pl",
-"AnswerFormatHelp.pl",
 "MathObjects.pl"           # Math Object Macro
 );
 

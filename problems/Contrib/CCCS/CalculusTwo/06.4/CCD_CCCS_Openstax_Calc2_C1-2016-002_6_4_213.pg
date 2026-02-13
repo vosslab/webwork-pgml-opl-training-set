@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGauxiliaryFunctions.pl",
@@ -63,7 +62,7 @@ Find a power series for `F(x)= \arctan(x) = \int_{0}^{x}\frac{1}{1+t^{2}}dt `.
 Hint: `\f(x) = [$d_f] = \sum_{n=0}^{infty}\ (-1)^n x^{2n} \`, integrate term by term.
 
 
-`F(x)=\sum_{n=0}^{infty}\` [_______________________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+`F(x)=\sum_{n=0}^{infty}\` [_______________________________]{$ans}
 END_PGML
 
 } else {
@@ -87,7 +86,7 @@ Find a power series for `F(x)= \cot^{-1}(x) -\frac{\pi}{2}=
 Hint: `\f(x) = [$d_f] = \sum_{n=0}^{infty}\ (-1)^(n+1) x^{2n} \`, integrate term by term.
 
 
-`F(x)=\sum_{n=0}^{infty}\` [_______________________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+`F(x)=\sum_{n=0}^{infty}\` [_______________________________]{$ans}
 END_PGML
 }
 

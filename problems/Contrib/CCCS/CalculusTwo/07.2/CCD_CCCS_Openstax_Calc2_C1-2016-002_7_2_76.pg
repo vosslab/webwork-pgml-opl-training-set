@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -89,7 +88,7 @@ Consider the parametric curve and value of t
 
 What is the equation of the tangent line at [`t=[$a]`]?
 
-[`y=`] [_______________]{$tanline}   [@ AnswerFormatHelp("formulas") @]*
+[`y=`] [_______________]{$tanline}
 
 END_PGML
 
@@ -134,7 +133,7 @@ Consider the parametric curve and value of t
 
 What is the equation of the tangent line at [`t=[$a]`]?
 
-[`y=`] [_______________]{$tanline}   [@ AnswerFormatHelp("formulas") @]*
+[`y=`] [_______________]{$tanline}
 
 END_PGML
 

@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -52,9 +51,9 @@ $ans2= 0;
 BEGIN_PGML
 Use long division to perform the division [`([$f])/(x+[$a])`]. Find the quotient and remainder. 
 
-+ Quotient: [_______________]{$ans1} [@ AnswerFormatHelp("formulas") @]*
++ Quotient: [_______________]{$ans1}
 
-+ Remainder: [_______________]{$ans2} [@ AnswerFormatHelp("formulas") @]*
++ Remainder: [_______________]{$ans2}
 
 END_PGML
 

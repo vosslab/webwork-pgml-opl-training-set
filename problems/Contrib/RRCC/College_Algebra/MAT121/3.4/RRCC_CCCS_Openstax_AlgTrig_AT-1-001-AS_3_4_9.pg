@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -62,21 +61,21 @@ $ans8 = Compute("($b,infinity)");
 BEGIN_PGML
 Let [`f(x) = [$f]`] and [`g(x) = [$g]`]. 
 
-+ [` (f + g)(x) = `] [_______________]{$ans1} [@ AnswerFormatHelp("formulas") @]*
++ [` (f + g)(x) = `] [_______________]{$ans1}
 
-+ [` (f - g)(x) = `] [_______________]{$ans2} [@ AnswerFormatHelp("formulas") @]*
++ [` (f - g)(x) = `] [_______________]{$ans2}
 
-+ [` (fg)(x) = `] [_______________]{$ans3} [@ AnswerFormatHelp("formulas") @]*
++ [` (fg)(x) = `] [_______________]{$ans3}
 
-+ [` \left(\frac{f}{g}\right)(x) = `] [_______________]{$ans4} [@ AnswerFormatHelp("formulas") @]*
++ [` \left(\frac{f}{g}\right)(x) = `] [_______________]{$ans4}
 
-+ The domain of [` (f + g)(x) `] is: [_______________]{$ans5} [@ AnswerFormatHelp("intervals") @]*
++ The domain of [` (f + g)(x) `] is: [_______________]{$ans5}
 
-+ The domain of [` (f - g)(x) `] is: [_______________]{$ans6} [@ AnswerFormatHelp("intervals") @]*
++ The domain of [` (f - g)(x) `] is: [_______________]{$ans6}
 
-+ The domain of [` (fg)(x) `] is: [_______________]{$ans7} [@ AnswerFormatHelp("intervals") @]*
++ The domain of [` (fg)(x) `] is: [_______________]{$ans7}
 
-+ The domain of [` \left(\frac{f}{g}\right)(x) `] is: [_______________]{$ans8} [@ AnswerFormatHelp("intervals") @]*
++ The domain of [` \left(\frac{f}{g}\right)(x) `] is: [_______________]{$ans8}
 
 
 END_PGML

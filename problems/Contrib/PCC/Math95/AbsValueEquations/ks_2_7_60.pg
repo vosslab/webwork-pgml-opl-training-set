@@ -54,7 +54,6 @@ Solve the equation _by inspection_ (meaning in your head).
  
 >>[``\left\lvert [$a]x + [$b]\right\rvert = 0 ``]<<
 
-[@KeyboardInstructions('If there are multiple solutions, enter the solutions as a comma-separated list.')@]**
 
 [__]{$ans}{width=>20}
 

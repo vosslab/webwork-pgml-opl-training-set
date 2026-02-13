@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "contextLimitedPolynomial.pl",
 "PGcourse.pl",
@@ -60,7 +59,7 @@ Find the product.
 
  [`` [$f] ``]
 
-[___________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+[___________________]{$ans}
 
 
 END_PGML

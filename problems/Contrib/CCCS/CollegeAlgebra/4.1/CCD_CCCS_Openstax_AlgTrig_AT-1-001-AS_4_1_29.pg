@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -60,7 +59,7 @@ Find a linear equation satisfying the following
 [`f([$x1]) = [$y1]`] and [`f([$x2]) = [$y2]`]
 
 
-[`f(x) = `][____]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`f(x) = `][____]{$ans}
 
   
 END_PGML

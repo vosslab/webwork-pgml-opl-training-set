@@ -20,7 +20,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "answerHints.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -53,7 +52,7 @@ Solve the formula for [`[$x]`].
 
 [`[$B]{[$y]}^{[$exp]}+[$A][$x]=[$C]`];
 
-[`[$x]=`][_______________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+[`[$x]=`][_______________]{$ans}
 
 
 END_PGML

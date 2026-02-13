@@ -24,7 +24,6 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -92,11 +91,9 @@ Using Runge-Kutta step size [:h = [$step]:]:
 
 Estimate
 [` y([$step]) \approx {} `] [_________]{"$y1"}{10}
-[@ AnswerFormatHelp("numbers") @]*
 
 Estimate
 [` y([$twostep]) \approx {} `] [_________]{"$y2"}{10}
-[@ AnswerFormatHelp("numbers") @]*
 END_PGML
 
 ######################################################

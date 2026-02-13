@@ -38,7 +38,7 @@ $bAbs = abs($b);
 $l = $m*$w+$b;
 $p = 2*$l+2*$w;
 
-$multiText = ($m==2) ? "twice" : numberWord($m)." times";
+$multiText = ($m==2) ? "twice" : $m." times";
 $moreOrLess = ($b>0) ? "longer" : "shorter";
 
 ##############################################

@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-"AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -54,10 +53,10 @@ BEGIN_PGML
 Using sigma notation, write the following expression as an infinite series in two ways, one with the index starting at 0 and one with the index starting at 1. 
 
 
-(a) [`\displaystyle [$a] + \frac{[$a]}{2} +\frac{[$a]}{3}+\frac{[$a]}{4}+\frac{[$a]}{5}+...=\sum_{n=0}^{\infty}`][____________]{$f0}   [@ AnswerFormatHelp("formulas") @]*
+(a) [`\displaystyle [$a] + \frac{[$a]}{2} +\frac{[$a]}{3}+\frac{[$a]}{4}+\frac{[$a]}{5}+...=\sum_{n=0}^{\infty}`][____________]{$f0}
 
 
-(b) [`\displaystyle [$a] + \frac{[$a]}{2} +\frac{[$a]}{3}+\frac{[$a]}{4}+\frac{[$a]}{5}+...=\sum_{n=1}^{\infty}`][____________]{$f1}   [@ AnswerFormatHelp("formulas") @]*
+(b) [`\displaystyle [$a] + \frac{[$a]}{2} +\frac{[$a]}{3}+\frac{[$a]}{4}+\frac{[$a]}{5}+...=\sum_{n=1}^{\infty}`][____________]{$f1}
 
 
 END_PGML

@@ -24,7 +24,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -38,7 +37,6 @@ loadMacros(
            "extraAnswerEvaluators.pl",
            "MathObjects.pl",
            "PGcourse.pl",
-	   "AnswerFormatHelp.pl",
 );
 
 TEXT(beginproblem());

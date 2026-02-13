@@ -25,7 +25,6 @@ loadMacros(
 "PGchoicemacros.pl",
 "contextLimitedPoint.pl",
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
   "contextInequalitySetBuilder.pl",
 "PGML.pl",
 "niceTables.pl",
@@ -103,7 +102,7 @@ BEGIN_PGML
 Let [`f(x)`] be the parent function of a transformed function [`g(x)`], where [`g(x)=`] `[$func]`.  
 
 
-What is the parent of the original function of [`g(x)`] before it was transformed? [`f(x)`] = [_________________]{$ans1} [@ AnswerFormatHelp("formula") @]*
+What is the parent of the original function of [`g(x)`] before it was transformed? [`f(x)`] = [_________________]{$ans1}
 
 
 In the transformed function [`g(x)=`] `[$func]`, what transformation does the `[$vertshift]` correspond to? [_________________]{$popup1}

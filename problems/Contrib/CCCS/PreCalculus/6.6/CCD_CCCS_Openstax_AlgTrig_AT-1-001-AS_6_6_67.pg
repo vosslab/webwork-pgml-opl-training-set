@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -65,7 +64,6 @@ Round your answer to the nearest whole number.
 
 [_____________________]{$x1} years
 
-[@ AnswerFormatHelp("numbers") @]*
 
 END_PGML
 

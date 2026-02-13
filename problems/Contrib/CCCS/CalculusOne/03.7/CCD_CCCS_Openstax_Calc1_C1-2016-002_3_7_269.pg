@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "niceTables.pl",
@@ -60,7 +59,7 @@ BEGIN_PGML
 
 For [`f(x)=[$f]`], find `(f^{-1})^\prime([$out])`.
 
-`(f^{-1})^\prime([$out])=` [_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
+`(f^{-1})^\prime([$out])=` [_______________]{$ans1}
 
 
 END_PGML

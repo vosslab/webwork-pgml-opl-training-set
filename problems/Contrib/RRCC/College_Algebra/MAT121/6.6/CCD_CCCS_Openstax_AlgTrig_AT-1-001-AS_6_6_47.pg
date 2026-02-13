@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -75,7 +74,7 @@ If there is more than one solution, enter the answers as a comma-separated list.
 [`` \ln \left( {[$u]} \right) + \ln \left( {[$v]} - {[$w]} x^2 \right) = \ln \left( {[$C]} \right) ``]
 
 
-[`x =`] [____________________]{$x1} [@ AnswerFormatHelp("numbers") @]*
+[`x =`] [____________________]{$x1}
 
 END_PGML
 

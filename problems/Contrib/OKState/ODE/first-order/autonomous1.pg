@@ -24,7 +24,6 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -79,13 +78,13 @@ A function [:x(t):] satisfies the differential equation
 Compute the following limits.  You can use words like "Infinity" and "DNE" if you need to.
 
 If [:x(0) = [$avg1]:], then
-[``\lim_{t\to\infty} x(t) = ``] [___________]{"$lim1"} [@ AnswerFormatHelp("numbers") @]*  
+[``\lim_{t\to\infty} x(t) = ``] [___________]{"$lim1"}
 
 If [:x(0) = [$avg2]:], then
-[``\lim_{t\to\infty} x(t) = ``] [___________]{"$lim2"} [@ AnswerFormatHelp("numbers") @]*  
+[``\lim_{t\to\infty} x(t) = ``] [___________]{"$lim2"}
 
 If [:x(0) = [$avg3]:], then
-[``\lim_{t\to\infty} x(t) = ``] [___________]{"$lim3"} [@ AnswerFormatHelp("numbers") @]*  
+[``\lim_{t\to\infty} x(t) = ``] [___________]{"$lim3"}
 END_PGML
 
 ##############################################################

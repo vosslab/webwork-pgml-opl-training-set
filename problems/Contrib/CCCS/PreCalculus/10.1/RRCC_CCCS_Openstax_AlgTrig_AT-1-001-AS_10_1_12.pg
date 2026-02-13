@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextTrigDegrees.pl",
@@ -58,7 +57,7 @@ Use the Law of Sines to solve for the missing side for the oblique triangle. Rou
 
 Find side [` a`] where [`A = [$A]^\circ`], [`C=[$C]^\circ`], and [`b=[$b]`]. 
 
-[` a = `] [_______________]{$ans_a} [@ AnswerFormatHelp("numbers") @]*
+[` a = `] [_______________]{$ans_a}
 
 END_PGML
 

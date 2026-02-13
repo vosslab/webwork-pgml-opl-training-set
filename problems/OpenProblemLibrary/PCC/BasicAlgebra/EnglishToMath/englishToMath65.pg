@@ -40,7 +40,7 @@ Context("Numeric");
 $a = non_zero_random(1,10,1);
 $b = non_zero_random(2,10,1);
 
-$bWord = numberWord($b);
+$bWord = $b;
 
 $word = $b==2 ? "twice" : "$bWord times";
 
@@ -56,7 +56,7 @@ BEGIN_PGML
 
 Translate the following phrase into a math expression or equation (whichever is appropriate). Use [`x`] to represent the unknown number.
 
-    [@numberWord($a)@] less than [$word] a number
+    [@$a@] less than [$word] a number
 
     [_______]{$ans} 
 
@@ -69,7 +69,7 @@ BEGIN_PGML_SOLUTION
 
 The phrase "[$word]" implies multiplication. So we have 
 
-    [@numberWord($a)@] less than [`[$b]x`]
+    [@$a@] less than [`[$b]x`]
 
 The phrase "less than" implies subtraction, and that [`[$a]`] is being _subtracted from_ [`[$b]x`].  So the answer is [` [$ans] `].
 

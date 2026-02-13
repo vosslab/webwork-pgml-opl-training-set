@@ -63,7 +63,7 @@ TEXT(beginproblem());
 
 BEGIN_PGML
 
-Simplify the following expressions, and if applicable, write the restricted domain.  [@KeyboardInstructions("The problem accepts many ways to format the answers here, but one way is like typing [|$var1^2 for $var1!=1 and $var1!=2|]* where [|!=|]* is how to type the [`\\neq`] symbol.")@]** 
+Simplify the following expressions, and if applicable, write the restricted domain.
 
     [`` -[$frac1] \cdot [$frac2] =``] [___________________]{$ans1}
 

@@ -29,7 +29,6 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "PGML.pl",
-  "AnswerFormatHelp.pl",
   "contextFiniteSolutionSets.pl",
   "PCCmacros.pl",
   "PCCgraphMacros.pl",

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "contextFraction.pl",
 "PGcourse.pl",
@@ -121,11 +120,11 @@ Find the reference angle and the sine and cosine of [`[$texangle]`].  If the ang
 
 
 
-Reference angle: [_______]{$reference} Degrees [@ AnswerFormatHelp("numbers") @]*
+Reference angle: [_______]{$reference} Degrees
 
-[`\sin[$texangle]=`] [___________]{$sine} [@ AnswerFormatHelp("numbers") @]*
+[`\sin[$texangle]=`] [___________]{$sine}
 
-[`\cos[$texangle]=`][___________]{$cosine} [@ AnswerFormatHelp("numbers") @]*
+[`\cos[$texangle]=`][___________]{$cosine}
 
 Which quadrant is the terminal side of [`[$texangle]`]? 
 

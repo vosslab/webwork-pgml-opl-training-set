@@ -105,7 +105,7 @@ A triangle's area can be calculated by the formula [`A=\frac{1}{2}bh`], where [`
 
 >>[@ image(insertGraph( $picture  ), width=>240, extra_html_tags => "alt = '$text' title = '$text' ") @]*<<
 
-Find the triangle's area if [`b=[$baseU]`] and [`h=[$heightU]`]. [@KeyboardInstructions(q!(Use [|ft|]* for feet and [|ft^2|]* for square feet.)!)@]**
+Find the triangle's area if [`b=[$baseU]`] and [`h=[$heightU]`].
 
 
     Area = [____________]{$areaU}

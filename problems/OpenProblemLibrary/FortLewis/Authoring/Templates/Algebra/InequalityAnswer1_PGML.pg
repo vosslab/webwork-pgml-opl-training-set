@@ -22,7 +22,6 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "contextInequalities.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );

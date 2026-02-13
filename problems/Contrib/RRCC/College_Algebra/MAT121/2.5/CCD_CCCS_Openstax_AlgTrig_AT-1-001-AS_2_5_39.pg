@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -53,7 +52,7 @@ Solve [`[$f]=0 `] by using the quadratic formula. If there is more
 than one correct answer, enter a comma 
 separated list.  
 
-[`x=`] [__________________________]{$ans} [@ AnswerFormatHelp("numbers") @]*  
+[`x=`] [__________________________]{$ans}
 
 
 

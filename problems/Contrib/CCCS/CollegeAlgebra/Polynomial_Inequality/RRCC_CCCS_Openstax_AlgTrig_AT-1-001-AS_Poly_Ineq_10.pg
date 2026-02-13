@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -59,7 +58,7 @@ BEGIN_PGML
 
 Solve [`` [$f] \geq [$g] ``]. Enter the solution in interval notation.
 
-[_______________]{$ans} [@ AnswerFormatHelp("intervals") @]*
+[_______________]{$ans}
 
 END_PGML
 

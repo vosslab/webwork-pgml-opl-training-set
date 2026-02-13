@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-"AnswerFormatHelp.pl",
   "PGunion.pl",
   "answerHints.pl",
   "PGML.pl",
@@ -55,7 +54,7 @@ BEGIN_PGML
 
 Evaluate the integral, [``\int_{[$a]}^{[$b]}[$f] \; dx``], using area formulas.
 
-[``\int_{[$a]}^{[$b]}[$f]dx=``][____________________]{$ans }[@ AnswerFormatHelp("numbers") @]*
+[``\int_{[$a]}^{[$b]}[$f]dx=``][____________________]{$ans }
 
 END_PGML
 #####################################

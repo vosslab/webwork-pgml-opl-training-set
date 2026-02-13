@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -66,13 +65,13 @@ Suppose
 
 Compute the following integrals.
 
-(a) [``\int_{[$a]}^{[$c]}(f(x)+g(x)) dx=``][_________________]{$ans1 }[@ AnswerFormatHelp("numbers") @]*
+(a) [``\int_{[$a]}^{[$c]}(f(x)+g(x)) dx=``][_________________]{$ans1 }
 
 
-(b) [``\int_{[$a]}^{[$c]}(f(x)-g(x)) dx=``][_________________]{$ans2 }[@ AnswerFormatHelp("numbers") @]*
+(b) [``\int_{[$a]}^{[$c]}(f(x)-g(x)) dx=``][_________________]{$ans2 }
 
 
-(c) [``\int_{[$a]}^{[$c]}([$c1]f(x)-[$c2]g(x)) dx=``][_________________]{$ans3 }[@ AnswerFormatHelp("numbers") @]*
+(c) [``\int_{[$a]}^{[$c]}([$c1]f(x)-[$c2]g(x)) dx=``][_________________]{$ans3 }
 
 
 END_PGML

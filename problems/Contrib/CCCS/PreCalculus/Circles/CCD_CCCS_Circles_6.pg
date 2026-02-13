@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -62,9 +61,9 @@ BEGIN_PGML
 
 Find the radius and the center of the circle with the given equation [`[$equation]=0`]. 
  
-Radius:[_______________]{$radius}[@ AnswerFormatHelp("numbers") @]*
+Radius:[_______________]{$radius}
  
-Center:[_______________]{$center}[@ AnswerFormatHelp("points") @]*
+Center:[_______________]{$center}
 
  
 END_PGML

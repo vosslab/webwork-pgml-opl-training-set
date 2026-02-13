@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "PGcourse.pl"
@@ -52,7 +51,7 @@ BEGIN_PGML
 
 Compute the definite integral  [`\displaystyle \int_{0}^{\pi} x^2 \sin([$f])dx`]. Enter exact values only.
 
-[`\displaystyle \int_{0}^{\pi} x^2 \sin([$f])dx=`] [_________________________]{$ans}  [@ AnswerFormatHelp("numbers") @]*
+[`\displaystyle \int_{0}^{\pi} x^2 \sin([$f])dx=`] [_________________________]{$ans}
 
 
 END_PGML
@@ -63,7 +62,7 @@ BEGIN_PGML
 
 Compute the definite integral  [`\displaystyle \int_{0}^{\pi/[$a2]} x^2 \sin([$f])dx`]. Enter exact values only.
 
-[`\displaystyle \int_{0}^{\pi/[$a2]} x^2 \sin([$f])dx=`] [_________________________]{$ans}  [@ AnswerFormatHelp("numbers") @]*
+[`\displaystyle \int_{0}^{\pi/[$a2]} x^2 \sin([$f])dx=`] [_________________________]{$ans}
 
 
 END_PGML

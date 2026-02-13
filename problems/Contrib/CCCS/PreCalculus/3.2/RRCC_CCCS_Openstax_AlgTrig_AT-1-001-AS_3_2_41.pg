@@ -22,7 +22,6 @@ loadMacros(
 "PGgraphmacros.pl",
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "contextPiecewiseFunction.pl",
 "PGML.pl",
@@ -57,9 +56,9 @@ Graph the function to find the domain and range.  Give the answers in interval n
 
 [` f(x)=[$fun] `]
 
-    Domain: [_________________]{$domain} [@ AnswerFormatHelp("intervals") @]* 
+    Domain: [_________________]{$domain}
 
-    Range: [_________________]{$range} [@ AnswerFormatHelp("intervals") @]*
+    Range: [_________________]{$range}
 
 
 

@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -51,7 +50,7 @@ BEGIN_PGML
 Use the given information to find the unknown value:  
 [`y`] varies inversely with [`x`]. When [`x=[$x0]`], then [`y=[$y0]`]. Find [`y`] when [`x=[$x1]`]. 
 
-[`y=`] [_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
+[`y=`] [_______________]{$ans1}
 
 
 

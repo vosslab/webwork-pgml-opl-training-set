@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -62,7 +61,7 @@ below using sums and/or differences
 of logarithmic expressions which do not contain 
 the logarithms of products, quotients, or powers.
 
-[` \displaystyle [$expr] = `] [____________________]{$answer} [@ AnswerFormatHelp("formulas") @]*
+[` \displaystyle [$expr] = `] [____________________]{$answer}
 END_PGML
 
 

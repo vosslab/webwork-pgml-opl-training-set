@@ -24,7 +24,6 @@ loadMacros(
 "MathObjects.pl",
 "parserAssignment.pl",
 "contextFraction.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -68,7 +67,7 @@ BEGIN_PGML
 
 Find the equation of the line that contains has a slope of [` \dfrac{[$c]}{[$d]} `] and a `y`-intercept of [`(0,[$b])`].  Write the answer in slope-intercept form.
 
-[__________________]{$eqn} [@ AnswerFormatHelp("equation") @]*
+[__________________]{$eqn}
 
 
 END_PGML

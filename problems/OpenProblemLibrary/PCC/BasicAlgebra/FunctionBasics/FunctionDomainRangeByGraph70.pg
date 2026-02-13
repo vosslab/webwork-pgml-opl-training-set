@@ -82,7 +82,6 @@ $ALT = "a graph of a curve resembling the letter W, except that arrows indicate 
 BEGIN_PGML
 Use the graph of [`[$fname]`] below to estimate its domain and range.
 
-[@EnlargeImageStatementPGML()@]**
 
 >>[@image(insertGraph($gr), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT' title = '$ALT'")@]*<<
 

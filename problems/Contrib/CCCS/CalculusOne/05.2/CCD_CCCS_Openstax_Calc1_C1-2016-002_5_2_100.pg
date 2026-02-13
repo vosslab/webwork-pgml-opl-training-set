@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -63,13 +62,13 @@ Given that
 [``\int_{0}^{[$a]}x dx=[$s1], \int_{0}^{[$a]}x^2 dx=\frac{[$s2]}{3},  \text{  and  }  \int_{0}^{[$a]}x^3 dx= [$s3]``], compute the following integrals. 
    
 
-(a)[``\int_{0}^{[$a]}[$f1]  dx=``][_____________]{$ans1 }[@ AnswerFormatHelp("numbers") @]*
+(a)[``\int_{0}^{[$a]}[$f1]  dx=``][_____________]{$ans1 }
 
 
-(b) [``\int_{0}^{[$a]}[$f2]  dx=``][_____________]{$ans2 }[@ AnswerFormatHelp("numbers") @]*
+(b) [``\int_{0}^{[$a]}[$f2]  dx=``][_____________]{$ans2 }
 
 
-(c) [``\int_{0}^{[$a]}[$f3]  dx=``][_____________]{$ans3 }[@ AnswerFormatHelp("numbers") @]*
+(c) [``\int_{0}^{[$a]}[$f3]  dx=``][_____________]{$ans3 }
 
 
 END_PGML

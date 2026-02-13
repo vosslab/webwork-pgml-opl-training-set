@@ -25,7 +25,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -68,11 +67,11 @@ BEGIN_PGML
 
 Find the equation for the graph of [` [$c]^x`] shifted right by [`[$a]`] and up by [`[$b]`].
 
-+ [`f(x)=`] [_______________]{$f} [@ AnswerFormatHelp("formulas") @]*
++ [`f(x)=`] [_______________]{$f}
 
-+ The domain of [`f(x)`] is: [_______________]{$dom} [@ AnswerFormatHelp("intervals") @]*
++ The domain of [`f(x)`] is: [_______________]{$dom}
 
-+ The range of [`f(x)`] is: [_______________]{$ran} [@ AnswerFormatHelp("intervals") @]*
++ The range of [`f(x)`] is: [_______________]{$ran}
 
 
 END_PGML

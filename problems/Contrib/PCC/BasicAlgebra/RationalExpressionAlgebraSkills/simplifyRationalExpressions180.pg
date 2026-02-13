@@ -54,7 +54,7 @@ TEXT(beginproblem());
 
 BEGIN_PGML
 
-Simplify the following expression, and if applicable, write the restricted domain on the simplified expression.  [@KeyboardInstructions("The problem accepts many ways to format the answers here, but one way is like typing [|$var^2 for $var!=1 and $var!=2|]* where [|!=|]* is how to type the [`\\neq`] symbol.")@]**
+Simplify the following expression, and if applicable, write the restricted domain on the simplified expression.
 
     [``[$question]=``] [___________________]{$ans}
 

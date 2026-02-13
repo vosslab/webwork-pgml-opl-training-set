@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -56,7 +55,7 @@ Evaluate the common logarithmic expression without using a calculator.
 
  [`[$var2]\log([$var3]^{[$var1]}) `] 
  
- [_____________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+ [_____________]{$ans}
   
 END_PGML
  

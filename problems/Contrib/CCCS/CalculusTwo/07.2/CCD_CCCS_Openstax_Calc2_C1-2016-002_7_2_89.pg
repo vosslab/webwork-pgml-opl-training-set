@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -78,7 +77,7 @@ Given the parametric curve
 [` \displaystyle x(t)=[$x_t], \hspace{.25cm} y(t)=[$y_t]`]
 
 
-Find [`\frac{d^{2}y}{dx^{2}}=`] [____________________________]{$d2y_dx2}   [@ AnswerFormatHelp("formulas") @]*
+Find [`\frac{d^{2}y}{dx^{2}}=`] [____________________________]{$d2y_dx2}
 
 END_PGML
 
@@ -115,7 +114,7 @@ Given the parametric curve
 [` \displaystyle x(t)=[$x_t], \hspace{.25cm} y(t)=[$y_t]`].
 
 
-Find [`\frac{d^{2}y}{dx^{2}}=`] [____________________________]{$d2y_dx2}   [@ AnswerFormatHelp("formulas") @]*
+Find [`\frac{d^{2}y}{dx^{2}}=`] [____________________________]{$d2y_dx2}
 
 END_PGML
 

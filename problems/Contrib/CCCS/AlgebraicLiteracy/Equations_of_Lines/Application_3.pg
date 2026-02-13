@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -57,7 +56,7 @@ $ans =Formula("$slope(x)+$yint");
 BEGIN_PGML
 The number of acres in the National Park system has grown from [`[$yint]`] million acres in [`[$year1]`] to [`[$y2]`] million acres in [`[$year2]`].  Let y represent the number of acres, in millions, in the system and x the number of years after [`[$year1]`]. Find a linear equation that fits the data.
 
-[`y = `][____]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`y = `][____]{$ans}
 
   
 END_PGML

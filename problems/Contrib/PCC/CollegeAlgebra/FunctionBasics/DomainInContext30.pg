@@ -64,7 +64,6 @@ An object was shot up into the air at an initial vertical speed of [`[$initSpeed
 
 Using interval notation, the domain of the function [`f(t)`] is [__________________________________]{$ans}
 
-[@KeyboardInstructions('If the answer includes more than one interval write the intervals separated by the union symbol, which you can type as [|U|]*. If the answer uses [`\infty`], you may type it as [|inf|]*.')@]** 
 END_PGML
 
 ##############################################

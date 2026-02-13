@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -60,9 +59,9 @@ $RHS = $interest + $RHS1;
 BEGIN_PGML
 After four years in college Josie owes [`$[$total]`] in student loans.  The interest rate on the federal loans is [`[$i1]%`] and the rate on the private loans is [`[$i2]%`].  The total interest she owes for one year was [`$[$interest]`].  What is the amount of each loan?
 
-Amount of federal loan: $[_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
+Amount of federal loan: $[_______________]{$ans1}
 
-Amount of private loan: $[_______________]{$ans2} [@ AnswerFormatHelp("numbers") @]*
+Amount of private loan: $[_______________]{$ans2}
 
 
 

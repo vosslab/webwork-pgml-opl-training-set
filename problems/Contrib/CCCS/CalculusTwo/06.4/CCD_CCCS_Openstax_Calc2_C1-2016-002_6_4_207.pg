@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGauxiliaryFunctions.pl",
@@ -63,7 +62,7 @@ Find the Maclaurin series of [` \displaystyle f(x)=[$f] `].
 Hint: `\g(x) = e^x = \sum_{n=0}^{infty}\ \frac{x^{n}}{n!} \`
 
 
-`f(x) = \sum_{n=0}^{infty}\` [_______________________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+`f(x) = \sum_{n=0}^{infty}\` [_______________________________]{$ans}
 END_PGML
 
 } else {
@@ -86,7 +85,7 @@ Find the Maclaurin series of [` \displaystyle f(x)=[$f] `].
 Hint: `\g(x) = e^x = \sum_{n=0}^{infty}\ \frac{x^{n}}{n!} \`
 
 
-`f(x) = \sum_{n=0}^{infty}\` [_______________________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+`f(x) = \sum_{n=0}^{infty}\` [_______________________________]{$ans}
 END_PGML
 }
 

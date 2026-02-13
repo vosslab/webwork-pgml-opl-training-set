@@ -23,7 +23,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "unorderedAnswer.pl",
 "parserImplicitPlane.pl",
@@ -87,11 +86,11 @@ For the given equation of a hyperbola, identify the foci and the vertices, and w
 
 >>[`` [$f]=[$d] ``]<<
 
-Foci:[___________________________]{$foci} [@ AnswerFormatHelp("points") @]*
+Foci:[___________________________]{$foci}
 
-Vertices: [_____________________]{$vertices} [@ AnswerFormatHelp("points") @]*
+Vertices: [_____________________]{$vertices}
 
-Asymptotes: [____________________________________________]{$asymptote} [@ AnswerFormatHelp("equations")@]*
+Asymptotes: [____________________________________________]{$asymptote}
 
 END_PGML
 

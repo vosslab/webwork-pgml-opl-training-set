@@ -22,7 +22,6 @@ loadMacros(
    "MathObjects.pl",
    "PGgraphmacros.pl",
    "contextInequalities.pl",
-   "AnswerFormatHelp.pl",
    "problemRandomize.pl",
    "contextFraction.pl",
 "PGML.pl",

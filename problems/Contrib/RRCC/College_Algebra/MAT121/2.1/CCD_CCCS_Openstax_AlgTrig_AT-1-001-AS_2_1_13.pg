@@ -24,7 +24,6 @@ loadMacros(
 "parserAssignment.pl",
 "parserImplicitEquation.pl",
 "contextFraction.pl", 
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -59,7 +58,7 @@ $ans = Formula("-$a/$b*x+$c/$b");
 BEGIN_PGML
 Solve the equation [` [$f]=[$g] `] for [` y `] in terms of [`x`].  
 
-[`y=`]  [_______________]{$ans} [@ AnswerFormatHelp("formulas") @]*  
+[`y=`]  [_______________]{$ans}
 
 
 

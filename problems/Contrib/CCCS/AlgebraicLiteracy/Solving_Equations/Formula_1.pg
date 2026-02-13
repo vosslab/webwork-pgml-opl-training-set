@@ -20,7 +20,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "answerHints.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -52,7 +51,7 @@ Solve the formula for [`[$B]`].
 
 [`[$A] = \frac{1}{[$denom]}[$B][$C]`];
 
-[`[$B]=`][_______________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+[`[$B]=`][_______________]{$ans}
 
 
 END_PGML

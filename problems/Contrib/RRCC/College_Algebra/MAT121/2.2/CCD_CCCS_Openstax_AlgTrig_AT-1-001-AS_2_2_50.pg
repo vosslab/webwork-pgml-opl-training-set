@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -49,7 +48,6 @@ Start with the point-slope formula for a line
 and solve to find [`x`] in terms of [` m, x_1, y, `] and [`y_1`].  In order to enter a subscript, type x1 to get `x_1`.
 
 [`x =`] [_______________]{Compute("(y - y1)/m + x1")->cmp()} 
-[@ AnswerFormatHelp("formulas") @]*
 
 END_PGML
 

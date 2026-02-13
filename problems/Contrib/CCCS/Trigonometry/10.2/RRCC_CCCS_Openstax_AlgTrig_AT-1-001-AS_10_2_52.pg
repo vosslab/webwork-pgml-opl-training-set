@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextTrigDegrees.pl",
@@ -59,7 +58,7 @@ BEGIN_PGML
 A parallelogram has sides of length [`[$a]`] units and [`[$b]`] units. The shorter diagonal is [`[$c]`] units. Find the measure of the longer diagonal. 
 
 
- Longer diagonal [` = `] [_______________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+ Longer diagonal [` = `] [_______________]{$ans}
 
 END_PGML
 

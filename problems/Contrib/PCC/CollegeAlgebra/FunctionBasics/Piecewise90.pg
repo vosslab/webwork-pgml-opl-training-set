@@ -209,7 +209,6 @@ if ($b2 == 0) {
 
 BEGIN_PGML_SOLUTION
 
-[@EnlargeImageStatementPGML()@]**
 
 >>[@image(insertGraph($gr[0]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT' title = '$ALT'") @]*<<
 

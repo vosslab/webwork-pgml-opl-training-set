@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -70,21 +69,21 @@ BEGIN_PGML
 
 (a) Find the volume generated when the region bounded by the curves [`y=[$f1]`],  [`x=[$a]`], and [`y=0`]  is rotated around the [`y`]-axis. Set up the integrals using both the shell and the washer method.
 
-Using the shell method, [` \displaystyle V=\int_0^{[$a]}`][_________]{$int1}[` dx  `]   [@ AnswerFormatHelp("formulas") @]*
+Using the shell method, [` \displaystyle V=\int_0^{[$a]}`][_________]{$int1}[` dx  `]
 
-Using the washer method, [` \displaystyle V=\int_0^{[$up]}`][_________]{$int2} [`dy  `]  [@ AnswerFormatHelp("formulas") @]*
+Using the washer method, [` \displaystyle V=\int_0^{[$up]}`][_________]{$int2} [`dy  `]
 
-Both integrals give the volume of [`V=`] [_______________]{$ans1} units cubed. [@ AnswerFormatHelp("numbers") @]*
+Both integrals give the volume of [`V=`] [_______________]{$ans1} units cubed.
 
 
 
 (b) Find the volume generated when the region bounded by the curves [`y=[$f1]`],  [`y=[$a]`], and [`x=0`] is rotated around the [`x`]-axis. Set up the integrals using both the shell and the washer method.
 
-Using the shell method, [` \displaystyle V=\int_0^{[$a]}`][_________]{$int3}[` dy `]   [@ AnswerFormatHelp("formulas") @]* 
+Using the shell method, [` \displaystyle V=\int_0^{[$a]}`][_________]{$int3}[` dy `]
 
-Using the washer method, [` \displaystyle V=\int_0^1`][_________]{$int4} [`dx  `]  [@ AnswerFormatHelp("formulas") @]*
+Using the washer method, [` \displaystyle V=\int_0^1`][_________]{$int4} [`dx  `]
 
-Both integrals give the volume of [`V=`] [_______________]{$ans2} units cubed. [@ AnswerFormatHelp("numbers") @]*
+Both integrals give the volume of [`V=`] [_______________]{$ans2} units cubed.
 
 END_PGML
 

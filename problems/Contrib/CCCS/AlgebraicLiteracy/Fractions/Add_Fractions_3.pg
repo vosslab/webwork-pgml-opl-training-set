@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextRationalFunction.pl",
@@ -64,7 +63,7 @@ Perform the indicated operation. Note that the denominators are different. Simpl
 
 >> [`` \frac{[$f1]}{[$f2]} + \frac{[$g1]}{[$g2]} ``] <<
 
-Answer: [_______________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+Answer: [_______________________]{$ans}
 
 
 END_PGML

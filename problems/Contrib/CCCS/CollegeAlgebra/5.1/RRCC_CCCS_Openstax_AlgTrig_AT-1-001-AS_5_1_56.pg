@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -55,9 +54,9 @@ $d = Compute("(-infinity,infinity)");
 BEGIN_PGML
 Find the domain and range for the quadratic function with a vertex [`([$vx],[$vy])`] if the graph opens [`[$concavity]`].   
 
-+ Domain: [_______________]{$d} [@ AnswerFormatHelp("intervals") @]*
++ Domain: [_______________]{$d}
 
-+ Range: [_______________]{$r} [@ AnswerFormatHelp("intervals") @]*
++ Range: [_______________]{$r}
 
 
 END_PGML

@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -53,7 +52,7 @@ A good approximation of the volume of a football is given by the solid that come
             height=>238) 
   @]*<<
 
-Volume: [_______________]{$ans} units cubed. [@ AnswerFormatHelp("numbers") @]*
+Volume: [_______________]{$ans} units cubed.
 
 END_PGML
 

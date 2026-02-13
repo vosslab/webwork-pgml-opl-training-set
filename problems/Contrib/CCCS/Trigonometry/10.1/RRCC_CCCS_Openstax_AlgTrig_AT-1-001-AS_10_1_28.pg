@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextTrigDegrees.pl",
@@ -57,7 +56,7 @@ Find the area of the triangle with the given measurements. Round each answer to 
 [` b = [$b] `], [` c = [$c] `], [` \alpha = [$Alpha]^\circ `]
 
 
-Area [` = `] [_______________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+Area [` = `] [_______________]{$ans}
 
 
 END_PGML

@@ -22,7 +22,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "contextFraction.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextPercent.pl",
@@ -61,7 +60,7 @@ BEGIN_PGML
 
 Enter your answer as a percentage, including the percent (%) symbol, rounded to 1 decimal place.    
 
-[_______________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+[_______________]{$ans}
 
 
 END_PGML

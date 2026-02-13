@@ -121,7 +121,6 @@ BEGIN_PGML
 
 Simplify [`` [$problem] ``].
 
-[@KeyboardInstructions("Use [|sqrt()|]* for the square root symbol. For example: [`\\sqrt{2}=`][|sqrt(2)|]*.")@]**
 
     [`` [$problem] =``] [_______________]{$ans}
 

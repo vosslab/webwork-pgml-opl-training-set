@@ -20,7 +20,6 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "PGML.pl",
-"AnswerFormatHelp.pl",
   "contextFraction.pl",
   "contextInequalitySetBuilder.pl",
   "parserOneOf.pl",
@@ -57,7 +56,7 @@ Solve the following inequality for [`x`].  Enter the answer in interval notation
 
 [`-\dfrac{[$a]}{2}x \leq - \dfrac{[$c]}{[$d]}+\dfrac{[$e]}{8}x `]
 
-[_______________]{$intans} [@ AnswerFormatHelp("intervals") @]*
+[_______________]{$intans}
 
 
 

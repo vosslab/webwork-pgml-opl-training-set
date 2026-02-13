@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -54,7 +53,7 @@ $ans1 = $b/($m-$a);
 BEGIN_PGML
 A fast-food restaurant has a cost production of [`C(x)=[$C] `] and a revenue function of [`R(x)=[$R] `], where [`x`] represents the number of milkshakes they make. When does the company start to turn a profit?
 
-[`x=`] [_______________]{$ans1} milkshakes  [@ AnswerFormatHelp("numbers") @]*
+[`x=`] [_______________]{$ans1} milkshakes
 
 
 

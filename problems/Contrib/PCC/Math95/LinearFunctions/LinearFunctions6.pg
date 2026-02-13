@@ -39,7 +39,7 @@ $fun = Formula("f(t)=$m*t+$b");
 
 
 BEGIN_PGML
-Suppose that [`f`] is the function that the phone company uses to determine what your bill will be (in dollars) for a long-distance phone call that lasts [`t`] minutes.  Each call costs a fixed price of $[`[$b]`] plus [`[$mC]`] cents per minute.  Write a formula for this linear function [`f`].  [@KeyboardInstructions('You need to write the entire formula, including [|f(t)=|]*.')@]**
+Suppose that [`f`] is the function that the phone company uses to determine what your bill will be (in dollars) for a long-distance phone call that lasts [`t`] minutes.  Each call costs a fixed price of $[`[$b]`] plus [`[$mC]`] cents per minute.  Write a formula for this linear function [`f`].
 
 [__]{$fun}{width=>20}
 

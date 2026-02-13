@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -53,7 +52,6 @@ The temperature of an object in degrees Fahrenheit after [`t`] minutes is repres
 
 [_______________]{$x1} [` {}^{\circ}F `] 
 
-[@ AnswerFormatHelp("numbers") @]*
 
 END_PGML
 ############################

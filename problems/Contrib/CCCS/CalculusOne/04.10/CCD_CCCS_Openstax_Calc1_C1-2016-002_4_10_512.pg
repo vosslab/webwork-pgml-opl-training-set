@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -48,7 +47,7 @@ A car is merging onto a freeway (beginning at rest), accelerating at a constant 
 How far does the car travel to reach merging speed of `[$v]  \text{mph}`?.  
 
 
- [`` \text{Distance in feet} =``][_______________]{$ans } [@ AnswerFormatHelp("numbers") @]*
+ [`` \text{Distance in feet} =``][_______________]{$ans }
 
 
 END_PGML

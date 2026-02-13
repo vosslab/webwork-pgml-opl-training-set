@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -51,7 +50,7 @@ Evaluate the following without using a calculator.  Simplify completely.
 
 [`\log_{[$b]}\left(\frac{1}{[$denom]}\right)+[$k]`] 
 
-[_______________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+[_______________]{$ans}
 
 END_PGML
 

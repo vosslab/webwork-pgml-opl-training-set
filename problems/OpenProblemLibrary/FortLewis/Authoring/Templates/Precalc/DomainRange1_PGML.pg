@@ -21,7 +21,6 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "contextInequalities.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -51,7 +50,7 @@ BEGIN_PGML
 Suppose [` f(x) = $f `].  Enter inequalities for the 
 domain and range of [` f `].
 
-Domain: [_________________]{$domain} [@ AnswerFormatHelp("inequalities") @]*
+Domain: [_________________]{$domain}
 END_PGML
 
 
@@ -67,7 +66,7 @@ $range  = Compute("y >= 0");
 #  Main text 2
 
 BEGIN_PGML
-Range: [_________________]{$range} [@ AnswerFormatHelp("inequalities") @]*
+Range: [_________________]{$range}
 END_PGML
 
 

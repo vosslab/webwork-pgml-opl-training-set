@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGstandard.pl",
@@ -57,7 +56,7 @@ Consider two positive numbers [`x`] and [`y`] such that [`x+y=[$a]`]. Maximize a
 
  [`y-\frac{1}{x}`]  is maximized when  [`x`] is [____________]{$ans1} and [`y`] is [____________]{$ans2}
 
- (Enter a number or enter "NONE" if there is no solution.) [@ AnswerFormatHelp("numbers") @]*
+ (Enter a number or enter "NONE" if there is no solution.)
 
 
 END_PGML

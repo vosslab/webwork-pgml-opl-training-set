@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextTrigDegrees.pl",
@@ -64,19 +63,19 @@ Assume that angle [` \alpha `] is opposite side [`a`], angle [` \beta `] is oppo
 
 Triangle one:
 
-[` \gamma = `] [_______________]{$ans_Gamma1} [@ AnswerFormatHelp("angles") @]*
+[` \gamma = `] [_______________]{$ans_Gamma1}
   
-[` \beta = `] [_______________]{$ans_Beta1} [@ AnswerFormatHelp("angles") @]*
+[` \beta = `] [_______________]{$ans_Beta1}
 
-[` c = `] [_______________]{$ans_c1} [@ AnswerFormatHelp("numbers") @]*
+[` c = `] [_______________]{$ans_c1}
 
 Triangle two:
 
-[` \gamma = `] [_______________]{$ans_Gamma2} [@ AnswerFormatHelp("angles") @]*
+[` \gamma = `] [_______________]{$ans_Gamma2}
   
-[` \beta = `] [_______________]{$ans_Beta2} [@ AnswerFormatHelp("angles") @]*
+[` \beta = `] [_______________]{$ans_Beta2}
 
-[` c = `] [_______________]{$ans_c2} [@ AnswerFormatHelp("numbers") @]*
+[` c = `] [_______________]{$ans_c2}
 
 END_PGML
 

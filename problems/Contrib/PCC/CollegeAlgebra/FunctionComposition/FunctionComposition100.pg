@@ -83,7 +83,6 @@ $ans6 = String("DNE");
 BEGIN_PGML
 In the graph below, let [`f`] be the linear function (in blue and dashed) and let [`g`] be theparabolic function (in red and solid).
 
-[@EnlargeImageStatementPGML()@]**
 
 >>[@ image( insertGraph($gr), width=>400, height=>400, tex_size=>800 ); @]* <<
 

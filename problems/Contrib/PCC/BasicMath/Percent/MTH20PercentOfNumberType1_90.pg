@@ -70,11 +70,11 @@ BEGIN_PGML_SOLUTION
 
 [` 100% `] of [` [$num] `] is [`[$ans0]`].
 
-*Part b)* [`[$per1]%`] of a number is [@numberWord($per1/100)@] times as big as the number. We do [`[$num]\cdot[$per1/100]=[$ans1]`].
+*Part b)* [`[$per1]%`] of a number is [@$per1/100@] times as big as the number. We do [`[$num]\cdot[$per1/100]=[$ans1]`].
 
 [` [$per1]% `] of [` [$num] `] is [`[$ans1]`].
 
-*Part c)* [`[$per2]%`] of a number is [@numberWord($per2/100)@] times as big as the number. We do [`[$num]\cdot[$per2/100]=[$ans2]`].
+*Part c)* [`[$per2]%`] of a number is [@$per2/100@] times as big as the number. We do [`[$num]\cdot[$per2/100]=[$ans2]`].
 
 [` [$per2]% `] of [` [$num] `] is [`[$ans2]`].
 

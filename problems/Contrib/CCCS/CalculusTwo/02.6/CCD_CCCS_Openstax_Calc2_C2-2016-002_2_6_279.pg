@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "contextLimitedPoint.pl",
@@ -78,7 +77,7 @@ BEGIN_PGML
 Draw the region between [`y=[$f_up]`] and [`y=[$f_low]`] in the first quadrant, then compute the center of mass of the region assuming the region has constant density.  Use symmetry to help locate the center of mass when possible.
 
 
-Center of Mass, as an ordered pair: [_______________]{$ans}   [@ AnswerFormatHelp("numbers") @]*
+Center of Mass, as an ordered pair: [_______________]{$ans}
 
 
 END_PGML

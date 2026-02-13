@@ -23,7 +23,6 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "contextLimitedPolynomial.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -60,7 +59,7 @@ The quadratic expression [` [$vertexform] `]
 is written in vertex form.  Write the 
 expression in expanded form [` ax^2 + bx + c `].
 
-[_____________________]{$expandedform} [@ AnswerFormatHelp("formulas") @]*
+[_____________________]{$expandedform}
 END_PGML
 
 

@@ -132,7 +132,6 @@ Solve this inequality, and write your answer in *interval notation*.
 
     [`` | [$func] | [$symbol] [$e] ``]
 
-[@KeyboardInstructions(q!Please type [|INF|]* for [`\infty`], [|U|]* for the union symbol [`\cup`], and [|no solution|]* if there are no real solutions.!)@]**
 
     [__________________________________]{$ans}
 

@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "AnswerFormatHelp.pl",
   "parserFunction.pl",
   "PGML.pl",
   "PGcourse.pl"
@@ -49,7 +48,7 @@ A function [` f(x) `] is shifted to the right
 for this shifted function in terms of the function
 [` f(x) `].
 
-Answer = [_______________]{$answer} [@ AnswerFormatHelp("formulas") @]*
+Answer = [_______________]{$answer}
 END_PGML
 
 

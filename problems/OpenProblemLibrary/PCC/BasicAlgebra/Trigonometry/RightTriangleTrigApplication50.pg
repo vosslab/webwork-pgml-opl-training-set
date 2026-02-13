@@ -199,7 +199,6 @@ BEGIN_PGML_SOLUTION
 
 Assume the spotlight should be installed on the wall at the height of [`x`] meters. The following graph can represent this situation:
 
-[@EnlargeImageStatementPGML()@]**
 
 >>[@image(insertGraph($picture), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$text' title = '$text'") @]*<<
 

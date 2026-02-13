@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -54,7 +53,7 @@ BEGIN_PGML
 Use the Rational Zero Theorem to find all the zeros of [`f(x)=[$f]`]. Enter all the zeros as a comma separated list.
 
 
-+ Zeros: [_______________]{$ans} [@ AnswerFormatHelp("numbers") @]*
++ Zeros: [_______________]{$ans}
 
 
 END_PGML

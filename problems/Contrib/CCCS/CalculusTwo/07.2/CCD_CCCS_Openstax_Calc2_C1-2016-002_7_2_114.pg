@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -67,7 +66,7 @@ A cycloid is given parametrically by
 
 Find the arc length, [`s`], of a single arch of the cycloid. (This means the length from [` 0 \leq t \leq 2\pi `]). 
 
-[`s =`] [_______________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+[`s =`] [_______________]{$ans}
 
 END_PGML
 

@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -65,7 +64,7 @@ Parser::Number::NoDecimals;
 BEGIN_PGML
 Give the exact value for the expression.  Use radians for any angles.
 
-`arctan([$a])=`[_______________]{$ans}[@ AnswerFormatHelp("numbers") @]*
+`arctan([$a])=`[_______________]{$ans}
 
 END_PGML
 

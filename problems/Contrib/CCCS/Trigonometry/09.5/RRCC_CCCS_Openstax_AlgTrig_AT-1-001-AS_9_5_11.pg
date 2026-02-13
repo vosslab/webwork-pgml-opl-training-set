@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -58,7 +57,7 @@ if ($n ==1){
     [` [$b]\sin^2(x)-[$a]=0`]
 
 
-    [` x = `] [___________________]{$ans} [@ AnswerFormatHelp("angles") @]*
+    [` x = `] [___________________]{$ans}
 
     END_PGML
 }
@@ -76,7 +75,7 @@ if ($n ==2){
     [` [$b]\sin^2(x)-[$a]=0`]
 
 
-    [` x = `] [___________________]{$ans} [@ AnswerFormatHelp("angles") @]*
+    [` x = `] [___________________]{$ans}
 
     END_PGML
 }
@@ -92,7 +91,7 @@ if ($n ==3){
     [` 4\sin^2(x)-3=0`]
 
 
-    [` x = `] [___________________]{$ans} [@ AnswerFormatHelp("angles") @]*
+    [` x = `] [___________________]{$ans}
 
     END_PGML
 }

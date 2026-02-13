@@ -22,7 +22,6 @@ loadMacros(
   "MathObjects.pl",
   "parserVectorUtils.pl",
   "parserParametricLine.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -56,14 +55,14 @@ a. Find any vector parametric equation for the
 line that goes through the points [` [$P] `] and 
 [` [$Q1] `].  
 
-    [` \vec{L}(t) = `] [____________________]{$general} [@ AnswerFormatHelp("vectors") @]*
+    [` \vec{L}(t) = `] [____________________]{$general}
 
 b. Find a vector parametric equation for the 
 line that goes through the point [` [$P] `] 
 when [` t = 0 `] and the point [` [$Q2] `] when
 [` t = 1 `].  
 
-    [` \vec{L}(t) = `] [____________________]{$particular} [@ AnswerFormatHelp("vectors") @]*
+    [` \vec{L}(t) = `] [____________________]{$particular}
 END_PGML
 
 

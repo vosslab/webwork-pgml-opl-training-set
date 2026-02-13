@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -64,7 +63,7 @@ BEGIN_PGML
 Given a linear equation with a slope of  [`\displaystyle[$slope]`], determine the slope of a line that is perpendicular. *Enter the answer as a fraction*. 
 
 [____]{$answer->cmp(studentsMustReduceFractions=>1, 
-  strictFractions=>1,strictMinus=>1, strictMultiplication=>1)} [@ AnswerFormatHelp("numbers") @]*
+  strictFractions=>1,strictMinus=>1, strictMultiplication=>1)}
   
 END_PGML
  

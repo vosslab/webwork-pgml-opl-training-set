@@ -27,7 +27,6 @@ loadMacros(
 "parserAssignment.pl",
 "parserRadioButtons.pl",
 "parserPopUp.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",

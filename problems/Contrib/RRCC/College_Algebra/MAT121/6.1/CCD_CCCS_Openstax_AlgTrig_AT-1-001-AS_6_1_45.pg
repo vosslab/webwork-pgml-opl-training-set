@@ -22,7 +22,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "contextFraction.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -58,7 +57,6 @@ BEGIN_PGML
 For the function [`f(x)= [$f]`], find [`f([$d])`].  
 
 [`f([$d])=`]  [_______________]{$answer}
-[@ AnswerFormatHelp("numbers") @]*
 
 
 

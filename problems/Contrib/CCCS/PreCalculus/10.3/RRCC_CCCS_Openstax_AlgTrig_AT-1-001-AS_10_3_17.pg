@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -50,7 +49,7 @@ Convert the given Cartesian equation to a polar equation, solved for [` r`]. Ent
 
 [` y = [$y] `]
 
-[` r = `] [_______________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+[` r = `] [_______________]{$ans}
 
 END_PGML
 

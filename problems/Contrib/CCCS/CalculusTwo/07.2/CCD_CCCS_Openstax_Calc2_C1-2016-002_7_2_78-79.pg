@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -75,7 +74,7 @@ Find all values of [`t`] at which a horizontal tangent line exists.
 
 Enter your solution as a comma separated list or if there are no horizontal tangent lines enter NONE.
 
-[_______________________________]{$L1} [@ AnswerFormatHelp("numbers") @]*
+[_______________________________]{$L1}
 
 END_PGML
 
@@ -90,7 +89,7 @@ Find all values of [`t`] at which a vertical tangent line exists.
 
 Enter your solution as a comma separated list or if there are no vertical tangent lines enter NONE.
 
-[_______________________________]{$L2} [@ AnswerFormatHelp("numbers") @]*
+[_______________________________]{$L2}
 
 END_PGML
 

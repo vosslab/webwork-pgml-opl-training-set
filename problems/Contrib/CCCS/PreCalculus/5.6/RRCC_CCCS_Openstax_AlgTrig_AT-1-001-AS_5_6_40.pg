@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -75,19 +74,19 @@ BEGIN_PGML
 
 Let [`` f(x)=[$f] ``]. Find the domain, vertical asymptote, behavior of the function near the vertical asymptote, and horizontal asymptote. Also, find the x-intercepts and y-intercepts of the given rational function. 
 
-+ Domain: [_______________]{$ans1} [@ AnswerFormatHelp("intervals") @]*
++ Domain: [_______________]{$ans1}
 
-+ Vertical Asymptote: [`x=`] [_______________]{$ans2} [@ AnswerFormatHelp("numbers") @]*
++ Vertical Asymptote: [`x=`] [_______________]{$ans2}
 
-+ As [`x \to [$asymp]^-`], [`f(x) \to`] [_______________]{$ans3} (enter infinity or -infinity) [@ AnswerFormatHelp("numbers") @]* 
++ As [`x \to [$asymp]^-`], [`f(x) \to`] [_______________]{$ans3} (enter infinity or -infinity)
 
-+ As [`x \to [$asymp]^+`], [`f(x) \to`] [_______________]{$ans4} (enter infinity or -infinity) [@ AnswerFormatHelp("numbers") @]* 
++ As [`x \to [$asymp]^+`], [`f(x) \to`] [_______________]{$ans4} (enter infinity or -infinity)
 
-+ Horizontal Asymptote: [`y=`] [_______________]{$ans5} [@ AnswerFormatHelp("numbers") @]*
++ Horizontal Asymptote: [`y=`] [_______________]{$ans5}
 
-+ [`x`]-intercept(s): [______________________]{$ans6} [@ AnswerFormatHelp("points") @]*
++ [`x`]-intercept(s): [______________________]{$ans6}
 
-+ [`y`]-intercept: [_______________]{$ans7} [@ AnswerFormatHelp("points") @]* 
++ [`y`]-intercept: [_______________]{$ans7}
 
 END_PGML
 

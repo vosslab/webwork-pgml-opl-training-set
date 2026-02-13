@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -51,7 +50,7 @@ BEGIN_PGML
 
 Evaluate  [` \displaystyle \int \tan \left(\frac {x}{[$a]}\right) \sec^2 \left(\frac {x}{[$a]}\right)  dx`].
 
- [` \displaystyle \int \tan \left(\frac {x}{[$a]}\right) \sec^2 \left(\frac {x}{[$a]}\right)   dx=`] [________________________________]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+ [` \displaystyle \int \tan \left(\frac {x}{[$a]}\right) \sec^2 \left(\frac {x}{[$a]}\right)   dx=`] [________________________________]{$ans}
 
 Use a capital "C" for any needed constant in your answer.
 

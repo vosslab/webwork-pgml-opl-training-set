@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "PGcourse.pl"
@@ -60,7 +59,7 @@ BEGIN_PGML
 Find the work required to pump all the water out from the top of a cylinder that has a circular base of radius [`[$r] ft`] and a height of [`[$b] ft`].  Use the fact that the weight-density of water is [`62`] [`lb/ft^3`].
 
 
-Work: [_______________]{$ans} ft-lb  [@ AnswerFormatHelp("numbers") @]*
+Work: [_______________]{$ans} ft-lb
 
 
 END_PGML

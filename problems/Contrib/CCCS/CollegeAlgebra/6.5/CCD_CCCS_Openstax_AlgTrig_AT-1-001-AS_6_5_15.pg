@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -61,7 +60,7 @@ Use the properties of logarithms to expand the following logarithm as much as po
 
 [`\displaystyle\log\left(\frac{x^{[$expX]}y^{[$expY]}}{z^{[$expZ]}}\right)`]
 
- [____________________________________________]{$ans}[@ AnswerFormatHelp("formulas") @]*
+ [____________________________________________]{$ans}
 
 
 END_PGML

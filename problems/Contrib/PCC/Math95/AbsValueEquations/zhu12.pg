@@ -43,7 +43,6 @@ Solve the following inequality.
 
 >>[`` \big\lvert\left\lvert [$a] x+ [$b]\right\rvert-[$c]\big\rvert = [$d] ``]<<
 
-[@KeyboardInstructions('If there is more than one solution, enter the solutions as a comma-separated list.')@]**
 
 [__]{$ans}{width=>20}
 

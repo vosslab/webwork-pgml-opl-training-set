@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-"AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl",
 "parserPopUp.pl",
@@ -64,15 +63,15 @@ BEGIN_PGML
 
 For the series [`\displaystyle \sum_{n=1}^{\infty} \frac{[$a]}{(n+1)(n+2)}`], use the sequence of partial sums to determine if the series converges or diverges. (Hint: Use partial fraction decomposition.) Enter answers as exact values. 
 
-(a) [`S_1=`][________________]{$S1}[@ AnswerFormatHelp("numbers") @]*
+(a) [`S_1=`][________________]{$S1}
 
-[`S_2=`][________________]{$S2}[@ AnswerFormatHelp("numbers") @]*
+[`S_2=`][________________]{$S2}
 
-[`S_3=`][________________]{$S3}[@ AnswerFormatHelp("numbers") @]*
+[`S_3=`][________________]{$S3}
 
-[`S_4=`][________________]{$S4}[@ AnswerFormatHelp("numbers") @]*
+[`S_4=`][________________]{$S4}
 
-(b) The general term for the sequence of partial sums is [`S_n=`][_________________]{$Sn}[@ AnswerFormatHelp("numbers") @]*
+(b) The general term for the sequence of partial sums is [`S_n=`][_________________]{$Sn}
 
 (c) The sequence of partial sums, [`S_n`], [_____]{$popup1}
 

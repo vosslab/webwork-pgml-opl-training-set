@@ -26,7 +26,6 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl",
 );
@@ -61,7 +60,6 @@ falls into the channel and makes a wave at the position [`x=0.`]
 At what time will Bob standing at position [`x=[$b]`] see the wave?
 
 [`t={}`] [________]{"$b/$a"}
-[@ AnswerFormatHelp("numbers") @]*
 END_PGML
 
 #####################

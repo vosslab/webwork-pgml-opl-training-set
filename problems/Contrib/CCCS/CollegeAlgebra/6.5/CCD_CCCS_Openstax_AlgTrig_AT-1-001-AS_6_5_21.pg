@@ -26,7 +26,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -69,7 +68,7 @@ Condense the following expression to a single logarithm using the properties of 
 
 [`\ln{\left( [$coeffX]x^[$expX]\right)}- \ln{\left( [$coeffX2]x^[$expX2]\right)}`]
 
- [___________________________]{$ans}[@ AnswerFormatHelp("formulas") @]*
+ [___________________________]{$ans}
 
 [% [$numerator];
 [$denominator];

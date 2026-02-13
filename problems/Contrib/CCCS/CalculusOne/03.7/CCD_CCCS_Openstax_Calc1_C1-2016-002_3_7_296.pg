@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "niceTables.pl",
@@ -53,7 +52,7 @@ A building that is [$a] feet tall casts a shadow of various lengths [`x`] as the
             extra_html_tags=>'alt="a picture of a building"') 
   @]*<<
 
-`frac{d \theta}{dx}` when `x=[$b]` is [_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
+`frac{d \theta}{dx}` when `x=[$b]` is [_______________]{$ans1}
 
 END_PGML
 

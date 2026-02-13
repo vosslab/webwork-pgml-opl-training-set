@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -51,7 +50,7 @@ Evaluate the integral [``\int([$a]x^{-[$k]/[$p]}+[$b]x^{[$k]/[$p]}) dx``].
 
 
 
-[``\int ([$a]x^{-[$k]/[$p]}+[$b]x^{[$k]/[$p]}) dx=``][__________________________]{$ans }[@ AnswerFormatHelp("formulas") @]*
+[``\int ([$a]x^{-[$k]/[$p]}+[$b]x^{[$k]/[$p]}) dx=``][__________________________]{$ans }
 
 END_PGML
 

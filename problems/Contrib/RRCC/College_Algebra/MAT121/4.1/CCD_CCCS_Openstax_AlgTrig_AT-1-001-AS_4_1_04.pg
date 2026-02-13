@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -59,7 +58,7 @@ BEGIN_PGML
 
 Given a linear equation with a slope of [`\displaystyle[$slope]`], determine the slope of a line that is perpendicular. 
 
-[____]{$answer} [@ AnswerFormatHelp("numbers") @]*
+[____]{$answer}
   
 END_PGML
  

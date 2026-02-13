@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGauxiliaryFunctions.pl",
@@ -75,7 +74,7 @@ Evaluate [`\displaystyle \sum_{n=1}^{\infty}  [$summ1]`] using [`f^\prime \left(
 Hint: [`\displaystyle f^\prime(x) = [$df]= \sum_{n=1}^{\infty}  [$summ3]`].
 
 
-[`\displaystyle \sum_{n=1}^{\infty}  [$summ1]`] = [________________]{$ans}[@ AnswerFormatHelp("numbers") @]*
+[`\displaystyle \sum_{n=1}^{\infty}  [$summ1]`] = [________________]{$ans}
 
 
 

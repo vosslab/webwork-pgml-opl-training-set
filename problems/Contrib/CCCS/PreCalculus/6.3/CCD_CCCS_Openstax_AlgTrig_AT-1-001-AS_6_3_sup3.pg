@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -53,7 +52,7 @@ The amount of energy released during an earthquake, measured in joules, can be f
 
 Calculate the energy released during an earthquake of magnitude `[$Magnitude]`. Round your answer to the nearest whole number.
  
- [_____________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+ [_____________]{$ans}
   
 END_PGML
  

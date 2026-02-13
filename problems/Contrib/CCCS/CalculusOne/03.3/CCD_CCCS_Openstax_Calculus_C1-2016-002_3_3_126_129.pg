@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -116,7 +115,7 @@ BEGIN_PGML
 
 If `h(x) = xf(x)+4g(x)`,
 
-`h^\prime (1) = `[______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*  (Enter DNE if derivative does not exist)
+`h^\prime (1) = `[______________]{$ans1}   (Enter DNE if derivative does not exist)
 
 END_PGML
 ############################
@@ -137,7 +136,7 @@ BEGIN_PGML
 
 If `h(x) = \frac{f(x)}{g(x)}`,
 
-`h^\prime (2)= `[______________]{$ans2} [@ AnswerFormatHelp("numbers") @]*   (Enter DNE if derivative does not exist)
+`h^\prime (2)= `[______________]{$ans2}    (Enter DNE if derivative does not exist)
 
 END_PGML
 
@@ -160,7 +159,7 @@ BEGIN_PGML
 
 If `h(x) = 2x+f(x)g(x)`,
 
-`h^\prime (3)= `[______________]{$ans3} [@ AnswerFormatHelp("numbers") @]*  (Enter DNE if derivative does not exist)
+`h^\prime (3)= `[______________]{$ans3}   (Enter DNE if derivative does not exist)
 
 END_PGML
 ############################
@@ -181,7 +180,7 @@ BEGIN_PGML
 
 If `h(x) = \frac{1}{x} +\frac{g(x)}{f(x)}`,
 
-`h^\prime (4) = `[______________]{$ans4}[@ AnswerFormatHelp("numbers") @]*   (Enter DNE if derivative does not exist)
+`h^\prime (4) = `[______________]{$ans4}   (Enter DNE if derivative does not exist)
 
 
 END_PGML

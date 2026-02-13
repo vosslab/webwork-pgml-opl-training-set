@@ -25,7 +25,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -58,7 +57,7 @@ BEGIN_PGML
 
 Video Quiz:  Solve the video quiz for `x`.
 
-`x`=[_______________]{4} [@ AnswerFormatHelp("numbers") @]*
+`x`=[_______________]{4}
 
 
 

@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "PGcourse.pl"
@@ -61,7 +60,7 @@ BEGIN_PGML
 Find the mass of a one-dimensional pencil that is [`[$b]`] in. long (starting at [`x=[$a]`] inches) and has a density of [`\rho (x)=[$f1]`] where [`x`] is measured in inches and [`\rho(x)`] is measured in oz/in.
 
 
-Mass: [_______________]{$ans} oz.  [@ AnswerFormatHelp("numbers") @]*
+Mass: [_______________]{$ans} oz.
 
 
 END_PGML

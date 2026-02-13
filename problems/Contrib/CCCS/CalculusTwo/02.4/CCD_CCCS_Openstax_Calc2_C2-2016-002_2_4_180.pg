@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -55,7 +54,7 @@ BEGIN_PGML
 Set up an integral that would find the length of the function [`y=[$f1]`]  from [`x=0`] to [`x=\pi`].  
 
 
-Length = [` \displaystyle \int_0^{\pi}`][_______________]{$ans} [`dx`]  [@ AnswerFormatHelp("formulas") @]*
+Length = [` \displaystyle \int_0^{\pi}`][_______________]{$ans} [`dx`]
 
 
 END_PGML

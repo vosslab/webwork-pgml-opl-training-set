@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -45,7 +44,7 @@ if ( $d == -1 ) {
 BEGIN_PGML
 Condense the left-hand side into a single logarithm.  
 
->>[`\log(a)-\log(b)-\log(c)`] = [`\log(`][_______________]{"a/(bc)"}[`)`]  [@ AnswerFormatHelp("formulas") @]*<<
+>>[`\log(a)-\log(b)-\log(c)`] = [`\log(`][_______________]{"a/(bc)"}[`)`]  <<
 
 
 END_PGML
@@ -58,7 +57,7 @@ END_PGML
 BEGIN_PGML
 Condense the left-hand side into a single logarithm.  
 
->>[`3\log(a)+\log(b)-\log(c)`] = [`\log(`][_______________]{"((a^{3}b)/c)"}[`)`]  [@ AnswerFormatHelp("formulas") @]*<<
+>>[`3\log(a)+\log(b)-\log(c)`] = [`\log(`][_______________]{"((a^{3}b)/c)"}[`)`]  <<
 
 
 END_PGML

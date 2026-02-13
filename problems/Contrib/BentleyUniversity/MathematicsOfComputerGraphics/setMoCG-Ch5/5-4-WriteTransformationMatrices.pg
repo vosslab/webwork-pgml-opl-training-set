@@ -21,7 +21,6 @@ loadMacros(
   "MathObjects.pl",
   "PGML.pl",
   "PGcourse.pl",
-  "AnswerFormatHelp.pl",
 );
 
 Context("Matrix");
@@ -67,11 +66,11 @@ TEXT(beginproblem());
 BEGIN_PGML
 Express the transformation [`T_{[$tx],[$ty],[$tz]}`] in matrix form.
 
-[_____]*{$ans1} [@ AnswerFormatHelp("matrices") @]*
+[_____]*{$ans1}
 
 Express the transformation [`S_{[$strx],[$stry],[$strz]}`] in matrix form.
 
-[_____]*{$ans2} [@ AnswerFormatHelp("matrices") @]*
+[_____]*{$ans2}
 END_PGML
 
 BEGIN_PGML_SOLUTION

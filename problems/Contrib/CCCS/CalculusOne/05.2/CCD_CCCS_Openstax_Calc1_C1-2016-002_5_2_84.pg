@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -91,13 +90,13 @@ Consider the piecewise linear function with lines connecting the following list 
 
 
 
-(a) [``L=``]    [_________________]{$ans1}[@ AnswerFormatHelp("numbers") @]*
+(a) [``L=``]    [_________________]{$ans1}
 
 
-(b) [``R=``]    [_________________]{$ans2}[@ AnswerFormatHelp("numbers") @]*
+(b) [``R=``]    [_________________]{$ans2}
 
 
-(c) [``\dfrac{L+R}{2}=``]    [_________________]{$ans3}[@ AnswerFormatHelp("numbers") @]*
+(c) [``\dfrac{L+R}{2}=``]    [_________________]{$ans3}
 
 
 END_PGML

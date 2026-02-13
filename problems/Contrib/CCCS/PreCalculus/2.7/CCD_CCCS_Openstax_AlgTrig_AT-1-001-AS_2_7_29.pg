@@ -17,7 +17,6 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-"AnswerFormatHelp.pl",
   "PGML.pl",
   "contextInequalities.pl",
 "contextFraction.pl",
@@ -71,7 +70,7 @@ Solve the following inequality for [`x`].  Enter the answer in interval notation
 
 [` [$a]x+[$b] > [$c]x-[$d]>[$e]x-[$f]`]
 
-[_______________]{$ans} [@ AnswerFormatHelp("intervals") @]*
+[_______________]{$ans}
 
 
 END_PGML

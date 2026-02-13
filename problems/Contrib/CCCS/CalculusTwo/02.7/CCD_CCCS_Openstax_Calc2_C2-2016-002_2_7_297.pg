@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "PGcourse.pl",
@@ -59,7 +58,7 @@ BEGIN_PGML
 Find the derivative, [`\frac{dy}{dx}`], for [`y=\frac{[$a]}{\ln(x)}`]
 
 
-[`\frac{dy}{dx}`]= [_______________]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`\frac{dy}{dx}`]= [_______________]{$ans}
 
 
 END_PGML

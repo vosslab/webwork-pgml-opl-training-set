@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -49,7 +48,7 @@ State the reference angle (in degrees) for the given angle.
 [`[$angle]^\circ`]
 
 
-[___]{$ref} Degrees [@ AnswerFormatHelp("numbers") @]*
+[___]{$ref} Degrees
 
 END_PGML
 

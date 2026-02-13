@@ -63,9 +63,8 @@ TEXT(beginproblem());
 
 BEGIN_PGML
 
-Scientists are conducting an experiment with a gas in a sealed container. The mass of the gas is measured, and the scientists realize that the gas is leaking over time in a linear way. [@numberWord($x1,capital=>1)@] minutes since the experiment started, the gas had a mass of [`[$y1]`] grams. [@numberWord($x2,capital=>1)@] minutes since the experiment started, the gas had a mass of [`[$y2]`] grams. At what rate is the gas leaking?
+Scientists are conducting an experiment with a gas in a sealed container. The mass of the gas is measured, and the scientists realize that the gas is leaking over time in a linear way. [@$x1@] minutes since the experiment started, the gas had a mass of [`[$y1]`] grams. [@$x2@] minutes since the experiment started, the gas had a mass of [`[$y2]`] grams. At what rate is the gas leaking?
 
-[@KeyboardInstructions('Use [|g|]* for grams and [|min|]* for minutess.')@]**
 
 [__]{$rate}{width=>15}
 

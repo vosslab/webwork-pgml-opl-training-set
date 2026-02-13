@@ -22,7 +22,6 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "parserFunction.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -50,7 +49,7 @@ times the previous value, plus two.  Find
 a recursive definition for [` f(n) `].
 Enter [` f_{n-1} `] as [` f(n-1) `].
 
-[` f(n) = `] [______________]{$fn} [@ AnswerFormatHelp("formulas") @]*
+[` f(n) = `] [______________]{$fn}
 END_PGML
 
 

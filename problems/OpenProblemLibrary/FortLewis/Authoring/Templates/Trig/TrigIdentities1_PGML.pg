@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
-  "AnswerFormatHelp.pl",
   "answerHints.pl",
   "PGML.pl",
   "PGcourse.pl"
@@ -69,7 +68,7 @@ $answer_cmp = Formula("sin(x)")->cmp()
 BEGIN_PGML
 Simplify the expression as much as possible.
 
-[` \tan(x) \cos(x) = `] [________________]{$answer_cmp} [@ AnswerFormatHelp("formulas") @]*
+[` \tan(x) \cos(x) = `] [________________]{$answer_cmp}
 END_PGML
 
 

@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "niceTables.pl",
@@ -55,7 +54,7 @@ A pole stands [$a] feet tall. An angle [`\theta`] is formed when wires of variou
             extra_html_tags=>'alt="a picture of a pole"') 
   @]*<<
 
-`frac{d \theta}{dx}` when `x=[$b]` is [_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
+`frac{d \theta}{dx}` when `x=[$b]` is [_______________]{$ans1}
 
 END_PGML
 

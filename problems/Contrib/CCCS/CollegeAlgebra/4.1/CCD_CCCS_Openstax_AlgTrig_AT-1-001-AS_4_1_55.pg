@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "parserAssignment.pl",
 "contextFraction.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -56,7 +55,7 @@ $ans = Formula("$ansSlope(x)+$ansYint")->reduce;
 BEGIN_PGML
 Write an equation for the line perpendicular to [`g(x) = [$slope]x+[$intercept]`] and passing through the point [`([$xCord], [$yCord])`]
 
-[____________]{$ans}  [@ AnswerFormatHelp("equations") @]*
+[____________]{$ans}
 
 
 END_PGML

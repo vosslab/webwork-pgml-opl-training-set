@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -61,7 +60,7 @@ Find the slope of the line that passes through the following points
 
 
 
-[____]{$ans}  [@ AnswerFormatHelp("numbers") @]*
+[____]{$ans}
 
   
 END_PGML

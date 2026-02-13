@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -61,7 +60,7 @@ $ans2 = Compute("$slope*$j + $yint");
 BEGIN_PGML
 In [`[$year1]`], U.S. families spent, on average, [`$[$yint]`] for back-to-school supplies.  The number rose to [`$[$y2]`] in [`[$year2]`].  Let y represent the average amount of back-to-school spending and x the number years since [`[$year1]`].  Find a linear equation that fits the data and use your equation to predict the back-to-school spending in [`[$year3]`].
 
-[`y = `][____]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`y = `][____]{$ans}
 
 In [`[$year3]`], families will spend [______]{$ans2}
 

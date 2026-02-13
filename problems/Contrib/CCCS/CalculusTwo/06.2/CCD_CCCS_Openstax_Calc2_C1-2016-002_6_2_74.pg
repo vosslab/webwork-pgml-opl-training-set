@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "PGauxiliaryFunctions.pl",
@@ -53,7 +52,7 @@ Calculate the present values `P` of annuities in which $`[$a]` is to be paid out
 
 [`r=0.03`]
 
-[`P`] =[___________________________]{$ans1}[@ AnswerFormatHelp("numbers") @]*
+[`P`] =[___________________________]{$ans1}
 
 [`r=0.05`]
 

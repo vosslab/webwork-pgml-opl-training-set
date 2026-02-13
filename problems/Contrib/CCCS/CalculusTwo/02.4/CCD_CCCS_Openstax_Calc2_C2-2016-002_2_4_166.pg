@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "PGcourse.pl"
@@ -61,7 +60,7 @@ BEGIN_PGML
 
 Find the length of the function [`f(x)=[$f1]`] from [`x=[$a]`], and [`x=[$b]`]. Enter your answer as an exact value. 
 
-Length: [_______________]{$ans} units  [@ AnswerFormatHelp("numbers") @]*
+Length: [_______________]{$ans} units
 
 
 END_PGML

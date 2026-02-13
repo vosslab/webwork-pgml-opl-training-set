@@ -21,7 +21,6 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "PGML.pl",
-  "AnswerFormatHelp.pl",
   "PGgraphmacros.pl",
   "PCCmacros.pl",
   "PGcourse.pl",
@@ -148,7 +147,6 @@ A graph of [`f`] is given, where [`f(x)=[$func]`]. Use the graph alone to solve 
 
 >> [@image(insertGraph($gr[0]), width=>240, tex_size=>250, extra_html_tags=>"alt='$alt[0]' title = '$alt[0]'")@]*  <<
 
-[@KeyboardInstructions('Write your solution sets in interval notation.')@]**
 
 a.  [`[$func][$sign[1]][$y1]`]
 

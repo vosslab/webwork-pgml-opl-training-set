@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextCurrency.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -69,7 +68,7 @@ George bought a car for [`$[$value1]`] in [`[$year1]`].  In [`[$year2]`], the ca
 
 Express the value, [`y`], of the car in terms of the number of years, [`x`] after it was purchased.
 
-[`y = `][____]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`y = `][____]{$ans}
 
 Use your formula to predict the value of the car in [`[$year3]`].
 

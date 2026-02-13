@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -98,7 +97,7 @@ Estimate the areas under the curve by computing the left Riemann sum [`L_{8}`].
 
 
 
-[`` L_{8} =``][_______________]{$ans }[@ AnswerFormatHelp("numbers") @]*
+[`` L_{8} =``][_______________]{$ans }
 
 
 END_PGML

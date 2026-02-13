@@ -24,7 +24,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -100,13 +99,13 @@ Determine where the local and absolute maxima and minima occur on the following 
 (Use a comma to separate answers. Enter 'NONE' if the extrema does not exist.)
 
 
-a) Local minimum at `x=` [_________________]{$lmin} [@ AnswerFormatHelp("numbers") @]*
+a) Local minimum at `x=` [_________________]{$lmin}
 
-b) Local maximum at `x=` [__________________]{2} [@ AnswerFormatHelp("numbers") @]*
+b) Local maximum at `x=` [__________________]{2}
 
-c) Absolute minimum at `x=` [_________________]{$amin} [@ AnswerFormatHelp("numbers") @]*
+c) Absolute minimum at `x=` [_________________]{$amin}
 
-d) Absolute maximum at `x=` [_________________]{$amax} [@ AnswerFormatHelp("numbers") @]*
+d) Absolute maximum at `x=` [_________________]{$amax}
 
 
 END_PGML

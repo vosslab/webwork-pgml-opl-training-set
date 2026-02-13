@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -44,7 +43,7 @@ What are the coordinates of the origin?
 
 Enter a point as [` (a,b) `], including the parentheses.  
 
- [_______________]{$origin} [@ AnswerFormatHelp("points") @]*
+ [_______________]{$origin}
 
 
 END_PGML

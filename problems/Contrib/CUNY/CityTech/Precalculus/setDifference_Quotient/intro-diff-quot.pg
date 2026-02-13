@@ -22,7 +22,6 @@ loadMacros(
    "MathObjects.pl",
    "PGML.pl",
    "contextLimitedPolynomial.pl",
-   "AnswerFormatHelp.pl",
    "niceTables.pl"
 );
 

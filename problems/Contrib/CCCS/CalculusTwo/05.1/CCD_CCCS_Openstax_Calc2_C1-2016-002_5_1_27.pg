@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "parserPopUp.pl",
 "PGcourse.pl",
@@ -50,7 +49,7 @@ Find the limit of the sequence `\{a_n\} = \{\frac{[$a]n}{[$b]^n}\}`.
 
 
 
-`\lim_{n \to \infty} a_n=`[______________]{0} [@ AnswerFormatHelp("numbers") @]*
+`\lim_{n \to \infty} a_n=`[______________]{0}
 
 
 END_PGML

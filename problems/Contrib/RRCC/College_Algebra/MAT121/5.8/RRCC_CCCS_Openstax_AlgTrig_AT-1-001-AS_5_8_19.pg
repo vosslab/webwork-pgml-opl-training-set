@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -52,7 +51,7 @@ $ans1 = Formula("$k*x*sqrt(z)")->reduce();
 BEGIN_PGML
 Write an equation that describes the following relationship: [`y`] varies jointly as [`x`] and the square root of [`z`], and when [`x=[$x0]`] and [`z=[$z0]`], then [`y=[$y0]`]. 
 
-[`y=`] [_______________]{$ans1} [@ AnswerFormatHelp("formulas") @]*
+[`y=`] [_______________]{$ans1}
 
 
 

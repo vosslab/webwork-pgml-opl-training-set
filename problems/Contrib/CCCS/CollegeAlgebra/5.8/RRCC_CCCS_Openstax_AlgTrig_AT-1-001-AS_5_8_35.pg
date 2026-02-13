@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -57,7 +56,7 @@ BEGIN_PGML
 Use the given information to find the unknown value:  
 [`y`] varies jointly as [`x`], [`z`], and [`w`]. When [`x=[$x0]`], [`z=[$z0]`], and [`w=[$w0]`], then [`y=[$y0]`]. Find [`y`] when [`x=[$x1]`], [`z=[$z1]`], and [`w=[$w1]`]. 
 
-[`y=`] [_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
+[`y=`] [_______________]{$ans1}
 
 
 

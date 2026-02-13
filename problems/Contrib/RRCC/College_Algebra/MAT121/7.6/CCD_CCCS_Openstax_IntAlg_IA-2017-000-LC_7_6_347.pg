@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -78,7 +77,7 @@ Solve the rational inequality.  Write your answer in interval notation.
 
 [`` \dfrac{{[$u]}x}{x - {[$v]}} < {[$w]} ``]
 
- [_______________]{$x1} [@ AnswerFormatHelp("numbers") @]*
+ [_______________]{$x1}
 
 END_PGML
 }
@@ -90,7 +89,7 @@ Solve the rational inequality.  Write your answer in interval notation.
 
 [`` \dfrac{{[$u]}x}{x - {[$v]}} < -{[$w]} ``]
 
- [_______________]{$x1} [@ AnswerFormatHelp("intervals") @]*
+ [_______________]{$x1}
 
 END_PGML
 }

@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "PGcourse.pl"
@@ -60,7 +59,7 @@ BEGIN_PGML
 Find the mass of a two-dimensional, centered at the origin, oversized hockey puck of radius [`[$r]`] in. with a radial density of [`\rho (x)=[$f1]`] lb/in^2, where [`x`] is the radial distance from the origin to any point on the puck. 
 
 
-Mass: [_______________]{$ans} lbs.  [@ AnswerFormatHelp("numbers") @]*
+Mass: [_______________]{$ans} lbs.
 
 
 END_PGML

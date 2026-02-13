@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -60,7 +59,7 @@ BEGIN_PGML
 Evaluate [``\int_{[$c]}^{[$d]}[$f] dt``] using the Fundamental Theorem of Calculus, Part 2. Enter only exact answers.
 
 
-[``\int_{[$c]}^{[$d]}[$f] dt=``][_________________]{$ans }[@ AnswerFormatHelp("numbers") @]*
+[``\int_{[$c]}^{[$d]}[$f] dt=``][_________________]{$ans }
 
 
 END_PGML

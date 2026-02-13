@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -58,17 +57,17 @@ $ans6=Formula("-abs(a - $b) + abs(a + $c)")->reduce;
 BEGIN_PGML
 Evaluate [`f(x)=[$f]`] at each of the following values:
 
-+ [`f([$d])=`] [_______________]{$ans1} [@ AnswerFormatHelp("numbers") @]*
++ [`f([$d])=`] [_______________]{$ans1}
 
-+ [`f([$e])=`] [_______________]{$ans2} [@ AnswerFormatHelp("numbers") @]*
++ [`f([$e])=`] [_______________]{$ans2}
 
-+ [`f(a)=`] [_______________]{$ans3} [@ AnswerFormatHelp("formulas") @]*
++ [`f(a)=`] [_______________]{$ans3}
 
-+ [`f(a+h)=`] [_______________]{$ans4} [@ AnswerFormatHelp("formulas") @]*
++ [`f(a+h)=`] [_______________]{$ans4}
 
-+ [`f(-a)=`] [_______________]{$ans5} [@ AnswerFormatHelp("formulas") @]*
++ [`f(-a)=`] [_______________]{$ans5}
 
-+ [`-f(a)=`] [_______________]{$ans6} [@ AnswerFormatHelp("formulas") @]*
++ [`-f(a)=`] [_______________]{$ans6}
 
 END_PGML
 

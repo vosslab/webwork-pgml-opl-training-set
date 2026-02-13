@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "contextLimitedRadical.pl",
 "PGML.pl",
@@ -97,7 +96,7 @@ Solve [`[$eqn1]=[$eqn2] `] by completing the square. If there is more
 than one correct answer, enter a comma 
 separated list.  
 
-[`x=`] [_________________________]{$ans} [@ AnswerFormatHelp("numbers") @]*  
+[`x=`] [_________________________]{$ans}
 
 
 

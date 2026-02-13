@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextFraction.pl",
@@ -50,7 +49,7 @@ Use the definition of logarithms to completely simplify.
 
 [`\log_{a}\bigg(\frac{1}{[$func]}\bigg)`] 
 
-[_______________]{"-$c/$b"} [@ AnswerFormatHelp("numbers") @]*
+[_______________]{"-$c/$b"}
 
 END_PGML
 

@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGgraphmacros.pl",
   "PGML.pl",
   "PGcourse.pl"
@@ -58,7 +57,7 @@ Yogurt containers can be shaped like frustums.  Rotate the line [`y=[$f]`] aroun
             height=>292) 
   @]*<<
 
-Volume: [_______________]{$ans} units cubed [@ AnswerFormatHelp("numbers") @]*
+Volume: [_______________]{$ans} units cubed
 
 END_PGML
 

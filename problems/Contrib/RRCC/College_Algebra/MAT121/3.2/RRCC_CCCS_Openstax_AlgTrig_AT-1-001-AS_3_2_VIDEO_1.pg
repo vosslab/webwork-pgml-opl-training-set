@@ -22,7 +22,6 @@ loadMacros(
 "PGgraphmacros.pl",
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "PGML.pl",
 "contextPiecewiseFunction.pl",
@@ -78,9 +77,9 @@ Graph the piecewise function to find the domain and range
 
 [` f(x)=[$fun] `].
 
-    Domain: [_______________]{$domain} [@ AnswerFormatHelp("intervals") @]* 
+    Domain: [_______________]{$domain}
 
-    Range: [_______________]{$range} [@ AnswerFormatHelp("intervals") @]*
+    Range: [_______________]{$range}
 
 
 END_PGML

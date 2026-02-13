@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "contextFraction.pl",
   "PGcourse.pl"
@@ -63,7 +62,7 @@ A [`1`]-m spring requires [`[$w1]`] J to stretch the spring to [`1.1`] m in leng
 >>[@ image("Calc2_2_5_236_image.jpg", width=>219, height=>242) 
   @]*<<
 
-Work: [_______________]{$ans} Joules  [@ AnswerFormatHelp("numbers") @]*
+Work: [_______________]{$ans} Joules
 
 
 END_PGML

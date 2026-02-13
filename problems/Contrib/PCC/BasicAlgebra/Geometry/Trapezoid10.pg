@@ -28,7 +28,6 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "PGML.pl",
-  "AnswerFormatHelp.pl",
   "PGgraphmacros.pl",
   "parserNumberWithUnits.pl",
   "PGcourse.pl",

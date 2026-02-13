@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -66,7 +65,7 @@ Find the augmented matrix for this system.
 
 
 
-Augmented matrix: [_____]*{$answer} [@ AnswerFormatHelp("matrices") @]*
+Augmented matrix: [_____]*{$answer}
 
 END_PGML
 

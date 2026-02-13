@@ -44,9 +44,9 @@ Context("Numeric");
 
 $shift1 = random(2,5,1);
 do {$shift2 = random(2,5,1);} until ($shift2!=$shift1);
-$word1 = numberWord($shift1+$shift2);
-$word2 = numberWord($shift1+$shift2+1);
-$word3 = numberWord($shift1+$shift2+2);
+$word1 = $shift1+$shift2;
+$word2 = $shift1+$shift2+1;
+$word3 = $shift1+$shift2+2;
 @nums = ( );
 @dens = ( );
 @popups = ( );

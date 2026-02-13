@@ -40,10 +40,10 @@ loadMacros(
 Context("LimitedNumeric");
 
 $int=random(10,99,1);
-$intWord = numberWord($int);
+$intWord = $int;
 
 $dec=random(1,9,1)*10+random(1,9,1);
-$decWord = numberWord($dec);
+$decWord = $dec;
 
 $ans1 = $int+$dec/100;
 $ans2 = $int+$dec/1000;

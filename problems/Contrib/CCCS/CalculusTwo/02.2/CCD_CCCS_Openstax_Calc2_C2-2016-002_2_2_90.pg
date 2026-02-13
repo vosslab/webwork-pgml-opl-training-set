@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -60,7 +59,7 @@ BEGIN_PGML
 
 Draw the region bounded by the curves [`y=[$f1]`],  [`y=[$f2]`], [`x=0`], and  [`x=[$b]`]. Find the volume when the region is rotated around the [`x`]-axis. 
 
-Volume: [_______________]{$ans} units cubed [@ AnswerFormatHelp("numbers") @]*
+Volume: [_______________]{$ans} units cubed
 
 
 

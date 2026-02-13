@@ -25,7 +25,6 @@ loadMacros(
   "PGstandard.pl",
   "MathObjects.pl",
   "PGML.pl",
-  "AnswerFormatHelp.pl",
   "contextLimitedPolynomial.pl",
   "answerHints.pl",
   "PCCmacros.pl",

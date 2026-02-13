@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -54,7 +53,7 @@ BEGIN_PGML
 
 Evaluate  [`\displaystyle \int \sin^2 ([$f]) \cos^2 ([$f])  dx`].  
 
-  [`\displaystyle \int \sin^2 ([$f]) \cos^2 ([$f])  dx=`][________________________________]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+  [`\displaystyle \int \sin^2 ([$f]) \cos^2 ([$f])  dx=`][________________________________]{$ans}
 
 Use a capital "C" for any needed constant in your answer.
 

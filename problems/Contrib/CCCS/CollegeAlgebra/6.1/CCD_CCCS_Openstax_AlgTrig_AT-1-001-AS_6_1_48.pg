@@ -22,7 +22,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "contextFraction.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -61,7 +60,7 @@ BEGIN_PGML
 
 For the function [`f(x)= [$a]([$b])^{-x+1}+[$c]`], find [`f([$d])`].  Round answer to four decimal places, if necessary.
 
-[`f([$d])=`][__________________]{$ans}  [@ AnswerFormatHelp("numbers") @]*  
+[`f([$d])=`][__________________]{$ans}
 
 END_PGML
 

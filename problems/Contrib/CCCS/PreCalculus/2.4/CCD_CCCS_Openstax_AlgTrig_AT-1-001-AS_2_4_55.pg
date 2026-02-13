@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -62,7 +61,7 @@ $ans=($z/$w)+($u/$v);
 BEGIN_PGML
 Evaluate [`` \frac{[$z]}{[$w]}+\frac{[$u]}{[$v]}``] and express as a simplified complex number [``a+bi``]  . 
 
- [_______________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+ [_______________]{$ans}
 
 ##[$video]*
 

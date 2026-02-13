@@ -34,7 +34,7 @@ $fun = Formula("f(x)=500");
 
 
 BEGIN_PGML
-Suppose that [`f`] is the function that gives the total cost (in dollars) of downhill skiing [`x`] times during a season with a $500 season pass.  Write a formula for [`f`].  [@KeyboardInstructions('You need to write the entire formula, including [|f(x)=|]*.)@]**
+Suppose that [`f`] is the function that gives the total cost (in dollars) of downhill skiing [`x`] times during a season with a $500 season pass.  Write a formula for [`f`].
 
 
 [__]{$fun}{width=>20}

@@ -165,7 +165,6 @@ $text = "This is a right triangle. Right angle C is at the $cPosition corner of 
 TEXT(beginproblem());
 
 BEGIN_PGML
-[@EnlargeImageStatementPGML()@]**
 
 >>[@image(insertGraph($picture), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$text' title = '$text'") @]*<<
 

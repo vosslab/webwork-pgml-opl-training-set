@@ -21,7 +21,6 @@ loadMacros(
   "MathObjects.pl",
   "PGML.pl",
   "PGcourse.pl",
-  "AnswerFormatHelp.pl",
 );
 
 Context("Matrix");
@@ -65,19 +64,19 @@ TEXT(beginproblem());
 BEGIN_PGML
 Express [`([$r[0]],[$r[1]])`] in homogeneous coordinates.
 
-[_____]*{$ans1} [@ AnswerFormatHelp("matrices") @]*
+[_____]*{$ans1}
 
 Express [`\langle [$r[2]],[$r[3]] \rangle`] in homogeneous coordinates.
 
-[_____]*{$ans2} [@ AnswerFormatHelp("matrices") @]*
+[_____]*{$ans2}
 
 Express [`([$r[4]],[$r[5]],[$r[6]])`] in homogeneous coordinates.
 
-[_____]*{$ans3} [@ AnswerFormatHelp("matrices") @]*
+[_____]*{$ans3}
 
 Express [`\langle [$r[7]],[$r[8]],[$r[9]] \rangle`] in homogeneous coordinates.
 
-[_____]*{$ans4} [@ AnswerFormatHelp("matrices") @]*
+[_____]*{$ans4}
 END_PGML
 
 BEGIN_PGML_SOLUTION

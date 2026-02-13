@@ -21,7 +21,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -67,9 +66,9 @@ Determine a definite integral that represents the area of the region in the firs
 
 [` \hspace{3cm }\displaystyle A= \int_{\alpha}^{\beta} g(\theta) d\theta`] 
 
-[`\alpha=`][_____________]{$alpha},[@ AnswerFormatHelp("numbers") @]*
-[`\beta=`][_____________]{$beta},[@ AnswerFormatHelp("numbers") @]*
-[`g(\theta)=`][_____________]{$integrand}[@ AnswerFormatHelp("formulas") @]*(Type in theta for [`\theta`]).
+[`\alpha=`][_____________]{$alpha},
+[`\beta=`][_____________]{$beta},
+[`g(\theta)=`][_____________]{$integrand}(Type in theta for [`\theta`]).
 END_PGML
 
 } else {

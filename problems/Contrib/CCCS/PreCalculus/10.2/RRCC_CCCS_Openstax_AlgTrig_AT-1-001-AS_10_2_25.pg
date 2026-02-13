@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextTrigDegrees.pl",
@@ -60,11 +59,11 @@ BEGIN_PGML
 Assume [` A `] is opposite side [`a`], [` B `] is opposite side [`b`], and [` C `] is opposite side [`c`]. Solve the triangle where [`a = [$a]`], [`b=[$b]`], and [`c=[$c]`]. Round answers to the nearest tenth. 
 
 
-[` A = `] [_______________]{$ans_A}  [@ AnswerFormatHelp("angles") @]*
+[` A = `] [_______________]{$ans_A}
 
-[` B = `] [_______________]{$ans_B}  [@ AnswerFormatHelp("angles") @]*
+[` B = `] [_______________]{$ans_B}
 
-[` C = `] [_______________]{$ans_C}  [@ AnswerFormatHelp("angles") @]*
+[` C = `] [_______________]{$ans_C}
 
 
 END_PGML

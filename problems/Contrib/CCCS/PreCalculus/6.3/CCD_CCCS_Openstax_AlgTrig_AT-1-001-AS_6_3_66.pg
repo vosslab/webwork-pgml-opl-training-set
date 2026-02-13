@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -52,7 +51,7 @@ BEGIN_PGML
 The intensity levels, [`I_{1}`] and [`I_{2}`], of two earthquakes measured on a seismograph can be compared by the formula `[$function]`, where [`M_{1}`] and [`M_{2}`] are the magnitudes of the two respective earthquakes, given by the Richter Scale. In August 2009, an earthquake of magnitude `[$Magnitude1]` hit the town of Tortuga. In March 2013, that same region experienced another earthquake, this time with a magnitude of `[$Magnitude2]`. How many times greater was the intensity of the 2013 earthquake compared to the 2009 earthquake? Round your answer to the nearest whole number.  
  
  
- [_____________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+ [_____________]{$ans}
   
 END_PGML
  

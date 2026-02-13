@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -74,7 +73,7 @@ Passes through the points [`([$x1],[$y1])`] and [`([$x2],[$y2])`]
 
 Write your answer using integers or fractions.
 
-[`y = `][____]{$slope}[`x + `][____]{$yint}  [@ AnswerFormatHelp("formulas") @]*
+[`y = `][____]{$slope}[`x + `][____]{$yint}
 
   
 END_PGML

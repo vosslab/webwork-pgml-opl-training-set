@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -68,10 +67,10 @@ Identify the roots of the integrand in [``\int_{[$c]}^{[$d]} [$f] dt``] to remov
 
 
 
-[``\text{The roots of the integrand are:}``][__________]{$ans1 } (Use a comma to separate roots) [@ AnswerFormatHelp("numbers") @]*
+[``\text{The roots of the integrand are:}``][__________]{$ans1 } (Use a comma to separate roots)
 
 
-[``\int_{[$c]}^{[$d]} [$f] dt=``][_________________]{$ans2 }  [@ AnswerFormatHelp("numbers") @]*
+[``\int_{[$c]}^{[$d]} [$f] dt=``][_________________]{$ans2 }
 
 
 END_PGML

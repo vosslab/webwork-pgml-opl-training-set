@@ -46,9 +46,9 @@ $dec1 = $int/10;
 $dec2 = $int/100;
 $dec3 = $int/1000;
 
-$dec1Word = numberWord($int).' tenths';
-$dec2Word = numberWord($int).' hundredths';
-$dec3Word = numberWord($int).' thousandths';
+$dec1Word = $int.' tenths';
+$dec2Word = $int.' hundredths';
+$dec3Word = $int.' thousandths';
 
 $frac1 = Fraction($int,10);
 $frac2 = Fraction($int,100);

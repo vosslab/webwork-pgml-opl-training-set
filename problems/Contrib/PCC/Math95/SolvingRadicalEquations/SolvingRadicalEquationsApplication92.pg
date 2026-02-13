@@ -89,7 +89,6 @@ According to the Pythagorean Theorem, the length [`c`] of the hypothenuse of a r
 
 If a rectangular triangle has a hypothenuse of [`[$cU]`] and one leg is [`[$bU]`] long, how long is the third side of the triangle?
 
-[@KeyboardInstructions('If you need to use a square root, type [|sqrt(23)|]* for [`\sqrt{23}`] (for example).')@]**
 
     The third side of the triangle is [__________]{$ans} long.
 

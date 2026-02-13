@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserAssignment.pl",
@@ -48,7 +47,7 @@ BEGIN_PGML
 Evaluate   [`\displaystyle \frac{d}{dx}\int_{x}^{[$a]} \frac{dt}{[$den]}`].
 
 
-[`\displaystyle \frac{d}{dx}\int_{x}^{[$a]} \frac{dt}{[$den]}=`][_______________]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`\displaystyle \frac{d}{dx}\int_{x}^{[$a]} \frac{dt}{[$den]}=`][_______________]{$ans}
 
 
 END_PGML

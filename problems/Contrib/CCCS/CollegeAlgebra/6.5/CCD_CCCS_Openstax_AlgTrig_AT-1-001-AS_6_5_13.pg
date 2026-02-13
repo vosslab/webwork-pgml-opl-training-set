@@ -22,7 +22,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "contextLimitedPoint.pl",
@@ -50,7 +49,7 @@ Expand the following logarithm as much as possible. Rewrite as a sum, difference
 
 [`\displaystyle-\log\left(\frac{1}{x}\right)`]
 
- [___________]{$ans}[@ AnswerFormatHelp("formulas") @]*
+ [___________]{$ans}
 
 END_PGML
  

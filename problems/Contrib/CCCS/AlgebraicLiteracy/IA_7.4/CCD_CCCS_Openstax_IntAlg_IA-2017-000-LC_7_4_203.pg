@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -51,7 +50,7 @@ Solve the rational equation.  If there is more than one correct answer, enter a 
 
 1+[`\dfrac{[$c]}{p}=-\dfrac{[$d]}{p^2}`]
 
-[`p`] = [_________________]{$ans} [@ AnswerFormatHelp("numbers") @]*
+[`p`] = [_________________]{$ans}
 
 
 END_PGML

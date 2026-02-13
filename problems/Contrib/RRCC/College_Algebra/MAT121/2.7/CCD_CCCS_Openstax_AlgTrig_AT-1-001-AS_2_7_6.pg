@@ -22,7 +22,6 @@ loadMacros(
   "PGML.pl",
   "contextFraction.pl",
   "contextInequalitySetBuilder.pl",
-"AnswerFormatHelp.pl",
   "parserOneOf.pl",
   "PGcourse.pl",
 );
@@ -57,7 +56,7 @@ Solve the following inequality for [`x`].  Enter your answer in interval notatio
 
 [` [$a]x-[$b] \leq [$c]`]
 
-[_______________]{$intans} [@ AnswerFormatHelp("intervals") @]*
+[_______________]{$intans}
 
 
 

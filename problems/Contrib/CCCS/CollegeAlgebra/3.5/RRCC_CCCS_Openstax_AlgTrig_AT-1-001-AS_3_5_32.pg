@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -50,7 +49,7 @@ $ans = Point("(($a/$c,$b+$d))");
 BEGIN_PGML
 Suppose [` [$pt1] `] is a point on the graph of [`y=f(x)`]. What is a point that will be on the graph of [`y = f([$c]x) + [$d]`]?  
 
-[_______________]{$ans} [@ AnswerFormatHelp("points") @]*  
+[_______________]{$ans}
 
 Enter a point as [` (a,b) `], including the parentheses.  
 END_PGML

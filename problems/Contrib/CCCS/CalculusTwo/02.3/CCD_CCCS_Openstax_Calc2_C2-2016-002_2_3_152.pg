@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -58,7 +57,7 @@ BEGIN_PGML
 
 Consider the region bounded by [`y=[$f1]`], [`y=0`], [`x=[$a]`], and [`x=[$b]`]. Determine which method you think would be easiest to use to calculate the volume generated when the region is rotated around the [`y`]-axis.  Then use your chosen method to find the volume.
 
-Volume: [_______________]{$ans} units cubed [@ AnswerFormatHelp("numbers") @]*
+Volume: [_______________]{$ans} units cubed
 
 
 END_PGML

@@ -31,7 +31,6 @@ loadMacros(
   "MathObjects.pl",
   "parserMultiAnswer.pl",
   "parserImplicitPlane.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PCCmacros.pl",
   "parserImplicitEquation.pl",

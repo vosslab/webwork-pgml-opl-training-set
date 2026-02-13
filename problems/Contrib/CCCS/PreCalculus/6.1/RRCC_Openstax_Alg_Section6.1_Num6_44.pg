@@ -22,7 +22,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "contextFraction.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -48,7 +47,6 @@ BEGIN_PGML
 Evaluate the [`f(x)= 2(5)^x`] for [`f([$b])`].
 
 [_______________]{$answer}
-[@ AnswerFormatHelp("fractions") @]*
 
 For more questions like this, go to section 6.1 numbers 44-50.
 

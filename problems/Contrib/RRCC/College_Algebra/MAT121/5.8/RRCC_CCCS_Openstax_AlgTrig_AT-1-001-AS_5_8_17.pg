@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -53,7 +52,7 @@ $ans1 = Formula("$k*x*z*w")->reduce();
 BEGIN_PGML
 Write an equation that describes the following relationship: [`y`] varies jointly as [`x`], [`z`], and [`w`] and when [`x=[$x0]`], [`z=[$z0]`], [`w=[$w0]`], then [`y=[$y0]`]. 
 
-[`y=`] [_______________]{$ans1} [@ AnswerFormatHelp("formulas") @]*
+[`y=`] [_______________]{$ans1}
 
 
 

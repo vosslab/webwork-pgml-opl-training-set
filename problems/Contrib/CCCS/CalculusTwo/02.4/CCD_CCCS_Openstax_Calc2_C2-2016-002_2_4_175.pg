@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -57,7 +56,7 @@ BEGIN_PGML
 
 Find the length of the function [`y=[$f1]`]  from [`x=0`] to [`x=[$a]`].  If you cannot evaluate the integral exactly, use technology to approximate it.
 
-Length: [_______________]{$ans} units  [@ AnswerFormatHelp("numbers") @]*
+Length: [_______________]{$ans} units
 
 
 END_PGML

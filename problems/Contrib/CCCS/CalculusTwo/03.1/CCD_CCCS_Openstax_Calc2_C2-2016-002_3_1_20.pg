@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserRadioButtons.pl",
@@ -54,7 +53,7 @@ BEGIN_PGML
 
 Find the indefinite integral  [`\displaystyle \int e^{[$f]} \cos(x) dx`].
 
-[`\displaystyle \int e^{[$f]} \cos(x) dx=`] [______________________________]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`\displaystyle \int e^{[$f]} \cos(x) dx=`] [______________________________]{$ans}
 
 Use a capital "C" for any needed constant in your answer.
 

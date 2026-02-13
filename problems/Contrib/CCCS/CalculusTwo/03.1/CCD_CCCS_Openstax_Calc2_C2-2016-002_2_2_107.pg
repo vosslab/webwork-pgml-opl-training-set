@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -54,7 +53,7 @@ What is the volume of the Bundt cake that comes from rotating [`y=[$f]`] around 
             height=>277) 
   @]*<<
 
-Volume = [_______________]{$ans}  units cubed. [@ AnswerFormatHelp("numbers") @]*
+Volume = [_______________]{$ans}  units cubed.
 
 END_PGML
 

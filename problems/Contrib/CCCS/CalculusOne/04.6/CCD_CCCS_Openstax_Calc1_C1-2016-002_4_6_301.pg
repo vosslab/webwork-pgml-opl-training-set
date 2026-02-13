@@ -23,7 +23,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "parserRadioButtons.pl",
 "parserPopUp.pl",
 "PGML.pl",
@@ -128,9 +127,9 @@ BEGIN_PGML
 
 For the function [``f(x) = [$fun]``], identify all asymptotes and then sketch a graph of the function [`f(x)`]. 
 
-a. Horizontal asymptote(s) are [`y=`] [________________]{$asymp}  (enter a comma separated list or 'NONE') [@ AnswerFormatHelp("numbers") @]* 
+a. Horizontal asymptote(s) are [`y=`] [________________]{$asymp}  (enter a comma separated list or 'NONE')
 
-b. Vertical asymptote(s) are [`x=`] [________________]{$asymp}  (enter a comma separated list or 'NONE') [@ AnswerFormatHelp("numbers") @]* 
+b. Vertical asymptote(s) are [`x=`] [________________]{$asymp}  (enter a comma separated list or 'NONE')
 
 c. Which of the following is a graph of [`f(x)`]? [_________________]{$popup1} 
 

@@ -122,7 +122,6 @@ BEGIN_PGML
 
 The function [`f(x)=[$func0]`] is graphed in black. The blue function, [`g(x)`], is a transformation of [`f(x)`]. In particular, Point A on [`f(x)`] is tranformed to Point B on [`g(x)`]. Write the blue function's equation.
 
-[@EnlargeImageStatementPGML()@]**
 
 >>[@image(insertGraph($gr[0]), width=>xScreen(), height=>yScreen(), tex_size=>TeXscalar(), extra_html_tags=>"alt = '$ALT' title = '$ALT'") @]*<<
 

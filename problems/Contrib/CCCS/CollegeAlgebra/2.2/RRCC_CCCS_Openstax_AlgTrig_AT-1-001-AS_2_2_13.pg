@@ -21,7 +21,6 @@ loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
 "contextFraction.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 );
@@ -57,7 +56,7 @@ Solve the following equation for [`x`]:
 
 [`` [$a]([$b]x-[$c])+x = [$d]x+[$e]``]
 
-[`x =`][_______________]{$answer1} [@ AnswerFormatHelp("numbers") @]*
+[`x =`][_______________]{$answer1}
 
 
 END_PGML

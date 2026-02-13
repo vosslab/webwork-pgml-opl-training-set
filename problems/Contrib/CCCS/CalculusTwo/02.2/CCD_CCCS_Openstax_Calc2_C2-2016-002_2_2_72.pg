@@ -23,7 +23,6 @@ loadMacros(
   "MathObjects.pl",
   "PGunion.pl",
   "answerHints.pl",
-  "AnswerFormatHelp.pl",
   "PGML.pl",
   "PGcourse.pl"
 );
@@ -51,7 +50,7 @@ BEGIN_PGML
 
 Draw an outline of the solid and then find the volume using the slicing method.  The base is the region enclosed by [`y=x^2`] and [`y=[$b2]`].  The slices perpendicular to the [`xy`]-plane and perpendicular to the [`x`]-axis are right isosceles triangles with one of the legs on the [`xy`]-plane.
 
-Volume: [_______________]{$ans} units cubed [@ AnswerFormatHelp("numbers") @]*
+Volume: [_______________]{$ans} units cubed
 
 END_PGML
 

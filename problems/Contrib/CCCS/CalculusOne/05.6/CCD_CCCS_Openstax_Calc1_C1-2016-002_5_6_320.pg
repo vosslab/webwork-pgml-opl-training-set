@@ -18,7 +18,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "parserFormulaUpToConstant.pl"
@@ -36,7 +35,7 @@ BEGIN_PGML
 
 Evaluate the following indefinite integral.
 
-[``\displaystyle \int ([$a] e^{[$b] x} + [$c])\, dx =``][______________________]{$func} [@ AnswerFormatHelp("formulas") @]*
+[``\displaystyle \int ([$a] e^{[$b] x} + [$c])\, dx =``][______________________]{$func}
 
 
 END_PGML

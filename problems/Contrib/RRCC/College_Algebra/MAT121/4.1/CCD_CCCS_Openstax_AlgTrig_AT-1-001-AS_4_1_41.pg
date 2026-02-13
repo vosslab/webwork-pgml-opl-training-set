@@ -21,7 +21,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "parserOneOf.pl",
 "parserMultiAnswer.pl",
@@ -58,9 +57,9 @@ Find the x and y intercepts of the following equation
 
 [`h(x) = [$slope]x+[$yint]`]
 
-x intercept is [______]{$xintP}  [@ AnswerFormatHelp("points") @]*
+x intercept is [______]{$xintP}
 
-y intercept is [______]{$yintP}  [@ AnswerFormatHelp("points") @]*
+y intercept is [______]{$yintP}
 
   
 END_PGML

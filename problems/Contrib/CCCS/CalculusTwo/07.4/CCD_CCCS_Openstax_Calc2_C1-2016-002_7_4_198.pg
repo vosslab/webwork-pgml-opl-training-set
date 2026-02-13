@@ -21,7 +21,6 @@ loadMacros(
 "MathObjects.pl",
 "PGchoicemacros.pl",,
 "parserAssignment.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGgraphmacros.pl",
 "parserPopUp.pl",
@@ -71,11 +70,11 @@ Determine a definite integral that represents the area of the region common to [
 
 [` \hspace{3cm }\displaystyle \int_{\alpha_1}^{\beta_1} \frac{1}{2}(f(\theta))^{2} d\theta +\int_{\alpha_2}^{\beta_2} \frac{1}{2}(g(\theta))^{2}  d\theta`] 
 
-[`\alpha_1=`][_____________]{$alpha1},[@ AnswerFormatHelp("numbers") @]*
-[`\beta_1=`][_____________]{$beta1},[@ AnswerFormatHelp("numbers") @]*
+[`\alpha_1=`][_____________]{$alpha1},
+[`\beta_1=`][_____________]{$beta1},
 
-[`\alpha_2=`][_____________]{$alpha2},[@ AnswerFormatHelp("numbers") @]*
-[`\beta_2=`][_____________]{$beta2},[@ AnswerFormatHelp("numbers") @]*
+[`\alpha_2=`][_____________]{$alpha2},
+[`\beta_2=`][_____________]{$beta2},
 
 END_PGML
 
@@ -98,11 +97,11 @@ Determine a definite integral that represents the area of the region common to [
 
 [` \hspace{3cm }\displaystyle \int_{\alpha_1}^{\beta_1} \frac{1}{2}(f(\theta))^{2} d\theta +\int_{\alpha_2}^{\beta_2} \frac{1}{2}(g(\theta))^{2}  d\theta`] 
 
-[`\alpha_1=`][_____________]{$alpha1},[@ AnswerFormatHelp("numbers") @]*
-[`\beta_1=`][_____________]{$beta1},[@ AnswerFormatHelp("numbers") @]*
+[`\alpha_1=`][_____________]{$alpha1},
+[`\beta_1=`][_____________]{$beta1},
 
-[`\alpha_2=`][_____________]{$alpha2},[@ AnswerFormatHelp("numbers") @]*
-[`\beta_2=`][_____________]{$beta2},[@ AnswerFormatHelp("numbers") @]*
+[`\alpha_2=`][_____________]{$alpha2},
+[`\beta_2=`][_____________]{$beta2},
 END_PGML
 
 }

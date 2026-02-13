@@ -25,7 +25,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextLimitedPoint.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -58,7 +57,7 @@ BEGIN_PGML
 
 Solve [` \ln(10)-\ln(7-x)=\ln(x)`]. If you have more than one solution, enter them as a comma separated list.
 
-[`x = `] [_______________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+[`x = `] [_______________]{$ans}
 
 
 

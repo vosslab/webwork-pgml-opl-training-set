@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "scaffold.pl",
@@ -85,7 +84,7 @@ BEGIN_PGML
 
 Find the values of [`c`] guaranteed to exist by the Mean Value theorem for [``f(x) = [$f1]``] on the interval [`[$closed_interval]`].
 
-[`c=`] [_______________]{$c} [@ AnswerFormatHelp("numbers") @]*
+[`c=`] [_______________]{$c}
 
 END_PGML
 

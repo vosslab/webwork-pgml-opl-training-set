@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "PGML.pl",
 "PGcourse.pl",
 "scaffold.pl",
@@ -97,7 +96,7 @@ BEGIN_PGML
 
 Find the third Taylor polynomial for [`f(x)= x^{\frac{1}{3}}`] centered at [`a=[$a]`] .
 
-[`P_3(x)`]=[_________________________________________]{$ans}  [@ AnswerFormatHelp("formulas") @]*
+[`P_3(x)`]=[_________________________________________]{$ans}
 
 
 END_PGML

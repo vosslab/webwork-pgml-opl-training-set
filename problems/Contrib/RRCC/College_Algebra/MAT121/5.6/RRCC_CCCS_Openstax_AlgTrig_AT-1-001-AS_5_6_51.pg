@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "PGML.pl",
 "PGcourse.pl",
@@ -67,7 +66,7 @@ Find an equation, [`f(x)`], for a rational function that satisfies the following
 + [`y`]-intercept at [`(0,[$yint])`]
 
 
-[`f(x)=`] [_________________________]{$ans} [@ AnswerFormatHelp("formulas") @]*
+[`f(x)=`] [_________________________]{$ans}
 
 
 END_PGML

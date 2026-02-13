@@ -20,7 +20,6 @@ DOCUMENT();
 loadMacros(
 "PGstandard.pl",
 "MathObjects.pl",
-"AnswerFormatHelp.pl",
 "contextFraction.pl",
 "contextLimitedFactor.pl",
 "bizarroArithmetic.pl",
@@ -92,7 +91,7 @@ Step 3: Factor the left side:
 
 Step 4: Solve for x.  If there is more than one answer, separate them with a comma.
 
-[`x=`] [_________________________]{$ans} [@ AnswerFormatHelp("numbers") @]*  
+[`x=`] [_________________________]{$ans}
 
 
 END_PGML
