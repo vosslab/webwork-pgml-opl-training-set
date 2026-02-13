@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-02-13
+
+- Add `tools/batch_renderer_lint.py` to batch-render all .pg files via the local webwork-pg-renderer API
+  (PG 2.17) and classify each as PASS/WARN/FAIL with resume support, progress logging, and TSV output.
+- Add `--shuffle`/`--sorted` mutually exclusive ordering and `--limit N` cap to `tools/batch_renderer_lint.py`
+  for sampling subsets of the corpus.
+
 ## 2026-01-18
 
 - Expand `tools/webwork_pgml_simple_lint.py` with PGML-aware lint checks (blocks, heredocs, blanks, inline markers),
