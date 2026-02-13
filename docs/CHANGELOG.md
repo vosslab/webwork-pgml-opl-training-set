@@ -8,6 +8,12 @@
   resume control to `tools/batch_renderer_lint.py`.
 - Write separate `warn_messages.log` and `fail_messages.log` with complete renderer messages for
   non-passing files, so warnings (fixable) and errors (deletable) are easy to review independently.
+- Add `tools/analyze_renderer_lint.py` to parse renderer lint logs (warn/fail), classify each file into
+  categories (undefined_subroutine, missing_auxiliary, unknown_block_type, pgml_extra_option, no_pgcore),
+  and write per-file classification TSVs, aggregate counts, and per-category file lists.
+- Add `tools/fix_renderer_warnings.py` to remove display-only helper calls (AnswerFormatHelp,
+  KeyboardInstructions, EnlargeImageStatementPGML) that trigger undefined subroutine renderer warnings,
+  plus the AnswerFormatHelp.pl macro load line.
 
 ## 2026-01-18
 
