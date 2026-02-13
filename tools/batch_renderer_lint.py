@@ -90,8 +90,23 @@ def parse_args() -> argparse.Namespace:
 		dest="limit",
 		type=int,
 		default=0,
-		help="Stop after processing this many files (default: 0 = no limit).",
+		help="Stop after processing this many new files (default: 0 = no limit).",
 	)
+	# Resume control: continue from prior results or start fresh
+	resume_group = parser.add_mutually_exclusive_group()
+	resume_group.add_argument(
+		"-c", "--continue",
+		dest="de_novo",
+		action="store_false",
+		help="Continue from prior results, skip already-processed files (default).",
+	)
+	resume_group.add_argument(
+		"-N", "--de-novo",
+		dest="de_novo",
+		action="store_true",
+		help="Start fresh, overwrite any existing results.",
+	)
+	parser.set_defaults(de_novo=False)
 	args = parser.parse_args()
 	return args
 
@@ -567,36 +582,43 @@ def main() -> None:
 		_log("renderer_lint: no .pg files found, nothing to do")
 		return
 
+	# Prepare output directory and load already-completed files
+	os.makedirs(args.out_dir, exist_ok=True)
+	results_path = os.path.join(args.out_dir, "renderer_lint_results.tsv")
+
+	if args.de_novo:
+		# Start fresh: ignore any existing results
+		completed: set[str] = set()
+		_log("renderer_lint: --de-novo mode, starting fresh")
+	else:
+		# Continue: load prior results and skip already-processed files
+		completed = load_completed_files(results_path)
+		if completed:
+			prior = compute_summary_from_results(results_path)
+			_log(f"renderer_lint: results file has {prior['total']} entries "
+				f"(P={prior['pass']} W={prior['warn']} F={prior['fail']})")
+
+	# Filter out already-completed files before shuffle and limit
+	pg_files = [f for f in pg_files if f not in completed]
+	_log(f"renderer_lint: {len(pg_files)} files remaining after skipping completed")
+
+	if len(pg_files) == 0:
+		_log("renderer_lint: all files already processed, rewriting summary")
+		counts = compute_summary_from_results(results_path)
+		elapsed_total = time.perf_counter() - START_TIME
+		write_summary(args.out_dir, counts, elapsed_total)
+		return
+
 	# Apply shuffle or keep sorted order
 	if args.shuffle:
 		random.shuffle(pg_files)
 		_log("renderer_lint: shuffled file order")
 
-	# Apply limit if set
+	# Apply limit to the uncompleted files (controls new work this session)
 	if args.limit > 0 and args.limit < len(pg_files):
 		pg_files = pg_files[:args.limit]
-		_log(f"renderer_lint: limited to {args.limit} files")
+		_log(f"renderer_lint: limited to {args.limit} new files this session")
 	total = len(pg_files)
-
-	# Prepare output directory
-	os.makedirs(args.out_dir, exist_ok=True)
-	results_path = os.path.join(args.out_dir, "renderer_lint_results.tsv")
-
-	# Load already-completed files for resume
-	completed = load_completed_files(results_path)
-	# Only count files in our current batch that are already done
-	skip_count = sum(1 for f in pg_files if f in completed)
-	remaining = total - skip_count
-	if skip_count > 0:
-		_log(f"renderer_lint: resuming, {skip_count} already done, {remaining} remaining")
-
-	if remaining == 0:
-		_log("renderer_lint: all files already processed, rewriting summary")
-		counts = compute_summary_from_results(results_path)
-		elapsed_total = time.perf_counter() - START_TIME
-		write_summary(args.out_dir, counts, elapsed_total)
-		_log(f"renderer_lint: PASS={counts['pass']} WARN={counts['warn']} FAIL={counts['fail']}")
-		return
 
 	# Pre-flight: confirm the renderer is reachable before starting
 	_log(f"renderer_lint: pre-flight check against {base_url}...")
@@ -608,11 +630,11 @@ def main() -> None:
 		)
 	_log("renderer_lint: pre-flight OK, renderer is reachable")
 
-	# Decide whether to write header (fresh file) or append
-	write_header = not os.path.exists(results_path) or skip_count == 0
-	mode = "w" if write_header else "a"
+	# Append to existing results, or write fresh (de-novo or first run)
+	has_prior = len(completed) > 0 and not args.de_novo
+	mode = "a" if has_prior else "w"
 	handle = open(results_path, mode, encoding="utf-8")
-	if write_header:
+	if not has_prior:
 		write_tsv_header(handle)
 
 	# Open separate detail logs for warnings and errors (append for resume)
@@ -621,18 +643,14 @@ def main() -> None:
 	warn_log = open(warn_log_path, mode, encoding="utf-8")
 	fail_log = open(fail_log_path, mode, encoding="utf-8")
 
-	# Batch processing loop
+	# Batch processing loop (pg_files already has completed filtered out)
 	pass_count = 0
 	warn_count = 0
 	fail_count = 0
-	done = skip_count
-	session_processed = 0
+	done = 0
 	last_log = time.perf_counter()
 
 	for file_path in pg_files:
-		# Skip files already processed in a prior run
-		if file_path in completed:
-			continue
 		# Read and render
 		source_text = read_source(file_path)
 		payload = build_payload(source_text, args.problem_seed, "classic")
@@ -651,9 +669,8 @@ def main() -> None:
 			write_detail_entry(fail_log, file_path, status, messages)
 		write_result_row(handle, file_path, status, msg_count, first_msg, render_elapsed)
 		done += 1
-		session_processed += 1
 		last_log = log_progress(
-			last_log, done, total, pass_count, warn_count, fail_count, session_processed
+			last_log, done, total, pass_count, warn_count, fail_count, done
 		)
 
 	handle.close()

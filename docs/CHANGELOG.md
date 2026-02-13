@@ -4,8 +4,10 @@
 
 - Add `tools/batch_renderer_lint.py` to batch-render all .pg files via the local webwork-pg-renderer API
   (PG 2.17) and classify each as PASS/WARN/FAIL with resume support, progress logging, and TSV output.
-- Add `--shuffle`/`--sorted` mutually exclusive ordering and `--limit N` cap to `tools/batch_renderer_lint.py`
-  for sampling subsets of the corpus.
+- Add `--shuffle`/`--sorted` ordering, `--limit N` for incremental batches, and `--continue`/`--de-novo`
+  resume control to `tools/batch_renderer_lint.py`.
+- Write separate `warn_messages.log` and `fail_messages.log` with complete renderer messages for
+  non-passing files, so warnings (fixable) and errors (deletable) are easy to review independently.
 
 ## 2026-01-18
 
